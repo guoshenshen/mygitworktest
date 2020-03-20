@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainEva.TeUserReplyEvaQuestionnaireMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainEva.TeUserReplyEvaQuestionnaire" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ageSection" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="business" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="EvaID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, userID, sex, ageSection, business, EvaID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from te_userreplyevaquestionnaire
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from te_userreplyevaquestionnaire
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainEva.TeUserReplyEvaQuestionnaire" >
+    insert into te_userreplyevaquestionnaire (ID, userID, sex, 
+      ageSection, business, EvaID
+      )
+    values (#{ID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, 
+      #{ageSection,jdbcType=INTEGER}, #{business,jdbcType=INTEGER}, #{evaID,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainEva.TeUserReplyEvaQuestionnaire" >
+    insert into te_userreplyevaquestionnaire
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="ageSection != null" >
+        ageSection,
+      </if>
+      <if test="business != null" >
+        business,
+      </if>
+      <if test="evaID != null" >
+        EvaID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="ageSection != null" >
+        #{ageSection,jdbcType=INTEGER},
+      </if>
+      <if test="business != null" >
+        #{business,jdbcType=INTEGER},
+      </if>
+      <if test="evaID != null" >
+        #{evaID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainEva.TeUserReplyEvaQuestionnaire" >
+    update te_userreplyevaquestionnaire
+    <set >
+      <if test="userID != null" >
+        userID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="ageSection != null" >
+        ageSection = #{ageSection,jdbcType=INTEGER},
+      </if>
+      <if test="business != null" >
+        business = #{business,jdbcType=INTEGER},
+      </if>
+      <if test="evaID != null" >
+        EvaID = #{evaID,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainEva.TeUserReplyEvaQuestionnaire" >
+    update te_userreplyevaquestionnaire
+    set userID = #{userID,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      ageSection = #{ageSection,jdbcType=INTEGER},
+      business = #{business,jdbcType=INTEGER},
+      EvaID = #{evaID,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

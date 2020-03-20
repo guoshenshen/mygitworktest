@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.requirement.UtnOrgTrainNeedsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.requirement.UtnOrgTrainNeeds" >
+    <constructor >
+      <idArg column="ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="needsName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="needsType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="needsContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Target" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="submitDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="approverName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="approverContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pubTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="years" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, orgID, userID, needsName, needsType, needsContent, Target, submitDate, approverName, 
+    approverContent, pubTime, years, tenantId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from utn_orgtrainneeds
+    where ID = #{ID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from utn_orgtrainneeds
+    where ID = #{ID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.requirement.UtnOrgTrainNeeds" >
+    insert into utn_orgtrainneeds (ID, orgID, userID, 
+      needsName, needsType, needsContent, 
+      Target, submitDate, approverName, 
+      approverContent, pubTime, years, 
+      tenantId)
+    values (#{ID,jdbcType=BIGINT}, #{orgID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, 
+      #{needsName,jdbcType=VARCHAR}, #{needsType,jdbcType=INTEGER}, #{needsContent,jdbcType=VARCHAR}, 
+      #{target,jdbcType=VARCHAR}, #{submitDate,jdbcType=DATE}, #{approverName,jdbcType=VARCHAR}, 
+      #{approverContent,jdbcType=VARCHAR}, #{pubTime,jdbcType=DATE}, #{years,jdbcType=INTEGER}, 
+      #{tenantId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.requirement.UtnOrgTrainNeeds" >
+    insert into utn_orgtrainneeds
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="orgID != null" >
+        orgID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="needsName != null" >
+        needsName,
+      </if>
+      <if test="needsType != null" >
+        needsType,
+      </if>
+      <if test="needsContent != null" >
+        needsContent,
+      </if>
+      <if test="target != null" >
+        Target,
+      </if>
+      <if test="submitDate != null" >
+        submitDate,
+      </if>
+      <if test="approverName != null" >
+        approverName,
+      </if>
+      <if test="approverContent != null" >
+        approverContent,
+      </if>
+      <if test="pubTime != null" >
+        pubTime,
+      </if>
+      <if test="years != null" >
+        years,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=BIGINT},
+      </if>
+      <if test="orgID != null" >
+        #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="needsName != null" >
+        #{needsName,jdbcType=VARCHAR},
+      </if>
+      <if test="needsType != null" >
+        #{needsType,jdbcType=INTEGER},
+      </if>
+      <if test="needsContent != null" >
+        #{needsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDate != null" >
+        #{submitDate,jdbcType=DATE},
+      </if>
+      <if test="approverName != null" >
+        #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverContent != null" >
+        #{approverContent,jdbcType=VARCHAR},
+      </if>
+      <if test="pubTime != null" >
+        #{pubTime,jdbcType=DATE},
+      </if>
+      <if test="years != null" >
+        #{years,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.requirement.UtnOrgTrainNeeds" >
+    update utn_orgtrainneeds
+    <set >
+      <if test="orgID != null" >
+        orgID = #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        userID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="needsName != null" >
+        needsName = #{needsName,jdbcType=VARCHAR},
+      </if>
+      <if test="needsType != null" >
+        needsType = #{needsType,jdbcType=INTEGER},
+      </if>
+      <if test="needsContent != null" >
+        needsContent = #{needsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        Target = #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDate != null" >
+        submitDate = #{submitDate,jdbcType=DATE},
+      </if>
+      <if test="approverName != null" >
+        approverName = #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverContent != null" >
+        approverContent = #{approverContent,jdbcType=VARCHAR},
+      </if>
+      <if test="pubTime != null" >
+        pubTime = #{pubTime,jdbcType=DATE},
+      </if>
+      <if test="years != null" >
+        years = #{years,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.requirement.UtnOrgTrainNeeds" >
+    update utn_orgtrainneeds
+    set orgID = #{orgID,jdbcType=INTEGER},
+      userID = #{userID,jdbcType=INTEGER},
+      needsName = #{needsName,jdbcType=VARCHAR},
+      needsType = #{needsType,jdbcType=INTEGER},
+      needsContent = #{needsContent,jdbcType=VARCHAR},
+      Target = #{target,jdbcType=VARCHAR},
+      submitDate = #{submitDate,jdbcType=DATE},
+      approverName = #{approverName,jdbcType=VARCHAR},
+      approverContent = #{approverContent,jdbcType=VARCHAR},
+      pubTime = #{pubTime,jdbcType=DATE},
+      years = #{years,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=BIGINT}
+  </update>
+</mapper>

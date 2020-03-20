@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.JgOperatorMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.JgOperator" >
+    <constructor >
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="gender" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="empcode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentOrgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userId" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.JgOperator" >
+    insert into jg_operator (operatorId, orgId, gender, 
+      empcode, title, parentOrgId, 
+      orgName, parentOrgName, operatorName, 
+      userId)
+    values (#{operatorId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, 
+      #{empcode,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{parentOrgId,jdbcType=INTEGER}, 
+      #{orgName,jdbcType=VARCHAR}, #{parentOrgName,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.JgOperator" >
+    insert into jg_operator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="empcode != null" >
+        empcode,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="parentOrgId != null" >
+        parentOrgId,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="parentOrgName != null" >
+        parentOrgName,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="empcode != null" >
+        #{empcode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgId != null" >
+        #{parentOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgName != null" >
+        #{parentOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

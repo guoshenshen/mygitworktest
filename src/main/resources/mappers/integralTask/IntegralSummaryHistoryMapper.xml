@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralSummaryHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralSummaryHistory" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="userId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="integralRuleId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="trainId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="summaryId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="summaryCount" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="summaryTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, integralRuleId, trainId, summaryId, summaryCount, summaryTime, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_summary_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_summary_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralSummaryHistory" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+    insert into integral_summary_history (id, userId, integralRuleId, 
+      trainId, summaryId, summaryCount, 
+      summaryTime, status)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{integralRuleId,jdbcType=BIGINT}, 
+      #{trainId,jdbcType=BIGINT}, #{summaryId,jdbcType=BIGINT}, #{summaryCount,jdbcType=VARCHAR}, 
+      #{summaryTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralSummaryHistory" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+    insert into integral_summary_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="integralRuleId != null" >
+        integralRuleId,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="summaryId != null" >
+        summaryId,
+      </if>
+      <if test="summaryCount != null" >
+        summaryCount,
+      </if>
+      <if test="summaryTime != null" >
+        summaryTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="integralRuleId != null" >
+        #{integralRuleId,jdbcType=BIGINT},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=BIGINT},
+      </if>
+      <if test="summaryId != null" >
+        #{summaryId,jdbcType=BIGINT},
+      </if>
+      <if test="summaryCount != null" >
+        #{summaryCount,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryTime != null" >
+        #{summaryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralSummaryHistory" >
+    update integral_summary_history
+    <set >
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="integralRuleId != null" >
+        integralRuleId = #{integralRuleId,jdbcType=BIGINT},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=BIGINT},
+      </if>
+      <if test="summaryId != null" >
+        summaryId = #{summaryId,jdbcType=BIGINT},
+      </if>
+      <if test="summaryCount != null" >
+        summaryCount = #{summaryCount,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryTime != null" >
+        summaryTime = #{summaryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralSummaryHistory" >
+    update integral_summary_history
+    set userId = #{userId,jdbcType=BIGINT},
+      integralRuleId = #{integralRuleId,jdbcType=BIGINT},
+      trainId = #{trainId,jdbcType=BIGINT},
+      summaryId = #{summaryId,jdbcType=BIGINT},
+      summaryCount = #{summaryCount,jdbcType=VARCHAR},
+      summaryTime = #{summaryTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getListByTrainIdAndUserIdAndStatus" resultType="com.elearning.pojo.integralTask.IntegralSummaryHistory" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from integral_summary_history
+    where 1=1
+    <if test="userId != null" >
+      and userId = #{userId,jdbcType=BIGINT}
+    </if>
+    <if test="trainId != null" >
+      and trainId = #{trainId,jdbcType=BIGINT}
+    </if>
+    <if test="status != null" >
+      and status = #{status,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+</mapper>

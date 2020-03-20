@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.plan.TpTrainPlanApproveMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.plan.TpTrainPlanApprove" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="trainPlanID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="parentId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="approverID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approverName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="approveDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="approveStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upreportorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="upreportOrgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="casSupport" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="casSupportRank" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="needful" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, trainPlanID, parentId, orgId, orgName, approverID, approverName, approveDate, 
+    approveStatus, comment, upreportorID, upreportOrgId, casSupport, casSupportRank, 
+    needful
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tp_trainplanapprove
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tp_trainplanapprove
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.plan.TpTrainPlanApprove" >
+    insert into tp_trainplanapprove (id, trainPlanID, parentId, 
+      orgId, orgName, approverID, 
+      approverName, approveDate, approveStatus, 
+      comment, upreportorID, upreportOrgId, 
+      casSupport, casSupportRank, needful
+      )
+    values (#{id,jdbcType=BIGINT}, #{trainPlanID,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, 
+      #{orgId,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, #{approverID,jdbcType=INTEGER}, 
+      #{approverName,jdbcType=VARCHAR}, #{approveDate,jdbcType=DATE}, #{approveStatus,jdbcType=INTEGER}, 
+      #{comment,jdbcType=VARCHAR}, #{upreportorID,jdbcType=INTEGER}, #{upreportOrgId,jdbcType=INTEGER}, 
+      #{casSupport,jdbcType=INTEGER}, #{casSupportRank,jdbcType=INTEGER}, #{needful,jdbcType=BOOLEAN}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.plan.TpTrainPlanApprove" >
+    insert into tp_trainplanapprove
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="trainPlanID != null" >
+        trainPlanID,
+      </if>
+      <if test="parentId != null" >
+        parentId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="approverID != null" >
+        approverID,
+      </if>
+      <if test="approverName != null" >
+        approverName,
+      </if>
+      <if test="approveDate != null" >
+        approveDate,
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="upreportorID != null" >
+        upreportorID,
+      </if>
+      <if test="upreportOrgId != null" >
+        upreportOrgId,
+      </if>
+      <if test="casSupport != null" >
+        casSupport,
+      </if>
+      <if test="casSupportRank != null" >
+        casSupportRank,
+      </if>
+      <if test="needful != null" >
+        needful,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="trainPlanID != null" >
+        #{trainPlanID,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverID != null" >
+        #{approverID,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveDate != null" >
+        #{approveDate,jdbcType=DATE},
+      </if>
+      <if test="approveStatus != null" >
+        #{approveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="upreportorID != null" >
+        #{upreportorID,jdbcType=INTEGER},
+      </if>
+      <if test="upreportOrgId != null" >
+        #{upreportOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="casSupport != null" >
+        #{casSupport,jdbcType=INTEGER},
+      </if>
+      <if test="casSupportRank != null" >
+        #{casSupportRank,jdbcType=INTEGER},
+      </if>
+      <if test="needful != null" >
+        #{needful,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.plan.TpTrainPlanApprove" >
+    update tp_trainplanapprove
+    <set >
+      <if test="trainPlanID != null" >
+        trainPlanID = #{trainPlanID,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null" >
+        parentId = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="approverID != null" >
+        approverID = #{approverID,jdbcType=INTEGER},
+      </if>
+      <if test="approverName != null" >
+        approverName = #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveDate != null" >
+        approveDate = #{approveDate,jdbcType=DATE},
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus = #{approveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="upreportorID != null" >
+        upreportorID = #{upreportorID,jdbcType=INTEGER},
+      </if>
+      <if test="upreportOrgId != null" >
+        upreportOrgId = #{upreportOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="casSupport != null" >
+        casSupport = #{casSupport,jdbcType=INTEGER},
+      </if>
+      <if test="casSupportRank != null" >
+        casSupportRank = #{casSupportRank,jdbcType=INTEGER},
+      </if>
+      <if test="needful != null" >
+        needful = #{needful,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.plan.TpTrainPlanApprove" >
+    update tp_trainplanapprove
+    set trainPlanID = #{trainPlanID,jdbcType=BIGINT},
+      parentId = #{parentId,jdbcType=BIGINT},
+      orgId = #{orgId,jdbcType=INTEGER},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      approverID = #{approverID,jdbcType=INTEGER},
+      approverName = #{approverName,jdbcType=VARCHAR},
+      approveDate = #{approveDate,jdbcType=DATE},
+      approveStatus = #{approveStatus,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      upreportorID = #{upreportorID,jdbcType=INTEGER},
+      upreportOrgId = #{upreportOrgId,jdbcType=INTEGER},
+      casSupport = #{casSupport,jdbcType=INTEGER},
+      casSupportRank = #{casSupportRank,jdbcType=INTEGER},
+      needful = #{needful,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

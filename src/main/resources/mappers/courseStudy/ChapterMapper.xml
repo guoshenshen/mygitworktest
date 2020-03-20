@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.ChapterMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.Chapter" >
+    <constructor >
+      <arg column="chapterId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="chapterName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="firstCourseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_List_c" >
+    c.Course_id as courseId, c.Course_no as courseNo, c.Course_name as courseName, c.Category, c.Classfication, c.Fee, c.studyDay, c.score,
+    c.classHour, c.SuitableObject, c.pubStatus, c.maker,c.creator, c.produceOrgName, c.fundingOrgName,
+    c.CreateDate, c.Remark, c.Slice_type as sliceType, c.IsOpenCourse, c.enterUrl, c.Content, c.stationId, c.PictureURL,
+    c.isSharedCourse, c.uploadOrgId, c.uploadOrgName, c.totalvaman, c.totalpoint, c.orgId, c.approveStatus,
+    c.serverFilePath, c.serverId, c.postId, c.courseTypeId, c.keyWordsTag, c.expertAreaId, c.isUnderScope,
+    c.tenantId, c.sourceCourseId, c.openScope, c.indexUrl, c.breed, c.customFilePath, c.subExpertAreaId,
+    c.shareDate, c.upTenantId, c.qualificationMark, c.requiredCourseTypeId, c.isFormal, c.operatorId,
+    c.isNoted, c.isApproved, c.hasTeacher, c.teacherId, c.keyWords, c.selectedTimes, c.mobilePlayAddress,
+    c.downloadable, c.isMultiSize, c.openOrgSEQ, c.sourceTenantId, c.isFirstLevelDirectory, c.isCoursePackage,
+    c.LastWatchCourse
+  </sql>
+
+  <sql id="Base_Column_List" >
+    chapterId, chapterName, firstCourseId, createDate
+  </sql>
+
+  <sql id="Base_Column_c" >
+    c.chapterId, c.chapterName, c.firstCourseId, c.createDate
+  </sql>
+
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.Chapter" >
+    insert into chapter (chapterId, chapterName, firstCourseId, 
+      createDate)
+    values (#{chapterId,jdbcType=BIGINT}, #{chapterName,jdbcType=VARCHAR}, #{firstCourseId,jdbcType=BIGINT}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.Chapter" >
+    insert into chapter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        chapterId,
+      </if>
+      <if test="chapterName != null" >
+        chapterName,
+      </if>
+      <if test="firstCourseId != null" >
+        firstCourseId,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        #{chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="chapterName != null" >
+        #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCourseId != null" >
+        #{firstCourseId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="delete">
+    DELETE FROM chapter where  chapterId = #{chapterId,jdbcType=BIGINT}
+  </delete>
+
+  <select id="getChapterByChapterIdReturnList" resultType="com.elearning.pojo.courseStudy.Chapter" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from chapter
+    where chapterId = #{chapterId,jdbcType=BIGINT}
+  </select>
+
+  <select id="findByCourseId" resultType="com.elearning.pojo.courseStudy.Chapter" parameterType="map">
+    SELECT <include refid="Base_Column_c"/>  FROM chapter_secondcourse t LEFT JOIN chapter c ON t.chapterId=c.chapterId WHERE t.secondCourseId= #{courseId} AND t.type=1
+    <if test="chapterName != null and chapterName != '' ">
+      and chapterName like CONCAT('%',#{chapterName},'%')
+    </if>
+    order by  t.sortOrder
+  </select>
+<select id="findByChapterId" parameterType="long" resultType="com.elearning.pojo.pub.Course">
+  SELECT <include refid="Base_List_c"/> FROM chapter_secondcourse t LEFT JOIN course c ON t.secondCourseId = c.course_id WHERE t.chapterId= #{chapterId} and t.type=2
+  <if test="courseName != null ">
+    and course_Name like CONCAT('%',#{courseName},'%')
+  </if>
+  order by sortOrder
+</select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseStudy.Chapter" >
+    update chapter
+    <set >
+      <if test="chapterName != null  and chapterName != '' " >
+        chapterName = #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCourseId != null" >
+        firstCourseId = #{firstCourseId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where chapterId = #{chapterId,jdbcType=BIGINT}
+  </update>
+
+  <select id="listCourseByChapterId" resultType="com.elearning.pojo.pub.Course">
+    SELECT <include refid="Base_List_c"/> FROM chapter_secondcourse t LEFT JOIN course c ON t.secondCourseId = c.course_id WHERE t.chapterId=#{chapterId} and t.type=2 order by sortOrder
+  </select>
+  <select id="findCourseBySecondcourse" resultType="com.elearning.pojo.pub.Course">
+
+    SELECT <include refid="Base_List_c"/>
+    FROM course c
+    WHERE c.course_id =
+          (SELECT cs.secondCourseId
+            FROM chapter_secondcourse cs
+            WHERE cs.chapterId =
+            ( SELECT ch.chapterId FROM chapter_secondcourse ch WHERE ch.secondCourseId = #{courseId} AND ch.type =2 )
+            AND cs.type = 1)
+  </select>
+
+
+</mapper>

@@ -1,0 +1,651 @@
+html.remodal-is-locked {
+    overflow: auto;
+}
+
+
+
+.userStyle #albumContainer{
+    width: 910px;
+    margin: 20px auto 0;
+    border-top:8px solid #edc810;
+    display:none;
+    /*
+    box-shadow: 1px 2px 1px rgba(0,0,0,.072);
+    -webkit-box-shadow: 1px 2px 1px rgba(0,0,0,.072);
+    -moz-box-shadow: 1px 2px 1px rgba(0,0,0,.072);
+    -o-box-shadow: 1px 2px 1px rgba(0,0,0,.072);
+    */
+}
+
+.link{
+	color: #3091b5;
+}
+
+
+.remodal input.editor{
+	width: 60%;
+}
+
+.remodal textarea.editor{
+	width: 60%;
+    height: 4em;
+}
+
+.remodal .tip{
+	width: 60%;
+    text-align: right;
+    margin: 2px auto 10px;
+    font-size: 15px;
+    color: #95a5a6;
+}
+
+
+/******/
+.adminStyle .albumList{
+	padding:5px 30px 40px;
+}
+
+
+
+ul.albumList{
+	overflow-y:auto;
+}
+
+
+ul.albumList li.albumItem{
+	position:relative;
+	width:260px;
+	height:200px;
+	margin-left: 30px;
+    margin-bottom: 30px;
+    float:left;
+}
+
+.userStyle ul.albumList li.albumItem{
+	margin:25px 20px;
+}
+
+.albumList .photoSkin{
+	transition: left 400ms ease-in-out, top 400ms ease-in-out;
+	border: 10px solid #fff;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    position: absolute;
+    width:250px;
+    height:188px;
+}
+
+.albumList .photoSkin img{
+	width:250px;
+	height:188px;
+}
+
+.albumList .leftRotate{
+    transform: rotate(-2deg);
+}
+
+.albumList .rightRotate{
+    transform: rotate(2deg);
+}
+
+.albumList .noneRotate{
+    transform: rotate(0deg);
+}
+
+
+.albumItem .albumTag{
+	position: absolute;
+	cursor: pointer;
+    top: 40%;
+    left: 0px;
+    line-height: 3em;
+    background-color: #fff;
+    width: 190px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 2px 3px 3px #bbb;
+    -webkit-box-shadow:2px 3px 3px #bbb;
+    -moz-box-shadow:2px 3px 3px #bbb;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.albumEditor.remodal{
+}
+
+.albumEditor.remodal .albumName{
+	width:60%;
+}
+
+.albumEditor.remodal .albumDescription{
+	width:60%;
+	height:4em;
+}
+
+.answerEditor.remodal{
+	width:650px;
+}
+
+
+.answerEditor.remodal .wrapper{
+	overflow-y:auto;
+	max-height:600px;
+}
+
+/******相册*******/
+.photoContainer.remodal{
+	width: 900px;
+    max-width: 900px;
+    height: 510px;
+    padding-bottom:10px;
+}
+
+.photoContainer .box{
+	position:relative;
+}
+
+#photoDisplayer{
+	width:830px;
+	height:470px;
+	padding-bottom:10px;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	margin:0 auto;
+}
+
+#photoDisplayer  #currentPhoto{
+	position:relative;
+	width: 550px;
+    height: 300px;
+    margin: 10px auto;
+    background-color: #aaa;
+}
+
+.noneRotate.notCursor .edit,.noneRotate.notCursor .delete{
+	display:none;
+}
+
+#currentPhoto.notCursor .edit,#currentPhoto.notCursor .delete,#currentPhoto.notCursor .favourite,#currentPhoto.notCursor .unfavourite{
+	display:none;
+}
+
+
+.noneRotate.cursor .edit{
+	position: absolute;
+	display:block;
+    width: 32px;
+    height: 32px;
+    right: 50px;
+    top: 10px;
+    cursor:pointer;
+}
+
+.noneRotate.cursor .delete{
+	position: absolute;
+	display:block;
+    width: 32px;
+    height: 32px;
+    right: 10px;
+    top: 10px;
+    cursor:pointer;
+}
+
+ #currentPhoto.cursor .edit{
+	position: absolute;
+	display:block;
+    width: 32px;
+    height: 32px;
+    right: 100px;
+    top: 10px;
+    cursor:pointer;
+}
+
+#currentPhoto.cursor .favourite, #currentPhoto.cursor .unfavourite{
+	position: absolute;
+	display:block;
+    width: 32px;
+    height: 32px;
+    right: 20px;
+    top: 10px;
+    cursor:pointer;
+}
+
+ #currentPhoto.cursor .delete{
+	position: absolute;
+	display:block;
+    width: 32px;
+    height: 32px;
+    right: 40px;
+    top: 10px;
+    cursor:pointer;
+}
+
+#currentPhoto .save{
+	display:none;
+}
+
+
+#currentPhoto.editStatus .save{
+	display: block;
+    position: absolute;
+    width: 70px;
+    height: 24px;
+    line-height: 1.5em;
+    color: #fff;
+    top: 10px;
+    left: 20px;
+    background: url(../../image/sprite/sprite-1.png) no-repeat 0px 0px;
+    cursor:pointer;
+}
+
+
+#photoDisplayer  #currentPhoto #currentPhotoTitle{
+	display:none
+}
+
+
+#photoDisplayer  #currentPhoto.cursor #currentPhotoTitle,#photoDisplayer  #currentPhoto.editStatus #currentPhotoTitle{
+	position: absolute;
+	display:block;
+    bottom: 0px;
+    left: 0px;
+    line-height: 1.5em;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding:0.5em;
+    color:#fff;
+}
+
+#photoDisplayer  #currentPhoto.notCursor #currentPhotoPower{
+	position: absolute;
+    right: 40px;
+    bottom: 20px;
+    color: #eee;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#photoDisplayer  #currentPhoto #currentPhotoTitle .bufferMask{
+	width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    positioN: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: #000;
+}
+
+#currentPhoto #currentPhotoTitle span{
+	position:relative;
+	min-width:60%;
+	max-width:100%;
+	color:#fff;
+	float:left;
+}
+
+#currentPhoto #currentPhotoTitle span.photoTitle{
+	font-weight:bold;
+}
+
+#currentPhoto #currentPhotoTitle span.photoContent{
+	font-size:10px;
+}
+
+#currentPhoto span.photoContent,#currentPhoto span.photoTitle{
+	display:none;
+}
+
+#currentPhoto.cursor span.photoContent,#currentPhoto.cursor span.photoTitle{
+	display:block;
+}
+
+#currentPhoto.editStatus span.photoContent,#currentPhoto.editStatus span.photoTitle{
+	display:none;
+}
+
+
+#currentPhoto  .editPhotoTitle,#currentPhoto  .editPhotoContent{
+	display:none;
+}
+
+#currentPhoto.editStatus  .editPhotoTitle{
+	display:block;
+	border: 1px solid #DFDFDF;
+	width:75%;
+	margin-bottom: 10px;
+	position:relative;
+}
+
+#currentPhoto.editStatus  .editPhotoContent{
+	display:block;
+	border: 1px solid #DFDFDF;
+	height:4em;
+	width:95%;
+	position:relative;
+}
+
+
+#photoDisplayer  #currentPhoto.cursor #currentPhotoPower{
+ 	display:none;
+}
+
+#photoDisplayer  #currentPhoto img{
+	width:100%;
+	height:100%;
+	box-shadow: 1px 1px 1px rgb(0,0,0);
+}
+
+#photoDisplayer  #otherPhotoList{
+    width: 100%;
+    height: 130px;
+    margin-top: 20px;
+    background-color: #fafafa;
+    overflow:hidden;
+    position:relative;
+}
+
+#photoDisplayer  #otherPhotoList #photoBar{
+	position:relative;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	width:auto;
+	float:left;
+	height:100%;
+	white-space:nowrap;  
+}
+
+.photoContainer .toLeft{
+	position:absolute;
+	left: 0px;
+    bottom: 60px;
+    cursor:pointer;
+    display:none;
+}
+
+.photoContainer .toRight{
+	position:absolute;
+	right: 0px;
+    bottom: 60px;
+    cursor:pointer;
+    display:none;
+}
+
+
+#photoDisplayer  #otherPhotoList .otherPhoto{
+	position:relative;
+	width: 207.5px;
+    height: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#photoDisplayer  #otherPhotoList .otherPhoto img.selectedPhoto{
+	border: 2px solid #f60;
+    box-sizing: border-box;
+}
+
+#otherPhotoList .otherPhoto .deleteMini{
+	position: absolute;
+    top: 6px;
+    right: 10px;
+    cursor:pointer;
+}
+
+#photoDisplayer  #otherPhotoList .otherPhoto img{
+	width:100%;
+	height:100%;
+	border: 2px solid #fff;
+    box-sizing: border-box;
+}
+
+.photoContainer .float_vertical_menu {
+	left:0px;
+	top:20%;
+}
+
+
+#assignUserContainer .float_vertical_menu{
+	top: 120px;
+	left:-1px;
+}
+
+
+.adminStyle #assignmentList{
+	width: 90%;
+    margin: 0 auto;
+    height: 200px;
+}
+
+#assignmentList li{
+	width: 100%;
+    min-height: 35px;
+    border-bottom: 1px dashed #e5e5e5;
+}
+
+#assignmentList li.firstAssignment{
+	 cursor:pointer;
+}
+
+#assignmentList li .assignName{
+	line-height: 2em;
+    padding-left:65px;
+    font-family:"宋体,Arial";
+    font-size:18px;
+    color: #444;
+    float:left;
+    width:450px;
+    overflow-x:hidden;
+    cursor:pointer;
+}
+
+#assignmentList li .assignOptions{
+	width: 200px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 3em;
+    font-size: 13px;
+}
+
+#assignmentList li .assignOptions span{
+	padding-left:15px;
+	color:#3091b5;
+	cursor:pointer;
+}
+
+#assignmentList li .createTime{
+	float: right;
+    color: #888;
+    font-size: 12px;
+    font-family: "宋体,Arial";
+    padding-right: 10px;
+    padding-top: 20px;
+}
+
+
+#addAssignment,#addTopicLine{
+	text-align:left;
+    line-height: 2.5em;
+    padding-left:30px;
+    font-family:"宋体,Arial";
+    font-size:18px;
+    color: #444;
+    font-weight: bold; 
+}
+
+#addTopic{
+	padding:10px;
+}
+
+#addTopicLine{
+	border-bottom: 1px dashed #17A34A;
+}
+
+#addAssignment:hover{
+	background-color:#f5f7fc;
+}
+
+#addAssignment .addTag, #addTopic .addTag{
+	background: url(../../image/sprite/toolsMini.png) left top no-repeat;
+    background-position: -60px -465px;
+    margin-top:5px;
+    margin-right: 10px;
+    height: 28px;
+    width: 28px;
+    float: left;
+    cursor: pointer;
+}
+
+.assignEditor{
+	padding:35px;
+}
+
+
+.assignTopicEditor{
+	padding:0px;
+}
+
+.assignTopicEditor #assignTopicContainer{
+	padding: 0px;
+    box-sizing: border-box;
+    max-height: 650px;
+    overflow-y:auto;
+}
+
+#assignTopicContainer .topicItem{
+	margin-left:70px;
+	padding: 0px 0px;
+	position:relative;
+	border-bottom: 1px dashed #17A34A;
+	font-family: "Arial","Hiragino Sans GB", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";
+}
+
+
+.topicItem .uparrow{
+	background: url(../../image/sprite/toolsMini.png) left top no-repeat;
+    background-position: -288px -465px;
+    height: 28px;
+    width: 28px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+
+.topicItem .downarrow{
+	background: url(../../image/sprite/toolsMini.png) left top no-repeat;
+    background-position: -346px -465px;
+    height: 28px;
+    width: 28px;
+    cursor:pointer;
+}
+
+
+#topicItemList{
+	padding:15px 10px;
+	max-height: 300px;
+    overflow-y: auto;
+}
+
+
+
+.topicItem.firstItem.opened{
+	display:block;
+}
+
+.topicItem .topicAttribute{
+	text-align: left;
+}
+
+.topicItem .topicAttribute span.attributeName{
+	width: 80px;
+    display: inline-block;
+    text-align: left;
+    font-family: "黑体,Arial";
+    font-weight: bold;
+    font-size: 14px;
+    color: #999;
+}
+
+.topicItem .topicAttribute .content{
+	width:400px;
+	height:6em;
+	line-height: 1.5em;
+	word-break: break-all;
+	font-family: 'Helvetica Neue','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+}
+
+.topicItem .topicAttribute .contentAttribute{
+	vertical-align: top;
+}
+
+.topicItem .actionButtonGroup{
+	position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 68px;
+	
+}
+
+.topicItem .orderButtonGroup{
+	position: absolute;
+    top: 30px;
+    left: -60px;
+    width: 30px;
+    height: 60px;
+}
+
+#assignUserContainer.userSelectStatus .forUserAnswer{
+	display:none;
+}
+
+#assignUserContainer.userAnswerStatus .forUserSelect{
+	display:none;
+}
+
+.answerList{
+	text-align: left;
+    margin: 15px;
+}
+
+.answerList .answerItem{
+	min-height: 60px;
+	border-bottom: 1px dashed #17A34A;
+}
+
+.answerItem .question-name{
+	font-family: '黑体';
+	font-weight:bold;
+    font-size: 14px;
+    line-height: 2em;
+}
+
+.answerList .answerItem .answer{
+	line-height: 1.5em;
+    font-size: 14px;
+}
+
+.answerList .answerItem .answer .answerContent{
+	padding: 10px 5px;
+    background-color: #efffef;
+}
+
+.answerEditor .layer{
+	min-height: 30px;
+    text-align: left;
+    padding: 10px 0px 0px 20px;
+}
+
+.answerEditor .layer textarea.advice{
+	width: 580px;
+    height: 100px;
+}
+
+.answerEditor span.title{
+	font-weight: bold;
+    line-height: 1.5em;
+}

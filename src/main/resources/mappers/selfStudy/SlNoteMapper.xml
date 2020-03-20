@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.selfStudy.SlNoteMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.selfStudy.SlNote" >
+    <constructor >
+      <idArg column="slNoteId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="noteTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="noteDescription" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="noteContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attachFileName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attachFileUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attachFileType" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createDate" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="extParam" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    slNoteId, noteTitle, noteDescription, noteContent, attachFileName, attachFileUrl, 
+    attachFileType, operatorId, createDate, extParam
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sl_note
+    where slNoteId = #{slNoteId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sl_note
+    where slNoteId = #{slNoteId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.selfStudy.SlNote" >
+    insert into sl_note (slNoteId, noteTitle, noteDescription, 
+      noteContent, attachFileName, attachFileUrl, 
+      attachFileType, operatorId, createDate, 
+      extParam)
+    values (#{slNoteId,jdbcType=INTEGER}, #{noteTitle,jdbcType=VARCHAR}, #{noteDescription,jdbcType=VARCHAR}, 
+      #{noteContent,jdbcType=VARCHAR}, #{attachFileName,jdbcType=VARCHAR}, #{attachFileUrl,jdbcType=VARCHAR}, 
+      #{attachFileType,jdbcType=VARCHAR}, #{operatorId,jdbcType=INTEGER}, #{createDate,jdbcType=TIME}, 
+      #{extParam,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.selfStudy.SlNote" >
+    insert into sl_note
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="slNoteId != null" >
+        slNoteId,
+      </if>
+      <if test="noteTitle != null" >
+        noteTitle,
+      </if>
+      <if test="noteDescription != null" >
+        noteDescription,
+      </if>
+      <if test="noteContent != null" >
+        noteContent,
+      </if>
+      <if test="attachFileName != null" >
+        attachFileName,
+      </if>
+      <if test="attachFileUrl != null" >
+        attachFileUrl,
+      </if>
+      <if test="attachFileType != null" >
+        attachFileType,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="extParam != null" >
+        extParam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="slNoteId != null" >
+        #{slNoteId,jdbcType=INTEGER},
+      </if>
+      <if test="noteTitle != null" >
+        #{noteTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noteDescription != null" >
+        #{noteDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="noteContent != null" >
+        #{noteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="attachFileName != null" >
+        #{attachFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachFileUrl != null" >
+        #{attachFileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachFileType != null" >
+        #{attachFileType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIME},
+      </if>
+      <if test="extParam != null" >
+        #{extParam,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.selfStudy.SlNote" >
+    update sl_note
+    <set >
+      <if test="noteTitle != null" >
+        noteTitle = #{noteTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noteDescription != null" >
+        noteDescription = #{noteDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="noteContent != null" >
+        noteContent = #{noteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="attachFileName != null" >
+        attachFileName = #{attachFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachFileUrl != null" >
+        attachFileUrl = #{attachFileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachFileType != null" >
+        attachFileType = #{attachFileType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIME},
+      </if>
+      <if test="extParam != null" >
+        extParam = #{extParam,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where slNoteId = #{slNoteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.selfStudy.SlNote" >
+    update sl_note
+    set noteTitle = #{noteTitle,jdbcType=VARCHAR},
+      noteDescription = #{noteDescription,jdbcType=VARCHAR},
+      noteContent = #{noteContent,jdbcType=VARCHAR},
+      attachFileName = #{attachFileName,jdbcType=VARCHAR},
+      attachFileUrl = #{attachFileUrl,jdbcType=VARCHAR},
+      attachFileType = #{attachFileType,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      createDate = #{createDate,jdbcType=TIME},
+      extParam = #{extParam,jdbcType=VARCHAR}
+    where slNoteId = #{slNoteId,jdbcType=INTEGER}
+  </update>
+</mapper>

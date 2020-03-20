@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.selfStudy.SlPortfolioMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.selfStudy.SlPortfolio" >
+    <constructor >
+      <idArg column="portfolioId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="slStudyId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="slNoteId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="logonTime" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="logoutTime" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="byRate" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    portfolioId, slStudyId, operatorId, slNoteId, logonTime, logoutTime, byRate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sl_portfolio
+    where portfolioId = #{portfolioId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sl_portfolio
+    where portfolioId = #{portfolioId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.selfStudy.SlPortfolio" >
+    insert into sl_portfolio (portfolioId, slStudyId, operatorId, 
+      slNoteId, logonTime, logoutTime, 
+      byRate)
+    values (#{portfolioId,jdbcType=INTEGER}, #{slStudyId,jdbcType=BIGINT}, #{operatorId,jdbcType=INTEGER}, 
+      #{slNoteId,jdbcType=INTEGER}, #{logonTime,jdbcType=TIME}, #{logoutTime,jdbcType=TIME}, 
+      #{byRate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.selfStudy.SlPortfolio" >
+    insert into sl_portfolio
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="portfolioId != null" >
+        portfolioId,
+      </if>
+      <if test="slStudyId != null" >
+        slStudyId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="slNoteId != null" >
+        slNoteId,
+      </if>
+      <if test="logonTime != null" >
+        logonTime,
+      </if>
+      <if test="logoutTime != null" >
+        logoutTime,
+      </if>
+      <if test="byRate != null" >
+        byRate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="portfolioId != null" >
+        #{portfolioId,jdbcType=INTEGER},
+      </if>
+      <if test="slStudyId != null" >
+        #{slStudyId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="slNoteId != null" >
+        #{slNoteId,jdbcType=INTEGER},
+      </if>
+      <if test="logonTime != null" >
+        #{logonTime,jdbcType=TIME},
+      </if>
+      <if test="logoutTime != null" >
+        #{logoutTime,jdbcType=TIME},
+      </if>
+      <if test="byRate != null" >
+        #{byRate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.selfStudy.SlPortfolio" >
+    update sl_portfolio
+    <set >
+      <if test="slStudyId != null" >
+        slStudyId = #{slStudyId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="slNoteId != null" >
+        slNoteId = #{slNoteId,jdbcType=INTEGER},
+      </if>
+      <if test="logonTime != null" >
+        logonTime = #{logonTime,jdbcType=TIME},
+      </if>
+      <if test="logoutTime != null" >
+        logoutTime = #{logoutTime,jdbcType=TIME},
+      </if>
+      <if test="byRate != null" >
+        byRate = #{byRate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where portfolioId = #{portfolioId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.selfStudy.SlPortfolio" >
+    update sl_portfolio
+    set slStudyId = #{slStudyId,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      slNoteId = #{slNoteId,jdbcType=INTEGER},
+      logonTime = #{logonTime,jdbcType=TIME},
+      logoutTime = #{logoutTime,jdbcType=TIME},
+      byRate = #{byRate,jdbcType=VARCHAR}
+    where portfolioId = #{portfolioId,jdbcType=INTEGER}
+  </update>
+</mapper>

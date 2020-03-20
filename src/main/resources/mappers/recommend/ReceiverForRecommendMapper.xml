@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.recommend.ReceiverForRecommendMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.recommend.ReceiverForRecommend" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="recommendMailId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hasSend" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hasOpened" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="linkOpenNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="creatTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="sendTime" jdbcType="DATE" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, recommendMailId, operatorId, hasSend, hasOpened, linkOpenNum, creatTime, sendTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from receiverforrecommend
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from receiverforrecommend
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.recommend.ReceiverForRecommend" >
+    insert into receiverforrecommend (id, recommendMailId, operatorId, 
+      hasSend, hasOpened, linkOpenNum, 
+      creatTime, sendTime)
+    values (#{id,jdbcType=BIGINT}, #{recommendMailId,jdbcType=BIGINT}, #{operatorId,jdbcType=INTEGER}, 
+      #{hasSend,jdbcType=INTEGER}, #{hasOpened,jdbcType=INTEGER}, #{linkOpenNum,jdbcType=INTEGER}, 
+      #{creatTime,jdbcType=DATE}, #{sendTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.recommend.ReceiverForRecommend" >
+    insert into receiverforrecommend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="recommendMailId != null" >
+        recommendMailId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="hasSend != null" >
+        hasSend,
+      </if>
+      <if test="hasOpened != null" >
+        hasOpened,
+      </if>
+      <if test="linkOpenNum != null" >
+        linkOpenNum,
+      </if>
+      <if test="creatTime != null" >
+        creatTime,
+      </if>
+      <if test="sendTime != null" >
+        sendTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="recommendMailId != null" >
+        #{recommendMailId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="hasSend != null" >
+        #{hasSend,jdbcType=INTEGER},
+      </if>
+      <if test="hasOpened != null" >
+        #{hasOpened,jdbcType=INTEGER},
+      </if>
+      <if test="linkOpenNum != null" >
+        #{linkOpenNum,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=DATE},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.recommend.ReceiverForRecommend" >
+    update receiverforrecommend
+    <set >
+      <if test="recommendMailId != null" >
+        recommendMailId = #{recommendMailId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="hasSend != null" >
+        hasSend = #{hasSend,jdbcType=INTEGER},
+      </if>
+      <if test="hasOpened != null" >
+        hasOpened = #{hasOpened,jdbcType=INTEGER},
+      </if>
+      <if test="linkOpenNum != null" >
+        linkOpenNum = #{linkOpenNum,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null" >
+        creatTime = #{creatTime,jdbcType=DATE},
+      </if>
+      <if test="sendTime != null" >
+        sendTime = #{sendTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.recommend.ReceiverForRecommend" >
+    update receiverforrecommend
+    set recommendMailId = #{recommendMailId,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      hasSend = #{hasSend,jdbcType=INTEGER},
+      hasOpened = #{hasOpened,jdbcType=INTEGER},
+      linkOpenNum = #{linkOpenNum,jdbcType=INTEGER},
+      creatTime = #{creatTime,jdbcType=DATE},
+      sendTime = #{sendTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainAddrBookMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" >
+    <constructor >
+      <idArg column="addrbookId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="addrbookName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="addrbookRole" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="addrbookDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    addrbookId, addrbookName, addrbookRole, addrbookDate, operatorId, openScope, orgSEQ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainaddrbook
+    where addrbookId = #{addrbookId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtrainaddrbook
+    where addrbookId = #{addrbookId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="addrbookId">
+      SELECT LAST_INSERT_ID() AS addrbookId
+    </selectKey>
+    insert into mt_mixtrainaddrbook (addrbookId, addrbookName, addrbookRole, 
+      addrbookDate, operatorId, openScope, 
+      orgSEQ)
+    values (#{addrbookId,jdbcType=INTEGER}, #{addrbookName,jdbcType=VARCHAR}, #{addrbookRole,jdbcType=INTEGER}, 
+      #{addrbookDate,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=INTEGER}, #{openScope,jdbcType=INTEGER}, 
+      #{orgSEQ,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="addrbookId">
+      SELECT LAST_INSERT_ID() AS addrbookId
+    </selectKey>
+    insert into mt_mixtrainaddrbook
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addrbookId != null" >
+        addrbookId,
+      </if>
+      <if test="addrbookName != null" >
+        addrbookName,
+      </if>
+      <if test="addrbookRole != null" >
+        addrbookRole,
+      </if>
+      <if test="addrbookDate != null" >
+        addrbookDate,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+      <if test="orgSEQ != null" >
+        orgSEQ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addrbookId != null" >
+        #{addrbookId,jdbcType=INTEGER},
+      </if>
+      <if test="addrbookName != null" >
+        #{addrbookName,jdbcType=VARCHAR},
+      </if>
+      <if test="addrbookRole != null" >
+        #{addrbookRole,jdbcType=INTEGER},
+      </if>
+      <if test="addrbookDate != null" >
+        #{addrbookDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="orgSEQ != null" >
+        #{orgSEQ,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" >
+    update mt_mixtrainaddrbook
+    <set >
+      <if test="addrbookName != null" >
+        addrbookName = #{addrbookName,jdbcType=VARCHAR},
+      </if>
+      <if test="addrbookRole != null" >
+        addrbookRole = #{addrbookRole,jdbcType=INTEGER},
+      </if>
+      <if test="addrbookDate != null" >
+        addrbookDate = #{addrbookDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        openScope = #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="orgSEQ != null" >
+        orgSEQ = #{orgSEQ,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where addrbookId = #{addrbookId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" >
+    update mt_mixtrainaddrbook
+    set addrbookName = #{addrbookName,jdbcType=VARCHAR},
+      addrbookRole = #{addrbookRole,jdbcType=INTEGER},
+      addrbookDate = #{addrbookDate,jdbcType=TIMESTAMP},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      openScope = #{openScope,jdbcType=INTEGER},
+      orgSEQ = #{orgSEQ,jdbcType=VARCHAR}
+    where addrbookId = #{addrbookId,jdbcType=INTEGER}
+  </update>
+
+  <select id="listAddrBook" resultType="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" parameterType="map" >
+    select DISTINCT a.* from mt_mixtrainaddrbook a
+
+    <if test="keyWords != null and keyWords != ''" >
+      ,mt_mixtrainuserarrange b where a.addrbookId = b.addrbookId
+    </if>
+    <if test="keyWords == null or keyWords == ''" >
+      where 1=1
+    </if>
+
+    <if test="operatorId != null and operatorId != ''" >
+      and a.operatorId = #{operatorId,jdbcType=INTEGER}
+    </if>
+
+    <if test="addrbookId != null and addrbookId != ''" >
+      and a.addrbookId = #{addrbookId,jdbcType=INTEGER}
+    </if>
+
+    <if test="addrbookIdList != null " >
+      and a.addrbookId in
+      <foreach collection="addrbookIdList" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+
+    <if test="keyWords != null and keyWords != ''" >
+      and ( a.addrbookName LIKE CONCAT('%',#{keyWords},'%') or exists ( select * from eosoperator where operatorName like CONCAT('%',#{keyWords},'%') and operatorId = b.userId ))
+    </if>
+
+    order by a.addrbookDate desc
+  </select>
+
+  <select id="getListByOperatorIdAndKeyWords" resultType="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" parameterType="map" >
+    select distinct a.* from mt_mixtrainaddrbook a
+
+    <if test="keyWords != null and keyWords != ''" >
+       ,mt_mixtrainuserarrange b where a.addrbookId=b.addrbookId
+    </if>
+    <if test="keyWords == null or keyWords == ''" >
+      where 1=1
+    </if>
+
+    <if test="operatorId != null and operatorId != ''" >
+      and a.operatorId = #{operatorId}
+    </if>
+    <if test="keyWords != null and keyWords != ''" >
+      AND (a.addrbookName LIKE CONCAT('%',#{keyWords},'%') or exists (select * from eosoperator where operatorName like CONCAT('%',#{keyWords},'%') and operatorId=b.userId))
+    </if>
+    order by a.addrbookDate desc
+
+  </select>
+
+  <select id="findListByMap" resultType="com.elearning.pojo.mixtraining.MtMixTrainAddrBook" parameterType="map" >
+    select distinct <include refid="Base_Column_List" /> from mt_mixtrainaddrbook where 1=1
+    <if test="addrbookName != null" >
+      and addrbookName = #{addrbookName,jdbcType=VARCHAR}
+    </if>
+    <if test="addrbookRole != null" >
+      and addrbookRole = #{addrbookRole,jdbcType=INTEGER}
+    </if>
+    <if test="addrbookDate != null" >
+      and addrbookDate = #{addrbookDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="operatorId != null" >
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+    </if>
+    <if test="openScope != null" >
+      and openScope = #{openScope,jdbcType=INTEGER}
+    </if>
+    <if test="orgSEQ != null" >
+      and orgSEQ = #{orgSEQ,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
+
+</mapper>

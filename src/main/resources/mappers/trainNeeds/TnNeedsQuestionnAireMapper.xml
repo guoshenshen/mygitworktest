@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainNeeds.TnNeedsQuestionnAireMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Theme" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="pubStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pubUserID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="joinCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="finishCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sendMail" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifAnonymous" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="publishAddr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="publishOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="emailTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Theme" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="pubStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pubUserID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="joinCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="finishCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sendMail" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifAnonymous" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="publishAddr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="publishOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="emailTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Theme, startTime, endTime, pubStatus, pubUserID, joinCount, finishCount, orgId, 
+    trainId, sendMail, ifAnonymous, publishAddr, tenantId, publishOrgName, emailTitle
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tn_needsquestionnaire
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tn_needsquestionnaire
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" >
+    insert into tn_needsquestionnaire (ID, Theme, startTime, 
+      endTime, pubStatus, pubUserID, 
+      joinCount, finishCount, orgId, 
+      trainId, sendMail, ifAnonymous, 
+      publishAddr, tenantId, publishOrgName, 
+      emailTitle, remark)
+    values (#{ID,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{startTime,jdbcType=DATE}, 
+      #{endTime,jdbcType=DATE}, #{pubStatus,jdbcType=INTEGER}, #{pubUserID,jdbcType=BIGINT}, 
+      #{joinCount,jdbcType=INTEGER}, #{finishCount,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{trainId,jdbcType=INTEGER}, #{sendMail,jdbcType=INTEGER}, #{ifAnonymous,jdbcType=INTEGER}, 
+      #{publishAddr,jdbcType=VARCHAR}, #{tenantId,jdbcType=INTEGER}, #{publishOrgName,jdbcType=VARCHAR}, 
+      #{emailTitle,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" >
+    insert into tn_needsquestionnaire
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="theme != null" >
+        Theme,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="pubStatus != null" >
+        pubStatus,
+      </if>
+      <if test="pubUserID != null" >
+        pubUserID,
+      </if>
+      <if test="joinCount != null" >
+        joinCount,
+      </if>
+      <if test="finishCount != null" >
+        finishCount,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="sendMail != null" >
+        sendMail,
+      </if>
+      <if test="ifAnonymous != null" >
+        ifAnonymous,
+      </if>
+      <if test="publishAddr != null" >
+        publishAddr,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="publishOrgName != null" >
+        publishOrgName,
+      </if>
+      <if test="emailTitle != null" >
+        emailTitle,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="pubStatus != null" >
+        #{pubStatus,jdbcType=INTEGER},
+      </if>
+      <if test="pubUserID != null" >
+        #{pubUserID,jdbcType=BIGINT},
+      </if>
+      <if test="joinCount != null" >
+        #{joinCount,jdbcType=INTEGER},
+      </if>
+      <if test="finishCount != null" >
+        #{finishCount,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="sendMail != null" >
+        #{sendMail,jdbcType=INTEGER},
+      </if>
+      <if test="ifAnonymous != null" >
+        #{ifAnonymous,jdbcType=INTEGER},
+      </if>
+      <if test="publishAddr != null" >
+        #{publishAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="publishOrgName != null" >
+        #{publishOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="emailTitle != null" >
+        #{emailTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" >
+    update tn_needsquestionnaire
+    <set >
+      <if test="theme != null" >
+        Theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="pubStatus != null" >
+        pubStatus = #{pubStatus,jdbcType=INTEGER},
+      </if>
+      <if test="pubUserID != null" >
+        pubUserID = #{pubUserID,jdbcType=BIGINT},
+      </if>
+      <if test="joinCount != null" >
+        joinCount = #{joinCount,jdbcType=INTEGER},
+      </if>
+      <if test="finishCount != null" >
+        finishCount = #{finishCount,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="sendMail != null" >
+        sendMail = #{sendMail,jdbcType=INTEGER},
+      </if>
+      <if test="ifAnonymous != null" >
+        ifAnonymous = #{ifAnonymous,jdbcType=INTEGER},
+      </if>
+      <if test="publishAddr != null" >
+        publishAddr = #{publishAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="publishOrgName != null" >
+        publishOrgName = #{publishOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="emailTitle != null" >
+        emailTitle = #{emailTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" >
+    update tn_needsquestionnaire
+    set Theme = #{theme,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=DATE},
+      endTime = #{endTime,jdbcType=DATE},
+      pubStatus = #{pubStatus,jdbcType=INTEGER},
+      pubUserID = #{pubUserID,jdbcType=BIGINT},
+      joinCount = #{joinCount,jdbcType=INTEGER},
+      finishCount = #{finishCount,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      trainId = #{trainId,jdbcType=INTEGER},
+      sendMail = #{sendMail,jdbcType=INTEGER},
+      ifAnonymous = #{ifAnonymous,jdbcType=INTEGER},
+      publishAddr = #{publishAddr,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      publishOrgName = #{publishOrgName,jdbcType=VARCHAR},
+      emailTitle = #{emailTitle,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" >
+    update tn_needsquestionnaire
+    set Theme = #{theme,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=DATE},
+      endTime = #{endTime,jdbcType=DATE},
+      pubStatus = #{pubStatus,jdbcType=INTEGER},
+      pubUserID = #{pubUserID,jdbcType=BIGINT},
+      joinCount = #{joinCount,jdbcType=INTEGER},
+      finishCount = #{finishCount,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      trainId = #{trainId,jdbcType=INTEGER},
+      sendMail = #{sendMail,jdbcType=INTEGER},
+      ifAnonymous = #{ifAnonymous,jdbcType=INTEGER},
+      publishAddr = #{publishAddr,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      publishOrgName = #{publishOrgName,jdbcType=VARCHAR},
+      emailTitle = #{emailTitle,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByTrainId" resultType="com.elearning.pojo.trainNeeds.TnNeedsQuestionnAire" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+    from tn_needsquestionnaire
+    where trainId = #{trainId,jdbcType=INTEGER}
+  </select>
+
+</mapper>

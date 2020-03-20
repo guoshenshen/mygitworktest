@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainCertificateOptionsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainCertificateOptions" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateTemplateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fontSize" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="contentEachLineSize" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName_x_right" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName_y_top" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content_base_x" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content_base_y" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content_interval_x" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content_interval_y" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateDate_y" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateDate_x" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateDate_x_retract" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="font_userName" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userName_x" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userName_y" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="font_certificateNo" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateNo_x" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateNo_y" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="chapterImage_x" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="chapterImage_y" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="chapterImage_width" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="chapterImage_height" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, certificateTemplateId, fontSize, contentEachLineSize, orgName_x_right, orgName_y_top, 
+    content_base_x, content_base_y, content_interval_x, content_interval_y, certificateDate_y, 
+    certificateDate_x, certificateDate_x_retract, font_userName, userName_x, userName_y, 
+    font_certificateNo, certificateNo_x, certificateNo_y, chapterImage_x, chapterImage_y, 
+    chapterImage_width, chapterImage_height
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mtmixtraincertificateoptions
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mtmixtraincertificateoptions
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateOptions" >
+    insert into mtmixtraincertificateoptions (id, certificateTemplateId, fontSize, 
+      contentEachLineSize, orgName_x_right, orgName_y_top, 
+      content_base_x, content_base_y, content_interval_x, 
+      content_interval_y, certificateDate_y, 
+      certificateDate_x, certificateDate_x_retract, 
+      font_userName, userName_x, userName_y, 
+      font_certificateNo, certificateNo_x, certificateNo_y, 
+      chapterImage_x, chapterImage_y, chapterImage_width, 
+      chapterImage_height)
+    values (#{id,jdbcType=INTEGER}, #{certificateTemplateId,jdbcType=INTEGER}, #{fontSize,jdbcType=INTEGER}, 
+      #{contentEachLineSize,jdbcType=INTEGER}, #{orgName_x_right,jdbcType=INTEGER}, #{orgName_y_top,jdbcType=INTEGER}, 
+      #{content_base_x,jdbcType=INTEGER}, #{content_base_y,jdbcType=INTEGER}, #{content_interval_x,jdbcType=INTEGER}, 
+      #{content_interval_y,jdbcType=INTEGER}, #{certificateDate_y,jdbcType=INTEGER}, 
+      #{certificateDate_x,jdbcType=INTEGER}, #{certificateDate_x_retract,jdbcType=INTEGER}, 
+      #{font_userName,jdbcType=INTEGER}, #{userName_x,jdbcType=INTEGER}, #{userName_y,jdbcType=INTEGER}, 
+      #{font_certificateNo,jdbcType=INTEGER}, #{certificateNo_x,jdbcType=INTEGER}, #{certificateNo_y,jdbcType=INTEGER}, 
+      #{chapterImage_x,jdbcType=INTEGER}, #{chapterImage_y,jdbcType=INTEGER}, #{chapterImage_width,jdbcType=INTEGER}, 
+      #{chapterImage_height,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateOptions" >
+    insert into mtmixtraincertificateoptions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="certificateTemplateId != null" >
+        certificateTemplateId,
+      </if>
+      <if test="fontSize != null" >
+        fontSize,
+      </if>
+      <if test="contentEachLineSize != null" >
+        contentEachLineSize,
+      </if>
+      <if test="orgName_x_right != null" >
+        orgName_x_right,
+      </if>
+      <if test="orgName_y_top != null" >
+        orgName_y_top,
+      </if>
+      <if test="content_base_x != null" >
+        content_base_x,
+      </if>
+      <if test="content_base_y != null" >
+        content_base_y,
+      </if>
+      <if test="content_interval_x != null" >
+        content_interval_x,
+      </if>
+      <if test="content_interval_y != null" >
+        content_interval_y,
+      </if>
+      <if test="certificateDate_y != null" >
+        certificateDate_y,
+      </if>
+      <if test="certificateDate_x != null" >
+        certificateDate_x,
+      </if>
+      <if test="certificateDate_x_retract != null" >
+        certificateDate_x_retract,
+      </if>
+      <if test="font_userName != null" >
+        font_userName,
+      </if>
+      <if test="userName_x != null" >
+        userName_x,
+      </if>
+      <if test="userName_y != null" >
+        userName_y,
+      </if>
+      <if test="font_certificateNo != null" >
+        font_certificateNo,
+      </if>
+      <if test="certificateNo_x != null" >
+        certificateNo_x,
+      </if>
+      <if test="certificateNo_y != null" >
+        certificateNo_y,
+      </if>
+      <if test="chapterImage_x != null" >
+        chapterImage_x,
+      </if>
+      <if test="chapterImage_y != null" >
+        chapterImage_y,
+      </if>
+      <if test="chapterImage_width != null" >
+        chapterImage_width,
+      </if>
+      <if test="chapterImage_height != null" >
+        chapterImage_height,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTemplateId != null" >
+        #{certificateTemplateId,jdbcType=INTEGER},
+      </if>
+      <if test="fontSize != null" >
+        #{fontSize,jdbcType=INTEGER},
+      </if>
+      <if test="contentEachLineSize != null" >
+        #{contentEachLineSize,jdbcType=INTEGER},
+      </if>
+      <if test="orgName_x_right != null" >
+        #{orgName_x_right,jdbcType=INTEGER},
+      </if>
+      <if test="orgName_y_top != null" >
+        #{orgName_y_top,jdbcType=INTEGER},
+      </if>
+      <if test="content_base_x != null" >
+        #{content_base_x,jdbcType=INTEGER},
+      </if>
+      <if test="content_base_y != null" >
+        #{content_base_y,jdbcType=INTEGER},
+      </if>
+      <if test="content_interval_x != null" >
+        #{content_interval_x,jdbcType=INTEGER},
+      </if>
+      <if test="content_interval_y != null" >
+        #{content_interval_y,jdbcType=INTEGER},
+      </if>
+      <if test="certificateDate_y != null" >
+        #{certificateDate_y,jdbcType=INTEGER},
+      </if>
+      <if test="certificateDate_x != null" >
+        #{certificateDate_x,jdbcType=INTEGER},
+      </if>
+      <if test="certificateDate_x_retract != null" >
+        #{certificateDate_x_retract,jdbcType=INTEGER},
+      </if>
+      <if test="font_userName != null" >
+        #{font_userName,jdbcType=INTEGER},
+      </if>
+      <if test="userName_x != null" >
+        #{userName_x,jdbcType=INTEGER},
+      </if>
+      <if test="userName_y != null" >
+        #{userName_y,jdbcType=INTEGER},
+      </if>
+      <if test="font_certificateNo != null" >
+        #{font_certificateNo,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo_x != null" >
+        #{certificateNo_x,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo_y != null" >
+        #{certificateNo_y,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_x != null" >
+        #{chapterImage_x,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_y != null" >
+        #{chapterImage_y,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_width != null" >
+        #{chapterImage_width,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_height != null" >
+        #{chapterImage_height,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateOptions" >
+    update mtmixtraincertificateoptions
+    <set >
+      <if test="certificateTemplateId != null" >
+        certificateTemplateId = #{certificateTemplateId,jdbcType=INTEGER},
+      </if>
+      <if test="fontSize != null" >
+        fontSize = #{fontSize,jdbcType=INTEGER},
+      </if>
+      <if test="contentEachLineSize != null" >
+        contentEachLineSize = #{contentEachLineSize,jdbcType=INTEGER},
+      </if>
+      <if test="orgName_x_right != null" >
+        orgName_x_right = #{orgName_x_right,jdbcType=INTEGER},
+      </if>
+      <if test="orgName_y_top != null" >
+        orgName_y_top = #{orgName_y_top,jdbcType=INTEGER},
+      </if>
+      <if test="content_base_x != null" >
+        content_base_x = #{content_base_x,jdbcType=INTEGER},
+      </if>
+      <if test="content_base_y != null" >
+        content_base_y = #{content_base_y,jdbcType=INTEGER},
+      </if>
+      <if test="content_interval_x != null" >
+        content_interval_x = #{content_interval_x,jdbcType=INTEGER},
+      </if>
+      <if test="content_interval_y != null" >
+        content_interval_y = #{content_interval_y,jdbcType=INTEGER},
+      </if>
+      <if test="certificateDate_y != null" >
+        certificateDate_y = #{certificateDate_y,jdbcType=INTEGER},
+      </if>
+      <if test="certificateDate_x != null" >
+        certificateDate_x = #{certificateDate_x,jdbcType=INTEGER},
+      </if>
+      <if test="certificateDate_x_retract != null" >
+        certificateDate_x_retract = #{certificateDate_x_retract,jdbcType=INTEGER},
+      </if>
+      <if test="font_userName != null" >
+        font_userName = #{font_userName,jdbcType=INTEGER},
+      </if>
+      <if test="userName_x != null" >
+        userName_x = #{userName_x,jdbcType=INTEGER},
+      </if>
+      <if test="userName_y != null" >
+        userName_y = #{userName_y,jdbcType=INTEGER},
+      </if>
+      <if test="font_certificateNo != null" >
+        font_certificateNo = #{font_certificateNo,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo_x != null" >
+        certificateNo_x = #{certificateNo_x,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo_y != null" >
+        certificateNo_y = #{certificateNo_y,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_x != null" >
+        chapterImage_x = #{chapterImage_x,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_y != null" >
+        chapterImage_y = #{chapterImage_y,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_width != null" >
+        chapterImage_width = #{chapterImage_width,jdbcType=INTEGER},
+      </if>
+      <if test="chapterImage_height != null" >
+        chapterImage_height = #{chapterImage_height,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateOptions" >
+    update mtmixtraincertificateoptions
+    set certificateTemplateId = #{certificateTemplateId,jdbcType=INTEGER},
+      fontSize = #{fontSize,jdbcType=INTEGER},
+      contentEachLineSize = #{contentEachLineSize,jdbcType=INTEGER},
+      orgName_x_right = #{orgName_x_right,jdbcType=INTEGER},
+      orgName_y_top = #{orgName_y_top,jdbcType=INTEGER},
+      content_base_x = #{content_base_x,jdbcType=INTEGER},
+      content_base_y = #{content_base_y,jdbcType=INTEGER},
+      content_interval_x = #{content_interval_x,jdbcType=INTEGER},
+      content_interval_y = #{content_interval_y,jdbcType=INTEGER},
+      certificateDate_y = #{certificateDate_y,jdbcType=INTEGER},
+      certificateDate_x = #{certificateDate_x,jdbcType=INTEGER},
+      certificateDate_x_retract = #{certificateDate_x_retract,jdbcType=INTEGER},
+      font_userName = #{font_userName,jdbcType=INTEGER},
+      userName_x = #{userName_x,jdbcType=INTEGER},
+      userName_y = #{userName_y,jdbcType=INTEGER},
+      font_certificateNo = #{font_certificateNo,jdbcType=INTEGER},
+      certificateNo_x = #{certificateNo_x,jdbcType=INTEGER},
+      certificateNo_y = #{certificateNo_y,jdbcType=INTEGER},
+      chapterImage_x = #{chapterImage_x,jdbcType=INTEGER},
+      chapterImage_y = #{chapterImage_y,jdbcType=INTEGER},
+      chapterImage_width = #{chapterImage_width,jdbcType=INTEGER},
+      chapterImage_height = #{chapterImage_height,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

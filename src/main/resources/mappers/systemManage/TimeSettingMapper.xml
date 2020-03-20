@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.TimeSettingMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.TimeSetting" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="month" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="day" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="plstartline" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="pldeadline" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="bprstartline" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="bprdeadline" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="pwdValidTime" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, year, month, day, status, plstartline, pldeadline, bprstartline, bprdeadline, 
+    pwdValidTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from timesetting
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from timesetting
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.TimeSetting" >
+    insert into timesetting (id, year, month, 
+      day, status, plstartline, 
+      pldeadline, bprstartline, bprdeadline, 
+      pwdValidTime)
+    values (#{id,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, #{month,jdbcType=VARCHAR}, 
+      #{day,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{plstartline,jdbcType=TIMESTAMP}, 
+      #{pldeadline,jdbcType=TIMESTAMP}, #{bprstartline,jdbcType=TIMESTAMP}, #{bprdeadline,jdbcType=TIMESTAMP}, 
+      #{pwdValidTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.TimeSetting" >
+    insert into timesetting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="plstartline != null" >
+        plstartline,
+      </if>
+      <if test="pldeadline != null" >
+        pldeadline,
+      </if>
+      <if test="bprstartline != null" >
+        bprstartline,
+      </if>
+      <if test="bprdeadline != null" >
+        bprdeadline,
+      </if>
+      <if test="pwdValidTime != null" >
+        pwdValidTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="plstartline != null" >
+        #{plstartline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pldeadline != null" >
+        #{pldeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bprstartline != null" >
+        #{bprstartline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bprdeadline != null" >
+        #{bprdeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwdValidTime != null" >
+        #{pwdValidTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.TimeSetting" >
+    update timesetting
+    <set >
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null" >
+        month = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        day = #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="plstartline != null" >
+        plstartline = #{plstartline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pldeadline != null" >
+        pldeadline = #{pldeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bprstartline != null" >
+        bprstartline = #{bprstartline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bprdeadline != null" >
+        bprdeadline = #{bprdeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pwdValidTime != null" >
+        pwdValidTime = #{pwdValidTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.TimeSetting" >
+    update timesetting
+    set year = #{year,jdbcType=VARCHAR},
+      month = #{month,jdbcType=VARCHAR},
+      day = #{day,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      plstartline = #{plstartline,jdbcType=TIMESTAMP},
+      pldeadline = #{pldeadline,jdbcType=TIMESTAMP},
+      bprstartline = #{bprstartline,jdbcType=TIMESTAMP},
+      bprdeadline = #{bprdeadline,jdbcType=TIMESTAMP},
+      pwdValidTime = #{pwdValidTime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getCurrenTimeSetting" resultMap="BaseResultMap" >
+    SELECT <include refid="Base_Column_List" />  FROM timesetting where status = 1
+  </select>
+
+</mapper>

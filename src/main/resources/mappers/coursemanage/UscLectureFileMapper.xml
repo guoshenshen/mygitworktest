@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.UscLectureFileMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.UscLectureFile" >
+    <constructor >
+      <idArg column="LectureId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="LectureName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LectureURL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="courseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LectureId, LectureName, LectureURL, courseId, openScope
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from usc_lecture_file
+    where LectureId = #{lectureId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from usc_lecture_file
+    where LectureId = #{lectureId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.UscLectureFile" >
+    insert into usc_lecture_file (LectureId, LectureName, LectureURL, 
+      courseId, openScope)
+    values (#{lectureId,jdbcType=INTEGER}, #{lectureName,jdbcType=VARCHAR}, #{lectureURL,jdbcType=VARCHAR}, 
+      #{courseId,jdbcType=BIGINT}, #{openScope,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.UscLectureFile" >
+    insert into usc_lecture_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lectureId != null" >
+        LectureId,
+      </if>
+      <if test="lectureName != null" >
+        LectureName,
+      </if>
+      <if test="lectureURL != null" >
+        LectureURL,
+      </if>
+      <if test="courseId != null" >
+        courseId,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lectureId != null" >
+        #{lectureId,jdbcType=INTEGER},
+      </if>
+      <if test="lectureName != null" >
+        #{lectureName,jdbcType=VARCHAR},
+      </if>
+      <if test="lectureURL != null" >
+        #{lectureURL,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.coursemanage.UscLectureFile" >
+    update usc_lecture_file
+    <set >
+      <if test="lectureName != null" >
+        LectureName = #{lectureName,jdbcType=VARCHAR},
+      </if>
+      <if test="lectureURL != null" >
+        LectureURL = #{lectureURL,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        courseId = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="openScope != null" >
+        openScope = #{openScope,jdbcType=INTEGER},
+      </if>
+    </set>
+    where LectureId = #{lectureId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.UscLectureFile" >
+    update usc_lecture_file
+    set LectureName = #{lectureName,jdbcType=VARCHAR},
+      LectureURL = #{lectureURL,jdbcType=VARCHAR},
+      courseId = #{courseId,jdbcType=BIGINT},
+      openScope = #{openScope,jdbcType=INTEGER}
+    where LectureId = #{lectureId,jdbcType=INTEGER}
+  </update>
+  <select id="getUscLectureFileByCourseId" resultType="com.elearning.pojo.coursemanage.UscLectureFile" parameterType="long">
+    SELECT <include refid="Base_Column_List"/> FROM usc_lecture_file where courseId = #{courseId,jdbcType=BIGINT}
+  </select>
+
+
+</mapper>

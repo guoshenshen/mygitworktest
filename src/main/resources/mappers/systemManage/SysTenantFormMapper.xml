@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.SysTenantFormMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.SysTenantForm" >
+    <constructor >
+      <idArg column="formId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="formName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="updateDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    formId, tenantId, formName, operatorId, operatorName, updateDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.systemManage.SysTenantFormKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_tenantform
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.systemManage.SysTenantFormKey" >
+    delete from sys_tenantform
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.SysTenantForm" >
+    insert into sys_tenantform (formId, tenantId, formName, 
+      operatorId, operatorName, updateDate
+      )
+    values (#{formId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{formName,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.SysTenantForm" >
+    insert into sys_tenantform
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="formId != null" >
+        formId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="formName != null" >
+        formName,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="updateDate != null" >
+        updateDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="formId != null" >
+        #{formId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="formName != null" >
+        #{formName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.SysTenantForm" >
+    update sys_tenantform
+    <set >
+      <if test="formName != null" >
+        formName = #{formName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        updateDate = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.SysTenantForm" >
+    update sys_tenantform
+    set formName = #{formName,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      updateDate = #{updateDate,jdbcType=TIMESTAMP}
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+</mapper>

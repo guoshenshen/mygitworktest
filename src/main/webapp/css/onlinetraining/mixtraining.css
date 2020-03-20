@@ -1,0 +1,24 @@
+#userAddChannel{
+	display:none;
+}
+
+#userAddChannel div{
+	margin: 0 auto;
+    display: block;
+    height: 50px;
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+#userAddChannel a.simpleButton{
+	text-decoration: none;
+	cursor:pointer;
+	width: 97px;
+    height: 26px;
+    line-height: 26px;
+    background: url(/image/sprite/safty_bk.png) -330px -117px no-repeat;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+}

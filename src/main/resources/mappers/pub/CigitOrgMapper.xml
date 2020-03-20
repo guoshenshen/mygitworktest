@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.CigitOrgMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.CigitOrg" >
+    <constructor >
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.CigitOrg" >
+    insert into cigit_org (orgName, orgCode, orgId
+      )
+    values (#{orgName,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.CigitOrg" >
+    insert into cigit_org
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="orgCode != null" >
+        orgCode,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

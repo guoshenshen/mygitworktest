@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.material.PhotoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.material.Photo" >
+    <constructor >
+      <arg column="photoId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="photoName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="albumId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pictureUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uploadDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    photoId,  photoName, operatorName, albumId, pictureUrl, uploadDate, description
+  </sql>
+
+  <insert id="insert" parameterType="com.elearning.pojo.material.Photo" >
+    insert into photo (photoId, photoName, operatorName, 
+      albumId, pictureUrl, uploadDate, 
+      description)
+    values (#{photoId,jdbcType=BIGINT}, #{photoName,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
+      #{albumId,jdbcType=BIGINT}, #{pictureUrl,jdbcType=VARCHAR}, #{uploadDate,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.material.Photo" >
+    insert into photo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        photoId,
+      </if>
+      <if test="photoName != null" >
+        photoName,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="albumId != null" >
+        albumId,
+      </if>
+      <if test="pictureUrl != null" >
+        pictureUrl,
+      </if>
+      <if test="uploadDate != null" >
+        uploadDate,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        #{photoId,jdbcType=BIGINT},
+      </if>
+      <if test="photoName != null" >
+        #{photoName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="albumId != null" >
+        #{albumId,jdbcType=BIGINT},
+      </if>
+      <if test="pictureUrl != null" >
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDate != null" >
+        #{uploadDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="findByBasicCondition" resultType="com.elearning.pojo.material.Photo" parameterType="map" >
+    select <include refid="Base_Column_List" /> from photo where 1=1
+    <if test="photoName != null" >
+      and photoName = #{photoName,jdbcType=VARCHAR}
+    </if>
+    <if test="albumId != null" >
+      and albumId = #{albumId,jdbcType=BIGINT}
+    </if>
+    <if test="description != null" >
+      and description =  #{description,jdbcType=VARCHAR}
+    </if>
+    order by uploadDate desc
+  </select>
+
+  <select id="findById" resultType="com.elearning.pojo.material.Photo">
+    select <include refid="Base_Column_List" /> from photo where photoId =  #{photoId,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByAlbumId" parameterType="java.lang.Long" >
+    delete from photo
+    where albumId = #{albumId,jdbcType=BIGINT}
+  </delete>
+
+  <delete id="deleteByPhotoId" parameterType="java.lang.Long" >
+    delete from photo
+    where photoId = #{photoId,jdbcType=BIGINT}
+  </delete>
+
+</mapper>

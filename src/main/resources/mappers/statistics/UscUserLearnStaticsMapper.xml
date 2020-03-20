@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.statistics.UscUserLearnStaticsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.statistics.UscUserLearnStatics" >
+    <constructor >
+      <idArg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="year" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="month" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="courseNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="onlineTime" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="offlineTrainTime" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="totalTime" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="submitRscNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitBkNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitTtNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="onlineTime2" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="offlineSelfLearningTime" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="overseasStudyTime" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operatorId, year, month, operatorName, orgId, orgName, courseNum, onlineTime, offlineTrainTime, 
+    totalTime, submitRscNum, submitBkNum, submitTtNum, tenantId, onlineTime2, offlineSelfLearningTime, 
+    overseasStudyTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.statistics.UscUserLearnStaticsKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from usc_userlearnstatics
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=INTEGER}
+      and month = #{month,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.statistics.UscUserLearnStaticsKey" >
+    delete from usc_userlearnstatics
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=INTEGER}
+      and month = #{month,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.statistics.UscUserLearnStatics" >
+    insert into usc_userlearnstatics (operatorId, year, month, 
+      operatorName, orgId, orgName, 
+      courseNum, onlineTime, offlineTrainTime, 
+      totalTime, submitRscNum, submitBkNum, 
+      submitTtNum, tenantId, onlineTime2, 
+      offlineSelfLearningTime, overseasStudyTime
+      )
+    values (#{operatorId,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{month,jdbcType=INTEGER}, 
+      #{operatorName,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, 
+      #{courseNum,jdbcType=INTEGER}, #{onlineTime,jdbcType=BIGINT}, #{offlineTrainTime,jdbcType=BIGINT}, 
+      #{totalTime,jdbcType=BIGINT}, #{submitRscNum,jdbcType=INTEGER}, #{submitBkNum,jdbcType=INTEGER}, 
+      #{submitTtNum,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{onlineTime2,jdbcType=BIGINT}, 
+      #{offlineSelfLearningTime,jdbcType=BIGINT}, #{overseasStudyTime,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.statistics.UscUserLearnStatics" >
+    insert into usc_userlearnstatics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="month != null" >
+        month,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="courseNum != null" >
+        courseNum,
+      </if>
+      <if test="onlineTime != null" >
+        onlineTime,
+      </if>
+      <if test="offlineTrainTime != null" >
+        offlineTrainTime,
+      </if>
+      <if test="totalTime != null" >
+        totalTime,
+      </if>
+      <if test="submitRscNum != null" >
+        submitRscNum,
+      </if>
+      <if test="submitBkNum != null" >
+        submitBkNum,
+      </if>
+      <if test="submitTtNum != null" >
+        submitTtNum,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="onlineTime2 != null" >
+        onlineTime2,
+      </if>
+      <if test="offlineSelfLearningTime != null" >
+        offlineSelfLearningTime,
+      </if>
+      <if test="overseasStudyTime != null" >
+        overseasStudyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month != null" >
+        #{month,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseNum != null" >
+        #{courseNum,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null" >
+        #{onlineTime,jdbcType=BIGINT},
+      </if>
+      <if test="offlineTrainTime != null" >
+        #{offlineTrainTime,jdbcType=BIGINT},
+      </if>
+      <if test="totalTime != null" >
+        #{totalTime,jdbcType=BIGINT},
+      </if>
+      <if test="submitRscNum != null" >
+        #{submitRscNum,jdbcType=INTEGER},
+      </if>
+      <if test="submitBkNum != null" >
+        #{submitBkNum,jdbcType=INTEGER},
+      </if>
+      <if test="submitTtNum != null" >
+        #{submitTtNum,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime2 != null" >
+        #{onlineTime2,jdbcType=BIGINT},
+      </if>
+      <if test="offlineSelfLearningTime != null" >
+        #{offlineSelfLearningTime,jdbcType=BIGINT},
+      </if>
+      <if test="overseasStudyTime != null" >
+        #{overseasStudyTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.statistics.UscUserLearnStatics" >
+    update usc_userlearnstatics
+    <set >
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseNum != null" >
+        courseNum = #{courseNum,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null" >
+        onlineTime = #{onlineTime,jdbcType=BIGINT},
+      </if>
+      <if test="offlineTrainTime != null" >
+        offlineTrainTime = #{offlineTrainTime,jdbcType=BIGINT},
+      </if>
+      <if test="totalTime != null" >
+        totalTime = #{totalTime,jdbcType=BIGINT},
+      </if>
+      <if test="submitRscNum != null" >
+        submitRscNum = #{submitRscNum,jdbcType=INTEGER},
+      </if>
+      <if test="submitBkNum != null" >
+        submitBkNum = #{submitBkNum,jdbcType=INTEGER},
+      </if>
+      <if test="submitTtNum != null" >
+        submitTtNum = #{submitTtNum,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime2 != null" >
+        onlineTime2 = #{onlineTime2,jdbcType=BIGINT},
+      </if>
+      <if test="offlineSelfLearningTime != null" >
+        offlineSelfLearningTime = #{offlineSelfLearningTime,jdbcType=BIGINT},
+      </if>
+      <if test="overseasStudyTime != null" >
+        overseasStudyTime = #{overseasStudyTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=INTEGER}
+      and month = #{month,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.statistics.UscUserLearnStatics" >
+    update usc_userlearnstatics
+    set operatorName = #{operatorName,jdbcType=VARCHAR},
+      orgId = #{orgId,jdbcType=INTEGER},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      courseNum = #{courseNum,jdbcType=INTEGER},
+      onlineTime = #{onlineTime,jdbcType=BIGINT},
+      offlineTrainTime = #{offlineTrainTime,jdbcType=BIGINT},
+      totalTime = #{totalTime,jdbcType=BIGINT},
+      submitRscNum = #{submitRscNum,jdbcType=INTEGER},
+      submitBkNum = #{submitBkNum,jdbcType=INTEGER},
+      submitTtNum = #{submitTtNum,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      onlineTime2 = #{onlineTime2,jdbcType=BIGINT},
+      offlineSelfLearningTime = #{offlineSelfLearningTime,jdbcType=BIGINT},
+      overseasStudyTime = #{overseasStudyTime,jdbcType=BIGINT}
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=INTEGER}
+      and month = #{month,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryUserlearnstaticsInOneYear" resultType="com.elearning.vo.statistics.UscUserLearnStaticsYearSumDouble" parameterType="map" >
+    SELECT SUM(userlearn.totalTime)/3600 AS totalTime,
+    SUM(userlearn.courseNum) AS totalCourseNum,
+    SUM(userlearn.onlineTime)/3600 AS totalOnlineTime,
+    SUM(userlearn.offlineTrainTime)/3600 AS  totalOfflineTrainTime,
+    SUM(userlearn.onlineTime2)/3600 AS  totalOnlineTime2,
+    SUM(userlearn.offlineSelfLearningTime)/3600 AS  totalofflineSelfLearningTime,
+    SUM(userlearn.overseasStudyTime)/3600 AS  totalOverseasStudyTime
+    FROM usc_userlearnstatics userlearn WHERE
+    userlearn.operatorId = #{operatorId}
+    AND STR_TO_DATE(CONCAT(userlearn.year,'-',userlearn.month,'-01'),'%Y-%m-%d') &gt;= #{startTime}
+    AND STR_TO_DATE(CONCAT(userlearn.year,'-',userlearn.month,'-01'),'%Y-%m-%d')&lt;= #{endTime}
+    GROUP BY userlearn.operatorId
+  </select>
+
+</mapper>

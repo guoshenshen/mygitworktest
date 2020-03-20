@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.UserNeedLearnCourseMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.UserNeedLearnCourse" >
+    <constructor >
+      <idArg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="train_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="section_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="Course_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="trainName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isStationTrain" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="sectionName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Course_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="courseType" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operatorId, train_id, year, section_id, Course_id, trainName, isStationTrain, sectionName, 
+    Course_name, classHour, courseType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.courseStudy.UserNeedLearnCourseKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from userneedlearncourse
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+      and section_id = #{sectionId,jdbcType=INTEGER}
+      and Course_id = #{courseId,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.courseStudy.UserNeedLearnCourseKey" >
+    delete from userneedlearncourse
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+      and section_id = #{sectionId,jdbcType=INTEGER}
+      and Course_id = #{courseId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.UserNeedLearnCourse" >
+    insert into userneedlearncourse (operatorId, train_id, year, 
+      section_id, Course_id, trainName, 
+      isStationTrain, sectionName, Course_name, 
+      classHour, courseType)
+    values (#{operatorId,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, 
+      #{sectionId,jdbcType=INTEGER}, #{courseId,jdbcType=BIGINT}, #{trainName,jdbcType=VARCHAR}, 
+      #{isStationTrain,jdbcType=TINYINT}, #{sectionName,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, 
+      #{classHour,jdbcType=DOUBLE}, #{courseType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.UserNeedLearnCourse" >
+    insert into userneedlearncourse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="trainId != null" >
+        train_id,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="sectionId != null" >
+        section_id,
+      </if>
+      <if test="courseId != null" >
+        Course_id,
+      </if>
+      <if test="trainName != null" >
+        trainName,
+      </if>
+      <if test="isStationTrain != null" >
+        isStationTrain,
+      </if>
+      <if test="sectionName != null" >
+        sectionName,
+      </if>
+      <if test="courseName != null" >
+        Course_name,
+      </if>
+      <if test="classHour != null" >
+        classHour,
+      </if>
+      <if test="courseType != null" >
+        courseType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="sectionId != null" >
+        #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="trainName != null" >
+        #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="isStationTrain != null" >
+        #{isStationTrain,jdbcType=TINYINT},
+      </if>
+      <if test="sectionName != null" >
+        #{sectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="courseType != null" >
+        #{courseType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseStudy.UserNeedLearnCourse" >
+    update userneedlearncourse
+    <set >
+      <if test="trainName != null" >
+        trainName = #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="isStationTrain != null" >
+        isStationTrain = #{isStationTrain,jdbcType=TINYINT},
+      </if>
+      <if test="sectionName != null" >
+        sectionName = #{sectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        Course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="classHour != null" >
+        classHour = #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="courseType != null" >
+        courseType = #{courseType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+      and section_id = #{sectionId,jdbcType=INTEGER}
+      and Course_id = #{courseId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.courseStudy.UserNeedLearnCourse" >
+    update userneedlearncourse
+    set trainName = #{trainName,jdbcType=VARCHAR},
+      isStationTrain = #{isStationTrain,jdbcType=TINYINT},
+      sectionName = #{sectionName,jdbcType=VARCHAR},
+      Course_name = #{courseName,jdbcType=VARCHAR},
+      classHour = #{classHour,jdbcType=DOUBLE},
+      courseType = #{courseType,jdbcType=VARCHAR}
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+      and section_id = #{sectionId,jdbcType=INTEGER}
+      and Course_id = #{courseId,jdbcType=BIGINT}
+  </update>
+
+  <delete id="deleteByTrainID" parameterType="java.lang.Integer" >
+    delete from userneedlearncourse
+    where train_id = #{trainId,jdbcType=INTEGER}
+  </delete>
+
+  <select id="findCourseRelatedTrainId" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> FROM userneedlearncourse where year = #{year,jdbcType=VARCHAR} and Course_id = #{bookId,jdbcType=BIGINT} and  operatorId = #{operatorId,jdbcType=INTEGER}
+     limit 1;
+  </select>
+
+  <select id="findListByTrainId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT <include refid="Base_Column_List"/> FROM userneedlearncourse where train_id = #{trainId,jdbcType=INTEGER}
+    limit 1;
+  </select>
+
+  <select id="getListByOperatorAndTrainIdAndYear" resultType="com.elearning.pojo.courseStudy.UserNeedLearnCourse" parameterType="map" >
+    SELECT <include refid="Base_Column_List"/> FROM userneedlearncourse
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+    and train_id = #{trainId,jdbcType=INTEGER}
+    and year like CONCAT('%',#{year},'%')
+  </select>
+
+  <select id="findAll" resultType="com.elearning.pojo.courseStudy.UserNeedLearnCourse"  >
+    SELECT <include refid="Base_Column_List"/> FROM userneedlearncourse
+  </select>
+
+  <select id="findByCourseIdTrainId" resultType="com.elearning.pojo.courseStudy.UserNeedLearnCourse"  >
+    SELECT <include refid="Base_Column_List"/> FROM userneedlearncourse
+    where Course_id = #{courseId,jdbcType=BIGINT}
+    and train_id = #{trainId,jdbcType=INTEGER}
+  </select>
+
+</mapper>

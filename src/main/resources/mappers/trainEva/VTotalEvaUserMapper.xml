@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainEva.VTotalEvaUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainEva.VTotalEvaUser" >
+    <constructor >
+      <arg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.trainEva.VTotalEvaUser" >
+    insert into v_totalevauser (ID, userID)
+    values (#{ID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainEva.VTotalEvaUser" >
+    insert into v_totalevauser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

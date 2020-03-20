@@ -1,0 +1,293 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td{
+	margin:0;
+	padding:0
+}
+
+body {
+    font-family: Lantinghei sc, Microsoft Yahei, Helvetica, sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+
+body{
+	text-align: left;
+}
+
+
+div{
+	display:block;
+}
+
+
+
+.f-thide{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+}
+
+#courseToolBox{
+	box-shadow: 0px 1px 8px #333;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 340px;
+    overflow: hidden;
+    z-index:999;
+    /*background: #abadb0;*/	
+}
+
+
+.showBoxStatus #j-hideRightBtn{
+	display:block;
+}
+
+.hideBoxStatus #j-showRightBtn{
+	display:block;
+}
+
+#j-hideRightBtn{
+	display:none;
+	position: fixed;
+    right: 340px;
+    top: 12px;
+    width: 23px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 998;
+    background-color: red;
+    background-position: 0 -640px;
+    //background: url(http://s.stu.126.net/res/images/courseLearn.png?91dd8ac1f930a4e4930376ffeee48616) no-repeat 4449px 4449px;
+}
+
+#j-showRightBtn{
+	display:none;
+	position: absolute;
+    right: 5px;
+    top: 12px;
+    width: 23px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 998;
+    background-color: red;
+    background-position: 0 -640px;
+    //background: url(http://s.stu.126.net/res/images/courseLearn.png?91dd8ac1f930a4e4930376ffeee48616) no-repeat 4449px 4449px;
+}
+
+
+#courseToolBox #courseIntro{
+	height: 90px;
+    padding: 15px 5px 15px 15px;
+    background: #abadb0;
+    line-height: 19px;
+    position:relative;
+}
+
+#courseIntro .courseTitle{
+	font-size: 15px;
+    display: block;
+    color: #333;
+    font-family: "Arial","Hiragino Sans GB", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";
+}
+
+
+#courseIntro .courseDetail{
+	height: 100%;
+	width:190px;
+    overflow: hidden;
+    float: left;
+}
+
+
+#courseIntro .courseQuality{
+    color: #fff;
+    font-size: 12px;
+    text-align: left;
+}
+
+p.courseInfo{
+	color: #666;
+	font-size: 12px;
+	overflow: hidden;
+	margin: 8px 0 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+}
+
+
+.courseImage{
+	width: 130px;
+    height: 80px
+    box-shadow: 0px 0px 4px #666;
+    float: right;
+}
+
+.courseImage img{
+    width:100%;
+    height:100%;
+}
+
+#toolTab{
+	height: 45px;
+    font-family: 微软雅黑;
+    position:relative;
+}
+
+#toolTab #cataLog{
+	float: left;
+    height: 100%;
+    width: 106px;
+    text-align: center;
+    line-height: 44px;
+    color: #666;
+    position:relative;
+}
+
+#cataLog .toolIcon{
+	width: 15px;
+    height: 15px;
+    background-position: -98px -662px;
+    margin: 15px 5px 0 30px;
+    background: url(http://s.stu.126.net/res/images/courseLearn.png?91dd8ac1f930a4e4930376ffeee48616) no-repeat 4449px 4449px;
+    float:left;
+}
+
+#cataLog .toolName{
+	float: left;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    color: #666;
+}
+
+#informationList{
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+    position:relative;
+}
+
+.informationPanel{
+	display: block;
+	float:left;
+    overflow-x: hidden;
+	width:100%;
+	height:100%;
+}
+
+.informationPanel .sectionList{
+	display:block;
+	float:left;
+	width:100%;
+}
+
+.sectionList .section{
+	display:block;
+	float:left;
+	width:100%;
+	min-height: 80px;
+}
+
+.section .sectionTitle{
+	padding-left: 22px;
+	width:100%;
+}
+
+.section .sectionIndex{
+	font-size: 1rem;
+    vertical-align: middle;
+}
+
+.section .sectionName{
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 18px;
+    margin-left: 20px;
+    line-height: 40px;
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.section .courseList{
+	float:left;
+	display:block;
+	width:100%;
+}
+
+
+.section .courseItem{
+	padding-left: 54px;
+    font-size: 1.6em;
+}
+
+.courseItem .courseItemIcon{
+	width: 15px;
+    height: 30px;
+    position: relative;
+    top: 10px;
+    display: block;
+    float: left;
+}
+
+
+.courseItem .courseItemTitle{
+    display: inline-block;
+    font-size: .75rem;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    line-height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 80%;
+    margin-left:15px;
+}
+
+.courseItem .courseItemTitle:hover{
+	cursor:pointer;
+	color: #04a9f5; 
+	font-weight:bold;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+	width:8px;
+	background-color:#3564D0
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar:hover{
+	width:8px;
+	background-color:#3564D0
+}
+
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{
+	width:8px;
+	background-color:#3564D0
+}
+
+.bufferMask{
+	position:absolute;
+	top:0;
+	left;0;
+	width:100%;
+	height:100%;
+	opacity:0.9;
+	filter: alpha(opacity=90);
+    -moz-opacity: 0.9;
+}
+
+#informationList .bufferMask{
+	background: #eee;
+	
+}
+
+#toolTab .bufferMask{
+	background-color: #D2D5DA;
+}

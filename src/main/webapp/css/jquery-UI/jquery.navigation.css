@@ -1,0 +1,154 @@
+.vertical-menu{
+	padding: 0;
+    margin: 0;
+    display:block;
+    background-color:rgba(245, 245, 245, 0.75);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    z-index:2000;
+}
+
+
+.float_vertical_menu{
+	top: 120px;
+    left: -1px;
+	position:absolute;
+    width:180px;
+    margin-left: -56px;
+    z-index:999;
+}
+
+
+.vertical-menu li{
+	list-style: none;
+	position:relative;
+    height: 56px;
+    width: 56px;
+    display: list-item;
+    cursor:pointer;
+}
+
+
+.vertical-menu li.green,.vertical-menu li.green a:hover{
+	background: #b3c833;
+}
+
+.vertical-menu li.red,.vertical-menu li.red a:hover{
+	background: #ce5043;
+}
+
+.vertical-menu li.orange,.vertical-menu li.orange a:hover{
+	background: #fb8521;
+}
+
+.vertical-menu li.blue,.vertical-menu li.blue a:hover{
+	background: #1aa1e1;
+}
+
+.vertical-menu li.purple,.vertical-menu li.purple a:hover{
+	background: #5e5ca6;
+}
+
+.vertical-menu li.grey,.vertical-menu li.grey a:hover{
+	background: #658092;
+}
+
+.vertical-menu span{
+	position: absolute;
+	width:100%;
+	height:100%;
+	left:0px;
+}
+
+span.train-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+    background-position: -132px -419px;
+}
+
+span.course-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+    background-position: -418px -185px;
+}
+
+span.live-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+    background-position: -368px -180px;
+}
+
+span.series-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+    background-position: -180px -420px;;
+}
+
+span.blacklist-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+    background-position: -85px -278px;
+}
+
+span.template-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -510px -280px;
+}
+
+span.upload-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -415px -327px;
+}
+
+span.download-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -465px -325px;
+}
+
+span.dispatch-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -228px -370px;
+}
+
+span.mail-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -325px -420px;
+}
+
+span.save-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -180px -420px;
+}
+
+span.delete-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -465px -185px;
+}
+span.reference-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -465px -135px;
+}
+span.focus-icon{
+	background: url(../../image/sprite/plainNavigation.png) left top no-repeat;
+	background-position: -513px -135px;
+}
+
+.vertical-menu a {
+    position: absolute;
+    width: 140px;
+    height: 100%;
+    text-decoration: none;
+    color: #555;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    left: 56px;
+}
+
+.vertical-menu a:hover{
+	font-weight:bold;
+}
+
+.vertical-menu a span{
+    margin-top: 20px;
+    margin-left: 20px;
+    display: block;
+    font-weight:bold;
+    height: auto;
+    width: auto;
+}

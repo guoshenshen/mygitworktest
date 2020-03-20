@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.testPaper.TpaPaperQuestionsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.testPaper.TpaPaperQuestions" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Paper_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Question_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="QuestionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="QuestionMark" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Paper_id, Question_id, QuestionSequence, QuestionMark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tpa_paper_questions
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tpa_paper_questions
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.testPaper.TpaPaperQuestions" >
+    insert into tpa_paper_questions (ID, Paper_id, Question_id, 
+      QuestionSequence, QuestionMark)
+    values (#{ID,jdbcType=INTEGER}, #{paper_id,jdbcType=INTEGER}, #{question_id,jdbcType=INTEGER}, 
+      #{questionSequence,jdbcType=INTEGER}, #{questionMark,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.testPaper.TpaPaperQuestions" >
+    insert into tpa_paper_questions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="paper_id != null" >
+        Paper_id,
+      </if>
+      <if test="question_id != null" >
+        Question_id,
+      </if>
+      <if test="questionSequence != null" >
+        QuestionSequence,
+      </if>
+      <if test="questionMark != null" >
+        QuestionMark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="paper_id != null" >
+        #{paper_id,jdbcType=INTEGER},
+      </if>
+      <if test="question_id != null" >
+        #{question_id,jdbcType=INTEGER},
+      </if>
+      <if test="questionSequence != null" >
+        #{questionSequence,jdbcType=INTEGER},
+      </if>
+      <if test="questionMark != null" >
+        #{questionMark,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.testPaper.TpaPaperQuestions" >
+    update tpa_paper_questions
+    <set >
+      <if test="paper_id != null" >
+        Paper_id = #{paper_id,jdbcType=INTEGER},
+      </if>
+      <if test="question_id != null" >
+        Question_id = #{question_id,jdbcType=INTEGER},
+      </if>
+      <if test="questionSequence != null" >
+        QuestionSequence = #{questionSequence,jdbcType=INTEGER},
+      </if>
+      <if test="questionMark != null" >
+        QuestionMark = #{questionMark,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.testPaper.TpaPaperQuestions" >
+    update tpa_paper_questions
+    set Paper_id = #{paper_id,jdbcType=INTEGER},
+      Question_id = #{question_id,jdbcType=INTEGER},
+      QuestionSequence = #{questionSequence,jdbcType=INTEGER},
+      QuestionMark = #{questionMark,jdbcType=DOUBLE}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByPaperIdOrderBySequence" resultType="com.elearning.pojo.testPaper.TpaPaperQuestions" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from tpa_paper_questions
+    where Paper_id = #{paperId,jdbcType=INTEGER} order by QuestionSequence
+  </select>
+
+
+</mapper>

@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.CourseElearningMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.CourseElearning" >
+    <constructor >
+      <idArg column="Course_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="Course_no" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Course_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TrainType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Fee" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="studyDay" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="score" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="SuitableObject" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pubStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="maker" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="creator" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Slice_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsOpenCourse" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="enterUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="stationId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PictureURL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isSharedCourse" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uploadOrgId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="uploadOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="totalvaman" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="totalpoint" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveStatus" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="serverFilePath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="serverId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="postId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="courseTypeId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyWordsTag" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="expertAreaId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isUnderScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sourceCourseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="indexUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="breed" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customFilePath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="subExpertAreaId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shareDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="upTenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="qualificationMark" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="requiredCourseTypeId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isFormal" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isNoted" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isApproved" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hasTeacher" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacherId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyWords" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="selectedTimes" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Course_id, Course_no, Course_name, TrainType, Fee, studyDay, score, classHour, SuitableObject, 
+    pubStatus, maker, creator, CreateDate, Remark, Slice_type, IsOpenCourse, enterUrl, 
+    Content, stationId, PictureURL, isSharedCourse, uploadOrgId, uploadOrgName, totalvaman, 
+    totalpoint, orgId, approveStatus, serverFilePath, serverId, postId, courseTypeId, 
+    keyWordsTag, expertAreaId, isUnderScope, tenantId, sourceCourseId, openScope, indexUrl, 
+    breed, customFilePath, subExpertAreaId, shareDate, upTenantId, qualificationMark, 
+    requiredCourseTypeId, isFormal, operatorId, isNoted, isApproved, hasTeacher, teacherId, 
+    keyWords, selectedTimes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_elearning
+    where Course_id = #{course_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from course_elearning
+    where Course_id = #{course_id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.CourseElearning" >
+    insert into course_elearning (Course_id, Course_no, Course_name, 
+      TrainType, Fee, studyDay, 
+      score, classHour, SuitableObject, 
+      pubStatus, maker, creator, 
+      CreateDate, Remark, Slice_type, 
+      IsOpenCourse, enterUrl, Content, 
+      stationId, PictureURL, isSharedCourse, 
+      uploadOrgId, uploadOrgName, totalvaman, 
+      totalpoint, orgId, approveStatus, 
+      serverFilePath, serverId, postId, 
+      courseTypeId, keyWordsTag, expertAreaId, 
+      isUnderScope, tenantId, sourceCourseId, 
+      openScope, indexUrl, breed, 
+      customFilePath, subExpertAreaId, shareDate, 
+      upTenantId, qualificationMark, requiredCourseTypeId, 
+      isFormal, operatorId, isNoted, 
+      isApproved, hasTeacher, teacherId, 
+      keyWords, selectedTimes)
+    values (#{course_id,jdbcType=BIGINT}, #{course_no,jdbcType=VARCHAR}, #{course_name,jdbcType=VARCHAR}, 
+      #{trainType,jdbcType=INTEGER}, #{fee,jdbcType=DOUBLE}, #{studyDay,jdbcType=INTEGER}, 
+      #{score,jdbcType=DOUBLE}, #{classHour,jdbcType=DOUBLE}, #{suitableObject,jdbcType=VARCHAR}, 
+      #{pubStatus,jdbcType=INTEGER}, #{maker,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, #{slice_type,jdbcType=VARCHAR}, 
+      #{isOpenCourse,jdbcType=CHAR}, #{enterUrl,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{stationId,jdbcType=VARCHAR}, #{pictureURL,jdbcType=VARCHAR}, #{isSharedCourse,jdbcType=VARCHAR}, 
+      #{uploadOrgId,jdbcType=BIGINT}, #{uploadOrgName,jdbcType=VARCHAR}, #{totalvaman,jdbcType=BIGINT}, 
+      #{totalpoint,jdbcType=BIGINT}, #{orgId,jdbcType=INTEGER}, #{approveStatus,jdbcType=VARCHAR}, 
+      #{serverFilePath,jdbcType=VARCHAR}, #{serverId,jdbcType=BIGINT}, #{postId,jdbcType=VARCHAR}, 
+      #{courseTypeId,jdbcType=INTEGER}, #{keyWordsTag,jdbcType=VARCHAR}, #{expertAreaId,jdbcType=VARCHAR}, 
+      #{isUnderScope,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{sourceCourseId,jdbcType=BIGINT}, 
+      #{openScope,jdbcType=INTEGER}, #{indexUrl,jdbcType=VARCHAR}, #{breed,jdbcType=VARCHAR}, 
+      #{customFilePath,jdbcType=VARCHAR}, #{subExpertAreaId,jdbcType=VARCHAR}, #{shareDate,jdbcType=DATE}, 
+      #{upTenantId,jdbcType=INTEGER}, #{qualificationMark,jdbcType=INTEGER}, #{requiredCourseTypeId,jdbcType=INTEGER}, 
+      #{isFormal,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{isNoted,jdbcType=INTEGER}, 
+      #{isApproved,jdbcType=INTEGER}, #{hasTeacher,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, 
+      #{keyWords,jdbcType=VARCHAR}, #{selectedTimes,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.CourseElearning" >
+    insert into course_elearning
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        Course_id,
+      </if>
+      <if test="course_no != null" >
+        Course_no,
+      </if>
+      <if test="course_name != null" >
+        Course_name,
+      </if>
+      <if test="trainType != null" >
+        TrainType,
+      </if>
+      <if test="fee != null" >
+        Fee,
+      </if>
+      <if test="studyDay != null" >
+        studyDay,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="classHour != null" >
+        classHour,
+      </if>
+      <if test="suitableObject != null" >
+        SuitableObject,
+      </if>
+      <if test="pubStatus != null" >
+        pubStatus,
+      </if>
+      <if test="maker != null" >
+        maker,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createDate != null" >
+        CreateDate,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="slice_type != null" >
+        Slice_type,
+      </if>
+      <if test="isOpenCourse != null" >
+        IsOpenCourse,
+      </if>
+      <if test="enterUrl != null" >
+        enterUrl,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="stationId != null" >
+        stationId,
+      </if>
+      <if test="pictureURL != null" >
+        PictureURL,
+      </if>
+      <if test="isSharedCourse != null" >
+        isSharedCourse,
+      </if>
+      <if test="uploadOrgId != null" >
+        uploadOrgId,
+      </if>
+      <if test="uploadOrgName != null" >
+        uploadOrgName,
+      </if>
+      <if test="totalvaman != null" >
+        totalvaman,
+      </if>
+      <if test="totalpoint != null" >
+        totalpoint,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus,
+      </if>
+      <if test="serverFilePath != null" >
+        serverFilePath,
+      </if>
+      <if test="serverId != null" >
+        serverId,
+      </if>
+      <if test="postId != null" >
+        postId,
+      </if>
+      <if test="courseTypeId != null" >
+        courseTypeId,
+      </if>
+      <if test="keyWordsTag != null" >
+        keyWordsTag,
+      </if>
+      <if test="expertAreaId != null" >
+        expertAreaId,
+      </if>
+      <if test="isUnderScope != null" >
+        isUnderScope,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="sourceCourseId != null" >
+        sourceCourseId,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+      <if test="indexUrl != null" >
+        indexUrl,
+      </if>
+      <if test="breed != null" >
+        breed,
+      </if>
+      <if test="customFilePath != null" >
+        customFilePath,
+      </if>
+      <if test="subExpertAreaId != null" >
+        subExpertAreaId,
+      </if>
+      <if test="shareDate != null" >
+        shareDate,
+      </if>
+      <if test="upTenantId != null" >
+        upTenantId,
+      </if>
+      <if test="qualificationMark != null" >
+        qualificationMark,
+      </if>
+      <if test="requiredCourseTypeId != null" >
+        requiredCourseTypeId,
+      </if>
+      <if test="isFormal != null" >
+        isFormal,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="isNoted != null" >
+        isNoted,
+      </if>
+      <if test="isApproved != null" >
+        isApproved,
+      </if>
+      <if test="hasTeacher != null" >
+        hasTeacher,
+      </if>
+      <if test="teacherId != null" >
+        teacherId,
+      </if>
+      <if test="keyWords != null" >
+        keyWords,
+      </if>
+      <if test="selectedTimes != null" >
+        selectedTimes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        #{course_id,jdbcType=BIGINT},
+      </if>
+      <if test="course_no != null" >
+        #{course_no,jdbcType=VARCHAR},
+      </if>
+      <if test="course_name != null" >
+        #{course_name,jdbcType=VARCHAR},
+      </if>
+      <if test="trainType != null" >
+        #{trainType,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=DOUBLE},
+      </if>
+      <if test="studyDay != null" >
+        #{studyDay,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="suitableObject != null" >
+        #{suitableObject,jdbcType=VARCHAR},
+      </if>
+      <if test="pubStatus != null" >
+        #{pubStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maker != null" >
+        #{maker,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="slice_type != null" >
+        #{slice_type,jdbcType=VARCHAR},
+      </if>
+      <if test="isOpenCourse != null" >
+        #{isOpenCourse,jdbcType=CHAR},
+      </if>
+      <if test="enterUrl != null" >
+        #{enterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureURL != null" >
+        #{pictureURL,jdbcType=VARCHAR},
+      </if>
+      <if test="isSharedCourse != null" >
+        #{isSharedCourse,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadOrgId != null" >
+        #{uploadOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="uploadOrgName != null" >
+        #{uploadOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalvaman != null" >
+        #{totalvaman,jdbcType=BIGINT},
+      </if>
+      <if test="totalpoint != null" >
+        #{totalpoint,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="approveStatus != null" >
+        #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="serverFilePath != null" >
+        #{serverFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="serverId != null" >
+        #{serverId,jdbcType=BIGINT},
+      </if>
+      <if test="postId != null" >
+        #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseTypeId != null" >
+        #{courseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="keyWordsTag != null" >
+        #{keyWordsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="expertAreaId != null" >
+        #{expertAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="isUnderScope != null" >
+        #{isUnderScope,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceCourseId != null" >
+        #{sourceCourseId,jdbcType=BIGINT},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="indexUrl != null" >
+        #{indexUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="breed != null" >
+        #{breed,jdbcType=VARCHAR},
+      </if>
+      <if test="customFilePath != null" >
+        #{customFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="subExpertAreaId != null" >
+        #{subExpertAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareDate != null" >
+        #{shareDate,jdbcType=DATE},
+      </if>
+      <if test="upTenantId != null" >
+        #{upTenantId,jdbcType=INTEGER},
+      </if>
+      <if test="qualificationMark != null" >
+        #{qualificationMark,jdbcType=INTEGER},
+      </if>
+      <if test="requiredCourseTypeId != null" >
+        #{requiredCourseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="isFormal != null" >
+        #{isFormal,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isNoted != null" >
+        #{isNoted,jdbcType=INTEGER},
+      </if>
+      <if test="isApproved != null" >
+        #{isApproved,jdbcType=INTEGER},
+      </if>
+      <if test="hasTeacher != null" >
+        #{hasTeacher,jdbcType=INTEGER},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="keyWords != null" >
+        #{keyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="selectedTimes != null" >
+        #{selectedTimes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.CourseElearning" >
+    update course_elearning
+    <set >
+      <if test="course_no != null" >
+        Course_no = #{course_no,jdbcType=VARCHAR},
+      </if>
+      <if test="course_name != null" >
+        Course_name = #{course_name,jdbcType=VARCHAR},
+      </if>
+      <if test="trainType != null" >
+        TrainType = #{trainType,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null" >
+        Fee = #{fee,jdbcType=DOUBLE},
+      </if>
+      <if test="studyDay != null" >
+        studyDay = #{studyDay,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="classHour != null" >
+        classHour = #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="suitableObject != null" >
+        SuitableObject = #{suitableObject,jdbcType=VARCHAR},
+      </if>
+      <if test="pubStatus != null" >
+        pubStatus = #{pubStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maker != null" >
+        maker = #{maker,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CreateDate = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="slice_type != null" >
+        Slice_type = #{slice_type,jdbcType=VARCHAR},
+      </if>
+      <if test="isOpenCourse != null" >
+        IsOpenCourse = #{isOpenCourse,jdbcType=CHAR},
+      </if>
+      <if test="enterUrl != null" >
+        enterUrl = #{enterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        stationId = #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureURL != null" >
+        PictureURL = #{pictureURL,jdbcType=VARCHAR},
+      </if>
+      <if test="isSharedCourse != null" >
+        isSharedCourse = #{isSharedCourse,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadOrgId != null" >
+        uploadOrgId = #{uploadOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="uploadOrgName != null" >
+        uploadOrgName = #{uploadOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalvaman != null" >
+        totalvaman = #{totalvaman,jdbcType=BIGINT},
+      </if>
+      <if test="totalpoint != null" >
+        totalpoint = #{totalpoint,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus = #{approveStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="serverFilePath != null" >
+        serverFilePath = #{serverFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="serverId != null" >
+        serverId = #{serverId,jdbcType=BIGINT},
+      </if>
+      <if test="postId != null" >
+        postId = #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseTypeId != null" >
+        courseTypeId = #{courseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="keyWordsTag != null" >
+        keyWordsTag = #{keyWordsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="expertAreaId != null" >
+        expertAreaId = #{expertAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="isUnderScope != null" >
+        isUnderScope = #{isUnderScope,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceCourseId != null" >
+        sourceCourseId = #{sourceCourseId,jdbcType=BIGINT},
+      </if>
+      <if test="openScope != null" >
+        openScope = #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="indexUrl != null" >
+        indexUrl = #{indexUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="breed != null" >
+        breed = #{breed,jdbcType=VARCHAR},
+      </if>
+      <if test="customFilePath != null" >
+        customFilePath = #{customFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="subExpertAreaId != null" >
+        subExpertAreaId = #{subExpertAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareDate != null" >
+        shareDate = #{shareDate,jdbcType=DATE},
+      </if>
+      <if test="upTenantId != null" >
+        upTenantId = #{upTenantId,jdbcType=INTEGER},
+      </if>
+      <if test="qualificationMark != null" >
+        qualificationMark = #{qualificationMark,jdbcType=INTEGER},
+      </if>
+      <if test="requiredCourseTypeId != null" >
+        requiredCourseTypeId = #{requiredCourseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="isFormal != null" >
+        isFormal = #{isFormal,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isNoted != null" >
+        isNoted = #{isNoted,jdbcType=INTEGER},
+      </if>
+      <if test="isApproved != null" >
+        isApproved = #{isApproved,jdbcType=INTEGER},
+      </if>
+      <if test="hasTeacher != null" >
+        hasTeacher = #{hasTeacher,jdbcType=INTEGER},
+      </if>
+      <if test="teacherId != null" >
+        teacherId = #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="keyWords != null" >
+        keyWords = #{keyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="selectedTimes != null" >
+        selectedTimes = #{selectedTimes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Course_id = #{course_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.CourseElearning" >
+    update course_elearning
+    set Course_no = #{course_no,jdbcType=VARCHAR},
+      Course_name = #{course_name,jdbcType=VARCHAR},
+      TrainType = #{trainType,jdbcType=INTEGER},
+      Fee = #{fee,jdbcType=DOUBLE},
+      studyDay = #{studyDay,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      classHour = #{classHour,jdbcType=DOUBLE},
+      SuitableObject = #{suitableObject,jdbcType=VARCHAR},
+      pubStatus = #{pubStatus,jdbcType=INTEGER},
+      maker = #{maker,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      CreateDate = #{createDate,jdbcType=DATE},
+      Remark = #{remark,jdbcType=VARCHAR},
+      Slice_type = #{slice_type,jdbcType=VARCHAR},
+      IsOpenCourse = #{isOpenCourse,jdbcType=CHAR},
+      enterUrl = #{enterUrl,jdbcType=VARCHAR},
+      Content = #{content,jdbcType=VARCHAR},
+      stationId = #{stationId,jdbcType=VARCHAR},
+      PictureURL = #{pictureURL,jdbcType=VARCHAR},
+      isSharedCourse = #{isSharedCourse,jdbcType=VARCHAR},
+      uploadOrgId = #{uploadOrgId,jdbcType=BIGINT},
+      uploadOrgName = #{uploadOrgName,jdbcType=VARCHAR},
+      totalvaman = #{totalvaman,jdbcType=BIGINT},
+      totalpoint = #{totalpoint,jdbcType=BIGINT},
+      orgId = #{orgId,jdbcType=INTEGER},
+      approveStatus = #{approveStatus,jdbcType=VARCHAR},
+      serverFilePath = #{serverFilePath,jdbcType=VARCHAR},
+      serverId = #{serverId,jdbcType=BIGINT},
+      postId = #{postId,jdbcType=VARCHAR},
+      courseTypeId = #{courseTypeId,jdbcType=INTEGER},
+      keyWordsTag = #{keyWordsTag,jdbcType=VARCHAR},
+      expertAreaId = #{expertAreaId,jdbcType=VARCHAR},
+      isUnderScope = #{isUnderScope,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      sourceCourseId = #{sourceCourseId,jdbcType=BIGINT},
+      openScope = #{openScope,jdbcType=INTEGER},
+      indexUrl = #{indexUrl,jdbcType=VARCHAR},
+      breed = #{breed,jdbcType=VARCHAR},
+      customFilePath = #{customFilePath,jdbcType=VARCHAR},
+      subExpertAreaId = #{subExpertAreaId,jdbcType=VARCHAR},
+      shareDate = #{shareDate,jdbcType=DATE},
+      upTenantId = #{upTenantId,jdbcType=INTEGER},
+      qualificationMark = #{qualificationMark,jdbcType=INTEGER},
+      requiredCourseTypeId = #{requiredCourseTypeId,jdbcType=INTEGER},
+      isFormal = #{isFormal,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      isNoted = #{isNoted,jdbcType=INTEGER},
+      isApproved = #{isApproved,jdbcType=INTEGER},
+      hasTeacher = #{hasTeacher,jdbcType=INTEGER},
+      teacherId = #{teacherId,jdbcType=INTEGER},
+      keyWords = #{keyWords,jdbcType=VARCHAR},
+      selectedTimes = #{selectedTimes,jdbcType=INTEGER}
+    where Course_id = #{course_id,jdbcType=BIGINT}
+  </update>
+</mapper>

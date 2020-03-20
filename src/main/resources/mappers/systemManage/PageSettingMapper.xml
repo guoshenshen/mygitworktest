@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.PageSettingMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.PageSetting" >
+    <constructor >
+      <idArg column="operatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pageSize" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operatorID, pageSize
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pagesetting
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pagesetting
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.PageSetting" >
+    insert into pagesetting (operatorID, pageSize)
+    values (#{operatorID,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.PageSetting" >
+    insert into pagesetting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="pageSize != null" >
+        pageSize,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="pageSize != null" >
+        #{pageSize,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.PageSetting" >
+    update pagesetting
+    <set >
+      <if test="pageSize != null" >
+        pageSize = #{pageSize,jdbcType=INTEGER},
+      </if>
+    </set>
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.PageSetting" >
+    update pagesetting
+    set pageSize = #{pageSize,jdbcType=INTEGER}
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+  </update>
+</mapper>

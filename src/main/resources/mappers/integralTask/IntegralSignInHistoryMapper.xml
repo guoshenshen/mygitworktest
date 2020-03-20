@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralSignInHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralSignInHistory" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="integralRuleId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="userId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="signInTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="previousSignId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, integralRuleId, userId, signInTime, previousSignId, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_signin_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_signin_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralSignInHistory" >
+    insert into integral_signin_history (id, integralRuleId, userId, 
+      signInTime, previousSignId, status
+      )
+    values (#{id,jdbcType=BIGINT}, #{integralRuleId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{signInTime,jdbcType=TIMESTAMP}, #{previousSignId,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralSignInHistory" >
+    insert into integral_signin_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="integralRuleId != null" >
+        integralRuleId,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="signInTime != null" >
+        signInTime,
+      </if>
+      <if test="previousSignId != null" >
+        previousSignId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="integralRuleId != null" >
+        #{integralRuleId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="signInTime != null" >
+        #{signInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousSignId != null" >
+        #{previousSignId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralSignInHistory" >
+    update integral_signin_history
+    <set >
+      <if test="integralRuleId != null" >
+        integralRuleId = #{integralRuleId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="signInTime != null" >
+        signInTime = #{signInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="previousSignId != null" >
+        previousSignId = #{previousSignId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralSignInHistory" >
+    update integral_signin_history
+    set integralRuleId = #{integralRuleId,jdbcType=BIGINT},
+      userId = #{userId,jdbcType=BIGINT},
+      signInTime = #{signInTime,jdbcType=TIMESTAMP},
+      previousSignId = #{previousSignId,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

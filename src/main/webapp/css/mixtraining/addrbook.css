@@ -1,0 +1,254 @@
+body{
+	background-color:#E7E7E7;
+}
+
+
+#addrBookPanel{
+	width:100%;
+	height:580px;
+	display:block;
+	float:left;
+	padding:2px;
+}
+
+
+#emptyAddrBookPanel{
+	    width: 500px;
+    	height: 350px;
+    	margin: 0 auto;
+    	margin-top:20%;
+}
+
+
+#empty-info{
+	width:220px;
+	height: 220px;
+    background: url(/image/ui_empty.png) no-repeat;
+    margin: 0 auto;
+}
+
+#emptyAddrBookPanel h3{
+    letter-spacing: 5px;
+   	margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+
+#emptyAddrBookPanel .backButton{
+	margin-top:20px;
+	margin-left:35%;
+
+}
+
+#addrBookPanel #addrBooklist{
+	float:left;
+	display:block;
+	width:25%;
+	height:100%;
+	background-color: #EfEEE1;
+}
+
+#addrBooklist .searchBar{
+	width: 95%;
+    height: 40px;
+    padding: 10px 0;
+    padding-left: 5px;
+    position:relative
+}
+
+#addrBooklist .searchBar input{
+	width: 92%;
+    height: 38px;
+    font-size: 14px;
+    padding-left: 6%;
+    border: 2px solid #c5464a;
+    border-radius: 5px;
+    background: transparent;
+
+}
+
+#addrBooklist .searchBar button {
+	position:absolute;
+	height: 44px;
+    width: 42px;
+    cursor: pointer;
+    background: #c5464a;
+    border-radius: 0 5px 5px 0;
+    width: 50px;
+    right: 0px;
+    top:10px;
+    border: none;
+}
+
+
+
+
+#addrBookPanel #addrBooklist ul{
+	width: 100%;
+    float: left;
+}
+
+#addrBookPanel #addrBooklist li{
+	display:block;
+	float:left;
+	width:100%;
+	height:60px;
+	overflow:hidden;
+	background-color: #f7e59e;
+	border-bottom: 1px solid #ffffff;
+}
+
+#addrBookPanel #addrBooklist li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    padding-left:15px;
+    padding-right:15px;
+    font-family: "????";
+    font-size: 13px;
+    cursor:pointer;
+    line-height:1.4em;
+    text-align:left;
+    text-decoration:none;
+}
+
+#addrBookPanel #addrBooklist .selectedLi{
+	background-color: #f60;
+    text-decoration: none;
+}
+
+
+#addrBookPanel #addrBooklist li:hover{
+	background-color: #f60;
+    text-decoration: none;
+}
+
+
+#addrBookPanel #bookStaff{
+	height:100%;
+	width:74.5%;
+	float:left;
+	display:block;
+	
+}
+
+#bookStaff .staffDIV{
+	width: 100%;
+	margin-top:40px;
+	margin-bottom:20px;
+    margin: 0 auto;
+}
+
+
+
+#addrBookPanel a.simpleButton{
+	text-decoration: none;
+	cursor:pointer;
+	width: 110px;
+    height: 30px;
+    line-height: 26px;
+    background: url(/image/btn-blue.png) right 0 no-repeat;
+    color:#fff;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    left:30px;
+    letter-spacing: 5px;
+}
+
+
+#addrBookPanel .btnContainer{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#currentTrainAddrBook,#otherTrainAddrBook{
+	min-height:100px;
+}
+
+.currentTrainAddrBookShow #currentTrainAddrBook,.otherTrainAddrBookShow #otherTrainAddrBook{
+	display:block;
+}
+
+.otherTrainAddrBookShow #currentTrainAddrBook, .currentTrainAddrBookShow #otherTrainAddrBook{
+	display:none;
+}
+
+
+
+#generateAddrBook .addrBookInfoTable th,#generateAddrBook .addrBookInfoTable td{
+	border: 1px solid #C9C9C9;
+}
+
+
+a.simpleButton{
+	text-decoration: none;
+    color: #3091b5;
+    cursor: pointer;
+    width: 97px;
+    height: 26px;
+    line-height: 26px;
+    background: url(/image/sprite/safty_bk.png) -330px -117px no-repeat;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    margin-right:10px;
+}
+
+
+
+.buttonGroup{
+	float: left;
+    width: 70%;
+    display: block;
+    height: 30px;
+    padding-left: 50px;
+}
+
+
+
+#currentTrainAddrBook table, #otherTrainAddrBook table{
+	width: 98%;
+	margin: 0 auto;
+    margin-top: 20px;
+}
+
+
+.addrPersonListTitle{
+    width: 100%;
+    background: url(/image/index/titleBackground.png) -30px no-repeat;
+    background-color:#f49d00;
+    color: #fff;
+}
+
+
+
+#personnelInfoForAdd{
+	width: 98%;
+	margin: 0 auto;
+	margin-bottom:20px;
+	table-layout: fixed;
+}
+
+
+
+table#personnelInfoForAdd tr:hover, #bookStaff .staffDIV tr:hover{
+	background-color:#bbccee;
+}
+
+
+table#personnelInfoForAdd tr.tableTh, #bookStaff .staffDIV tr.tableTh{
+	background-color:#bebebe;
+}
+
+
+table#personnelInfoForAdd td{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap ;
+}
+

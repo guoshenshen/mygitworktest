@@ -1,0 +1,27 @@
+.delete{
+	 background: url(/image/sprite/ui_sprite.png) no-repeat 0px -1245px;
+}
+
+
+.deleteMini{
+	background: url(/image/sprite/ui_sprite.png) no-repeat 0px -1778px;
+    width: 20px;
+    height: 20px;
+}
+
+
+.edit{
+	 background: url(/image/sprite/ui_sprite.png) no-repeat 0px -1213px;
+}
+
+.toLeft{
+	 background: url(/image/sprite/sprite-1.png) no-repeat -190px -420px;
+	 width:28px;
+	 height:40px;
+}
+
+.toRight{
+	 background: url(/image/sprite/sprite-1.png) no-repeat -240px -420px;
+	 width:28px;
+	 height:40px;
+}

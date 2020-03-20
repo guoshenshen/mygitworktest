@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.material.AssignUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.material.AssignUser" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="assignId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="valid" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, assignId, operatorid, status, submitTime, valid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from assignuser
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from assignuser
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.material.AssignUser" >
+    insert into assignuser (id, assignId, operatorid, 
+      status, submitTime, valid
+      )
+    values (#{id,jdbcType=BIGINT}, #{assignId,jdbcType=BIGINT}, #{operatorid,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{submitTime,jdbcType=TIMESTAMP}, #{valid,jdbcType=BOOLEAN}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.material.AssignUser" >
+    insert into assignuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="assignId != null" >
+        assignId,
+      </if>
+      <if test="operatorid != null" >
+        operatorid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="submitTime != null" >
+        submitTime,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="assignId != null" >
+        #{assignId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorid != null" >
+        #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.material.AssignUser" >
+    update assignuser
+    <set >
+      <if test="assignId != null" >
+        assignId = #{assignId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorid != null" >
+        operatorid = #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        submitTime = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.material.AssignUser" >
+    update assignuser
+    set assignId = #{assignId,jdbcType=BIGINT},
+      operatorid = #{operatorid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      submitTime = #{submitTime,jdbcType=TIMESTAMP},
+      valid = #{valid,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByAssignIdAndOperatorList" parameterType="map" >
+    update assignuser
+    set valid = FALSE
+    where assignId = #{assignId,jdbcType=BIGINT} and valid = true and operatorid in
+    <foreach collection="operatorIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <update id="updateByAssignIdAndOperatorList2" parameterType="map" >
+    update assignuser
+    set valid = TRUE
+    where assignId = #{assignId,jdbcType=BIGINT} and valid = false and operatorid in
+    <foreach collection="operatorIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <select id="getListByAssignId" resultType="com.elearning.pojo.material.AssignUser" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from assignuser
+    where assignId = #{assignId,jdbcType=BIGINT} and status = 1
+  </select>
+
+  <select id="getListByTypeAndResourceIdAndOperatorId" resultType="com.elearning.vo.material.AssignUserForm" parameterType="map" >
+    SELECT a1.id as assignId,
+    a1.name as assignName,
+    a1.createDate as createDate,
+    a1.creatorName as assignCreatorName,
+    a1.type,
+    a1.resourceId,
+    a1.description,
+    a1.comment,
+    a2.operatorId,
+    a2.status,
+    a2.submitTime
+    FROM assignment a1 LEFT JOIN (SELECT * FROM assignuser WHERE operatorId=#{operatorId}) AS a2 ON a1.id = a2.assignId WHERE 1=1
+    <if test="type != null and type != ''" >
+      and a1.type = #{type}
+    </if>
+    <if test="resourceId != null and resourceId != ''" >
+      and a1.resourceId = #{resourceId}
+    </if>
+    GROUP BY createDate desc
+  </select>
+
+  <select id="getListByAssignIdAndOperatorId" resultType="com.elearning.pojo.material.AssignUser" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from assignuser
+    where assignId = #{assignId,jdbcType=BIGINT} and operatorid = #{operatorId,jdbcType=INTEGER}
+  </select>
+
+</mapper>

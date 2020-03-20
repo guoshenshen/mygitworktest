@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.recommend.SeriesItemMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.recommend.SeriesItem" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="seriesId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="itemId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="itemType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orderWeight" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, seriesId, itemId, itemType, orderWeight
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from seriesitem
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from seriesitem
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.recommend.SeriesItem" >
+    insert into seriesitem (id, seriesId, itemId, 
+      itemType, orderWeight)
+    values (#{id,jdbcType=BIGINT}, #{seriesId,jdbcType=INTEGER}, #{itemId,jdbcType=BIGINT}, 
+      #{itemType,jdbcType=INTEGER}, #{orderWeight,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.recommend.SeriesItem" >
+    insert into seriesitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="seriesId != null" >
+        seriesId,
+      </if>
+      <if test="itemId != null" >
+        itemId,
+      </if>
+      <if test="itemType != null" >
+        itemType,
+      </if>
+      <if test="orderWeight != null" >
+        orderWeight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="seriesId != null" >
+        #{seriesId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=INTEGER},
+      </if>
+      <if test="orderWeight != null" >
+        #{orderWeight,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.recommend.SeriesItem" >
+    update seriesitem
+    <set >
+      <if test="seriesId != null" >
+        seriesId = #{seriesId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        itemId = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemType != null" >
+        itemType = #{itemType,jdbcType=INTEGER},
+      </if>
+      <if test="orderWeight != null" >
+        orderWeight = #{orderWeight,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.recommend.SeriesItem" >
+    update seriesitem
+    set seriesId = #{seriesId,jdbcType=INTEGER},
+      itemId = #{itemId,jdbcType=BIGINT},
+      itemType = #{itemType,jdbcType=INTEGER},
+      orderWeight = #{orderWeight,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="findByMap" resultType="com.elearning.pojo.recommend.SeriesItem">
+    SELECT <include refid="Base_Column_List"/> from seriesitem
+    where 1 = 1
+    <if test="itemType != null ">
+      and itemType = #{itemType,jdbcType=INTEGER}
+    </if>
+    <if test="itemId != null ">
+      and itemId = #{itemId,jdbcType=BIGINT}
+    </if>
+    <if test="seriesId != null ">
+      and seriesId = #{seriesId,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="findCourseByCondition" resultType="com.elearning.pojo.pub.Course">
+    SELECT course.course_no  as courseNo , course.course_name as courseName , course.category, course.classfication, course.course_id as courseId, course.score, course.classhour, course.maker, course.creator,course.produceOrgName,course.fundingOrgName,course.createDate, course.tenantId, course.pictureUrl,course.keyWords,course.expertAreaId
+    FROM  course course , seriesItem SI where course.course_id = SI.itemId  and course.pubstatus=1092 and course.isFirstLevelDirectory = 1
+    <if test="seriesId != null ">
+      and  SI.seriesId=#{seriesId}
+    </if>
+    <if test="seriesIdList != null ">
+      and SI.seriesId in
+      <foreach collection="seriesIdList" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="name != null ">
+      and  (course.course_name like CONCAT('%',#{name},'%')  or course.content like CONCAT('%',#{name},'%') )
+    </if>
+    <if test="orgSEQ != null ">
+      and course.openOrgSEQ in
+      <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    GROUP BY course.Course_id, course.course_no, course.course_name, course.category, course.classfication, course.course_id, course.score, course.classhour, course.maker, course.creator, course.produceOrgName, course.fundingOrgName, course.createDate, course.tenantId, course.pictureUrl
+    order by SI.orderWeight desc, course.shareDate desc
+  </select>
+  <select id="findTrainDtoByCondition" resultType="com.elearning.vo.recommend.SeriesItemDTO">
+    SELECT train.id AS trainId,train.trainName,train.trainTypeId,train.startTime,train.endTime,train.sponsorName,
+            train.orgname as orgName,train.organizerName,train.telephone,train.organizerEmail,train.classHour as trainClassHour,
+            train.attendantCount,train.ifBJ,train.location,train.isEnrolled,train.programStartTime,train.programEndTime,train.item_type as trainItemType,
+            train.tenantId as trainTenantId,train.implStatusId,train.reported,train.approveStatus,SI.id, SI.orderWeight,SI.itemId,SI.itemType,SI.seriesId
+    FROM seriesItem SI  , train train
+        WHERE train.id = SI.itemId AND train.pubstatus = 1092 AND train.id IS NOT NULL
+    <if test="seriesId != null ">
+          and  SI.seriesId=#{seriesId}
+        </if>
+        <if test="itemType != null ">
+          and  SI.itemType=#{itemType}
+        </if>
+        <if test="name != null ">
+          and  (train.trainName like CONCAT('%',#{name},'%')  or train.trainPlanName like CONCAT('%',#{name},'%') )
+        </if>
+        <if test="orgSEQ != null ">
+          and train.openOrgSEQ  in
+          <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+          </foreach>
+        </if>
+      ORDER BY SI.orderWeight DESC, train.startTime DESC
+  </select>
+  <select id="findCourseDtoByCondition" resultType="com.elearning.vo.recommend.SeriesItemDTO">
+    SELECT course.course_id as courseId, course.course_no as courseNo,course.course_name as courseName,course.category,
+            course.classfication,course.score,course.classhour as classHour,course.maker, course.creator,course.produceOrgName,
+            course.fundingOrgName,course.createDate,course.tenantId,course.pictureUrl,course.keyWords,SI.id, SI.orderWeight,
+            SI.itemId,SI.itemType,SI.seriesId
+    FROM  course course , seriesItem SI where course.course_id = SI.itemId and SI.itemType = #{itemType} and course.pubstatus=1092 and course.isFirstLevelDirectory = 1
+    <if test="seriesId != null ">
+      and  SI.seriesId=#{seriesId}
+    </if>
+    <if test="itemType != null ">
+      and  SI.itemType=#{itemType}
+    </if>
+    <if test="seriesIdList != null ">
+      and SI.seriesId in
+      <foreach collection="seriesIdList" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="name != null ">
+      and  (course.course_name like CONCAT('%',#{name},'%')  or course.content like CONCAT('%',#{name},'%') )
+    </if>
+    <if test="orgSEQ != null ">
+      and course.openOrgSEQ in
+      <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    order by SI.orderWeight desc, course.shareDate desc
+  </select>
+  <select id="findSeriesDtoByCondition" resultType="com.elearning.vo.recommend.SeriesItemDTO">
+    SELECT rs.id AS seriesMainId, rs.title, rs.sponsorInfo,rs.detail, rs.url, rs.picUrl, rs.mainPicUrl,rs.createTime,
+           SI.id, SI.orderWeight, SI.itemId, SI.itemType, SI.seriesId
+    FROM seriesItem SI  , recommendSeries rs WHERE rs.id = SI.itemId AND rs.isPublish = 1 AND rs.id IS NOT NULL
+    <if test="seriesId != null ">
+      and  SI.seriesId=#{seriesId}
+    </if>
+    <if test="itemType != null ">
+      and  SI.itemType=#{itemType}
+    </if>
+    <if test="name != null ">
+      and  (rs.title like CONCAT('%',#{name},'%')  or rs.detail like CONCAT('%',#{name},'%') )
+    </if>
+    <if test="orgSEQ != null ">
+      and rs.openOrgSEQ in
+      <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    ORDER BY SI.orderWeight DESC, rs.publishTime DESC
+  </select>
+  <select id="getSeriesItemTypeDistribution" resultType="java.util.Map">
+    select itemType as 'key' ,count(itemType) as 'value' from seriesitem where seriesId = #{seriesId}
+    group by itemType
+  </select>
+    <select id="findTrainByCondition" resultType="com.elearning.vo.onlinetraining.BasicTrainForm">
+      select train.id as trainId , train.trainName, train.trainTypeId, train.startTime, train.endTime, train.sponsorName,
+      train.orgname as orgName , train.organizerName, train.telephone,train.organizerEmail,train.classHour,train.attendantCount, train.ifBJ, train.location, train.isEnrolled,
+      train.programStartTime, train.programEndTime, train.item_type as itemType , train.tenantId ,train.implStatusId, train.reported ,train.approveStatus, train.imgUrl
+      ,SI.id, SI.orderWeight,SI.itemId,SI.itemType,SI.seriesId
+      FROM seriesItem SI  , train train
+      WHERE train.id = SI.itemId AND train.pubstatus = 1092 AND train.id IS NOT NULL and SI.itemType = 1
+      <if test="seriesId != null ">
+        and  SI.seriesId=#{seriesId}
+      </if>
+      <if test="name != null ">
+        and  (train.trainName like CONCAT('%',#{name},'%')  or train.trainPlanName like CONCAT('%',#{name},'%') )
+      </if>
+      <if test="orgSEQ != null ">
+        and train.openOrgSEQ  in
+        <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+      ORDER BY SI.orderWeight DESC, train.startTime DESC
+    </select>
+  <select id="findSeriesByCondition" resultType="com.elearning.pojo.recommend.RecommendSeries">
+    SELECT rs.id , rs.title, rs.sponsorInfo,rs.detail, rs.url, rs.picUrl, rs.mainPicUrl,rs.createTime,
+    SI.id, SI.orderWeight, SI.itemId, SI.itemType, SI.seriesId
+    FROM seriesItem SI  , recommendSeries rs WHERE rs.id = SI.itemId AND rs.id IS NOT NULL and  SI.itemType = 4
+    <if test="seriesId != null ">
+      and  SI.seriesId=#{seriesId}
+    </if>
+    <if test="name != null ">
+      and  (rs.title like CONCAT('%',#{name},'%')  or rs.detail like CONCAT('%',#{name},'%') )
+    </if>
+    <if test="orgSEQ != null ">
+      and rs.openOrgSEQ in
+      <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      AND rs.isPublish = 1
+    </if>
+    ORDER BY SI.orderWeight DESC, rs.publishTime DESC
+  </select>
+</mapper>

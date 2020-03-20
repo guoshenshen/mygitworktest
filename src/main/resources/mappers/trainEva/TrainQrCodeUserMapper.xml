@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainEva.TrainQrCodeUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainEva.TrainQrCodeUser" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="qrcodeId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="starttime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="endtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="period" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="classhour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="ctime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="lat" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="lng" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, qrcodeId, trainId, userId, starttime, endtime, period, classhour, ctime, lat, 
+    lng
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trainqrcodeuser
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trainqrcodeuser
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainEva.TrainQrCodeUser" >
+    insert into trainqrcodeuser (id, qrcodeId, trainId, 
+      userId, starttime, endtime, 
+      period, classhour, ctime, 
+      lat, lng)
+    values (#{id,jdbcType=INTEGER}, #{qrcodeId,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{period,jdbcType=INTEGER}, #{classhour,jdbcType=DOUBLE}, #{ctime,jdbcType=TIMESTAMP}, 
+      #{lat,jdbcType=DOUBLE}, #{lng,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainEva.TrainQrCodeUser" >
+    insert into trainqrcodeuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="qrcodeId != null" >
+        qrcodeId,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="classhour != null" >
+        classhour,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="qrcodeId != null" >
+        #{qrcodeId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=INTEGER},
+      </if>
+      <if test="classhour != null" >
+        #{classhour,jdbcType=DOUBLE},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainEva.TrainQrCodeUser" >
+    update trainqrcodeuser
+    <set >
+      <if test="qrcodeId != null" >
+        qrcodeId = #{qrcodeId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=INTEGER},
+      </if>
+      <if test="classhour != null" >
+        classhour = #{classhour,jdbcType=DOUBLE},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainEva.TrainQrCodeUser" >
+    update trainqrcodeuser
+    set qrcodeId = #{qrcodeId,jdbcType=INTEGER},
+      trainId = #{trainId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      period = #{period,jdbcType=INTEGER},
+      classhour = #{classhour,jdbcType=DOUBLE},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      lat = #{lat,jdbcType=DOUBLE},
+      lng = #{lng,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

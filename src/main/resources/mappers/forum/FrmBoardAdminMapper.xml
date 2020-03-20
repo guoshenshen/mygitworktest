@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.forum.FrmBoardAdminMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.forum.FrmBoardAdmin" >
+    <constructor >
+      <idArg column="boardId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    boardId, operatorId, operatorName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.forum.FrmBoardAdminKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from frm_boardadmin
+    where boardId = #{boardId,jdbcType=INTEGER}
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.forum.FrmBoardAdminKey" >
+    delete from frm_boardadmin
+    where boardId = #{boardId,jdbcType=INTEGER}
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.forum.FrmBoardAdmin" >
+    insert into frm_boardadmin (boardId, operatorId, operatorName
+      )
+    values (#{boardId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.forum.FrmBoardAdmin" >
+    insert into frm_boardadmin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="boardId != null" >
+        boardId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="boardId != null" >
+        #{boardId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.forum.FrmBoardAdmin" >
+    update frm_boardadmin
+    <set >
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where boardId = #{boardId,jdbcType=INTEGER}
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.forum.FrmBoardAdmin" >
+    update frm_boardadmin
+    set operatorName = #{operatorName,jdbcType=VARCHAR}
+    where boardId = #{boardId,jdbcType=INTEGER}
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+  </update>
+</mapper>

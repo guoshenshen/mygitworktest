@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.TopicClassStudy.TopicClassStyleMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.TopicClassStudy.TopicClassStyle" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="identifyKey" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pageTemplate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="headPictureUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bodyBackgroundcolor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="titlecolor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bannerleftcolor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bannerrightcolor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="targetUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="topicClassName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, identifyKey, type, pageTemplate, headPictureUrl, bodyBackgroundcolor, titlecolor, 
+    bannerleftcolor, bannerrightcolor, createTime, targetUrl, topicClassName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topic_class_style
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topic_class_style
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.TopicClassStudy.TopicClassStyle" >
+    insert into topic_class_style (id, identifyKey, type, 
+      pageTemplate, headPictureUrl, bodyBackgroundcolor, 
+      titlecolor, bannerleftcolor, bannerrightcolor, 
+      createTime, targetUrl, topicClassName
+      )
+    values (#{id,jdbcType=INTEGER}, #{identifyKey,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{pageTemplate,jdbcType=VARCHAR}, #{headPictureUrl,jdbcType=VARCHAR}, #{bodyBackgroundcolor,jdbcType=VARCHAR}, 
+      #{titlecolor,jdbcType=VARCHAR}, #{bannerleftcolor,jdbcType=VARCHAR}, #{bannerrightcolor,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{targetUrl,jdbcType=VARCHAR}, #{topicClassName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.TopicClassStudy.TopicClassStyle" >
+    insert into topic_class_style
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="identifyKey != null" >
+        identifyKey,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="pageTemplate != null" >
+        pageTemplate,
+      </if>
+      <if test="headPictureUrl != null" >
+        headPictureUrl,
+      </if>
+      <if test="bodyBackgroundcolor != null" >
+        bodyBackgroundcolor,
+      </if>
+      <if test="titlecolor != null" >
+        titlecolor,
+      </if>
+      <if test="bannerleftcolor != null" >
+        bannerleftcolor,
+      </if>
+      <if test="bannerrightcolor != null" >
+        bannerrightcolor,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="targetUrl != null" >
+        targetUrl,
+      </if>
+      <if test="topicClassName != null" >
+        topicClassName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="identifyKey != null" >
+        #{identifyKey,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="pageTemplate != null" >
+        #{pageTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="headPictureUrl != null" >
+        #{headPictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyBackgroundcolor != null" >
+        #{bodyBackgroundcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="titlecolor != null" >
+        #{titlecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerleftcolor != null" >
+        #{bannerleftcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerrightcolor != null" >
+        #{bannerrightcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="targetUrl != null" >
+        #{targetUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="topicClassName != null" >
+        #{topicClassName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.TopicClassStudy.TopicClassStyle" >
+    update topic_class_style
+    <set >
+      <if test="identifyKey != null" >
+        identifyKey = #{identifyKey,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="pageTemplate != null" >
+        pageTemplate = #{pageTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="headPictureUrl != null" >
+        headPictureUrl = #{headPictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyBackgroundcolor != null" >
+        bodyBackgroundcolor = #{bodyBackgroundcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="titlecolor != null" >
+        titlecolor = #{titlecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerleftcolor != null" >
+        bannerleftcolor = #{bannerleftcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerrightcolor != null" >
+        bannerrightcolor = #{bannerrightcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="targetUrl != null" >
+        targetUrl = #{targetUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="topicClassName != null" >
+        topicClassName = #{topicClassName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.TopicClassStudy.TopicClassStyle" >
+    update topic_class_style
+    set identifyKey = #{identifyKey,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      pageTemplate = #{pageTemplate,jdbcType=VARCHAR},
+      headPictureUrl = #{headPictureUrl,jdbcType=VARCHAR},
+      bodyBackgroundcolor = #{bodyBackgroundcolor,jdbcType=VARCHAR},
+      titlecolor = #{titlecolor,jdbcType=VARCHAR},
+      bannerleftcolor = #{bannerleftcolor,jdbcType=VARCHAR},
+      bannerrightcolor = #{bannerrightcolor,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      targetUrl = #{targetUrl,jdbcType=VARCHAR},
+      topicClassName = #{topicClassName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

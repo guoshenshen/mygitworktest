@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.LiveTeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.LiveTeacher" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacherLoginName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="teacherPassword" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, teacherLoginName, teacherPassword, createDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from liveteacher
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from liveteacher
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.LiveTeacher" >
+    insert into liveteacher (id, operatorId, teacherLoginName, 
+      teacherPassword, createDate)
+    values (#{id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{teacherLoginName,jdbcType=VARCHAR}, 
+      #{teacherPassword,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.LiveTeacher" >
+    insert into liveteacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="teacherLoginName != null" >
+        teacherLoginName,
+      </if>
+      <if test="teacherPassword != null" >
+        teacherPassword,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherLoginName != null" >
+        #{teacherLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPassword != null" >
+        #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.LiveTeacher" >
+    update liveteacher
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherLoginName != null" >
+        teacherLoginName = #{teacherLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPassword != null" >
+        teacherPassword = #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.LiveTeacher" >
+    update liveteacher
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      teacherLoginName = #{teacherLoginName,jdbcType=VARCHAR},
+      teacherPassword = #{teacherPassword,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

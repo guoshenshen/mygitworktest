@@ -1,0 +1,219 @@
+<div>
+<!-- 用户详细导航栏 -->
+<div class="nav_in"><div id="nav_left"></div>
+<ul class="leftfloat" id="menu_home">
+    <li class="menuName leftfloat firstmenu1" >
+    	<a href="javascript:void(0);" onclick="javascript:openNavClick(1);" class="blue" style="position:static">首&nbsp;&nbsp;页</a>
+    </li>
+    <li class="menuSep leftfloat"></li>
+    <li class="menuName leftfloat firstmenu2" >
+    	<a href="javascript:void(0);" onclick="javascript:openNavClick(2);" class="blue">新闻报道</a>
+   		<ul class="secondmenu2">
+   			<li onclick="javascript:openNavClick_Sub(21)"><a  href="javascript:void(0);">新闻</a></li>
+   			<li onclick="javascript:openNavClick_Sub(22)"><a  href="javascript:void(0);">通知</a></li>
+   		</ul>
+    </li>
+    <li class="menuSep leftfloat"></li>
+    <li class="menuName leftfloat firstmenu2" >
+    	<a href="javascript:void(0);" onclick="javascript:openNavClick(7);" class="blue">学习资源</a>
+    	<ul class="secondmenu2" >
+    		<li onclick="javascript:openNavClick_Sub(71)"><a  href="javascript:void(0);">微课程</a></li>
+    		<li onclick="javascript:openNavClick_Sub(72)"><a  href="javascript:void(0);">精品课程</a></li>
+    		<li onclick="javascript:openNavClick_Sub(73)"><a  href="javascript:void(0);">知识地图</a></li>
+    		<li onclick="javascript:openNavClick_Sub(74)"><a  href="javascript:void(0);">电子阅读</a></li>
+    		<li onclick="javascript:openNavClick_Sub(76)"><a  href="javascript:void(0);">走近科学</a></li>
+    		<li onclick="javascript:openNavClick_Sub(75)"><a  href="javascript:void(0);">开放课件</a></li>
+    	</ul>
+    </li>
+    <li class="menuSep leftfloat"></li>
+    <li class="menuName leftfloat firstmenu2" >
+    	<a href="javascript:void(0);" onclick="javascript:openNavClick(8);" class="blue">教师资源</a>
+    	<ul class="secondmenu2" >
+    		<li onclick="javascript:openNavClick_Sub(81)"><a  href="javascript:void(0);">内聘教师</a></li>
+    		<li onclick="javascript:openNavClick_Sub(82)"><a  href="javascript:void(0);">外聘教师</a></li>
+    	</ul>
+    </li>
+    <li class="menuSep leftfloat"></li>
+    <li class="menuName leftfloat firstmenu2" >
+    	<a href="javascript:void(0);" onclick="javascript:openNavClick(6);" class="blue">培训项目</a>
+    	<ul class="secondmenu2" >
+    		<li onclick="javascript:openNavClick_Sub(61)"><a  href="javascript:void(0);">培训项目</a></li>
+    		<li onclick="javascript:openNavClick_Sub(62)"><a  href="javascript:void(0);">学术报告</a></li>
+    	</ul>
+    </li>
+    <li class="menuSep leftfloat"></li>
+    <li class="menuName_1 leftfloat firstmenu3" >
+    	<a href="javascript:void(0);" onclick="javascript:checkLogon(4);" class="blue">政策与工作流程</a>
+    	<ul class="secondmenu3" >
+    		<li onclick="javascript:openNavClick_Sub(41)"><a  href="javascript:void(0);">政策</a></li>
+    		<li onclick="javascript:openNavClick_Sub(42)"><a  href="javascript:void(0);">工作流程</a></li>
+    	</ul>
+    </li>
+    <li class="menuSep leftfloat"></li>
+    <li class="menuName leftfloat firstmenu1" onclick="javascript:/*openNavClick(10);">
+    	<a href="javascript:void(0);"  class="blue">关&nbsp;&nbsp;于</a>
+    </li>
+</ul>
+<div class="search">
+<input id="search-txt" class="form-control" name="search" value="" style="float:left;height:12px;margin-top:15px;width:115px;margin-left:25px;" type="text" onkeydown="if(event.keyCode==13){searchAndFind1();}">
+<a href="javascript:void(0);" onclick="javascript:searchAndFind1();" ><img src="./image/search00.png" alt="搜索" style="margin-top:18px;"></a>
+<div id="advanced_search">
+	<!-- <a href="advancedSearchAction.do?method=forAdvancedSearch">高级检索</a>-->
+	<a href="javascript:void(0);" onclick="javascript:advancedSearch();">高级检索</a>
+</div></div><div id="nav_right"></div>
+</div>
+
+
+
+<!-- 用户端简易导航栏 -->
+<div class="nav-login-top">
+		<div class="nav-menu-container">
+		<a href="javascript:void(0);" class="logo-container" onclick="javascript:openNavClick(1);"></a>
+	    <ul class="nav-bin">
+	        <li class="current js-dropdown-btn has-child">
+	        	<a href="javascript:void(0);" onclick="javascript:openNavClick(7);">学习资源</a>
+				<ul class="course-drop-down js-dropdown-body" style="display: none;">
+	                <li class="current">
+						<a href="http://x.patsnap.cn/kecheng">微课程
+	                        <em id="v-course-num">289</em>
+	                    </a>
+	                    <div class="line-top"></div>
+					</li>
+					<li>
+					<a href="http://x.patsnap.cn/zhuti">精品课程
+	                    <em id="v-theme-num">7</em>
+	                </a>
+					</li>
+					<li>
+					<a href="http://x.patsnap.cn/zhuanlan">知识地图
+	                    <em id="v-column-num">8</em>
+	                </a>
+					</li>
+	                <li>
+	                <a href="http://x.patsnap.cn/zhiye">电子阅读
+	                    <em id="v-profession-num">6</em>
+	                </a>
+	                </li>
+				</ul>
+	        </li>
+	
+	        <li>
+		        <a href="javascript:void(0);" onclick="javascript:openNavClick(6);">培训项目</a>
+				<ul class="course-drop-down js-dropdown-body" style="display: none;">
+	                <li class="current">
+						<a href="http://x.patsnap.cn/kecheng">学术报告
+	                        <em id="v-course-num">289</em>
+	                    </a>
+	                    <div class="line-top"></div>
+					</li>
+	                <li>
+		                <a href="http://x.patsnap.cn/zhiye">培训项目
+		                    <em id="v-profession-num">6</em>
+		                </a>
+	                </li>
+				</ul>
+	        </li>
+	        <li>
+	        	<a href="javascript:void(0);"  onclick="javascript:openNavClick(8);">教师资源</a>
+	        </li>
+	        <li>
+	        	<a  href="javascript:void(0);" onclick="javascript:openNavClick(2);">新闻报道</a>
+	        	<ul class="course-drop-down js-dropdown-body" style="display: none;">
+	                <li class="current">
+						<a href="http://x.patsnap.cn/kecheng">新闻
+	                        <em id="v-course-num">289</em>
+	                    </a>
+	                    <div class="line-top"></div>
+					</li>
+	                <li>
+		                <a href="http://x.patsnap.cn/zhiye">通知
+		                    <em id="v-profession-num">6</em>
+		                </a>
+	                </li>
+				</ul>
+	        </li>
+		</ul>
+		<div class="search">
+			<input id="search-txt" class="form-control" name="search" value=""  type="text" onkeydown="if(event.keyCode==13){searchAndFind1();}">
+			<a href="javascript:void(0);" onclick="javascript:searchAndFind1();" class="search-icon"><img src="./image/search00.png" alt="搜索"></a>	
+		</div>
+		<div class="userAndRoles unlogonStatus">
+			<a href='javascript:void(0);' class='logonAction'>登录</a>
+			<a class="headPic"><img src=''></img></a>
+			<span class="operatorName"></span>
+			<div class="myStudy"></div>
+			<div class="roleLink"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 用户详细页脚 -->
+<div id="footer_bg">
+
+ <div id="footer_1">
+ </div>
+ <div class="dw_up_line">  </div>
+ <div id="footer_2"> 
+  <div class="dw">
+    	<div class="dw_wz">
+    		 <!-- 
+        	<div class="wz_div"><a href="http://www.cas.cn" class="hb" target="_blank">中国科学院</a></div>
+            <div class="wz_div"><a href="http://www.pe.cas.cn/" class="hb" target="_blank">人事局</a></div>
+            <div class="wz_div"><a href="http://www.bp.cas.cn/" class="hb" target="_blank">条件保障与财务局</a></div>
+            <div class="wz_div"><a href="http://www.cnic.cn" class="hb" target="_blank">计算机网络信息中心</a></div>
+            <div class="wz_div last"><a href="http://www.kepu.net.cn" class="hb" target="_blank">中国科普博览</a></div>
+             -->
+             <div class="wz_div last" style="width:80%;"><a href="http://www.zytzb.gov.cn/tzb2010/index.shtml" class="hb" style="font-size:16px;" target="_blank">中共中央统一战线工作部网站</a></div>
+        </div> 	
+  </div>
+  <div class="d_bq"><!-- 中国科学技术协会培训和人才服务中心&nbsp;&nbsp;&nbsp;&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;    京ICP备09112257号&nbsp;&nbsp;&nbsp;&nbsp; 京公网安备11010802017084 <br />
+  技术支持：中国科学院计算机网络信息中心&nbsp;&nbsp;&nbsp;&nbsp;    -->    技术支持：010-588137(04/07/10)&nbsp;&nbsp;&nbsp;&nbsp;      邮箱：train@cnic.cn
+  </div> 
+</div> 
+</div> 
+
+<!-- 用户简易页脚 -->
+<div id="link">
+	<!-- <p>中国科学技术协会培训和人才服务中心      版权所有 京ICP备09112257号</p> -->
+	<p>技术支持：010-588137(07/10/15)   邮箱：train@cnic.cn</p>
+</div>
+
+
+<!-- 悬挂栏 -->
+<div class="asid_share" id="asid_share">
+	<div class="asid_share_box relative version" style="display:none">
+		<a href="stuLogonAction.do?customize=0"><img alt="返回普适版" title="返回普适版" class="adid_icon" src="./image/hhShare/icon_say.png"></a>
+	</div>
+	<div class="asid_share_box relative">
+		<a href="javascript:void(0);"><img alt="新版帮助" title="新版帮助" class="adid_icon" src="./image/hhShare/icon_help.png"></a>
+		<div class="asid_share_triangle" style="display:none;">
+			<em class="border_sj">&#9670;</em>
+	    <span class="con_sj">&#9670;</span>
+    </div>
+	<div class="asid_sha_layer top" style="display:none;">
+		<ul class="asid_help_list" style="padding: 10px 20px;">
+			<li><a href="javascript:void(0);">客服：010-58813704/07/10</a></li>
+			<li><a href="javascript:void(0);">邮箱：train@cnic.cn</a></li>
+		</ul>
+	</div>
+	</div>
+	<div class="asid_share_box relative">
+		<a href="javascript:void(0);"><img alt="扫二微码" title="扫二微码" class="adid_icon" src="./image/hhShare/icon_sweep.png"></a>
+		<div class="asid_share_triangle" style="display:none;">
+			<em class="border_sj">&#9670;</em>
+	    <span class="con_sj">&#9670;</span>
+    </div>
+	<div class="asid_sha_layer bottom" style="width:250px;display:none;">
+		<p class="sweep_img"><img src="./image/hhShare/appdownload_tongzhanbu.png" width="220"></p>
+		<p class="pb6"><b>扫一扫上面的二维码图案，下载继续教育APP</b></p>
+	</div>
+	</div>
+	<div class="asid_share_box relative" style="display:none;background-color:#3564D0">
+		<a href="javascript:void(0);"><img alt="返回顶部" title="返回顶部" class="adid_icon" src="./image/hhShare/icon_back.png"></a>
+	</div>
+</div>
+
+</div>
+
+
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.QrLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.QRLogin" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="randNum" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isChecked" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, randNum, operatorId, isChecked
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from qr_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qr_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.QRLogin" >
+    insert into qr_login (id, randNum, operatorId, 
+      isChecked)
+    values (#{id,jdbcType=INTEGER}, #{randNum,jdbcType=BIGINT}, #{operatorId,jdbcType=INTEGER}, 
+      #{isChecked,jdbcType=BOOLEAN})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.QRLogin" >
+    insert into qr_login
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="randNum != null" >
+        randNum,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="isChecked != null" >
+        isChecked,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="randNum != null" >
+        #{randNum,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null" >
+        #{isChecked,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.QRLogin" >
+    update qr_login
+    <set >
+      <if test="randNum != null" >
+        randNum = #{randNum,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null" >
+        isChecked = #{isChecked,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.QRLogin" >
+    update qr_login
+    set randNum = #{randNum,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      isChecked = #{isChecked,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

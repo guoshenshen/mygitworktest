@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralOfflineTrainRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralOfflineTrainRecord" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="startTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="userId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="recordTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, trainId, startTime, endTime, classHour, userId, recordTime, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_offlinetrain_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_offlinetrain_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralOfflineTrainRecord" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+    insert into integral_offlinetrain_record (id, type, trainId, 
+      startTime, endTime, classHour, 
+      userId, recordTime, status
+      )
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{trainId,jdbcType=BIGINT}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{classHour,jdbcType=DOUBLE}, 
+      #{userId,jdbcType=BIGINT}, #{recordTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralOfflineTrainRecord" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+    insert into integral_offlinetrain_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="classHour != null" >
+        classHour,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="recordTime != null" >
+        recordTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="recordTime != null" >
+        #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralOfflineTrainRecord" >
+    update integral_offlinetrain_record
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classHour != null" >
+        classHour = #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="recordTime != null" >
+        recordTime = #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralOfflineTrainRecord" >
+    update integral_offlinetrain_record
+    set type = #{type,jdbcType=VARCHAR},
+      trainId = #{trainId,jdbcType=BIGINT},
+      startTime = #{startTime,jdbcType=TIMESTAMP},
+      endTime = #{endTime,jdbcType=TIMESTAMP},
+      classHour = #{classHour,jdbcType=DOUBLE},
+      userId = #{userId,jdbcType=BIGINT},
+      recordTime = #{recordTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getListByUserIdAndTrainIdAndStatus" resultType="com.elearning.pojo.integralTask.IntegralOfflineTrainRecord" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from integral_offlinetrain_record
+    where 1=1
+    <if test="userId != null and userId !=''" >
+      and userId = #{userId,jdbcType=BIGINT}
+    </if>
+    <if test="trainId != null and trainId !=''" >
+      and trainId = #{trainId,jdbcType=BIGINT}
+    </if>
+    <if test="status != null and status !=''" >
+      and status = #{status,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+</mapper>

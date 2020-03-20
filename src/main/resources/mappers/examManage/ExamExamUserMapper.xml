@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.examManage.ExamExamUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.examManage.ExamExamUser" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="exam_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, exam_id, operatorId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam_exam_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam_exam_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.examManage.ExamExamUser" >
+    insert into exam_exam_user (id, exam_id, operatorId
+      )
+    values (#{id,jdbcType=INTEGER}, #{exam_id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.examManage.ExamExamUser" >
+    insert into exam_exam_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="exam_id != null" >
+        exam_id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="exam_id != null" >
+        #{exam_id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.examManage.ExamExamUser" >
+    update exam_exam_user
+    <set >
+      <if test="exam_id != null" >
+        exam_id = #{exam_id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.examManage.ExamExamUser" >
+    update exam_exam_user
+    set exam_id = #{exam_id,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getListByExamIdAndOperatorId" resultType="com.elearning.pojo.examManage.ExamExamUser" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from exam_exam_user
+    where 1 = 1
+    <if test="exam_id != null" >
+      and exam_id = #{exam_id,jdbcType=INTEGER}
+    </if>
+    <if test="operatorId != null" >
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="findByExamId" resultType="com.elearning.vo.examManage.ExamUserForm" parameterType="java.lang.Integer" >
+    SELECT model.id,model.exam_id,model.operatorId,operator.operatorName
+    FROM exam_exam_user AS model INNER JOIN eosoperator AS operator ON  ( model.exam_id= #{eid} )
+    AND model.operatorId = operator.operatorId
+  </select>
+
+</mapper>

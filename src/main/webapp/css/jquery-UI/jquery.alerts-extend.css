@@ -1,0 +1,40 @@
+
+/*******************blueStyle*************************/
+.blueStyle#popup_container {
+	BORDER-LEFT-COLOR: #113f66; 
+	BACKGROUND: #005294; 
+	BORDER-BOTTOM-COLOR: #113f66; 
+	COLOR: #f60; /*#a4c6e2*/ 
+	BORDER-TOP-COLOR: #113f66; 
+	FONT-FAMILY: Georgia, serif; 
+	BORDER-RIGHT-COLOR: #113f66
+}
+.blueStyle#popup_container #popup_title {
+	BORDER-RIGHT: #005294 1px solid; 
+	BORDER-TOP: #005294 1px solid; 
+	PADDING-LEFT: 1em; 
+	FONT-WEIGHT: normal; 
+	BACKGROUND: #76a5cc; 
+	BORDER-LEFT: #005294 1px solid; 
+	COLOR: #fff; 
+	BORDER-BOTTOM: #005294 1px solid; 
+	TEXT-ALIGN: left
+}
+.blueStyle#popup_container #popup_content {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.blueStyle#popup_container #popup_message {
+	PADDING-LEFT: 0em;
+	COLOR: #f60; 
+	FONT-FAMILY: Georgia, serif;
+	text-align:center;
+}
+.blueStyle#popup_container INPUT[type='button'] {
+	BORDER-RIGHT: #76a5cc 2px outset; 
+	BORDER-TOP: #76a5cc 2px outset; 
+	BACKGROUND: #3778ae; 
+	BORDER-LEFT: #76a5cc 2px outset; 
+	COLOR: #a4c6e2; 
+	BORDER-BOTTOM: #76a5cc 2px outset;
+	margin-left:20px;
+}

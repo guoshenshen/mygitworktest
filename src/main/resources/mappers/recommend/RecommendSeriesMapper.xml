@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.recommend.RecommendSeriesMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.recommend.RecommendSeries" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="outstandingStandard" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isPublish" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sponsorInfo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="picUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="mainPicUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openOrgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="publishTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openScope" jdbcType="SMALLINT" javaType="java.lang.Short" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, outstandingStandard, isPublish, title, sponsorInfo, detail, url, picUrl, mainPicUrl, 
+    operatorId, openOrgSEQ, tenantId, createTime, publishTime, orgId, openScope
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recommendseries
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recommendseries
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.recommend.RecommendSeries" >
+    insert into recommendseries (id, outstandingStandard, isPublish, 
+      title, sponsorInfo, detail, 
+      url, picUrl, mainPicUrl, 
+      operatorId, openOrgSEQ, tenantId, 
+      createTime, publishTime, orgId, 
+      openScope)
+    values (#{id,jdbcType=INTEGER}, #{outstandingStandard,jdbcType=INTEGER}, #{isPublish,jdbcType=BOOLEAN}, 
+      #{title,jdbcType=VARCHAR}, #{sponsorInfo,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, #{mainPicUrl,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=INTEGER}, #{openOrgSEQ,jdbcType=VARCHAR}, #{tenantId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=DATE}, #{publishTime,jdbcType=DATE}, #{orgId,jdbcType=INTEGER}, 
+      #{openScope,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.elearning.pojo.recommend.RecommendSeries" >
+    insert into recommendseries
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="outstandingStandard != null" >
+        outstandingStandard,
+      </if>
+      <if test="isPublish != null" >
+        isPublish,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="sponsorInfo != null" >
+        sponsorInfo,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="picUrl != null" >
+        picUrl,
+      </if>
+      <if test="mainPicUrl != null" >
+        mainPicUrl,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="openOrgSEQ != null" >
+        openOrgSEQ,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="publishTime != null" >
+        publishTime,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="outstandingStandard != null" >
+        #{outstandingStandard,jdbcType=INTEGER},
+      </if>
+      <if test="isPublish != null" >
+        #{isPublish,jdbcType=BOOLEAN},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorInfo != null" >
+        #{sponsorInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mainPicUrl != null" >
+        #{mainPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openOrgSEQ != null" >
+        #{openOrgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.recommend.RecommendSeries" >
+    update recommendseries
+    <set >
+      <if test="outstandingStandard != null" >
+        outstandingStandard = #{outstandingStandard,jdbcType=INTEGER},
+      </if>
+      <if test="isPublish != null" >
+        isPublish = #{isPublish,jdbcType=BOOLEAN},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorInfo != null" >
+        sponsorInfo = #{sponsorInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        picUrl = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mainPicUrl != null" >
+        mainPicUrl = #{mainPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openOrgSEQ != null" >
+        openOrgSEQ = #{openOrgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="publishTime != null" >
+        publishTime = #{publishTime,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        openScope = #{openScope,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.recommend.RecommendSeries" >
+    update recommendseries
+    set outstandingStandard = #{outstandingStandard,jdbcType=INTEGER},
+      isPublish = #{isPublish,jdbcType=BOOLEAN},
+      title = #{title,jdbcType=VARCHAR},
+      sponsorInfo = #{sponsorInfo,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      picUrl = #{picUrl,jdbcType=VARCHAR},
+      mainPicUrl = #{mainPicUrl,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      openOrgSEQ = #{openOrgSEQ,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=DATE},
+      publishTime = #{publishTime,jdbcType=DATE},
+      orgId = #{orgId,jdbcType=INTEGER},
+      openScope = #{openScope,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getSeriesListByMap" resultType="com.elearning.pojo.recommend.RecommendSeries">
+    SELECT <include refid="Base_Column_List"/>
+    FROM recommendseries
+    WHERE 1 = 1
+    <if test="name != null ">
+      and title like CONCAT('%',#{name},'%')
+    </if>
+    <if test="orgId != null ">
+      and orgId = #{orgId}
+    </if>
+
+    order by createTime desc
+  </select>
+  <select id="findByConditionSQL" resultType="com.elearning.pojo.recommend.RecommendSeries">
+    SELECT <include refid="Base_Column_List"/>
+    FROM recommendseries
+    WHERE 1 = 1
+    <if test="name != null ">
+      and (title like CONCAT('%',#{name},'%') or detail like CONCAT('%',#{name},'%') )
+    </if>
+    <if test="seriesId != null ">
+      and id != #{seriesId}
+    </if>
+    <if test="orgSEQ != null ">
+      and openOrgSEQ in
+      <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      and  isPublish = 1
+    </if>
+    <if test="baseStandard != null ">
+      and outstandingStandard >= #{baseStandard}
+    </if>
+    <if test="showAll != null and showAll == false ">
+      and tenantId=#{tenantId}
+    </if>
+    <if test="title != null ">
+      and title like CONCAT('%',#{title},'%')
+    </if>
+    order by publishTime desc
+  </select>
+
+
+</mapper>

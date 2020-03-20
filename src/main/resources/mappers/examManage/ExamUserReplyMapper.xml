@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.examManage.ExamUserReplyMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.examManage.ExamUserReply" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="exam_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="paperId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, exam_id, operatorId, submitDate, paperId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam_userreply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam_userreply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.examManage.ExamUserReply" >
+    insert into exam_userreply (id, exam_id, operatorId, 
+      submitDate, paperId)
+    values (#{id,jdbcType=INTEGER}, #{exam_id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, 
+      #{submitDate,jdbcType=TIMESTAMP}, #{paperId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.examManage.ExamUserReply" >
+    insert into exam_userreply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="exam_id != null" >
+        exam_id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="submitDate != null" >
+        submitDate,
+      </if>
+      <if test="paperId != null" >
+        paperId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="exam_id != null" >
+        #{exam_id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="submitDate != null" >
+        #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paperId != null" >
+        #{paperId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.examManage.ExamUserReply" >
+    update exam_userreply
+    <set >
+      <if test="exam_id != null" >
+        exam_id = #{exam_id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="submitDate != null" >
+        submitDate = #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paperId != null" >
+        paperId = #{paperId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.examManage.ExamUserReply" >
+    update exam_userreply
+    set exam_id = #{exam_id,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      submitDate = #{submitDate,jdbcType=TIMESTAMP},
+      paperId = #{paperId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findListByExamIDAndOperatorId" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>  from exam_userreply
+    WHERE exam_id = #{exam_id,jdbcType=INTEGER} and operatorId = #{operatorId,jdbcType=INTEGER} order by id
+  </select>
+
+
+</mapper>

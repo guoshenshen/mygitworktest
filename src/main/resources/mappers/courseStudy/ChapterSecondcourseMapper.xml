@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.ChapterSecondcourseMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.ChapterSecondcourse" >
+    <constructor >
+      <arg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="chapterId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="secondCourseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sortOrder" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, chapterId, secondCourseId, type, sortOrder
+  </sql>
+
+
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.ChapterSecondcourse" >
+    insert into chapter_secondcourse (id, chapterId, secondCourseId, 
+      type, sortOrder)
+    values (#{id,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT}, #{secondCourseId,jdbcType=BIGINT}, 
+      #{type,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.ChapterSecondcourse" >
+    insert into chapter_secondcourse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="chapterId != null" >
+        chapterId,
+      </if>
+      <if test="secondCourseId != null" >
+        secondCourseId,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="sortOrder != null" >
+        sortOrder,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="chapterId != null" >
+        #{chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="secondCourseId != null" >
+        #{secondCourseId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="delete">
+    DELETE FROM chapter_secondcourse where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <select id="getChapterSecondcourseByIdReturnList" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from chapter_secondcourse
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="findChapterSecondcourseByMap" resultType="com.elearning.pojo.courseStudy.ChapterSecondcourse">
+      select <include refid="Base_Column_List"/> from chapter_secondcourse where 1=1
+      <if test="courseId != null ">
+        and secondCourseId = #{courseId}
+      </if>
+      <if test="type != null ">
+        and type = #{type}
+      </if>
+      <if test="chapterId != null ">
+        and chapterId = #{chapterId}
+      </if>
+    </select>
+  <select id="findChapterByChapterIdAndType" resultType="com.elearning.pojo.courseStudy.ChapterSecondcourse">
+    SELECT <include refid="Base_Column_List"/> from chapter_secondcourse  where chapterId = #{chapterId} and type = #{type} and secondCourseId = #{courseId}
+  </select>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseStudy.ChapterSecondcourse" >
+    update chapter_secondcourse
+    <set >
+      <if test="chapterId != null  " >
+        chapterId = #{chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="secondCourseId != null" >
+        secondCourseId = #{secondCourseId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        sortOrder = #{sortOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

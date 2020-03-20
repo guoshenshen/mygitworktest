@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.examManage.ExamResultMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.examManage.ExamResult" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="paperID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="QuestionID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="realScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="questionOrder" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="replyId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.examManage.ExamResult" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="paperID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="QuestionID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="realScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="questionOrder" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="replyId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="answer" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, examId, paperID, QuestionID, realScore, questionOrder, replyId
+  </sql>
+  <sql id="Blob_Column_List" >
+    answer
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from exam_result
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam_result
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.examManage.ExamResult" >
+    insert into exam_result (id, operatorId, examId, 
+      paperID, QuestionID, realScore, 
+      questionOrder, replyId, answer
+      )
+    values (#{id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{examId,jdbcType=INTEGER}, 
+      #{paperID,jdbcType=INTEGER}, #{questionID,jdbcType=INTEGER}, #{realScore,jdbcType=DOUBLE}, 
+      #{questionOrder,jdbcType=INTEGER}, #{replyId,jdbcType=INTEGER}, #{answer,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.examManage.ExamResult" >
+    insert into exam_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="examId != null" >
+        examId,
+      </if>
+      <if test="paperID != null" >
+        paperID,
+      </if>
+      <if test="questionID != null" >
+        QuestionID,
+      </if>
+      <if test="realScore != null" >
+        realScore,
+      </if>
+      <if test="questionOrder != null" >
+        questionOrder,
+      </if>
+      <if test="replyId != null" >
+        replyId,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="examId != null" >
+        #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="paperID != null" >
+        #{paperID,jdbcType=INTEGER},
+      </if>
+      <if test="questionID != null" >
+        #{questionID,jdbcType=INTEGER},
+      </if>
+      <if test="realScore != null" >
+        #{realScore,jdbcType=DOUBLE},
+      </if>
+      <if test="questionOrder != null" >
+        #{questionOrder,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null" >
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.examManage.ExamResult" >
+    update exam_result
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="examId != null" >
+        examId = #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="paperID != null" >
+        paperID = #{paperID,jdbcType=INTEGER},
+      </if>
+      <if test="questionID != null" >
+        QuestionID = #{questionID,jdbcType=INTEGER},
+      </if>
+      <if test="realScore != null" >
+        realScore = #{realScore,jdbcType=DOUBLE},
+      </if>
+      <if test="questionOrder != null" >
+        questionOrder = #{questionOrder,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null" >
+        replyId = #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.examManage.ExamResult" >
+    update exam_result
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      examId = #{examId,jdbcType=INTEGER},
+      paperID = #{paperID,jdbcType=INTEGER},
+      QuestionID = #{questionID,jdbcType=INTEGER},
+      realScore = #{realScore,jdbcType=DOUBLE},
+      questionOrder = #{questionOrder,jdbcType=INTEGER},
+      replyId = #{replyId,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.examManage.ExamResult" >
+    update exam_result
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      examId = #{examId,jdbcType=INTEGER},
+      paperID = #{paperID,jdbcType=INTEGER},
+      QuestionID = #{questionID,jdbcType=INTEGER},
+      realScore = #{realScore,jdbcType=DOUBLE},
+      questionOrder = #{questionOrder,jdbcType=INTEGER},
+      replyId = #{replyId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

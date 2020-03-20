@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.message.MsgMessageDeptMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.message.MsgMessageDept" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="msgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="deptID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, msgID, deptID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msg_message_dept
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msg_message_dept
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.message.MsgMessageDept" >
+    insert into msg_message_dept (ID, msgID, deptID
+      )
+    values (#{ID,jdbcType=INTEGER}, #{msgID,jdbcType=INTEGER}, #{deptID,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.message.MsgMessageDept" >
+    insert into msg_message_dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="msgID != null" >
+        msgID,
+      </if>
+      <if test="deptID != null" >
+        deptID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="msgID != null" >
+        #{msgID,jdbcType=INTEGER},
+      </if>
+      <if test="deptID != null" >
+        #{deptID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.message.MsgMessageDept" >
+    update msg_message_dept
+    <set >
+      <if test="msgID != null" >
+        msgID = #{msgID,jdbcType=INTEGER},
+      </if>
+      <if test="deptID != null" >
+        deptID = #{deptID,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.message.MsgMessageDept" >
+    update msg_message_dept
+    set msgID = #{msgID,jdbcType=INTEGER},
+      deptID = #{deptID,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByExample" resultType="com.elearning.pojo.message.MsgMessageDept" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from msg_message_dept
+    where 1=1
+    <if test="msgID != null" >
+      and msgID = #{msgID,jdbcType=INTEGER}
+    </if>
+    <if test="deptID != null" >
+      and deptID = #{deptID,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="findByMsgId" resultType="com.elearning.pojo.message.MsgMessageDept">
+    select
+    <include refid="Base_Column_List" />
+    from msg_message_dept
+    where msgID = #{msgId,jdbcType=INTEGER}
+  </select>
+
+
+</mapper>

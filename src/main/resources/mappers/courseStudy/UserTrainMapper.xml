@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.UserTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.UserTrain" >
+    <constructor >
+      <idArg column="operatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="train_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="joinType" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="trainName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainWay" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attendantCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="isStationTrain" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="sponsorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operatorID, train_id, year, joinType, trainName, trainWay, location, attendantCount, 
+    startTime, endTime, isStationTrain, sponsorName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.courseStudy.UserTrainKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from usertrain
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.courseStudy.UserTrainKey" >
+    delete from usertrain
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.UserTrain" >
+    insert into usertrain (operatorID, train_id, year, 
+      joinType, trainName, trainWay, 
+      location, attendantCount, startTime, 
+      endTime, isStationTrain, sponsorName
+      )
+    values (#{operatorID,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR},
+      #{joinType,jdbcType=BIGINT}, #{trainName,jdbcType=VARCHAR}, #{trainWay,jdbcType=INTEGER}, 
+      #{location,jdbcType=VARCHAR}, #{attendantCount,jdbcType=INTEGER}, #{startTime,jdbcType=DATE}, 
+      #{endTime,jdbcType=DATE}, #{isStationTrain,jdbcType=TINYINT}, #{sponsorName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.UserTrain" >
+    insert into usertrain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="trainId != null" >
+        train_id,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="joinType != null" >
+        joinType,
+      </if>
+      <if test="trainName != null" >
+        trainName,
+      </if>
+      <if test="trainWay != null" >
+        trainWay,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="attendantCount != null" >
+        attendantCount,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="isStationTrain != null" >
+        isStationTrain,
+      </if>
+      <if test="sponsorName != null" >
+        sponsorName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="joinType != null" >
+        #{joinType,jdbcType=BIGINT},
+      </if>
+      <if test="trainName != null" >
+        #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainWay != null" >
+        #{trainWay,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="attendantCount != null" >
+        #{attendantCount,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="isStationTrain != null" >
+        #{isStationTrain,jdbcType=TINYINT},
+      </if>
+      <if test="sponsorName != null" >
+        #{sponsorName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseStudy.UserTrain" >
+    update usertrain
+    <set >
+      <if test="joinType != null" >
+        joinType = #{joinType,jdbcType=BIGINT},
+      </if>
+      <if test="trainName != null" >
+        trainName = #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainWay != null" >
+        trainWay = #{trainWay,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="attendantCount != null" >
+        attendantCount = #{attendantCount,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="isStationTrain != null" >
+        isStationTrain = #{isStationTrain,jdbcType=TINYINT},
+      </if>
+      <if test="sponsorName != null" >
+        sponsorName = #{sponsorName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.courseStudy.UserTrain" >
+    update usertrain
+    set joinType = #{joinType,jdbcType=BIGINT},
+      trainName = #{trainName,jdbcType=VARCHAR},
+      trainWay = #{trainWay,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      attendantCount = #{attendantCount,jdbcType=INTEGER},
+      startTime = #{startTime,jdbcType=DATE},
+      endTime = #{endTime,jdbcType=DATE},
+      isStationTrain = #{isStationTrain,jdbcType=TINYINT},
+      sponsorName = #{sponsorName,jdbcType=VARCHAR}
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and train_id = #{trainId,jdbcType=INTEGER}
+      and year = #{year,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="deleteByTrainID" parameterType="java.lang.Integer" >
+    delete from usertrain
+    where train_id = #{trainId,jdbcType=INTEGER}
+  </delete>
+
+  <select id="getListByTrainId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List"/>  from usertrain WHERE train_id = #{trainId,jdbcType=INTEGER}
+  </select>
+
+  <select id="getListByTrainIdAndOperatorId" resultType="com.elearning.pojo.courseStudy.UserTrain" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>  from usertrain WHERE train_id = #{trainId,jdbcType=INTEGER} and operatorID = #{operatorId,jdbcType=INTEGER}
+  </select>
+
+</mapper>

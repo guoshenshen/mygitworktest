@@ -1,0 +1,118 @@
+<PUBLIC:COMPONENT lightWeight="true">
+<PUBLIC:ATTACH EVENT="oncontentready" FOR="element" ONEVENT="realy()" />
+
+<script type="text/javascript">
+var elm = element,
+	doc = elm.document,
+	border = doc.createElement("select-border-ie"),
+	wrap = doc.createElement("select-wrap-ie"),
+	bgColor = elm.currentStyle.backgroundColor.replace("transparent", "#fff"),
+	pos = ["Bottom", "Right", "Left", "Top"],
+	css = ["Style", "Color", "Width"],
+	text, arrow;
+
+function setExp(css) {
+	setTimeout(function(){
+		border.style.setExpression(css, "lastChild.lastChild.currentStyle." + css);
+	},1);
+}
+
+function realy(){
+	if(elm.multiple || elm.size > 1 || elm.parentNode.tagName == "select-wrap-ie"){
+		return;
+	}
+
+	with(elm.runtimeStyle){
+		verticalAlign = "top";
+		height = "auto";
+		margin = -2;
+	}
+
+	for(var i = 0; i < pos.length; i++){
+		for(var j = 0; j < css.length; j++){
+			setExp("border" + pos[i] + css[j]);
+		}
+		setExp("padding" + pos[i]);
+	}
+	
+	setExp("maxWidth");
+	setExp("minWidth");
+	setExp("middle");
+	setExp("width");
+
+	with(border.runtimeStyle){
+		background = bgColor;
+		display = "inline";
+		zoom = 1;
+	}
+
+	with(wrap.runtimeStyle){
+		position = "relative";
+		overflow = "hidden";
+		display = "inline";
+		zoom = 1;
+	}
+
+	if("XMLHttpRequest" in window){
+		border.runtimeStyle.borderStyle = "solid";
+	} else {
+		text = doc.createElement("select-text-ie");
+		arrow = doc.createElement("select-arrow-ie");
+
+		with(arrow.runtimeStyle){
+			borderLeft = borderRight = "4px solid " + bgColor;
+			top =  elm.offsetHeight / 2 - 3;
+			borderTop = "4px solid #000";
+			position = "absolute";
+			overflow = "hidden";
+			height = width = 0;
+			right = 3;
+		}
+
+		with(text.runtimeStyle){
+			lineHeight = elm.offsetHeight - 4 + "px";
+			fontSize = elm.currentStyle.fontSize;
+			color = elm.currentStyle.color;
+			fontFamily = "Arial, SimSun";
+			verticalAlign = "baseline";
+			position = "absolute";
+			zoom = 1;
+			left = 3;
+			top = 0;
+		}
+
+		function visible(val){
+			with(elm.runtimeStyle){
+				position = val ? "relative" : "static";
+				left = val;
+			}
+		}
+
+		function show(){
+			visible("");
+		}
+	
+		function hide(){
+			visible(-9999);
+		}
+
+		border.onmouseenter = show;
+		border.onmouseleave = hide;
+
+		wrap.appendChild(arrow);
+		wrap.appendChild(text);
+		
+		setInterval(function(){
+			text.innerHTML = elm.options[elm.selectedIndex].innerHTML + "&nbsp;";
+		}, 10);
+
+		hide();
+	}
+
+	border.appendChild(wrap);
+	elm.parentNode.insertBefore(border, elm);
+	wrap.appendChild(elm);
+	elm.style.behavior = "none";
+}
+</script>
+</PUBLIC:COMPONENT>

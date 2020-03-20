@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.examManage.ExamExamUserScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.examManage.ExamExamUserScore" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="employeeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="paperScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="usualScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="totalScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="objItemScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="subItemScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="paperId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="replyId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, examID, employeeID, paperScore, usualScore, totalScore, objItemScore, subItemScore, 
+    paperId, replyId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam_exam_userscore
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam_exam_userscore
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.examManage.ExamExamUserScore" >
+    insert into exam_exam_userscore (ID, examID, employeeID, 
+      paperScore, usualScore, totalScore, 
+      objItemScore, subItemScore, paperId, 
+      replyId)
+    values (#{ID,jdbcType=INTEGER}, #{examID,jdbcType=INTEGER}, #{employeeID,jdbcType=INTEGER}, 
+      #{paperScore,jdbcType=DOUBLE}, #{usualScore,jdbcType=DOUBLE}, #{totalScore,jdbcType=DOUBLE}, 
+      #{objItemScore,jdbcType=DOUBLE}, #{subItemScore,jdbcType=DOUBLE}, #{paperId,jdbcType=INTEGER}, 
+      #{replyId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.examManage.ExamExamUserScore" >
+    insert into exam_exam_userscore
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="examID != null" >
+        examID,
+      </if>
+      <if test="employeeID != null" >
+        employeeID,
+      </if>
+      <if test="paperScore != null" >
+        paperScore,
+      </if>
+      <if test="usualScore != null" >
+        usualScore,
+      </if>
+      <if test="totalScore != null" >
+        totalScore,
+      </if>
+      <if test="objItemScore != null" >
+        objItemScore,
+      </if>
+      <if test="subItemScore != null" >
+        subItemScore,
+      </if>
+      <if test="paperId != null" >
+        paperId,
+      </if>
+      <if test="replyId != null" >
+        replyId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="examID != null" >
+        #{examID,jdbcType=INTEGER},
+      </if>
+      <if test="employeeID != null" >
+        #{employeeID,jdbcType=INTEGER},
+      </if>
+      <if test="paperScore != null" >
+        #{paperScore,jdbcType=DOUBLE},
+      </if>
+      <if test="usualScore != null" >
+        #{usualScore,jdbcType=DOUBLE},
+      </if>
+      <if test="totalScore != null" >
+        #{totalScore,jdbcType=DOUBLE},
+      </if>
+      <if test="objItemScore != null" >
+        #{objItemScore,jdbcType=DOUBLE},
+      </if>
+      <if test="subItemScore != null" >
+        #{subItemScore,jdbcType=DOUBLE},
+      </if>
+      <if test="paperId != null" >
+        #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null" >
+        #{replyId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.examManage.ExamExamUserScore" >
+    update exam_exam_userscore
+    <set >
+      <if test="examID != null" >
+        examID = #{examID,jdbcType=INTEGER},
+      </if>
+      <if test="employeeID != null" >
+        employeeID = #{employeeID,jdbcType=INTEGER},
+      </if>
+      <if test="paperScore != null" >
+        paperScore = #{paperScore,jdbcType=DOUBLE},
+      </if>
+      <if test="usualScore != null" >
+        usualScore = #{usualScore,jdbcType=DOUBLE},
+      </if>
+      <if test="totalScore != null" >
+        totalScore = #{totalScore,jdbcType=DOUBLE},
+      </if>
+      <if test="objItemScore != null" >
+        objItemScore = #{objItemScore,jdbcType=DOUBLE},
+      </if>
+      <if test="subItemScore != null" >
+        subItemScore = #{subItemScore,jdbcType=DOUBLE},
+      </if>
+      <if test="paperId != null" >
+        paperId = #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null" >
+        replyId = #{replyId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.examManage.ExamExamUserScore" >
+    update exam_exam_userscore
+    set examID = #{examID,jdbcType=INTEGER},
+      employeeID = #{employeeID,jdbcType=INTEGER},
+      paperScore = #{paperScore,jdbcType=DOUBLE},
+      usualScore = #{usualScore,jdbcType=DOUBLE},
+      totalScore = #{totalScore,jdbcType=DOUBLE},
+      objItemScore = #{objItemScore,jdbcType=DOUBLE},
+      subItemScore = #{subItemScore,jdbcType=DOUBLE},
+      paperId = #{paperId,jdbcType=INTEGER},
+      replyId = #{replyId,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByExamId" resultType="com.elearning.pojo.examManage.ExamExamUserScore" parameterType="java.lang.Integer" >
+    select <include refid="Base_Column_List" /> from exam_exam_userscore
+    where examID = #{examId,jdbcType=INTEGER}
+  </select>
+
+
+</mapper>

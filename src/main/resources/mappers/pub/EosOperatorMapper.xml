@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.EosOperatorMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.EosOperator" >
+    <constructor >
+      <idArg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isLocal" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_idcode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="major" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="validataCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="validDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="statusModifyDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="isSuperAdmin" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pwdModifyDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operatorId, userId, password, operatorName, isLocal, status, user_idcode, major,
+    validataCode, validDate, statusModifyDate, isSuperAdmin, pwdModifyDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from eosoperator
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+  </select>
+
+  <select id="isValid" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from eosoperator
+    where userId = #{userId} and password=#{password}
+  </select>
+  <select id="findByUserId" resultType="com.elearning.pojo.pub.EosOperator">
+    select
+    <include refid="Base_Column_List" />
+    from eosoperator
+    where userId = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from eosoperator
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.EosOperator" >
+    insert into eosoperator (operatorID, userID, password, 
+      operatorName, isLocal, status, 
+      user_idcode, major, validataCode, 
+      validDate, statusModifyDate, isSuperAdmin, 
+      pwdModifyDate)
+    values (#{operatorId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{operatorName,jdbcType=VARCHAR}, #{isLocal,jdbcType=CHAR}, #{status,jdbcType=INTEGER}, 
+      #{user_idcode,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{validataCode,jdbcType=VARCHAR}, 
+      #{validDate,jdbcType=TIMESTAMP}, #{statusModifyDate,jdbcType=TIMESTAMP}, #{isSuperAdmin,jdbcType=INTEGER}, 
+      #{pwdModifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.EosOperator" >
+    insert into eosoperator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        operatorID,
+      </if>
+      <if test="userId != null" >
+        userID,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="isLocal != null" >
+        isLocal,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="user_idcode != null" >
+        user_idcode,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="validataCode != null" >
+        validataCode,
+      </if>
+      <if test="validDate != null" >
+        validDate,
+      </if>
+      <if test="statusModifyDate != null" >
+        statusModifyDate,
+      </if>
+      <if test="isSuperAdmin != null" >
+        isSuperAdmin,
+      </if>
+      <if test="pwdModifyDate != null" >
+        pwdModifyDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isLocal != null" >
+        #{isLocal,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="user_idcode != null" >
+        #{user_idcode,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="validataCode != null" >
+        #{validataCode,jdbcType=VARCHAR},
+      </if>
+      <if test="validDate != null" >
+        #{validDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusModifyDate != null" >
+        #{statusModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isSuperAdmin != null" >
+        #{isSuperAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="pwdModifyDate != null" >
+        #{pwdModifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.EosOperator" >
+    update eosoperator
+    <set >
+      <if test="userId != null" >
+        userID = #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="isLocal != null" >
+        isLocal = #{isLocal,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="user_idcode != null" >
+        user_idcode = #{user_idcode,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="validataCode != null" >
+        validataCode = #{validataCode,jdbcType=VARCHAR},
+      </if>
+      <if test="validDate != null" >
+        validDate = #{validDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusModifyDate != null" >
+        statusModifyDate = #{statusModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isSuperAdmin != null" >
+        isSuperAdmin = #{isSuperAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="pwdModifyDate != null" >
+        pwdModifyDate = #{pwdModifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.EosOperator" >
+    update eosoperator
+    set userID = #{userId,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      isLocal = #{isLocal,jdbcType=CHAR},
+      status = #{status,jdbcType=INTEGER},
+      user_idcode = #{user_idcode,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      validataCode = #{validataCode,jdbcType=VARCHAR},
+      validDate = #{validDate,jdbcType=TIMESTAMP},
+      statusModifyDate = #{statusModifyDate,jdbcType=TIMESTAMP},
+      isSuperAdmin = #{isSuperAdmin,jdbcType=INTEGER},
+      pwdModifyDate = #{pwdModifyDate,jdbcType=TIMESTAMP}
+    where operatorID = #{operatorId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByConditionSQL" resultType="com.elearning.vo.BasicUserVo" parameterType="map">
+    SELECT employee.operatorId, employee.address, employee.oemail, employee.otel1, employee.mobileNo, employee.gender,
+    org.tenantId, org.orgName, operator.operatorName, operator.userId,employee.orgName FROM Eosorg_T_Employee employee, eosoperator operator, eosorg_t_organization org
+    WHERE employee.operatorId IN
+    <foreach collection="operatorIdList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND org.orgId = employee.orgId AND operator.operatorId = employee.operatorId AND operator.status = 1
+  </select>
+
+  <select id="findByOperatorName" resultType="com.elearning.pojo.pub.EosOperator" >
+    select
+    <include refid="Base_Column_List" />
+    from eosoperator
+    where operatorName = #{operatorName,jdbcType=VARCHAR} and status = 1
+  </select>
+
+
+</mapper>

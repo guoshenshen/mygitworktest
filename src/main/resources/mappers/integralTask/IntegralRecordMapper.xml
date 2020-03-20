@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralRecord" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="updateCauseId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="updateCause" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ruleId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="offerScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="studentId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="integralHistoryName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="integralHistoryId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="recordTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="preRecordId" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, updateCauseId, updateCause, ruleId, offerScore, studentId, integralHistoryName, 
+    integralHistoryId, recordTime, preRecordId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralRecord" >
+    insert into integral_record (id, updateCauseId, updateCause, 
+      ruleId, offerScore, studentId, 
+      integralHistoryName, integralHistoryId, 
+      recordTime, preRecordId)
+    values (#{id,jdbcType=BIGINT}, #{updateCauseId,jdbcType=VARCHAR}, #{updateCause,jdbcType=VARCHAR}, 
+      #{ruleId,jdbcType=BIGINT}, #{offerScore,jdbcType=DOUBLE}, #{studentId,jdbcType=BIGINT}, 
+      #{integralHistoryName,jdbcType=VARCHAR}, #{integralHistoryId,jdbcType=BIGINT}, 
+      #{recordTime,jdbcType=TIMESTAMP}, #{preRecordId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralRecord" >
+    insert into integral_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="updateCauseId != null" >
+        updateCauseId,
+      </if>
+      <if test="updateCause != null" >
+        updateCause,
+      </if>
+      <if test="ruleId != null" >
+        ruleId,
+      </if>
+      <if test="offerScore != null" >
+        offerScore,
+      </if>
+      <if test="studentId != null" >
+        studentId,
+      </if>
+      <if test="integralHistoryName != null" >
+        integralHistoryName,
+      </if>
+      <if test="integralHistoryId != null" >
+        integralHistoryId,
+      </if>
+      <if test="recordTime != null" >
+        recordTime,
+      </if>
+      <if test="preRecordId != null" >
+        preRecordId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="updateCauseId != null" >
+        #{updateCauseId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateCause != null" >
+        #{updateCause,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=BIGINT},
+      </if>
+      <if test="offerScore != null" >
+        #{offerScore,jdbcType=DOUBLE},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="integralHistoryName != null" >
+        #{integralHistoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="integralHistoryId != null" >
+        #{integralHistoryId,jdbcType=BIGINT},
+      </if>
+      <if test="recordTime != null" >
+        #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preRecordId != null" >
+        #{preRecordId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralRecord" >
+    update integral_record
+    <set >
+      <if test="updateCauseId != null" >
+        updateCauseId = #{updateCauseId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateCause != null" >
+        updateCause = #{updateCause,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null" >
+        ruleId = #{ruleId,jdbcType=BIGINT},
+      </if>
+      <if test="offerScore != null" >
+        offerScore = #{offerScore,jdbcType=DOUBLE},
+      </if>
+      <if test="studentId != null" >
+        studentId = #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="integralHistoryName != null" >
+        integralHistoryName = #{integralHistoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="integralHistoryId != null" >
+        integralHistoryId = #{integralHistoryId,jdbcType=BIGINT},
+      </if>
+      <if test="recordTime != null" >
+        recordTime = #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preRecordId != null" >
+        preRecordId = #{preRecordId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralRecord" >
+    update integral_record
+    set updateCauseId = #{updateCauseId,jdbcType=VARCHAR},
+      updateCause = #{updateCause,jdbcType=VARCHAR},
+      ruleId = #{ruleId,jdbcType=BIGINT},
+      offerScore = #{offerScore,jdbcType=DOUBLE},
+      studentId = #{studentId,jdbcType=BIGINT},
+      integralHistoryName = #{integralHistoryName,jdbcType=VARCHAR},
+      integralHistoryId = #{integralHistoryId,jdbcType=BIGINT},
+      recordTime = #{recordTime,jdbcType=TIMESTAMP},
+      preRecordId = #{preRecordId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findNewestRecord" resultType="com.elearning.pojo.integralTask.IntegralRecord"  >
+    select
+    <include refid="Base_Column_List" />
+    from integral_record
+    ORDER BY recordTime DESC LIMIT 1
+  </select>
+
+  <select id="getListByStudentIdAndHistoryNameAndHistoryId" resultType="com.elearning.pojo.integralTask.IntegralRecord" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from integral_record
+    where 1=1
+    <if test="studentId != null and studentId != ''" >
+      and studentId = #{studentId,jdbcType=BIGINT}
+    </if>
+    <if test="integralHistoryName != null and integralHistoryName != ''" >
+      and integralHistoryName = #{integralHistoryName,jdbcType=BIGINT}
+    </if>
+    <if test="integralHistoryId != null and integralHistoryId != ''" >
+      and integralHistoryId = #{integralHistoryId,jdbcType=BIGINT}
+    </if>
+  </select>
+
+  <select id="getListByMap" resultType="com.elearning.pojo.integralTask.IntegralRecord" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from integral_record
+    where 1=1
+    <if test="updateCauseId != null and updateCauseId !=''" >
+      and updateCauseId = #{updateCauseId,jdbcType=VARCHAR}
+    </if>
+    <if test="updateCause != null and updateCause != ''" >
+      and updateCause = #{updateCause,jdbcType=VARCHAR}
+    </if>
+    <if test="ruleId != null" >
+      and ruleId = #{ruleId,jdbcType=BIGINT}
+    </if>
+    <if test="offerScore != null" >
+      and offerScore = #{offerScore,jdbcType=DOUBLE}
+    </if>
+    <if test="studentId != null" >
+      and studentId = #{studentId,jdbcType=BIGINT}
+    </if>
+    <if test="integralHistoryName != null and integralHistoryName != ''" >
+      and integralHistoryName = #{integralHistoryName,jdbcType=VARCHAR}
+    </if>
+    <if test="integralHistoryId != null" >
+      and integralHistoryId = #{integralHistoryId,jdbcType=BIGINT}
+    </if>
+    <if test="recordTime != null" >
+      and recordTime = #{recordTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="preRecordId != null" >
+      and preRecordId = #{preRecordId,jdbcType=BIGINT}
+    </if>
+  </select>
+
+</mapper>

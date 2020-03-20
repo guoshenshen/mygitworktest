@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.VUserRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.VUserRole" >
+    <constructor >
+      <arg column="operatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="empCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Role_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="role_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="role_OrgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.VUserRole" >
+    insert into v_userrole (operatorID, userID, operatorName, 
+      empCode, orgID, orgName, 
+      ID, Role_ID, role_Name, 
+      role_OrgID, CreatorID, status
+      )
+    values (#{operatorID,jdbcType=INTEGER}, #{userID,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
+      #{empCode,jdbcType=VARCHAR}, #{orgID,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, 
+      #{ID,jdbcType=INTEGER}, #{roleID,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR},
+      #{roleOrgID,jdbcType=INTEGER}, #{creatorID,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.VUserRole" >
+    insert into v_userrole
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="empCode != null" >
+        empCode,
+      </if>
+      <if test="orgID != null" >
+        orgID,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="roleID != null" >
+        Role_ID,
+      </if>
+      <if test="roleName != null" >
+        role_Name,
+      </if>
+      <if test="roleOrgID != null" >
+        role_OrgID,
+      </if>
+      <if test="creatorID != null" >
+        CreatorID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null" >
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgID != null" >
+        #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="roleID != null" >
+        #{roleID,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleOrgID != null" >
+        #{roleOrgID,jdbcType=INTEGER},
+      </if>
+      <if test="creatorID != null" >
+        #{creatorID,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

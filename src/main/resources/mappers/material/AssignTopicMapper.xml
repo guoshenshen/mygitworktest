@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.material.AssignTopicMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.material.AssignTopic" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="assignId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="index1" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="required" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="form" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.material.AssignTopic" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="assignId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="index1" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="required" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="form" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, assignId, index1, required, form
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from assigntopic
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from assigntopic
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.material.AssignTopic" >
+    insert into assigntopic (id, assignId, index1, 
+      required, form, content
+      )
+    values (#{id,jdbcType=BIGINT}, #{assignId,jdbcType=BIGINT}, #{index1,jdbcType=INTEGER}, 
+      #{required,jdbcType=BOOLEAN}, #{form,jdbcType=BOOLEAN}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.material.AssignTopic" >
+    insert into assigntopic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="assignId != null" >
+        assignId,
+      </if>
+      <if test="index1 != null" >
+        index1,
+      </if>
+      <if test="required != null" >
+        required,
+      </if>
+      <if test="form != null" >
+        form,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="assignId != null" >
+        #{assignId,jdbcType=BIGINT},
+      </if>
+      <if test="index1 != null" >
+        #{index1,jdbcType=INTEGER},
+      </if>
+      <if test="required != null" >
+        #{required,jdbcType=BOOLEAN},
+      </if>
+      <if test="form != null" >
+        #{form,jdbcType=BOOLEAN},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.material.AssignTopic" >
+    update assigntopic
+    <set >
+      <if test="assignId != null" >
+        assignId = #{assignId,jdbcType=BIGINT},
+      </if>
+      <if test="index1 != null" >
+        index1 = #{index1,jdbcType=INTEGER},
+      </if>
+      <if test="required != null" >
+        required = #{required,jdbcType=BOOLEAN},
+      </if>
+      <if test="form != null" >
+        form = #{form,jdbcType=BOOLEAN},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.material.AssignTopic" >
+    update assigntopic
+    set assignId = #{assignId,jdbcType=BIGINT},
+      index1 = #{index1,jdbcType=INTEGER},
+      required = #{required,jdbcType=BOOLEAN},
+      form = #{form,jdbcType=BOOLEAN},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.material.AssignTopic" >
+    update assigntopic
+    set assignId = #{assignId,jdbcType=BIGINT},
+      index1 = #{index1,jdbcType=INTEGER},
+      required = #{required,jdbcType=BOOLEAN},
+      form = #{form,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getListByAssignId" resultType="com.elearning.pojo.material.AssignTopic" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from assigntopic
+    where assignId = #{assignId,jdbcType=BIGINT} order by index1 asc
+  </select>
+
+</mapper>

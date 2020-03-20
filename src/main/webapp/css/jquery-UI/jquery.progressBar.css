@@ -1,0 +1,68 @@
+.step-body {
+    position: relative;
+    float: left;
+    display: block;
+    width: 100%;
+}
+
+.step-bar {
+	display:block;
+    width: 100%;
+    background: url(../../image/widget/bar-bg.png);
+    position: absolute;
+    z-index: -1;
+    top: 58px;
+}
+
+.step-bar-active {
+    width: 0px;
+    background: url(../../image/widget/bar-bg-active.png);
+    height: 5px;
+}
+
+.step-bar, .step-bar-active {
+    height: 13px;
+    border-radius: 12px;
+}
+
+.stepBarList{
+	float:left;
+	display:block;
+	width: 100%;
+	margin:0;
+	padding:0;
+}
+
+.stepBarList li {
+    list-style-type: none;
+    text-align: center;
+    float: left;
+}
+
+
+.stepBarList li p {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-family: Î¢ÈíÑÅºÚ;
+    color: rgb(98, 84, 84);
+}
+
+
+.stepBarList li span {
+    position: relative;
+    margin: 0 auto;
+    font-size: 18px;
+    font-family: Arial;
+    color: #625454;
+    height: 25px;
+    line-height: 25px;
+    background: url(../../image/widget/cell.png) center top no-repeat;
+    display: block;
+}
+
+
+.stepBarList li.step-active span {
+    background: url(../../image/widget/cell-active.png) center top no-repeat;
+    color: white;
+}

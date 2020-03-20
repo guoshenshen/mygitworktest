@@ -1,0 +1,749 @@
+/**************课程/培训/评论*************/
+
+a{
+	text-decoration:none;
+	color:#333;
+}
+
+a:hover{
+	color:#0ae;
+}
+
+#portalStyle{
+	background-color: #EEF5FC;
+	padding-top:60px;
+}
+
+#portalStyle.container{
+	background:none;
+}
+
+#pagebody{
+	width:1205px;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+
+.title{
+	font-size: 24px;
+    line-height: 1.2;
+}
+
+
+.empty{
+	width: 100%;
+    float: left;
+    display: block;
+}
+
+.empty .emptyImg {
+    background: url(../../image/ui_empty.png) no-repeat;
+    width: 200px;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.emptyImg h3{
+    margin-top: 210px;
+    float: left;
+    display: block;
+    letter-spacing: 25px;
+    margin-left: 20px;
+    color: #999;
+    font-size: 16px;
+
+}
+
+/***********background special effects***************/
+.container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+ 
+.container .bg-blur-overlay {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0NiUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wOCIvPjxzdG9wIG9mZnNldD0iNTklIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMDgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(46%, rgba(0, 0, 0, 0.08)), color-stop(59%, rgba(0, 0, 0, 0.08)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.08) 46%, rgba(0, 0, 0, 0.08) 59%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.08) 46%, rgba(0, 0, 0, 0.08) 59%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 46%, rgba(0, 0, 0, 0.08) 59%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.container .tinted-bg-overlay {
+            z-index: -1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ba43a8+0,ea4fce+62,537bad+100&amp;0.38+0,0.17+61,0.8+100 */
+            /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYmE0M2E4IiBzdG9wLW9wYWNpdHk9IjAuMzgiLz4KICAgIDxzdG9wIG9mZnNldD0iNjElIiBzdG9wLWNvbG9yPSIjZTk0ZmNkIiBzdG9wLW9wYWNpdHk9IjAuMTciLz4KICAgIDxzdG9wIG9mZnNldD0iNjIlIiBzdG9wLWNvbG9yPSIjZWE0ZmNlIiBzdG9wLW9wYWNpdHk9IjAuMTkiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzUzN2JhZCIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+            background: -moz-linear-gradient(-45deg,  rgba(186,67,168,0.38) 0%, rgba(233,79,205,0.17) 61%, rgba(234,79,206,0.19) 62%, rgba(83,123,173,0.8) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(186,67,168,0.38)), color-stop(61%,rgba(233,79,205,0.17)), color-stop(62%,rgba(234,79,206,0.19)), color-stop(100%,rgba(83,123,173,0.8))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(-45deg,  rgba(186,67,168,0.38) 0%,rgba(233,79,205,0.17) 61%,rgba(234,79,206,0.19) 62%,rgba(83,123,173,0.8) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(-45deg,  rgba(186,67,168,0.38) 0%,rgba(233,79,205,0.17) 61%,rgba(234,79,206,0.19) 62%,rgba(83,123,173,0.8) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(-45deg,  rgba(186,67,168,0.38) 0%,rgba(233,79,205,0.17) 61%,rgba(234,79,206,0.19) 62%,rgba(83,123,173,0.8) 100%); /* IE10+ */
+            background: linear-gradient(135deg,  rgba(186,67,168,0.38) 0%,rgba(233,79,205,0.17) 61%,rgba(234,79,206,0.19) 62%,rgba(83,123,173,0.8) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61ba43a8', endColorstr='#cc537bad',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+
+        }
+
+
+ 
+.container .bg-blur {
+  z-index: -2;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  display: block;
+  top: 0;
+  left: 0;
+}
+ 
+.container .content { z-index: 1; }
+
+
+
+/**********remodal reset****************/
+html.remodal-is-locked {
+    overflow: auto;
+}
+
+.remodal{
+    font-family: "Arial","Hiragino Sans GB", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";
+}
+
+.remodal.normal{
+	padding:0px;
+}
+
+.remodal table{
+	text-align: left;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.remodal table th{
+	font-weight:bold;
+	width:80px;
+}
+
+.remodal .tips{
+	font-size: 14px;
+    color: #999;
+    letter-spacing: 4px;
+}
+
+
+/*****course detail******/
+.courseSelectFrame{
+	padding: 35px 35px 60px;
+}
+
+
+.courseMain{
+	font-family: "Arial","Hiragino Sans GB", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";
+}
+
+.courseMain .contentPart{
+	-webkit-box-shadow: 0px 1px 2px #bbb;
+    -moz-box-shadow: 0px 1px 2px #bbb;
+    box-shadow: 0px 1px 2px #bbb;
+}
+
+.courseMain #contentInfo{
+	height:280px;
+	padding:20px;
+	box-sizing:border-box;
+	background-color: #fff;
+}
+
+.courseMain #contentInfo .courseBasicInfo{
+	height:240px;
+}
+
+.courseMain #progressInfo{
+	width:100%;
+	height:80px;
+	padding: 20px 20px;
+	box-sizing:border-box;
+    background-color: #f8f8f8;
+}
+
+.courseMain #progressInfo .barAll{
+    width: 960px;
+    float:left;
+}
+
+.courseMain #progressInfo span.orangeButton{
+	float:right;
+}
+
+.courseMain #studyEffect{
+	width:100%;
+}
+
+.courseMain #studyEffect .leftInfo{
+	width:925px;
+	min-height:390px;
+	float:left;
+	background-color:#fff;
+}
+
+.courseMain #studyEffect .leftpart{
+	min-height:900px;
+	border:0;
+	float:left;
+	display:block;
+}
+
+
+#commentMainBody .container{
+	padding: 40px 20px 20px 20px;
+	float:left;
+	box-sizing: border-box;
+	display:none;
+}
+
+
+#commentMainBody .contentTab{
+	text-align: left;
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#commentMainBody .selfExamTab{
+	text-align: left;
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#commentMainBody .container.currentContainer{
+	display:block;
+}
+
+#commentMainBody .container.courseContent{
+	line-height: 1.5;
+    text-indent: 2em;
+    font-size:14px;
+}
+
+
+.courseMain #studyEffect .rightpart{
+	width:265px;
+	float:right;
+	background-color:transparent;
+}
+
+.courseMain #studyEffect .rightInfo{	
+	box-sizing:border-box;
+    background-color:#fff;
+}
+
+.courseMain #studyEffect #studentOfCourse{
+	min-height:100px;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.courseMain #studyEffect #sponsor{
+	height:180px;
+	padding:0px;
+}
+
+.courseMain #studyEffect #sponsor .discuss-operator{
+	margin-right:0px;
+}
+
+#sponsor .sponsorInfo{
+	padding: 10px 5px;
+	box-sizing: border-box;
+	
+}
+
+#sponsor .sponsorInfoAttr{
+	width:100%;
+	float: left;
+    line-height: 19px;
+    font-size: 12px;
+    padding: 10px 10px 10px 0px;
+    box-sizing: border-box;
+}
+
+
+#sponsor .sponsorInfoAttr span{
+	display:block;
+    margin-bottom: 20px;
+}
+
+.courseMain #studyEffect #score{
+	min-height:240px;
+}
+
+#score .ratingContainer{
+	width: 230px;
+    margin: 20px 0 0 0;
+}
+
+
+#score .overallEvaluation{
+	margin-left: 22px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #999;
+}
+
+#studyEffect font{
+	color:#000;
+}
+
+#contentInfo .coursePic{
+	width:450px;
+	height:100%;
+	float:left;
+	position:relative;
+}
+
+.coursePic .courseTag{
+	background: url('../../image/Tag/redTag.png') no-repeat left;
+    position: absolute;
+    color: #fff;
+    line-height: 1.4;
+    top: 10px;
+    left: -11px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.coursePic .courseTag span{
+	background-color: #DB0026;
+    left: 20px;
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 14px;
+    cursor:pointer;
+}
+
+.coursePic .courseBottomTag{
+    position: absolute;
+    color: #fff;
+    line-height:1.4;
+    top: 210px;
+    left: 5px;
+    width: 110px;
+    height: 18px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+    z-index: 2;
+}
+
+.coursePic img{
+	width:100%;
+	height:100%;
+}
+
+#contentInfo .courseDetail{
+	float: right;
+    width: 690px;
+    height: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
+    position:relative;
+}
+
+#contentInfo .courseDetail .learnButton{
+	position:absolute;
+	right:20px;
+	top:0px;
+}
+
+.courseDetail .courseAttr{
+	float:left;
+	width:100%;
+	margin-bottom:5px;
+}
+
+.courseDetail .extraInfo{
+	margin-top:14px;
+	width:100%;
+	float:left;
+	font-size:14px;
+	color:#999;
+}
+
+.courseDetail .extraInfo .courseAttr{
+	margin-bottom:15px;	
+}
+
+.courseDetail .coursetip{
+	font-size:12px;
+	float:left;
+	color:#999;
+	position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.courseDetail .title{
+	margin-bottom: 8px;
+    height: 56px;
+    max-width: 520px;
+    max-height: 56px;
+    overflow: hidden;
+}
+
+.courseDetail .courseAttr span{
+	margin-right:40px;
+}
+
+.courseDetail .mini{
+	padding: 0 6px 0 0px;
+    color: #999;
+    float: left;
+    font-size: 12px;
+}
+
+.courseDetail .keytags{
+	width:100%;
+	height:20px;
+    line-height: 20px;
+	padding: 0 6px 0 0px;
+    color: #999;
+    float: left;
+    font-size: 14px;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.partTitle{
+	border-bottom: 1px solid #ddd;
+	height:50px;
+}
+
+.partTitle h2,.partTitle a{
+	height: 20px;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 19px;
+    float: left;
+    display: block;
+}
+
+.partTitle a{
+	padding: 15px 40px;
+	cursor:pointer;
+}
+
+.partTitle a.currentTab {
+    color: #333;
+    border-bottom: 3px #55B929 solid;
+}
+
+#studentOfCourse .userHeadList.mini{
+    padding: 10px 0px 10px 15px;
+    box-sizing: border-box;
+    width:100%;
+}
+
+#studentOfCourse .userCount{
+	float: left;
+    display: block;
+    line-height: 1.5;
+    color: #999;
+    padding: 0 20px 10px;
+}
+
+/********************comment(评论)*************************************/
+.discussEditorContainer,.discussReplyContainer{
+	position:relative;
+	float:left;
+	font-family: "微软雅黑","黑体", Verdana, Tahoma;
+	font-size:12px;
+}
+
+.discussReplyContainer{
+	position:relative;
+	padding-bottom:30px;
+	min-height: 40px;
+    width: 100%;
+}
+
+
+.discussReplyContainer.noEmpty .empty{
+	display:none;
+}
+
+.discussReplyContainer .empty{
+	width:100%;
+	float:left;
+	display:block;
+}
+
+.discussReplyContainer.noEmpty .empty{
+	display:none;
+}
+
+.discuss-operator {
+    float: left;
+    width: 110px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: inline;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size:12px;
+    line-height:1.5em;
+}
+
+.discuss-operator .headPic {
+    margin: 0 auto;
+    display: block;
+    height: 78px;
+    width: 78px;
+}
+
+.discuss-operator .discuss-name {
+    text-align: center;
+}
+
+.discuss-body {
+    float: left;
+    width: 680px;
+    border: 1px solid #D6D6D6;
+    margin: 0px 50px 20px 20px;
+    display: inline;
+    border-radius: 4px;
+    position: relative;
+    background: #FFFFFF;
+    min-height: 130px;
+    font-family: "微软雅黑","黑体", Verdana, Tahoma;
+    font-size:12px;
+}
+
+.discuss-body p{
+	text-indent: 30px;
+    margin: 15px 0 10px;
+    line-height:1.8em;
+}
+
+.discuss-title {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.discuss-content {
+    margin: 0 10px;
+    padding: 0;
+    border-top: 1px solid #e9e9e9;
+}
+
+
+.discuss-rating {
+    float: left;
+    color: #5365AC;
+    margin-top:4px;
+}
+
+.discuss-time {
+    margin: 0;
+    text-align: right;
+    height: 28px;
+    line-height:1.5;
+    color: #5365AC;
+}
+
+.discuss-title .discuss-time{
+	padding-right:10px;
+}
+
+.reply-box {
+    font-size: 14px;
+    margin-top: 16px;
+    position: relative;
+    zoom: 1;
+    margin: 0 10px;
+}
+
+.replyContent {
+    display: none;
+}
+
+.replyed  .replyContent{
+	display:block;
+}
+
+.replyed .reply-box{
+	display:none;
+}
+
+.reply-box .contentwrap {
+    border: #ebe6e1 solid 1px;
+    padding: 10px;
+    background: #fff;
+}
+
+.reply-box textarea {
+    width: 100%;
+    height: 152px;
+    overflow: auto;
+    font-size: 16px;
+    font-family: Microsoft Yahei;
+    resize: none;
+    border: none;
+    display: block;
+    line-height: 1.5;
+    color: #888;
+}
+
+.reply-box  .btn-reply {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+
+.reply-box a:hover{
+	color: #08c;
+}
+
+a.J_Reply i {
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 15px;
+    top: 4px;
+    left: -3px;
+    background: url(../../image/commons.png) 0 -30px no-repeat;
+}
+
+.reply-box .bottombar {
+    height: 40px;
+    line-height: 52px;
+}
+
+.reply-box .bottombar p.size-leave {
+    text-indent: 4px;
+    font-size: 12px;
+    color: #888;
+    line-height: 12px;
+    margin-top: 15px;
+}
+
+.reply-box .bottombar .commentBtn {
+    text-align: right;
+    margin-top: -27px;
+    display: block;
+}
+
+.reply-box .bottombar .reply_p {
+    text-align: right;
+    margin-top: -20px;
+    line-height: 52px;
+    padding: 0 0px;
+    display: block;
+}
+
+
+.reply-box .bottombar .btn{
+	width: 96px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 4px;
+    vertical-align: middle;
+    font-size: 12px;
+    text-align: center;
+    text-indent: 0px;
+    margin-left: 10px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+	
+}
+
+.reply-box .bottombar .replybtn {
+    width: 96px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    border: none;
+    background-color: #ca483b;
+}
+
+.reply-box .bottombar .cancelbtn {
+    color: #ca483b;
+    border: #ca483b solid 1px;
+    background-color: #fff;
+}
+
+.discuss-content  .btn-reply {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.discuss-reply {
+    text-indent: 0px;
+    margin: 0 10px 0 60px;
+    border-top: 1px solid #F0F0F0;
+    padding-top: 5px;
+}
+
+.discuss-reply span.operatorName {
+    color: #999999;
+    margin-right: 10px;
+}
+
+.discuss-reply p {
+    text-indent: 20px;
+    margin: 20px 0 10px;
+}
+
+.np-load-more {
+    background-color: #DDD;
+    line-height: 28px;
+    text-align: center;
+    display: block;
+    height: 32px;
+    width:100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.np-load-more.nomore{
+
+}
+
+.np-load-more span {
+    cursor: pointer;
+}
+
+.np-load-more.nomore span{
+	color:#999;
+	cursor:auto;
+}
+
+
+/***************always leave style below to the end*****************/
+.notShow{
+	display:none;
+}
+
+.show{
+	display:block;
+}
+

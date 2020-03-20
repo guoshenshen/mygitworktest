@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.CoursePubStatusMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.CoursePubStatus" >
+    <constructor >
+      <arg column="Course_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pubStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.CoursePubStatus" >
+    insert into coursepubstatus (Course_id, pubStatus)
+    values (#{course_id,jdbcType=BIGINT}, #{pubStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.CoursePubStatus" >
+    insert into coursepubstatus
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        Course_id,
+      </if>
+      <if test="pubStatus != null" >
+        pubStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        #{course_id,jdbcType=BIGINT},
+      </if>
+      <if test="pubStatus != null" >
+        #{pubStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

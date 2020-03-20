@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.CourseRecommendMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.CourseRecommend" >
+    <constructor >
+      <idArg column="Course_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <idArg column="rec_tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Course_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hottest" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newest" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="highquality" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Course_id, rec_tenantId, tenantId, Course_name, hottest, newest, highquality
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.coursemanage.CourseRecommendKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_recommend
+    where Course_id = #{course_id,jdbcType=BIGINT}
+      and rec_tenantId = #{rec_tenantId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.CourseRecommendKey" >
+    delete from course_recommend
+    where Course_id = #{course_id,jdbcType=BIGINT}
+      and rec_tenantId = #{rec_tenantId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.CourseRecommend" >
+    insert into course_recommend (Course_id, rec_tenantId, tenantId, 
+      Course_name, hottest, newest, 
+      highquality)
+    values (#{course_id,jdbcType=BIGINT}, #{rec_tenantId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{course_name,jdbcType=VARCHAR}, #{hottest,jdbcType=INTEGER}, #{newest,jdbcType=INTEGER}, 
+      #{highquality,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.CourseRecommend" >
+    insert into course_recommend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        Course_id,
+      </if>
+      <if test="rec_tenantId != null" >
+        rec_tenantId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="course_name != null" >
+        Course_name,
+      </if>
+      <if test="hottest != null" >
+        hottest,
+      </if>
+      <if test="newest != null" >
+        newest,
+      </if>
+      <if test="highquality != null" >
+        highquality,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        #{course_id,jdbcType=BIGINT},
+      </if>
+      <if test="rec_tenantId != null" >
+        #{rec_tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="course_name != null" >
+        #{course_name,jdbcType=VARCHAR},
+      </if>
+      <if test="hottest != null" >
+        #{hottest,jdbcType=INTEGER},
+      </if>
+      <if test="newest != null" >
+        #{newest,jdbcType=INTEGER},
+      </if>
+      <if test="highquality != null" >
+        #{highquality,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.coursemanage.CourseRecommend" >
+    update course_recommend
+    <set >
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="course_name != null" >
+        Course_name = #{course_name,jdbcType=VARCHAR},
+      </if>
+      <if test="hottest != null" >
+        hottest = #{hottest,jdbcType=INTEGER},
+      </if>
+      <if test="newest != null" >
+        newest = #{newest,jdbcType=INTEGER},
+      </if>
+      <if test="highquality != null" >
+        highquality = #{highquality,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Course_id = #{course_id,jdbcType=BIGINT}
+      and rec_tenantId = #{rec_tenantId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.CourseRecommend" >
+    update course_recommend
+    set tenantId = #{tenantId,jdbcType=INTEGER},
+      Course_name = #{course_name,jdbcType=VARCHAR},
+      hottest = #{hottest,jdbcType=INTEGER},
+      newest = #{newest,jdbcType=INTEGER},
+      highquality = #{highquality,jdbcType=INTEGER}
+    where Course_id = #{course_id,jdbcType=BIGINT}
+      and rec_tenantId = #{rec_tenantId,jdbcType=INTEGER}
+  </update>
+</mapper>

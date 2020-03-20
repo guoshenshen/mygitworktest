@@ -1,0 +1,225 @@
+.clearfix{
+	display: block;
+	margin: 0 auto;
+}
+
+#calendarDIV{
+	background-color:#fff;
+	height:auto;
+	width:100%;
+	float:left;
+	display:block;
+} 
+
+#calendar_month {
+    width: 100%;
+    height: 38px;
+    margin: 0 auto;
+    background: #0b61cb;
+    position:relative;
+}
+
+#calendarMonth{
+	width:550px;
+	height: auto;
+    float: left;
+    display: block;
+}
+
+#calendarMonth li a{
+    color: #fff;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    width: 40px;
+    cursor: pointer;
+    zoom: 1;
+    text-decoration: none;
+}
+
+
+#calendarMonth li a:hover{
+	cursor: pointer;
+    background-color: #f60;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#calendarMonth .selectedMonth a{
+	background-color: #f60;
+    font-weight: bold;
+}
+
+#calendar_month .yearTxt span {
+    font-size: 20px;
+    line-height: 38px;
+    padding-right: 3px;
+    float: left;
+    margin: 0 15px 0 40px;  
+}
+
+
+#calendar_month .arrow {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    line-height: 38px;
+    padding: 0 3px;
+    cursor: pointer;
+    background: none;
+    text-decoration: none;
+}
+
+#calendar_month .arrow:hover{
+	color:#f60;
+	font-weight:bold;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.arrowleft {
+    left: 0px;
+}
+
+.arrowright {
+    right: 0px;
+}
+
+#calendar_month .yearTxt span {
+    font-size: 20px;
+    line-height: 38px;
+    padding-right: 3px;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+#calendarDIV li .week_head{
+	text-align:center;
+	height:30px;
+	background-color: #FFFACD;
+}
+
+
+#calendarDIV li .week_head span{
+	margin-top: 10px;
+    display: block;
+}
+
+#calendarMonth li {
+    float: left;
+    font-size: 15px;
+    padding: 4px 2px;
+    list-style: none;
+}
+
+.trace{
+	
+    position: absolute;
+    color: #fff;
+    top: 20px;
+    left: -22px;
+    width: 100px;
+    
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar .trace .trainTrace {
+	height: 30px;
+	float:left;
+	width:100%;
+	display:block;
+	margin-bottom:10px;
+	background: url('../../image/Tag/redTag.png') no-repeat right;
+}
+
+.calendar .trace .courseTrace,.calendar .trace .seriesTrace{
+	height: 30px;
+	float:left;
+	width:100%;
+	display:block;
+	margin-bottom:10px;
+	background: url('../../image/Tag/greenTag.png') no-repeat right;
+}
+
+.calendar .trace .newsTrace{
+	height: 30px;
+	float:left;
+	width:100%;
+	display:block;
+	margin-bottom:10px;
+	background: url('../../image/Tag/blueTag.png') no-repeat right;
+}
+
+
+#calendarDIV ol.calendar{
+	width: 800px;
+    margin: 0 auto;
+    display: block;
+    float:left;
+    min-height: 500px;
+    padding: 12px 0 0 10px;
+}
+#calendarDIV li {
+	list-style:none;
+}
+
+#calendarDIV li ul{
+	padding-left: 0px;
+}
+
+#calendarDIV p.link{
+	text-align:center;
+	display: block;
+}
+#calendarDIV h1{
+	display: block; 
+	width: 200px;height:76px;
+	text-indent:-9999px; 
+	margin: 15px auto; 
+}
+
+/*
+ * Day styles
+ -------------------------*/
+#calendarDIV li li{
+	position:relative;
+	width: 110px;
+    height: 120px;
+    float: left;
+    /*overflow: auto;*/
+    border: #eacf98 1px solid;
+}
+
+
+#calendarDIV li li.log{
+	cursor:pointer;
+	background:#FFFEEE;
+}
+
+
+/*
+ * Day content (UL/OL & P)
+ -------------------------*/
+#calendarDIV li li p{
+	font-size:.7em;
+	display:block;
+}
+#calendarDIV  li li ol{width:auto;}
+#calendarDIV li li ul li ,#calendarDIV li li ol li {
+	font-size:.7em;
+	display:block;
+	height:auto;
+	width:auto; 
+	background: none;
+	margin:0;
+	padding:.2em 0;
+	float:none;
+}
+
+#calendarDIV ul#nav{ width:100%; height:60px; background:#00A2CA;margin:0 auto}
+#calendarDIV ul#nav li{display:inline; height:60px}
+#calendarDIV ul#nav li a{display:inline-block; padding:0 20px; height:60px; line-height:60px;
+	color:#FFF; font-family:"\5FAE\8F6F\96C5\9ED1"; font-size:16px}
+#calendarDIV ul#nav li a:hover{background:#0095BB}

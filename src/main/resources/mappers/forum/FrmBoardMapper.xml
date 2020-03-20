@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.forum.FrmBoardMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.forum.FrmBoard" >
+    <constructor >
+      <idArg column="boardId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="editable" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="boardName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="replyCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="threadCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentBoardId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastReplyId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastThreadId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="boardSeq" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    boardId, CreateTime, editable, description, boardName, replyCount, threadCount, parentBoardId, 
+    lastReplyId, lastThreadId, tenantId, boardSeq
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from frm_board
+    where boardId = #{boardId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from frm_board
+    where boardId = #{boardId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.forum.FrmBoard" >
+    insert into frm_board (boardId, CreateTime, editable, 
+      description, boardName, replyCount, 
+      threadCount, parentBoardId, lastReplyId, 
+      lastThreadId, tenantId, boardSeq
+      )
+    values (#{boardId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{editable,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{boardName,jdbcType=VARCHAR}, #{replyCount,jdbcType=INTEGER}, 
+      #{threadCount,jdbcType=INTEGER}, #{parentBoardId,jdbcType=INTEGER}, #{lastReplyId,jdbcType=INTEGER}, 
+      #{lastThreadId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{boardSeq,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.forum.FrmBoard" >
+    insert into frm_board
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="boardId != null" >
+        boardId,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+      <if test="editable != null" >
+        editable,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="boardName != null" >
+        boardName,
+      </if>
+      <if test="replyCount != null" >
+        replyCount,
+      </if>
+      <if test="threadCount != null" >
+        threadCount,
+      </if>
+      <if test="parentBoardId != null" >
+        parentBoardId,
+      </if>
+      <if test="lastReplyId != null" >
+        lastReplyId,
+      </if>
+      <if test="lastThreadId != null" >
+        lastThreadId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="boardSeq != null" >
+        boardSeq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="boardId != null" >
+        #{boardId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editable != null" >
+        #{editable,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="boardName != null" >
+        #{boardName,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCount != null" >
+        #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="threadCount != null" >
+        #{threadCount,jdbcType=INTEGER},
+      </if>
+      <if test="parentBoardId != null" >
+        #{parentBoardId,jdbcType=INTEGER},
+      </if>
+      <if test="lastReplyId != null" >
+        #{lastReplyId,jdbcType=INTEGER},
+      </if>
+      <if test="lastThreadId != null" >
+        #{lastThreadId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="boardSeq != null" >
+        #{boardSeq,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.forum.FrmBoard" >
+    update frm_board
+    <set >
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editable != null" >
+        editable = #{editable,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="boardName != null" >
+        boardName = #{boardName,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCount != null" >
+        replyCount = #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="threadCount != null" >
+        threadCount = #{threadCount,jdbcType=INTEGER},
+      </if>
+      <if test="parentBoardId != null" >
+        parentBoardId = #{parentBoardId,jdbcType=INTEGER},
+      </if>
+      <if test="lastReplyId != null" >
+        lastReplyId = #{lastReplyId,jdbcType=INTEGER},
+      </if>
+      <if test="lastThreadId != null" >
+        lastThreadId = #{lastThreadId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="boardSeq != null" >
+        boardSeq = #{boardSeq,jdbcType=INTEGER},
+      </if>
+    </set>
+    where boardId = #{boardId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.forum.FrmBoard" >
+    update frm_board
+    set CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      editable = #{editable,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      boardName = #{boardName,jdbcType=VARCHAR},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      threadCount = #{threadCount,jdbcType=INTEGER},
+      parentBoardId = #{parentBoardId,jdbcType=INTEGER},
+      lastReplyId = #{lastReplyId,jdbcType=INTEGER},
+      lastThreadId = #{lastThreadId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      boardSeq = #{boardSeq,jdbcType=INTEGER}
+    where boardId = #{boardId,jdbcType=INTEGER}
+  </update>
+</mapper>

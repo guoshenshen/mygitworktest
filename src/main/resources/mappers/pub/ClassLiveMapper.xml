@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.ClassLiveMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.ClassLive" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="subject" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="invalidDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="teacherToken" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="assistantToken" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="studentToken" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="studentClientToken" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="speakerInfo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="scheduleInfo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="webJoin" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="clientJoin" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="duration" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uiMode" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uiColor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="scene" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uiWindow" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="uiVideo" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="upgrade" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="sec" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="realtime" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="maxAttendees" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="loginName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="creatorOperatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openOrgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sponsorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="liveclassid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="liveclassnumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="teacherJoinUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="studentJoinUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="picUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isOnlyLoginWatch" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="isOnlyLoginTeach" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isAppShow" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, subject, startDate, invalidDate, teacherToken, assistantToken, studentToken, 
+    studentClientToken, speakerInfo, scheduleInfo, webJoin, clientJoin, description, 
+    duration, uiMode, uiColor, scene, uiWindow, uiVideo, upgrade, sec, realtime, maxAttendees, 
+    loginName, password, creatorOperatorId, orgId, tenantId, openScope, openOrgSEQ, sponsorName, 
+    liveclassid, liveclassnumber, teacherJoinUrl, studentJoinUrl, picUrl, isOnlyLoginWatch, 
+    isOnlyLoginTeach, status, isAppShow
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from class_live
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from class_live
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.ClassLive" >
+    insert into class_live (id, subject, startDate, 
+      invalidDate, teacherToken, assistantToken, 
+      studentToken, studentClientToken, speakerInfo, 
+      scheduleInfo, webJoin, clientJoin, 
+      description, duration, uiMode, 
+      uiColor, scene, uiWindow, 
+      uiVideo, upgrade, sec, 
+      realtime, maxAttendees, loginName, 
+      password, creatorOperatorId, orgId, 
+      tenantId, openScope, openOrgSEQ, 
+      sponsorName, liveclassid, liveclassnumber, 
+      teacherJoinUrl, studentJoinUrl, picUrl, 
+      isOnlyLoginWatch, isOnlyLoginTeach, status, 
+      isAppShow)
+    values (#{id,jdbcType=BIGINT}, #{subject,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{invalidDate,jdbcType=TIMESTAMP}, #{teacherToken,jdbcType=VARCHAR}, #{assistantToken,jdbcType=VARCHAR}, 
+      #{studentToken,jdbcType=VARCHAR}, #{studentClientToken,jdbcType=VARCHAR}, #{speakerInfo,jdbcType=VARCHAR}, 
+      #{scheduleInfo,jdbcType=VARCHAR}, #{webJoin,jdbcType=INTEGER}, #{clientJoin,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{uiMode,jdbcType=INTEGER}, 
+      #{uiColor,jdbcType=VARCHAR}, #{scene,jdbcType=INTEGER}, #{uiWindow,jdbcType=BOOLEAN}, 
+      #{uiVideo,jdbcType=BOOLEAN}, #{upgrade,jdbcType=BOOLEAN}, #{sec,jdbcType=INTEGER}, 
+      #{realtime,jdbcType=BOOLEAN}, #{maxAttendees,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{creatorOperatorId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{tenantId,jdbcType=INTEGER}, #{openScope,jdbcType=INTEGER}, #{openOrgSEQ,jdbcType=VARCHAR}, 
+      #{sponsorName,jdbcType=VARCHAR}, #{liveclassid,jdbcType=VARCHAR}, #{liveclassnumber,jdbcType=VARCHAR}, 
+      #{teacherJoinUrl,jdbcType=VARCHAR}, #{studentJoinUrl,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, 
+      #{isOnlyLoginWatch,jdbcType=BOOLEAN}, #{isOnlyLoginTeach,jdbcType=BOOLEAN}, #{status,jdbcType=INTEGER}, 
+      #{isAppShow,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.ClassLive" >
+    insert into class_live
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="startDate != null" >
+        startDate,
+      </if>
+      <if test="invalidDate != null" >
+        invalidDate,
+      </if>
+      <if test="teacherToken != null" >
+        teacherToken,
+      </if>
+      <if test="assistantToken != null" >
+        assistantToken,
+      </if>
+      <if test="studentToken != null" >
+        studentToken,
+      </if>
+      <if test="studentClientToken != null" >
+        studentClientToken,
+      </if>
+      <if test="speakerInfo != null" >
+        speakerInfo,
+      </if>
+      <if test="scheduleInfo != null" >
+        scheduleInfo,
+      </if>
+      <if test="webJoin != null" >
+        webJoin,
+      </if>
+      <if test="clientJoin != null" >
+        clientJoin,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="uiMode != null" >
+        uiMode,
+      </if>
+      <if test="uiColor != null" >
+        uiColor,
+      </if>
+      <if test="scene != null" >
+        scene,
+      </if>
+      <if test="uiWindow != null" >
+        uiWindow,
+      </if>
+      <if test="uiVideo != null" >
+        uiVideo,
+      </if>
+      <if test="upgrade != null" >
+        upgrade,
+      </if>
+      <if test="sec != null" >
+        sec,
+      </if>
+      <if test="realtime != null" >
+        realtime,
+      </if>
+      <if test="maxAttendees != null" >
+        maxAttendees,
+      </if>
+      <if test="loginName != null" >
+        loginName,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="creatorOperatorId != null" >
+        creatorOperatorId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+      <if test="openOrgSEQ != null" >
+        openOrgSEQ,
+      </if>
+      <if test="sponsorName != null" >
+        sponsorName,
+      </if>
+      <if test="liveclassid != null" >
+        liveclassid,
+      </if>
+      <if test="liveclassnumber != null" >
+        liveclassnumber,
+      </if>
+      <if test="teacherJoinUrl != null" >
+        teacherJoinUrl,
+      </if>
+      <if test="studentJoinUrl != null" >
+        studentJoinUrl,
+      </if>
+      <if test="picUrl != null" >
+        picUrl,
+      </if>
+      <if test="isOnlyLoginWatch != null" >
+        isOnlyLoginWatch,
+      </if>
+      <if test="isOnlyLoginTeach != null" >
+        isOnlyLoginTeach,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isAppShow != null" >
+        isAppShow,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalidDate != null" >
+        #{invalidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherToken != null" >
+        #{teacherToken,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantToken != null" >
+        #{assistantToken,jdbcType=VARCHAR},
+      </if>
+      <if test="studentToken != null" >
+        #{studentToken,jdbcType=VARCHAR},
+      </if>
+      <if test="studentClientToken != null" >
+        #{studentClientToken,jdbcType=VARCHAR},
+      </if>
+      <if test="speakerInfo != null" >
+        #{speakerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleInfo != null" >
+        #{scheduleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="webJoin != null" >
+        #{webJoin,jdbcType=INTEGER},
+      </if>
+      <if test="clientJoin != null" >
+        #{clientJoin,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="uiMode != null" >
+        #{uiMode,jdbcType=INTEGER},
+      </if>
+      <if test="uiColor != null" >
+        #{uiColor,jdbcType=VARCHAR},
+      </if>
+      <if test="scene != null" >
+        #{scene,jdbcType=INTEGER},
+      </if>
+      <if test="uiWindow != null" >
+        #{uiWindow,jdbcType=BOOLEAN},
+      </if>
+      <if test="uiVideo != null" >
+        #{uiVideo,jdbcType=BOOLEAN},
+      </if>
+      <if test="upgrade != null" >
+        #{upgrade,jdbcType=BOOLEAN},
+      </if>
+      <if test="sec != null" >
+        #{sec,jdbcType=INTEGER},
+      </if>
+      <if test="realtime != null" >
+        #{realtime,jdbcType=BOOLEAN},
+      </if>
+      <if test="maxAttendees != null" >
+        #{maxAttendees,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorOperatorId != null" >
+        #{creatorOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="openOrgSEQ != null" >
+        #{openOrgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorName != null" >
+        #{sponsorName,jdbcType=VARCHAR},
+      </if>
+      <if test="liveclassid != null" >
+        #{liveclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="liveclassnumber != null" >
+        #{liveclassnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherJoinUrl != null" >
+        #{teacherJoinUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="studentJoinUrl != null" >
+        #{studentJoinUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnlyLoginWatch != null" >
+        #{isOnlyLoginWatch,jdbcType=BOOLEAN},
+      </if>
+      <if test="isOnlyLoginTeach != null" >
+        #{isOnlyLoginTeach,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isAppShow != null" >
+        #{isAppShow,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.ClassLive" >
+    update class_live
+    <set >
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        startDate = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalidDate != null" >
+        invalidDate = #{invalidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherToken != null" >
+        teacherToken = #{teacherToken,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantToken != null" >
+        assistantToken = #{assistantToken,jdbcType=VARCHAR},
+      </if>
+      <if test="studentToken != null" >
+        studentToken = #{studentToken,jdbcType=VARCHAR},
+      </if>
+      <if test="studentClientToken != null" >
+        studentClientToken = #{studentClientToken,jdbcType=VARCHAR},
+      </if>
+      <if test="speakerInfo != null" >
+        speakerInfo = #{speakerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleInfo != null" >
+        scheduleInfo = #{scheduleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="webJoin != null" >
+        webJoin = #{webJoin,jdbcType=INTEGER},
+      </if>
+      <if test="clientJoin != null" >
+        clientJoin = #{clientJoin,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="uiMode != null" >
+        uiMode = #{uiMode,jdbcType=INTEGER},
+      </if>
+      <if test="uiColor != null" >
+        uiColor = #{uiColor,jdbcType=VARCHAR},
+      </if>
+      <if test="scene != null" >
+        scene = #{scene,jdbcType=INTEGER},
+      </if>
+      <if test="uiWindow != null" >
+        uiWindow = #{uiWindow,jdbcType=BOOLEAN},
+      </if>
+      <if test="uiVideo != null" >
+        uiVideo = #{uiVideo,jdbcType=BOOLEAN},
+      </if>
+      <if test="upgrade != null" >
+        upgrade = #{upgrade,jdbcType=BOOLEAN},
+      </if>
+      <if test="sec != null" >
+        sec = #{sec,jdbcType=INTEGER},
+      </if>
+      <if test="realtime != null" >
+        realtime = #{realtime,jdbcType=BOOLEAN},
+      </if>
+      <if test="maxAttendees != null" >
+        maxAttendees = #{maxAttendees,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null" >
+        loginName = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorOperatorId != null" >
+        creatorOperatorId = #{creatorOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        openScope = #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="openOrgSEQ != null" >
+        openOrgSEQ = #{openOrgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorName != null" >
+        sponsorName = #{sponsorName,jdbcType=VARCHAR},
+      </if>
+      <if test="liveclassid != null" >
+        liveclassid = #{liveclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="liveclassnumber != null" >
+        liveclassnumber = #{liveclassnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherJoinUrl != null" >
+        teacherJoinUrl = #{teacherJoinUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="studentJoinUrl != null" >
+        studentJoinUrl = #{studentJoinUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        picUrl = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnlyLoginWatch != null" >
+        isOnlyLoginWatch = #{isOnlyLoginWatch,jdbcType=BOOLEAN},
+      </if>
+      <if test="isOnlyLoginTeach != null" >
+        isOnlyLoginTeach = #{isOnlyLoginTeach,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isAppShow != null" >
+        isAppShow = #{isAppShow,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.ClassLive" >
+    update class_live
+    set subject = #{subject,jdbcType=VARCHAR},
+      startDate = #{startDate,jdbcType=TIMESTAMP},
+      invalidDate = #{invalidDate,jdbcType=TIMESTAMP},
+      teacherToken = #{teacherToken,jdbcType=VARCHAR},
+      assistantToken = #{assistantToken,jdbcType=VARCHAR},
+      studentToken = #{studentToken,jdbcType=VARCHAR},
+      studentClientToken = #{studentClientToken,jdbcType=VARCHAR},
+      speakerInfo = #{speakerInfo,jdbcType=VARCHAR},
+      scheduleInfo = #{scheduleInfo,jdbcType=VARCHAR},
+      webJoin = #{webJoin,jdbcType=INTEGER},
+      clientJoin = #{clientJoin,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      uiMode = #{uiMode,jdbcType=INTEGER},
+      uiColor = #{uiColor,jdbcType=VARCHAR},
+      scene = #{scene,jdbcType=INTEGER},
+      uiWindow = #{uiWindow,jdbcType=BOOLEAN},
+      uiVideo = #{uiVideo,jdbcType=BOOLEAN},
+      upgrade = #{upgrade,jdbcType=BOOLEAN},
+      sec = #{sec,jdbcType=INTEGER},
+      realtime = #{realtime,jdbcType=BOOLEAN},
+      maxAttendees = #{maxAttendees,jdbcType=INTEGER},
+      loginName = #{loginName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      creatorOperatorId = #{creatorOperatorId,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      openScope = #{openScope,jdbcType=INTEGER},
+      openOrgSEQ = #{openOrgSEQ,jdbcType=VARCHAR},
+      sponsorName = #{sponsorName,jdbcType=VARCHAR},
+      liveclassid = #{liveclassid,jdbcType=VARCHAR},
+      liveclassnumber = #{liveclassnumber,jdbcType=VARCHAR},
+      teacherJoinUrl = #{teacherJoinUrl,jdbcType=VARCHAR},
+      studentJoinUrl = #{studentJoinUrl,jdbcType=VARCHAR},
+      picUrl = #{picUrl,jdbcType=VARCHAR},
+      isOnlyLoginWatch = #{isOnlyLoginWatch,jdbcType=BOOLEAN},
+      isOnlyLoginTeach = #{isOnlyLoginTeach,jdbcType=BOOLEAN},
+      status = #{status,jdbcType=INTEGER},
+      isAppShow = #{isAppShow,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

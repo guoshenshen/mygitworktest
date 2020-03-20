@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.OrgRecommendTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.OrgRecommendTrain" >
+    <constructor >
+      <idArg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="recommendPicId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="titleRecommend" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="picRecommend" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="picRecommender" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    trainId, tenantId, orgId, recommendPicId, titleRecommend, picRecommend, picRecommender
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.systemManage.OrgRecommendTrainKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from org_recommendtrain
+    where trainId = #{trainId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.systemManage.OrgRecommendTrainKey" >
+    delete from org_recommendtrain
+    where trainId = #{trainId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.OrgRecommendTrain" >
+    insert into org_recommendtrain (trainId, tenantId, orgId, 
+      recommendPicId, titleRecommend, picRecommend, 
+      picRecommender)
+    values (#{trainId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{recommendPicId,jdbcType=INTEGER}, #{titleRecommend,jdbcType=INTEGER}, #{picRecommend,jdbcType=INTEGER}, 
+      #{picRecommender,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.OrgRecommendTrain" >
+    insert into org_recommendtrain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="recommendPicId != null" >
+        recommendPicId,
+      </if>
+      <if test="titleRecommend != null" >
+        titleRecommend,
+      </if>
+      <if test="picRecommend != null" >
+        picRecommend,
+      </if>
+      <if test="picRecommender != null" >
+        picRecommender,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendPicId != null" >
+        #{recommendPicId,jdbcType=INTEGER},
+      </if>
+      <if test="titleRecommend != null" >
+        #{titleRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="picRecommend != null" >
+        #{picRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="picRecommender != null" >
+        #{picRecommender,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.OrgRecommendTrain" >
+    update org_recommendtrain
+    <set >
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendPicId != null" >
+        recommendPicId = #{recommendPicId,jdbcType=INTEGER},
+      </if>
+      <if test="titleRecommend != null" >
+        titleRecommend = #{titleRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="picRecommend != null" >
+        picRecommend = #{picRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="picRecommender != null" >
+        picRecommender = #{picRecommender,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where trainId = #{trainId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.OrgRecommendTrain" >
+    update org_recommendtrain
+    set orgId = #{orgId,jdbcType=INTEGER},
+      recommendPicId = #{recommendPicId,jdbcType=INTEGER},
+      titleRecommend = #{titleRecommend,jdbcType=INTEGER},
+      picRecommend = #{picRecommend,jdbcType=INTEGER},
+      picRecommender = #{picRecommender,jdbcType=VARCHAR}
+    where trainId = #{trainId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+</mapper>

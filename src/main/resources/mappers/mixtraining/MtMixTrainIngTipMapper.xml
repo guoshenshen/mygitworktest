@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainIngTipMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainIngTip" >
+    <constructor >
+      <idArg column="tipId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tipName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="useCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isDefaultTemplate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tipId, tipName, createDate, operatorId, useCount, isDefaultTemplate, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainingtip
+    where tipId = #{tipId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtrainingtip
+    where tipId = #{tipId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainIngTip" >
+    insert into mt_mixtrainingtip (tipId, tipName, createDate, 
+      operatorId, useCount, isDefaultTemplate, 
+      remark)
+    values (#{tipId,jdbcType=INTEGER}, #{tipName,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}, 
+      #{operatorId,jdbcType=INTEGER}, #{useCount,jdbcType=INTEGER}, #{isDefaultTemplate,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainIngTip" >
+    insert into mt_mixtrainingtip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tipId != null" >
+        tipId,
+      </if>
+      <if test="tipName != null" >
+        tipName,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="useCount != null" >
+        useCount,
+      </if>
+      <if test="isDefaultTemplate != null" >
+        isDefaultTemplate,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tipId != null" >
+        #{tipId,jdbcType=INTEGER},
+      </if>
+      <if test="tipName != null" >
+        #{tipName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="useCount != null" >
+        #{useCount,jdbcType=INTEGER},
+      </if>
+      <if test="isDefaultTemplate != null" >
+        #{isDefaultTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainIngTip" >
+    update mt_mixtrainingtip
+    <set >
+      <if test="tipName != null" >
+        tipName = #{tipName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="useCount != null" >
+        useCount = #{useCount,jdbcType=INTEGER},
+      </if>
+      <if test="isDefaultTemplate != null" >
+        isDefaultTemplate = #{isDefaultTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tipId = #{tipId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainIngTip" >
+    update mt_mixtrainingtip
+    set tipName = #{tipName,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=DATE},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      useCount = #{useCount,jdbcType=INTEGER},
+      isDefaultTemplate = #{isDefaultTemplate,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where tipId = #{tipId,jdbcType=INTEGER}
+  </update>
+</mapper>

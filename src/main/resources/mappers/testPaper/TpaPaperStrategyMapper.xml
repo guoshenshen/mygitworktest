@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.testPaper.TpaPaperStrategyMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.testPaper.TpaPaperStrategy" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="strategyFullScore" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyCreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="strategyCreator" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyClassifyId" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, strategyName, strategyFullScore, strategyType, strategyCreateTime, strategyCreator, 
+    strategyClassifyId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tpa_paper_strategy
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tpa_paper_strategy
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategy" >
+    insert into tpa_paper_strategy (ID, strategyName, strategyFullScore, 
+      strategyType, strategyCreateTime, strategyCreator, 
+      strategyClassifyId)
+    values (#{ID,jdbcType=INTEGER}, #{strategyName,jdbcType=VARCHAR}, #{strategyFullScore,jdbcType=INTEGER}, 
+      #{strategyType,jdbcType=INTEGER}, #{strategyCreateTime,jdbcType=TIMESTAMP}, #{strategyCreator,jdbcType=INTEGER}, 
+      #{strategyClassifyId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategy" >
+    insert into tpa_paper_strategy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="strategyName != null" >
+        strategyName,
+      </if>
+      <if test="strategyFullScore != null" >
+        strategyFullScore,
+      </if>
+      <if test="strategyType != null" >
+        strategyType,
+      </if>
+      <if test="strategyCreateTime != null" >
+        strategyCreateTime,
+      </if>
+      <if test="strategyCreator != null" >
+        strategyCreator,
+      </if>
+      <if test="strategyClassifyId != null" >
+        strategyClassifyId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="strategyName != null" >
+        #{strategyName,jdbcType=VARCHAR},
+      </if>
+      <if test="strategyFullScore != null" >
+        #{strategyFullScore,jdbcType=INTEGER},
+      </if>
+      <if test="strategyType != null" >
+        #{strategyType,jdbcType=INTEGER},
+      </if>
+      <if test="strategyCreateTime != null" >
+        #{strategyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="strategyCreator != null" >
+        #{strategyCreator,jdbcType=INTEGER},
+      </if>
+      <if test="strategyClassifyId != null" >
+        #{strategyClassifyId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategy" >
+    update tpa_paper_strategy
+    <set >
+      <if test="strategyName != null" >
+        strategyName = #{strategyName,jdbcType=VARCHAR},
+      </if>
+      <if test="strategyFullScore != null" >
+        strategyFullScore = #{strategyFullScore,jdbcType=INTEGER},
+      </if>
+      <if test="strategyType != null" >
+        strategyType = #{strategyType,jdbcType=INTEGER},
+      </if>
+      <if test="strategyCreateTime != null" >
+        strategyCreateTime = #{strategyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="strategyCreator != null" >
+        strategyCreator = #{strategyCreator,jdbcType=INTEGER},
+      </if>
+      <if test="strategyClassifyId != null" >
+        strategyClassifyId = #{strategyClassifyId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategy" >
+    update tpa_paper_strategy
+    set strategyName = #{strategyName,jdbcType=VARCHAR},
+      strategyFullScore = #{strategyFullScore,jdbcType=INTEGER},
+      strategyType = #{strategyType,jdbcType=INTEGER},
+      strategyCreateTime = #{strategyCreateTime,jdbcType=TIMESTAMP},
+      strategyCreator = #{strategyCreator,jdbcType=INTEGER},
+      strategyClassifyId = #{strategyClassifyId,jdbcType=BIGINT}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralManualRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralManualRecord" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="studentId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="integralId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operateItemNames" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operateItemMaps" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, operatorName, studentId, integralId, operateItemNames, operateItemMaps, 
+    operateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_manual_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_manual_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralManualRecord" >
+    insert into integral_manual_record (id, operatorId, operatorName, 
+      studentId, integralId, operateItemNames, 
+      operateItemMaps, operateTime)
+    values (#{id,jdbcType=BIGINT}, #{operatorId,jdbcType=BIGINT}, #{operatorName,jdbcType=VARCHAR}, 
+      #{studentId,jdbcType=BIGINT}, #{integralId,jdbcType=BIGINT}, #{operateItemNames,jdbcType=VARCHAR}, 
+      #{operateItemMaps,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralManualRecord" >
+    insert into integral_manual_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="studentId != null" >
+        studentId,
+      </if>
+      <if test="integralId != null" >
+        integralId,
+      </if>
+      <if test="operateItemNames != null" >
+        operateItemNames,
+      </if>
+      <if test="operateItemMaps != null" >
+        operateItemMaps,
+      </if>
+      <if test="operateTime != null" >
+        operateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="integralId != null" >
+        #{integralId,jdbcType=BIGINT},
+      </if>
+      <if test="operateItemNames != null" >
+        #{operateItemNames,jdbcType=VARCHAR},
+      </if>
+      <if test="operateItemMaps != null" >
+        #{operateItemMaps,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralManualRecord" >
+    update integral_manual_record
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        studentId = #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="integralId != null" >
+        integralId = #{integralId,jdbcType=BIGINT},
+      </if>
+      <if test="operateItemNames != null" >
+        operateItemNames = #{operateItemNames,jdbcType=VARCHAR},
+      </if>
+      <if test="operateItemMaps != null" >
+        operateItemMaps = #{operateItemMaps,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        operateTime = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralManualRecord" >
+    update integral_manual_record
+    set operatorId = #{operatorId,jdbcType=BIGINT},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      studentId = #{studentId,jdbcType=BIGINT},
+      integralId = #{integralId,jdbcType=BIGINT},
+      operateItemNames = #{operateItemNames,jdbcType=VARCHAR},
+      operateItemMaps = #{operateItemMaps,jdbcType=VARCHAR},
+      operateTime = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

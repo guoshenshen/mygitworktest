@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.onlinetraining.OntOnlineTrainArrangeDeptArrangeUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.onlinetraining.OntOnlineTrainArrangeDeptArrangeUser" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="arrangeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, arrangeID, userID, orgID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ont_onlinetrainarrange_deptarrangeuser
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ont_onlinetrainarrange_deptarrangeuser
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainArrangeDeptArrangeUser" >
+    insert into ont_onlinetrainarrange_deptarrangeuser (ID, arrangeID, userID, 
+      orgID)
+    values (#{ID,jdbcType=INTEGER}, #{arrangeID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, 
+      #{orgID,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainArrangeDeptArrangeUser" >
+    insert into ont_onlinetrainarrange_deptarrangeuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="arrangeID != null" >
+        arrangeID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="orgID != null" >
+        orgID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="arrangeID != null" >
+        #{arrangeID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="orgID != null" >
+        #{orgID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainArrangeDeptArrangeUser" >
+    update ont_onlinetrainarrange_deptarrangeuser
+    <set >
+      <if test="arrangeID != null" >
+        arrangeID = #{arrangeID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        userID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="orgID != null" >
+        orgID = #{orgID,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainArrangeDeptArrangeUser" >
+    update ont_onlinetrainarrange_deptarrangeuser
+    set arrangeID = #{arrangeID,jdbcType=INTEGER},
+      userID = #{userID,jdbcType=INTEGER},
+      orgID = #{orgID,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

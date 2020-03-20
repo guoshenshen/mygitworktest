@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.TenantMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.Tenant" >
+    <constructor >
+      <idArg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="totalNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="registerDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="enterUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isSingleLogin" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isVirOrg" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="serverId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="storedAddress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="httpAddress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="storedContext" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="rtmpAddress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isRedirectToPortalWeb" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="faviconIcoUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="workingStatus" jdbcType="TINYINT" javaType="java.lang.Byte" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tenantId, tenantName, totalNum, registerDate, orgId, enterUrl, isSingleLogin, isVirOrg, 
+    serverId, storedAddress, httpAddress, storedContext, rtmpAddress, isRedirectToPortalWeb, 
+    faviconIcoUrl, workingStatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tenant
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tenant
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.Tenant" >
+    insert into tenant (tenantId, tenantName, totalNum, 
+      registerDate, orgId, enterUrl, 
+      isSingleLogin, isVirOrg, serverId, 
+      storedAddress, httpAddress, storedContext, 
+      rtmpAddress, isRedirectToPortalWeb, faviconIcoUrl, 
+      workingStatus)
+    values (#{tenantId,jdbcType=INTEGER}, #{tenantName,jdbcType=VARCHAR}, #{totalNum,jdbcType=INTEGER}, 
+      #{registerDate,jdbcType=DATE}, #{orgId,jdbcType=INTEGER}, #{enterUrl,jdbcType=VARCHAR}, 
+      #{isSingleLogin,jdbcType=INTEGER}, #{isVirOrg,jdbcType=INTEGER}, #{serverId,jdbcType=BIGINT}, 
+      #{storedAddress,jdbcType=VARCHAR}, #{httpAddress,jdbcType=VARCHAR}, #{storedContext,jdbcType=VARCHAR}, 
+      #{rtmpAddress,jdbcType=VARCHAR}, #{isRedirectToPortalWeb,jdbcType=INTEGER}, #{faviconIcoUrl,jdbcType=VARCHAR}, 
+      #{workingStatus,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.Tenant" >
+    insert into tenant
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="tenantName != null" >
+        tenantName,
+      </if>
+      <if test="totalNum != null" >
+        totalNum,
+      </if>
+      <if test="registerDate != null" >
+        registerDate,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="enterUrl != null" >
+        enterUrl,
+      </if>
+      <if test="isSingleLogin != null" >
+        isSingleLogin,
+      </if>
+      <if test="isVirOrg != null" >
+        isVirOrg,
+      </if>
+      <if test="serverId != null" >
+        serverId,
+      </if>
+      <if test="storedAddress != null" >
+        storedAddress,
+      </if>
+      <if test="httpAddress != null" >
+        httpAddress,
+      </if>
+      <if test="storedContext != null" >
+        storedContext,
+      </if>
+      <if test="rtmpAddress != null" >
+        rtmpAddress,
+      </if>
+      <if test="isRedirectToPortalWeb != null" >
+        isRedirectToPortalWeb,
+      </if>
+      <if test="faviconIcoUrl != null" >
+        faviconIcoUrl,
+      </if>
+      <if test="workingStatus != null" >
+        workingStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantName != null" >
+        #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNum != null" >
+        #{totalNum,jdbcType=INTEGER},
+      </if>
+      <if test="registerDate != null" >
+        #{registerDate,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="enterUrl != null" >
+        #{enterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isSingleLogin != null" >
+        #{isSingleLogin,jdbcType=INTEGER},
+      </if>
+      <if test="isVirOrg != null" >
+        #{isVirOrg,jdbcType=INTEGER},
+      </if>
+      <if test="serverId != null" >
+        #{serverId,jdbcType=BIGINT},
+      </if>
+      <if test="storedAddress != null" >
+        #{storedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="httpAddress != null" >
+        #{httpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storedContext != null" >
+        #{storedContext,jdbcType=VARCHAR},
+      </if>
+      <if test="rtmpAddress != null" >
+        #{rtmpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isRedirectToPortalWeb != null" >
+        #{isRedirectToPortalWeb,jdbcType=INTEGER},
+      </if>
+      <if test="faviconIcoUrl != null" >
+        #{faviconIcoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="workingStatus != null" >
+        #{workingStatus,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.Tenant" >
+    update tenant
+    <set >
+      <if test="tenantName != null" >
+        tenantName = #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNum != null" >
+        totalNum = #{totalNum,jdbcType=INTEGER},
+      </if>
+      <if test="registerDate != null" >
+        registerDate = #{registerDate,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="enterUrl != null" >
+        enterUrl = #{enterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isSingleLogin != null" >
+        isSingleLogin = #{isSingleLogin,jdbcType=INTEGER},
+      </if>
+      <if test="isVirOrg != null" >
+        isVirOrg = #{isVirOrg,jdbcType=INTEGER},
+      </if>
+      <if test="serverId != null" >
+        serverId = #{serverId,jdbcType=BIGINT},
+      </if>
+      <if test="storedAddress != null" >
+        storedAddress = #{storedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="httpAddress != null" >
+        httpAddress = #{httpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storedContext != null" >
+        storedContext = #{storedContext,jdbcType=VARCHAR},
+      </if>
+      <if test="rtmpAddress != null" >
+        rtmpAddress = #{rtmpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isRedirectToPortalWeb != null" >
+        isRedirectToPortalWeb = #{isRedirectToPortalWeb,jdbcType=INTEGER},
+      </if>
+      <if test="faviconIcoUrl != null" >
+        faviconIcoUrl = #{faviconIcoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="workingStatus != null" >
+        workingStatus = #{workingStatus,jdbcType=TINYINT},
+      </if>
+    </set>
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.Tenant" >
+    update tenant
+    set tenantName = #{tenantName,jdbcType=VARCHAR},
+      totalNum = #{totalNum,jdbcType=INTEGER},
+      registerDate = #{registerDate,jdbcType=DATE},
+      orgId = #{orgId,jdbcType=INTEGER},
+      enterUrl = #{enterUrl,jdbcType=VARCHAR},
+      isSingleLogin = #{isSingleLogin,jdbcType=INTEGER},
+      isVirOrg = #{isVirOrg,jdbcType=INTEGER},
+      serverId = #{serverId,jdbcType=BIGINT},
+      storedAddress = #{storedAddress,jdbcType=VARCHAR},
+      httpAddress = #{httpAddress,jdbcType=VARCHAR},
+      storedContext = #{storedContext,jdbcType=VARCHAR},
+      rtmpAddress = #{rtmpAddress,jdbcType=VARCHAR},
+      isRedirectToPortalWeb = #{isRedirectToPortalWeb,jdbcType=INTEGER},
+      faviconIcoUrl = #{faviconIcoUrl,jdbcType=VARCHAR},
+      workingStatus = #{workingStatus,jdbcType=TINYINT}
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+
+  <select id="listTenant" resultMap="BaseResultMap" >
+    SELECT  <include refid="Base_Column_List"/> FROM tenant
+  </select>
+
+
+  <select id="findByCondition" resultMap="BaseResultMap" parameterType="map">
+    SELECT  tenant.* from tenant tenant ,course course , coursetype ct, resource_coursetype rct
+    where
+    tenant.tenantId=course.tenantId and (ct.fullpath like CONCAT('',#{domain},'.%') or ct.fullpath like CONCAT('%.',#{domain},'.%'))
+    and ct.courseType_id=rct.courseTypeId and rct.resourceType= #{resourceType} and rct.resourceId=course.course_id
+    and
+    course.pubstatus=1092
+    and   course.openOrgSEQ in
+    <foreach collection="orgSEQ" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+
+    <if test="classification != null " >
+      and course.classfication in
+      <foreach collection="classification" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="courseName != null">
+      and (course.course_name like CONCAT('%',#{courseName},'%') or course.creator like CONCAT('%',#{courseName},'%'))
+    </if>
+     group by course.tenantId order by count(tenant.tenantId) desc
+
+  </select>
+
+<select id="findByOrgId" resultMap="BaseResultMap" parameterType="int">
+  SELECT <include refid="Base_Column_List"/> from tenant where  orgId = #{orgId,jdbcType=INTEGER}
+</select>
+
+
+</mapper>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.material.AssignmentMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.material.Assignment" >
+    <constructor >
+      <arg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="creatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="type" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="resourceId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, name, createDate, creatorName, type, resourceId, description, comment
+  </sql>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from assignment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <select id="findById" resultType="com.elearning.pojo.material.Assignment" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from assignment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <insert id="insert" parameterType="com.elearning.pojo.material.Assignment" >
+    insert into assignment (id, name, createDate, 
+      creatorName, type, resourceId, 
+      description, comment)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{creatorName,jdbcType=VARCHAR}, #{type,jdbcType=BOOLEAN}, #{resourceId,jdbcType=BIGINT}, 
+      #{description,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.material.Assignment" >
+    insert into assignment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="creatorName != null" >
+        creatorName,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="resourceId != null" >
+        resourceId,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.material.Album" >
+    update assignment
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="resourceId != null" >
+        resourceId = #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getAssignmentByIdReturnList" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from assignment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="getListByTypeAndResourceId" resultType="com.elearning.pojo.material.Assignment" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from assignment
+    where type = #{type,jdbcType=BOOLEAN} and resourceId = #{resourceId,jdbcType=BIGINT} order by createDate desc
+  </select>
+
+</mapper>

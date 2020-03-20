@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralCommentHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralCommentHistory" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isReply" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bookId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="discussId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="parentDiscussId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="commentTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userId" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, isReply, content, bookId, discussId, parentDiscussId, commentTime, status, 
+    userId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_comment_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_comment_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralCommentHistory" >
+    insert into integral_comment_history (id, type, isReply, 
+      content, bookId, discussId, 
+      parentDiscussId, commentTime, status, 
+      userId)
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{isReply,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{bookId,jdbcType=BIGINT}, #{discussId,jdbcType=BIGINT}, 
+      #{parentDiscussId,jdbcType=BIGINT}, #{commentTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralCommentHistory" >
+    insert into integral_comment_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="isReply != null" >
+        isReply,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="bookId != null" >
+        bookId,
+      </if>
+      <if test="discussId != null" >
+        discussId,
+      </if>
+      <if test="parentDiscussId != null" >
+        parentDiscussId,
+      </if>
+      <if test="commentTime != null" >
+        commentTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isReply != null" >
+        #{isReply,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="discussId != null" >
+        #{discussId,jdbcType=BIGINT},
+      </if>
+      <if test="parentDiscussId != null" >
+        #{parentDiscussId,jdbcType=BIGINT},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralCommentHistory" >
+    update integral_comment_history
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isReply != null" >
+        isReply = #{isReply,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="bookId != null" >
+        bookId = #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="discussId != null" >
+        discussId = #{discussId,jdbcType=BIGINT},
+      </if>
+      <if test="parentDiscussId != null" >
+        parentDiscussId = #{parentDiscussId,jdbcType=BIGINT},
+      </if>
+      <if test="commentTime != null" >
+        commentTime = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralCommentHistory" >
+    update integral_comment_history
+    set type = #{type,jdbcType=INTEGER},
+      isReply = #{isReply,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      bookId = #{bookId,jdbcType=BIGINT},
+      discussId = #{discussId,jdbcType=BIGINT},
+      parentDiscussId = #{parentDiscussId,jdbcType=BIGINT},
+      commentTime = #{commentTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

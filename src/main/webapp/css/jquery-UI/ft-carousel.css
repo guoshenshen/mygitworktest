@@ -1,0 +1,123 @@
+ul,
+ol,
+li,
+div {
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+.ft-carousel {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.ft-carousel .carousel-inner {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+}
+
+.ft-carousel .carousel-inner .carousel-item {
+	float: left;
+	height: 100%;
+	position:relative;
+}
+
+.ft-carousel .carousel-item a{
+	width:100%;
+	height:100%;
+	position:absolute;
+}
+
+.ft-carousel .carousel-item img {
+	width: 100%;
+	height:100%;
+}
+
+.ft-carousel .carousel-item .titleMask{
+	position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 25px;
+    background: #252525;
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+.ft-carousel .carousel-item .title{
+	position:absolute;
+	bottom:6px;
+	left:10px;
+	right:10px;
+	overflow:hidden;
+	font-size:13px;
+	text-align:right;
+	font-weight: bold;
+	font-family: normal;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+}
+
+.ft-carousel .carousel-indicators {
+	position: absolute;
+	left: 0;
+	bottom: 10px;
+	width: 100%;
+	text-align: center;
+	font-size: 0;
+}
+
+.ft-carousel .carousel-indicators span {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	margin: 0 4px;
+	cursor: pointer;
+}
+
+.ft-carousel .carousel-indicators span i{
+	font-size: 2px;
+    color: #fff;
+}
+
+.ft-carousel .carousel-indicators span.active i{
+	color: #1F376D;
+}
+
+.ft-carousel .carousel-btn {
+	position: absolute;
+	top: 50%;
+	width: 50px;
+	height: 45px;
+	margin-top: -25px;
+	cursor: pointer;
+}
+
+.ft-carousel .carousel-prev-btn {
+	left: 0;
+	text-align: left;
+	padding-left:5px;
+	
+}
+
+
+.ft-carousel .carousel-next-btn {
+	right: 0;
+	text-align: right;
+	padding-right:5px;
+}
+
+.ft-carousel i{
+	font-size:25px;
+	color:#fff;
+}

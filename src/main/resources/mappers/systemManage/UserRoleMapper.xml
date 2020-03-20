@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.UserRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.UserRole" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="User_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Role_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, User_ID, Role_ID, CreatorID, CreateTime, tenantId
+  </sql>
+  <select id="findByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_role ur
+    <where>
+      <if test="roleId!=null">
+          and ur.role_Id=#{roleId}
+      </if>
+      <if test="userId!=null">
+          and ur.user_id=#{userId}
+      </if>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_role
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.UserRole" >
+    insert into user_role (ID, User_ID, Role_ID, 
+      CreatorID, CreateTime, tenantId
+      )
+    values (#{ID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, #{roleID,jdbcType=INTEGER}, 
+      #{creatorID,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, #{tenantId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.UserRole" >
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="userID != null" >
+        User_ID,
+      </if>
+      <if test="roleID != null" >
+        Role_ID,
+      </if>
+      <if test="creatorID != null" >
+        CreatorID,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="roleID != null" >
+        #{roleID,jdbcType=INTEGER},
+      </if>
+      <if test="creatorID != null" >
+        #{creatorID,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.UserRole" >
+    update user_role
+    <set >
+      <if test="userID != null" >
+        User_ID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="roleID != null" >
+        Role_ID = #{roleID,jdbcType=INTEGER},
+      </if>
+      <if test="creatorID != null" >
+        CreatorID = #{creatorID,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.UserRole" >
+    update user_role
+    set User_ID = #{userID,jdbcType=INTEGER},
+      Role_ID = #{roleID,jdbcType=INTEGER},
+      CreatorID = #{creatorID,jdbcType=INTEGER},
+      CreateTime = #{createTime,jdbcType=DATE},
+      tenantId = #{tenantId,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <!--
+    SELECT ur.*
+    from user_role ur , eosorg_t_employee ete , eosorg_t_organization eto
+    WHERE ur.user_id = #{userID,jdbcType=INTEGER}
+    AND ur.tenantId = eto.tenantId
+    AND eto.orgID = ete.orgID
+    AND ete.operatorID = ur.User_ID
+  -->
+  <select id="getUserRoleListByUserID" resultMap="BaseResultMap" parameterType="map">
+      SELECT <include refid="Base_Column_List" />  FROM user_role
+      WHERE User_ID = #{user_id}
+      AND (
+        <if test="tenantId != null and tenantId != ''" >
+          tenantId = #{tenantId,jdbcType=INTEGER} OR
+        </if>
+        tenantId IS NULL
+      )
+  </select>
+
+  <select id="getUserRoleListByUser_id" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List" />  FROM user_role ur WHERE ur.User_ID = #{user_id}
+  </select>
+
+</mapper>

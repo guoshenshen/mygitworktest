@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.SheetCourseKeywordsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.SheetCourseKeywords" >
+    <constructor >
+      <idArg column="courseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keywords1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="keywords2" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    courseId, tenantId, keywords1, tenantName, keywords2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sheet_coursekeywords
+    where courseId = #{courseId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sheet_coursekeywords
+    where courseId = #{courseId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.SheetCourseKeywords" >
+    insert into sheet_coursekeywords (courseId, tenantId, keywords1, 
+      tenantName, keywords2)
+    values (#{courseId,jdbcType=BIGINT}, #{tenantId,jdbcType=INTEGER}, #{keywords1,jdbcType=VARCHAR}, 
+      #{tenantName,jdbcType=VARCHAR}, #{keywords2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.SheetCourseKeywords" >
+    insert into sheet_coursekeywords
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        courseId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="keywords1 != null" >
+        keywords1,
+      </if>
+      <if test="tenantName != null" >
+        tenantName,
+      </if>
+      <if test="keywords2 != null" >
+        keywords2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="keywords1 != null" >
+        #{keywords1,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantName != null" >
+        #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords2 != null" >
+        #{keywords2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.coursemanage.SheetCourseKeywords" >
+    update sheet_coursekeywords
+    <set >
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="keywords1 != null" >
+        keywords1 = #{keywords1,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantName != null" >
+        tenantName = #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords2 != null" >
+        keywords2 = #{keywords2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where courseId = #{courseId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.SheetCourseKeywords" >
+    update sheet_coursekeywords
+    set tenantId = #{tenantId,jdbcType=INTEGER},
+      keywords1 = #{keywords1,jdbcType=VARCHAR},
+      tenantName = #{tenantName,jdbcType=VARCHAR},
+      keywords2 = #{keywords2,jdbcType=VARCHAR}
+    where courseId = #{courseId,jdbcType=BIGINT}
+  </update>
+</mapper>

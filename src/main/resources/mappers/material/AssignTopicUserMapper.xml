@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.material.AssignTopicUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.material.AssignTopicUser" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="topicId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.material.AssignTopicUser" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="topicId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, topicId, operatorId
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from assigntopicuser
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from assigntopicuser
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.material.AssignTopicUser" >
+    insert into assigntopicuser (id, topicId, operatorId, 
+      content)
+    values (#{id,jdbcType=BIGINT}, #{topicId,jdbcType=BIGINT}, #{operatorId,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.material.AssignTopicUser" >
+    insert into assigntopicuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="topicId != null" >
+        topicId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="topicId != null" >
+        #{topicId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.material.AssignTopicUser" >
+    update assigntopicuser
+    <set >
+      <if test="topicId != null" >
+        topicId = #{topicId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.material.AssignTopicUser" >
+    update assigntopicuser
+    set topicId = #{topicId,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.material.AssignTopicUser" >
+    update assigntopicuser
+    set topicId = #{topicId,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findTopicFormByAssignIdAndOperatorId" resultType="com.elearning.vo.material.AssignTopicUserForm" parameterType="map" >
+    SELECT astu.id,astu.topicId,astu.operatorId, astu.content,
+      ast.content AS topicContent, ast.index1, ast.required, ast.form
+    FROM assigntopicuser astu ,assigntopic ast WHERE astu.topicId = ast.id
+      AND ast.assignId = #{assignId} AND astu.operatorId= #{operatorId}
+  </select>
+
+  <select id="getListByOperatorIdAndTopicIdList" resultType="com.elearning.pojo.material.AssignTopicUser" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from assigntopicuser
+    where operatorId = #{operatorId,jdbcType=INTEGER} and topicId in
+    <foreach collection="topicIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+
+</mapper>

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.outsidetraining.OuttOutSideTrainInfoCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.outsidetraining.OuttOutSideTrainInfoCheck" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="ClassHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sponsorDept" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="approverID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="approveStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subTrainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainPlanID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="fee" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="outSideTrainingType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="muploadlink" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="muploadname" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.outsidetraining.OuttOutSideTrainInfoCheckWithBLOBs" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="ClassHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sponsorDept" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="approverID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="approveStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subTrainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainPlanID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="fee" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="outSideTrainingType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="muploadlink" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="muploadname" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="trainGoal" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="trainingContent" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="documentUpload" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, userID, trainName, startTime, endTime, ClassHour, Location, sponsorDept, approverID, 
+    approveDate, approveStatus, comment, year, trainTypeID, subTrainTypeID, tenantId, 
+    trainPlanID, fee, outSideTrainingType, muploadlink, muploadname
+  </sql>
+  <sql id="Blob_Column_List" >
+    trainGoal, trainingContent, documentUpload
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from outt_outsidetraininfocheck
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from outt_outsidetraininfocheck
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.outsidetraining.OuttOutSideTrainInfoCheckWithBLOBs" >
+    insert into outt_outsidetraininfocheck (ID, userID, trainName, 
+      startTime, endTime, ClassHour, 
+      Location, sponsorDept, approverID, 
+      approveDate, approveStatus, comment, 
+      year, trainTypeID, subTrainTypeID, 
+      tenantId, trainPlanID, fee, 
+      outSideTrainingType, muploadlink, muploadname, 
+      trainGoal, trainingContent, documentUpload
+      )
+    values (#{ID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, #{trainName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{classHour,jdbcType=DOUBLE}, 
+      #{location,jdbcType=VARCHAR}, #{sponsorDept,jdbcType=VARCHAR}, #{approverID,jdbcType=INTEGER}, 
+      #{approveDate,jdbcType=TIMESTAMP}, #{approveStatus,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, 
+      #{year,jdbcType=VARCHAR}, #{trainTypeID,jdbcType=INTEGER}, #{subTrainTypeID,jdbcType=INTEGER}, 
+      #{tenantId,jdbcType=INTEGER}, #{trainPlanID,jdbcType=BIGINT}, #{fee,jdbcType=DOUBLE}, 
+      #{outSideTrainingType,jdbcType=INTEGER}, #{muploadlink,jdbcType=CHAR}, #{muploadname,jdbcType=CHAR}, 
+      #{trainGoal,jdbcType=LONGVARCHAR}, #{trainingContent,jdbcType=LONGVARCHAR}, #{documentUpload,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.outsidetraining.OuttOutSideTrainInfoCheckWithBLOBs" >
+    insert into outt_outsidetraininfocheck
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="trainName != null" >
+        trainName,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="classHour != null" >
+        ClassHour,
+      </if>
+      <if test="location != null" >
+        Location,
+      </if>
+      <if test="sponsorDept != null" >
+        sponsorDept,
+      </if>
+      <if test="approverID != null" >
+        approverID,
+      </if>
+      <if test="approveDate != null" >
+        approveDate,
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="trainTypeID != null" >
+        trainTypeID,
+      </if>
+      <if test="subTrainTypeID != null" >
+        subTrainTypeID,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="trainPlanID != null" >
+        trainPlanID,
+      </if>
+      <if test="fee != null" >
+        fee,
+      </if>
+      <if test="outSideTrainingType != null" >
+        outSideTrainingType,
+      </if>
+      <if test="muploadlink != null" >
+        muploadlink,
+      </if>
+      <if test="muploadname != null" >
+        muploadname,
+      </if>
+      <if test="trainGoal != null" >
+        trainGoal,
+      </if>
+      <if test="trainingContent != null" >
+        trainingContent,
+      </if>
+      <if test="documentUpload != null" >
+        documentUpload,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="trainName != null" >
+        #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorDept != null" >
+        #{sponsorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="approverID != null" >
+        #{approverID,jdbcType=INTEGER},
+      </if>
+      <if test="approveDate != null" >
+        #{approveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveStatus != null" >
+        #{approveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTypeID != null" >
+        #{trainTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="subTrainTypeID != null" >
+        #{subTrainTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="trainPlanID != null" >
+        #{trainPlanID,jdbcType=BIGINT},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=DOUBLE},
+      </if>
+      <if test="outSideTrainingType != null" >
+        #{outSideTrainingType,jdbcType=INTEGER},
+      </if>
+      <if test="muploadlink != null" >
+        #{muploadlink,jdbcType=CHAR},
+      </if>
+      <if test="muploadname != null" >
+        #{muploadname,jdbcType=CHAR},
+      </if>
+      <if test="trainGoal != null" >
+        #{trainGoal,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="trainingContent != null" >
+        #{trainingContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="documentUpload != null" >
+        #{documentUpload,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.outsidetraining.OuttOutSideTrainInfoCheckWithBLOBs" >
+    update outt_outsidetraininfocheck
+    <set >
+      <if test="userID != null" >
+        userID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="trainName != null" >
+        trainName = #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="classHour != null" >
+        ClassHour = #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="location != null" >
+        Location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsorDept != null" >
+        sponsorDept = #{sponsorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="approverID != null" >
+        approverID = #{approverID,jdbcType=INTEGER},
+      </if>
+      <if test="approveDate != null" >
+        approveDate = #{approveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus = #{approveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTypeID != null" >
+        trainTypeID = #{trainTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="subTrainTypeID != null" >
+        subTrainTypeID = #{subTrainTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="trainPlanID != null" >
+        trainPlanID = #{trainPlanID,jdbcType=BIGINT},
+      </if>
+      <if test="fee != null" >
+        fee = #{fee,jdbcType=DOUBLE},
+      </if>
+      <if test="outSideTrainingType != null" >
+        outSideTrainingType = #{outSideTrainingType,jdbcType=INTEGER},
+      </if>
+      <if test="muploadlink != null" >
+        muploadlink = #{muploadlink,jdbcType=CHAR},
+      </if>
+      <if test="muploadname != null" >
+        muploadname = #{muploadname,jdbcType=CHAR},
+      </if>
+      <if test="trainGoal != null" >
+        trainGoal = #{trainGoal,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="trainingContent != null" >
+        trainingContent = #{trainingContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="documentUpload != null" >
+        documentUpload = #{documentUpload,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.outsidetraining.OuttOutSideTrainInfoCheckWithBLOBs" >
+    update outt_outsidetraininfocheck
+    set userID = #{userID,jdbcType=INTEGER},
+      trainName = #{trainName,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=DATE},
+      endTime = #{endTime,jdbcType=DATE},
+      ClassHour = #{classHour,jdbcType=DOUBLE},
+      Location = #{location,jdbcType=VARCHAR},
+      sponsorDept = #{sponsorDept,jdbcType=VARCHAR},
+      approverID = #{approverID,jdbcType=INTEGER},
+      approveDate = #{approveDate,jdbcType=TIMESTAMP},
+      approveStatus = #{approveStatus,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      year = #{year,jdbcType=VARCHAR},
+      trainTypeID = #{trainTypeID,jdbcType=INTEGER},
+      subTrainTypeID = #{subTrainTypeID,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      trainPlanID = #{trainPlanID,jdbcType=BIGINT},
+      fee = #{fee,jdbcType=DOUBLE},
+      outSideTrainingType = #{outSideTrainingType,jdbcType=INTEGER},
+      muploadlink = #{muploadlink,jdbcType=CHAR},
+      muploadname = #{muploadname,jdbcType=CHAR},
+      trainGoal = #{trainGoal,jdbcType=LONGVARCHAR},
+      trainingContent = #{trainingContent,jdbcType=LONGVARCHAR},
+      documentUpload = #{documentUpload,jdbcType=LONGVARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.outsidetraining.OuttOutSideTrainInfoCheck" >
+    update outt_outsidetraininfocheck
+    set userID = #{userID,jdbcType=INTEGER},
+      trainName = #{trainName,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=DATE},
+      endTime = #{endTime,jdbcType=DATE},
+      ClassHour = #{classHour,jdbcType=DOUBLE},
+      Location = #{location,jdbcType=VARCHAR},
+      sponsorDept = #{sponsorDept,jdbcType=VARCHAR},
+      approverID = #{approverID,jdbcType=INTEGER},
+      approveDate = #{approveDate,jdbcType=TIMESTAMP},
+      approveStatus = #{approveStatus,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      year = #{year,jdbcType=VARCHAR},
+      trainTypeID = #{trainTypeID,jdbcType=INTEGER},
+      subTrainTypeID = #{subTrainTypeID,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      trainPlanID = #{trainPlanID,jdbcType=BIGINT},
+      fee = #{fee,jdbcType=DOUBLE},
+      outSideTrainingType = #{outSideTrainingType,jdbcType=INTEGER},
+      muploadlink = #{muploadlink,jdbcType=CHAR},
+      muploadname = #{muploadname,jdbcType=CHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

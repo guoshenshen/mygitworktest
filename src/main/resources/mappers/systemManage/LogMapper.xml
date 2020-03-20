@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.LogMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.Log" >
+    <constructor >
+      <idArg column="logid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="action" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sourceUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="targetUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ip" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    logid, createdate, tenantId, tenantName, operatorID, operatorName, action, sourceUrl, 
+    targetUrl, ip
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from log
+    where logid = #{logid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from log
+    where logid = #{logid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.Log" >
+    insert into log (logid, createdate, tenantId, 
+      tenantName, operatorID, operatorName, 
+      action, sourceUrl, targetUrl, 
+      ip)
+    values (#{logid,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{tenantId,jdbcType=INTEGER}, 
+      #{tenantName,jdbcType=VARCHAR}, #{operatorID,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, 
+      #{action,jdbcType=VARCHAR}, #{sourceUrl,jdbcType=VARCHAR}, #{targetUrl,jdbcType=VARCHAR}, 
+      #{ip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.Log" >
+    insert into log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logid != null" >
+        logid,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="tenantName != null" >
+        tenantName,
+      </if>
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="action != null" >
+        action,
+      </if>
+      <if test="sourceUrl != null" >
+        sourceUrl,
+      </if>
+      <if test="targetUrl != null" >
+        targetUrl,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logid != null" >
+        #{logid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantName != null" >
+        #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceUrl != null" >
+        #{sourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="targetUrl != null" >
+        #{targetUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.Log" >
+    update log
+    <set >
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantName != null" >
+        tenantName = #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorID != null" >
+        operatorID = #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceUrl != null" >
+        sourceUrl = #{sourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="targetUrl != null" >
+        targetUrl = #{targetUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where logid = #{logid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.Log" >
+    update log
+    set createdate = #{createdate,jdbcType=TIMESTAMP},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      tenantName = #{tenantName,jdbcType=VARCHAR},
+      operatorID = #{operatorID,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      action = #{action,jdbcType=VARCHAR},
+      sourceUrl = #{sourceUrl,jdbcType=VARCHAR},
+      targetUrl = #{targetUrl,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR}
+    where logid = #{logid,jdbcType=INTEGER}
+  </update>
+</mapper>

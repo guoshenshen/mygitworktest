@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.UscUsertliddayStudyInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.UscUsertliddayStudyInfo" >
+    <constructor >
+      <idArg column="UTD_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="User_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Course_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="STUDYDAY" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="STUDYAMOUNT" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="STUDYTIME" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="STUDYPROGRESS" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="train_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="section_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UTD_ID as UTDID, User_ID as userID , Course_ID as courseID , STUDYDAY, STUDYAMOUNT, STUDYTIME, STUDYPROGRESS, train_id as trainId ,
+    section_id as sectionId, year, tenantId, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from usc_usertliddaystudyinfo
+    where UTD_ID = #{UTDID,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from usc_usertliddaystudyinfo
+    where UTD_ID = #{UTDID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.UscUsertliddayStudyInfo" >
+    insert into usc_usertliddaystudyinfo (UTD_ID, User_ID, Course_ID, 
+      STUDYDAY, STUDYAMOUNT, STUDYTIME, 
+      STUDYPROGRESS, train_id, section_id, 
+      year, tenantId, type
+      )
+    values (#{UTDID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, #{courseID,jdbcType=BIGINT},
+      #{STUDYDAY,jdbcType=DATE}, #{STUDYAMOUNT,jdbcType=INTEGER}, #{STUDYTIME,jdbcType=INTEGER}, 
+      #{STUDYPROGRESS,jdbcType=REAL}, #{trainId,jdbcType=INTEGER}, #{sectionId,jdbcType=INTEGER},
+      #{year,jdbcType=VARCHAR}, #{tenantId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.UscUsertliddayStudyInfo" >
+    insert into usc_usertliddaystudyinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="UTDID != null" >
+        UTD_ID,
+      </if>
+      <if test="userID != null" >
+        User_ID,
+      </if>
+      <if test="courseID != null" >
+        Course_ID,
+      </if>
+      <if test="STUDYDAY != null" >
+        STUDYDAY,
+      </if>
+      <if test="STUDYAMOUNT != null" >
+        STUDYAMOUNT,
+      </if>
+      <if test="STUDYTIME != null" >
+        STUDYTIME,
+      </if>
+      <if test="STUDYPROGRESS != null" >
+        STUDYPROGRESS,
+      </if>
+      <if test="trainId != null" >
+        train_id,
+      </if>
+      <if test="sectionId != null" >
+        section_id,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="UTDID != null" >
+        #{UTDID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="courseID != null" >
+        #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="STUDYDAY != null" >
+        #{STUDYDAY,jdbcType=DATE},
+      </if>
+      <if test="STUDYAMOUNT != null" >
+        #{STUDYAMOUNT,jdbcType=INTEGER},
+      </if>
+      <if test="STUDYTIME != null" >
+        #{STUDYTIME,jdbcType=INTEGER},
+      </if>
+      <if test="STUDYPROGRESS != null" >
+        #{STUDYPROGRESS,jdbcType=REAL},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="sectionId != null" >
+        #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseStudy.UscUsertliddayStudyInfo" >
+    update usc_usertliddaystudyinfo
+    <set >
+      <if test="userID != null" >
+        User_ID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="courseID != null" >
+        Course_ID = #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="STUDYDAY != null" >
+        STUDYDAY = #{STUDYDAY,jdbcType=DATE},
+      </if>
+      <if test="STUDYAMOUNT != null" >
+        STUDYAMOUNT = #{STUDYAMOUNT,jdbcType=INTEGER},
+      </if>
+      <if test="STUDYTIME != null" >
+        STUDYTIME = #{STUDYTIME,jdbcType=INTEGER},
+      </if>
+      <if test="STUDYPROGRESS != null" >
+        STUDYPROGRESS = #{STUDYPROGRESS,jdbcType=REAL},
+      </if>
+      <if test="trainId != null" >
+        train_id = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="sectionId != null" >
+        section_id = #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where UTD_ID = #{UTDID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.courseStudy.UscUsertliddayStudyInfo" >
+    update usc_usertliddaystudyinfo
+    set User_ID = #{userID,jdbcType=INTEGER},
+      Course_ID = #{courseID,jdbcType=BIGINT},
+      STUDYDAY = #{STUDYDAY,jdbcType=DATE},
+      STUDYAMOUNT = #{STUDYAMOUNT,jdbcType=INTEGER},
+      STUDYTIME = #{STUDYTIME,jdbcType=INTEGER},
+      STUDYPROGRESS = #{STUDYPROGRESS,jdbcType=REAL},
+      train_id = #{trainId,jdbcType=INTEGER},
+      section_id = #{sectionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER}
+    where UTD_ID = #{UTDID,jdbcType=INTEGER}
+  </update>
+  <select id="findByMap" resultType="com.elearning.pojo.courseStudy.UscUsertliddayStudyInfo">
+    SELECT  <include refid="Base_Column_List"/> from usc_usertliddaystudyinfo where 1 = 1
+    <if test="courseId != null ">
+      and Course_ID = #{courseId,jdbcType=BIGINT}
+    </if>
+    <if test="tenantId != null ">
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+    </if>
+    <if test="userID != null ">
+      and User_ID = #{userID,jdbcType=INTEGER}
+    </if>
+    <if test="sectionId != null ">
+      and section_id = #{sectionId,jdbcType=INTEGER}
+    </if>
+    <if test="STUDYDAY != null ">
+      and STUDYDAY = #{STUDYDAY,jdbcType=DATE}
+    </if>
+    <if test="year != null ">
+      and year = #{year,jdbcType=VARCHAR}
+    </if>
+    <if test="train_id != null ">
+      and train_id = #{trainId,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="getTotalAlreadyLearnedTimeByCourseIdAndUserIdInOneYear" resultType="java.lang.Long">
+    SELECT sum(STUDYTIME) from usc_usertliddaystudyinfo where Course_ID = #{courseId,jdbcType=BIGINT} and User_ID = #{userID,jdbcType=INTEGER} and year = #{year,jdbcType=VARCHAR}
+  </select>
+
+  <select id="isAllreadyLearned" resultType="java.lang.Long">
+    select count(UTD_ID) FROM usc_usertliddaystudyinfo  WHERE Course_ID = #{courseId,jdbcType=BIGINT} and User_ID = #{userID,jdbcType=INTEGER} and year = #{year,jdbcType=VARCHAR}
+     and STUDYTIME > 0  and STUDYDAY &gt;= STR_TO_DATE(concat(#{year},'-',#{month}),'%Y-%m')
+    and STUDYDAY &lt;= ADDDATE(STR_TO_DATE(concat(#{year},'-',#{month}),'%Y-%m'),INTERVAL 1 MONTH)
+  </select>
+
+  <select id="findTotalCountbyCourseId" resultType="int">
+    SELECT sum(STUDYTIME) from usc_usertliddaystudyinfo where Course_ID = #{courseId}
+  </select>
+
+  <select id="getListByCourseId" resultType="com.elearning.pojo.courseStudy.UscUsertliddayStudyInfo">
+    SELECT <include refid="Base_Column_List" /> from usc_usertliddaystudyinfo where Course_ID = #{courseId}
+  </select>
+
+
+</mapper>

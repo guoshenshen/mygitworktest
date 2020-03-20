@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.onlinetraining.OntOnlineTrainCourseUserArrangeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.onlinetraining.OntOnlineTrainCourseUserArrange" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="serialNO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="arrangeName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, serialNO, trainID, arrangeName, year
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ont_onlinetraincourse_userarrange
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ont_onlinetraincourse_userarrange
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainCourseUserArrange" >
+    insert into ont_onlinetraincourse_userarrange (ID, serialNO, trainID, 
+      arrangeName, year)
+    values (#{ID,jdbcType=INTEGER}, #{serialNO,jdbcType=VARCHAR}, #{trainID,jdbcType=INTEGER}, 
+      #{arrangeName,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainCourseUserArrange" >
+    insert into ont_onlinetraincourse_userarrange
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="serialNO != null" >
+        serialNO,
+      </if>
+      <if test="trainID != null" >
+        trainID,
+      </if>
+      <if test="arrangeName != null" >
+        arrangeName,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="serialNO != null" >
+        #{serialNO,jdbcType=VARCHAR},
+      </if>
+      <if test="trainID != null" >
+        #{trainID,jdbcType=INTEGER},
+      </if>
+      <if test="arrangeName != null" >
+        #{arrangeName,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainCourseUserArrange" >
+    update ont_onlinetraincourse_userarrange
+    <set >
+      <if test="serialNO != null" >
+        serialNO = #{serialNO,jdbcType=VARCHAR},
+      </if>
+      <if test="trainID != null" >
+        trainID = #{trainID,jdbcType=INTEGER},
+      </if>
+      <if test="arrangeName != null" >
+        arrangeName = #{arrangeName,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.onlinetraining.OntOnlineTrainCourseUserArrange" >
+    update ont_onlinetraincourse_userarrange
+    set serialNO = #{serialNO,jdbcType=VARCHAR},
+      trainID = #{trainID,jdbcType=INTEGER},
+      arrangeName = #{arrangeName,jdbcType=VARCHAR},
+      year = #{year,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="getMaxID" resultType="java.lang.String">
+    SELECT max(ID) from ont_onlinetraincourse_userarrange
+  </select>
+
+</mapper>

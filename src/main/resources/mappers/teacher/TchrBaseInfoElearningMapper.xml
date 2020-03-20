@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.teacher.TchrBaseInfoElearningMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.teacher.TchrBaseInfoElearning" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacherName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gender" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="birthDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="postID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="degree" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="graduateSchool" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="majorSubject" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="telephone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="teachDirection" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="formal" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="level" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="secretLevel" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teachHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="satisfy" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="cost" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="workPlace" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="post" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="relatedMaterailPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="relatedMaterailType" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="relatedMaterailSize" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isUnderScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isShared" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="createDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="courseName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sourceTeacherId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="expertAreaId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subExpertAreaId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="headPic" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isNoted" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isSendToIndex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isLinkSchedule" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyWords" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hireStyle" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isOpenTelephone" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isOpenEmail" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.teacher.TchrBaseInfoElearning" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacherName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gender" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="birthDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="postID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="degree" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="graduateSchool" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="majorSubject" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="telephone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="teachDirection" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="formal" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="level" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="secretLevel" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teachHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="satisfy" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="cost" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="workPlace" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="post" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="relatedMaterailPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="relatedMaterailType" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="relatedMaterailSize" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isUnderScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isShared" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="createDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="courseName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sourceTeacherId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="expertAreaId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subExpertAreaId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="headPic" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isNoted" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isSendToIndex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isLinkSchedule" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyWords" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hireStyle" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isOpenTelephone" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isOpenEmail" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="remark" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, teacherName, gender, birthDate, orgId, postID, degree, graduateSchool, 
+    majorSubject, telephone, email, teachDirection, formal, level, secretLevel, teachHour, 
+    satisfy, cost, workPlace, post, title, score, relatedMaterailPath, relatedMaterailType, 
+    relatedMaterailSize, isUnderScope, isShared, createDate, courseName, tenantId, sourceTeacherId, 
+    openScope, expertAreaId, subExpertAreaId, headPic, isNoted, isSendToIndex, isLinkSchedule, 
+    keyWords, hireStyle, isOpenTelephone, isOpenEmail
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tchr_baseinfo_elearning
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tchr_baseinfo_elearning
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.teacher.TchrBaseInfoElearning" >
+    insert into tchr_baseinfo_elearning (id, operatorId, teacherName, 
+      gender, birthDate, orgId, 
+      postID, degree, graduateSchool, 
+      majorSubject, telephone, email, 
+      teachDirection, formal, level, 
+      secretLevel, teachHour, satisfy, 
+      cost, workPlace, post, 
+      title, score, relatedMaterailPath, 
+      relatedMaterailType, relatedMaterailSize, 
+      isUnderScope, isShared, createDate, 
+      courseName, tenantId, sourceTeacherId, 
+      openScope, expertAreaId, subExpertAreaId, 
+      headPic, isNoted, isSendToIndex, 
+      isLinkSchedule, keyWords, hireStyle, 
+      isOpenTelephone, isOpenEmail, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{birthDate,jdbcType=DATE}, #{orgId,jdbcType=INTEGER}, 
+      #{postID,jdbcType=INTEGER}, #{degree,jdbcType=VARCHAR}, #{graduateSchool,jdbcType=VARCHAR}, 
+      #{majorSubject,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{teachDirection,jdbcType=VARCHAR}, #{formal,jdbcType=BOOLEAN}, #{level,jdbcType=INTEGER}, 
+      #{secretLevel,jdbcType=INTEGER}, #{teachHour,jdbcType=DOUBLE}, #{satisfy,jdbcType=DOUBLE}, 
+      #{cost,jdbcType=DOUBLE}, #{workPlace,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, #{relatedMaterailPath,jdbcType=VARCHAR}, 
+      #{relatedMaterailType,jdbcType=VARCHAR}, #{relatedMaterailSize,jdbcType=VARCHAR}, 
+      #{isUnderScope,jdbcType=INTEGER}, #{isShared,jdbcType=BOOLEAN}, #{createDate,jdbcType=DATE}, 
+      #{courseName,jdbcType=VARCHAR}, #{tenantId,jdbcType=INTEGER}, #{sourceTeacherId,jdbcType=INTEGER}, 
+      #{openScope,jdbcType=INTEGER}, #{expertAreaId,jdbcType=INTEGER}, #{subExpertAreaId,jdbcType=INTEGER}, 
+      #{headPic,jdbcType=VARCHAR}, #{isNoted,jdbcType=INTEGER}, #{isSendToIndex,jdbcType=INTEGER}, 
+      #{isLinkSchedule,jdbcType=INTEGER}, #{keyWords,jdbcType=VARCHAR}, #{hireStyle,jdbcType=INTEGER}, 
+      #{isOpenTelephone,jdbcType=INTEGER}, #{isOpenEmail,jdbcType=INTEGER}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.teacher.TchrBaseInfoElearning" >
+    insert into tchr_baseinfo_elearning
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="teacherName != null" >
+        teacherName,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="birthDate != null" >
+        birthDate,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="postID != null" >
+        postID,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="graduateSchool != null" >
+        graduateSchool,
+      </if>
+      <if test="majorSubject != null" >
+        majorSubject,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="teachDirection != null" >
+        teachDirection,
+      </if>
+      <if test="formal != null" >
+        formal,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="secretLevel != null" >
+        secretLevel,
+      </if>
+      <if test="teachHour != null" >
+        teachHour,
+      </if>
+      <if test="satisfy != null" >
+        satisfy,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="workPlace != null" >
+        workPlace,
+      </if>
+      <if test="post != null" >
+        post,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="relatedMaterailPath != null" >
+        relatedMaterailPath,
+      </if>
+      <if test="relatedMaterailType != null" >
+        relatedMaterailType,
+      </if>
+      <if test="relatedMaterailSize != null" >
+        relatedMaterailSize,
+      </if>
+      <if test="isUnderScope != null" >
+        isUnderScope,
+      </if>
+      <if test="isShared != null" >
+        isShared,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="courseName != null" >
+        courseName,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="sourceTeacherId != null" >
+        sourceTeacherId,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+      <if test="expertAreaId != null" >
+        expertAreaId,
+      </if>
+      <if test="subExpertAreaId != null" >
+        subExpertAreaId,
+      </if>
+      <if test="headPic != null" >
+        headPic,
+      </if>
+      <if test="isNoted != null" >
+        isNoted,
+      </if>
+      <if test="isSendToIndex != null" >
+        isSendToIndex,
+      </if>
+      <if test="isLinkSchedule != null" >
+        isLinkSchedule,
+      </if>
+      <if test="keyWords != null" >
+        keyWords,
+      </if>
+      <if test="hireStyle != null" >
+        hireStyle,
+      </if>
+      <if test="isOpenTelephone != null" >
+        isOpenTelephone,
+      </if>
+      <if test="isOpenEmail != null" >
+        isOpenEmail,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="postID != null" >
+        #{postID,jdbcType=INTEGER},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null" >
+        #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="majorSubject != null" >
+        #{majorSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="teachDirection != null" >
+        #{teachDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="formal != null" >
+        #{formal,jdbcType=BOOLEAN},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="secretLevel != null" >
+        #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="teachHour != null" >
+        #{teachHour,jdbcType=DOUBLE},
+      </if>
+      <if test="satisfy != null" >
+        #{satisfy,jdbcType=DOUBLE},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="workPlace != null" >
+        #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="relatedMaterailPath != null" >
+        #{relatedMaterailPath,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedMaterailType != null" >
+        #{relatedMaterailType,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedMaterailSize != null" >
+        #{relatedMaterailSize,jdbcType=VARCHAR},
+      </if>
+      <if test="isUnderScope != null" >
+        #{isUnderScope,jdbcType=INTEGER},
+      </if>
+      <if test="isShared != null" >
+        #{isShared,jdbcType=BOOLEAN},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceTeacherId != null" >
+        #{sourceTeacherId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="expertAreaId != null" >
+        #{expertAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="subExpertAreaId != null" >
+        #{subExpertAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="headPic != null" >
+        #{headPic,jdbcType=VARCHAR},
+      </if>
+      <if test="isNoted != null" >
+        #{isNoted,jdbcType=INTEGER},
+      </if>
+      <if test="isSendToIndex != null" >
+        #{isSendToIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isLinkSchedule != null" >
+        #{isLinkSchedule,jdbcType=INTEGER},
+      </if>
+      <if test="keyWords != null" >
+        #{keyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="hireStyle != null" >
+        #{hireStyle,jdbcType=INTEGER},
+      </if>
+      <if test="isOpenTelephone != null" >
+        #{isOpenTelephone,jdbcType=INTEGER},
+      </if>
+      <if test="isOpenEmail != null" >
+        #{isOpenEmail,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.teacher.TchrBaseInfoElearning" >
+    update tchr_baseinfo_elearning
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null" >
+        teacherName = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="birthDate != null" >
+        birthDate = #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="postID != null" >
+        postID = #{postID,jdbcType=INTEGER},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateSchool != null" >
+        graduateSchool = #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="majorSubject != null" >
+        majorSubject = #{majorSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="teachDirection != null" >
+        teachDirection = #{teachDirection,jdbcType=VARCHAR},
+      </if>
+      <if test="formal != null" >
+        formal = #{formal,jdbcType=BOOLEAN},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="secretLevel != null" >
+        secretLevel = #{secretLevel,jdbcType=INTEGER},
+      </if>
+      <if test="teachHour != null" >
+        teachHour = #{teachHour,jdbcType=DOUBLE},
+      </if>
+      <if test="satisfy != null" >
+        satisfy = #{satisfy,jdbcType=DOUBLE},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=DOUBLE},
+      </if>
+      <if test="workPlace != null" >
+        workPlace = #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="relatedMaterailPath != null" >
+        relatedMaterailPath = #{relatedMaterailPath,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedMaterailType != null" >
+        relatedMaterailType = #{relatedMaterailType,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedMaterailSize != null" >
+        relatedMaterailSize = #{relatedMaterailSize,jdbcType=VARCHAR},
+      </if>
+      <if test="isUnderScope != null" >
+        isUnderScope = #{isUnderScope,jdbcType=INTEGER},
+      </if>
+      <if test="isShared != null" >
+        isShared = #{isShared,jdbcType=BOOLEAN},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="courseName != null" >
+        courseName = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceTeacherId != null" >
+        sourceTeacherId = #{sourceTeacherId,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        openScope = #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="expertAreaId != null" >
+        expertAreaId = #{expertAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="subExpertAreaId != null" >
+        subExpertAreaId = #{subExpertAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="headPic != null" >
+        headPic = #{headPic,jdbcType=VARCHAR},
+      </if>
+      <if test="isNoted != null" >
+        isNoted = #{isNoted,jdbcType=INTEGER},
+      </if>
+      <if test="isSendToIndex != null" >
+        isSendToIndex = #{isSendToIndex,jdbcType=INTEGER},
+      </if>
+      <if test="isLinkSchedule != null" >
+        isLinkSchedule = #{isLinkSchedule,jdbcType=INTEGER},
+      </if>
+      <if test="keyWords != null" >
+        keyWords = #{keyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="hireStyle != null" >
+        hireStyle = #{hireStyle,jdbcType=INTEGER},
+      </if>
+      <if test="isOpenTelephone != null" >
+        isOpenTelephone = #{isOpenTelephone,jdbcType=INTEGER},
+      </if>
+      <if test="isOpenEmail != null" >
+        isOpenEmail = #{isOpenEmail,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.teacher.TchrBaseInfoElearning" >
+    update tchr_baseinfo_elearning
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      teacherName = #{teacherName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      birthDate = #{birthDate,jdbcType=DATE},
+      orgId = #{orgId,jdbcType=INTEGER},
+      postID = #{postID,jdbcType=INTEGER},
+      degree = #{degree,jdbcType=VARCHAR},
+      graduateSchool = #{graduateSchool,jdbcType=VARCHAR},
+      majorSubject = #{majorSubject,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      teachDirection = #{teachDirection,jdbcType=VARCHAR},
+      formal = #{formal,jdbcType=BOOLEAN},
+      level = #{level,jdbcType=INTEGER},
+      secretLevel = #{secretLevel,jdbcType=INTEGER},
+      teachHour = #{teachHour,jdbcType=DOUBLE},
+      satisfy = #{satisfy,jdbcType=DOUBLE},
+      cost = #{cost,jdbcType=DOUBLE},
+      workPlace = #{workPlace,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      relatedMaterailPath = #{relatedMaterailPath,jdbcType=VARCHAR},
+      relatedMaterailType = #{relatedMaterailType,jdbcType=VARCHAR},
+      relatedMaterailSize = #{relatedMaterailSize,jdbcType=VARCHAR},
+      isUnderScope = #{isUnderScope,jdbcType=INTEGER},
+      isShared = #{isShared,jdbcType=BOOLEAN},
+      createDate = #{createDate,jdbcType=DATE},
+      courseName = #{courseName,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      sourceTeacherId = #{sourceTeacherId,jdbcType=INTEGER},
+      openScope = #{openScope,jdbcType=INTEGER},
+      expertAreaId = #{expertAreaId,jdbcType=INTEGER},
+      subExpertAreaId = #{subExpertAreaId,jdbcType=INTEGER},
+      headPic = #{headPic,jdbcType=VARCHAR},
+      isNoted = #{isNoted,jdbcType=INTEGER},
+      isSendToIndex = #{isSendToIndex,jdbcType=INTEGER},
+      isLinkSchedule = #{isLinkSchedule,jdbcType=INTEGER},
+      keyWords = #{keyWords,jdbcType=VARCHAR},
+      hireStyle = #{hireStyle,jdbcType=INTEGER},
+      isOpenTelephone = #{isOpenTelephone,jdbcType=INTEGER},
+      isOpenEmail = #{isOpenEmail,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.teacher.TchrBaseInfoElearning" >
+    update tchr_baseinfo_elearning
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      teacherName = #{teacherName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      birthDate = #{birthDate,jdbcType=DATE},
+      orgId = #{orgId,jdbcType=INTEGER},
+      postID = #{postID,jdbcType=INTEGER},
+      degree = #{degree,jdbcType=VARCHAR},
+      graduateSchool = #{graduateSchool,jdbcType=VARCHAR},
+      majorSubject = #{majorSubject,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      teachDirection = #{teachDirection,jdbcType=VARCHAR},
+      formal = #{formal,jdbcType=BOOLEAN},
+      level = #{level,jdbcType=INTEGER},
+      secretLevel = #{secretLevel,jdbcType=INTEGER},
+      teachHour = #{teachHour,jdbcType=DOUBLE},
+      satisfy = #{satisfy,jdbcType=DOUBLE},
+      cost = #{cost,jdbcType=DOUBLE},
+      workPlace = #{workPlace,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      relatedMaterailPath = #{relatedMaterailPath,jdbcType=VARCHAR},
+      relatedMaterailType = #{relatedMaterailType,jdbcType=VARCHAR},
+      relatedMaterailSize = #{relatedMaterailSize,jdbcType=VARCHAR},
+      isUnderScope = #{isUnderScope,jdbcType=INTEGER},
+      isShared = #{isShared,jdbcType=BOOLEAN},
+      createDate = #{createDate,jdbcType=DATE},
+      courseName = #{courseName,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      sourceTeacherId = #{sourceTeacherId,jdbcType=INTEGER},
+      openScope = #{openScope,jdbcType=INTEGER},
+      expertAreaId = #{expertAreaId,jdbcType=INTEGER},
+      subExpertAreaId = #{subExpertAreaId,jdbcType=INTEGER},
+      headPic = #{headPic,jdbcType=VARCHAR},
+      isNoted = #{isNoted,jdbcType=INTEGER},
+      isSendToIndex = #{isSendToIndex,jdbcType=INTEGER},
+      isLinkSchedule = #{isLinkSchedule,jdbcType=INTEGER},
+      keyWords = #{keyWords,jdbcType=VARCHAR},
+      hireStyle = #{hireStyle,jdbcType=INTEGER},
+      isOpenTelephone = #{isOpenTelephone,jdbcType=INTEGER},
+      isOpenEmail = #{isOpenEmail,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

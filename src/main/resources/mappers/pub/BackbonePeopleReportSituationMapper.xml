@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.BackbonePeopleReportSituationMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.BackbonePeopleReportSituation" >
+    <constructor >
+      <idArg column="Id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="year" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isCommitted" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="reportStartTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="reportEndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="backbonepeopleNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitOperatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, tenantId, year, isCommitted, reportStartTime, reportEndTime, backbonepeopleNum, 
+    submitOperatorId, submitTime, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from backbonepeople_report_situation
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from backbonepeople_report_situation
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.BackbonePeopleReportSituation" >
+    insert into backbonepeople_report_situation (Id, tenantId, year, 
+      isCommitted, reportStartTime, reportEndTime, 
+      backbonepeopleNum, submitOperatorId, submitTime, 
+      createTime)
+    values (#{id,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, 
+      #{isCommitted,jdbcType=INTEGER}, #{reportStartTime,jdbcType=TIMESTAMP}, #{reportEndTime,jdbcType=TIMESTAMP}, 
+      #{backbonepeopleNum,jdbcType=INTEGER}, #{submitOperatorId,jdbcType=INTEGER}, #{submitTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.BackbonePeopleReportSituation" >
+    insert into backbonepeople_report_situation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="isCommitted != null" >
+        isCommitted,
+      </if>
+      <if test="reportStartTime != null" >
+        reportStartTime,
+      </if>
+      <if test="reportEndTime != null" >
+        reportEndTime,
+      </if>
+      <if test="backbonepeopleNum != null" >
+        backbonepeopleNum,
+      </if>
+      <if test="submitOperatorId != null" >
+        submitOperatorId,
+      </if>
+      <if test="submitTime != null" >
+        submitTime,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="isCommitted != null" >
+        #{isCommitted,jdbcType=INTEGER},
+      </if>
+      <if test="reportStartTime != null" >
+        #{reportStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportEndTime != null" >
+        #{reportEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backbonepeopleNum != null" >
+        #{backbonepeopleNum,jdbcType=INTEGER},
+      </if>
+      <if test="submitOperatorId != null" >
+        #{submitOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.BackbonePeopleReportSituation" >
+    update backbonepeople_report_situation
+    <set >
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="isCommitted != null" >
+        isCommitted = #{isCommitted,jdbcType=INTEGER},
+      </if>
+      <if test="reportStartTime != null" >
+        reportStartTime = #{reportStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportEndTime != null" >
+        reportEndTime = #{reportEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backbonepeopleNum != null" >
+        backbonepeopleNum = #{backbonepeopleNum,jdbcType=INTEGER},
+      </if>
+      <if test="submitOperatorId != null" >
+        submitOperatorId = #{submitOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="submitTime != null" >
+        submitTime = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.BackbonePeopleReportSituation" >
+    update backbonepeople_report_situation
+    set tenantId = #{tenantId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      isCommitted = #{isCommitted,jdbcType=INTEGER},
+      reportStartTime = #{reportStartTime,jdbcType=TIMESTAMP},
+      reportEndTime = #{reportEndTime,jdbcType=TIMESTAMP},
+      backbonepeopleNum = #{backbonepeopleNum,jdbcType=INTEGER},
+      submitOperatorId = #{submitOperatorId,jdbcType=INTEGER},
+      submitTime = #{submitTime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

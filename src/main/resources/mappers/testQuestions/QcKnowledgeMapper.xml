@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.QcKnowledgeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.testQuestions.QcKnowledge" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="knowPoint" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="knowDescription" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fullPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="kindex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, knowPoint, knowDescription, parentId, fullPath, kindex, tenantId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from qc_knowledge
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qc_knowledge
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.testQuestions.QcKnowledge" >
+    insert into qc_knowledge (ID, knowPoint, knowDescription, 
+      parentId, fullPath, kindex, 
+      tenantId)
+    values (#{ID,jdbcType=INTEGER}, #{knowPoint,jdbcType=VARCHAR}, #{knowDescription,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{fullPath,jdbcType=VARCHAR}, #{kindex,jdbcType=INTEGER}, 
+      #{tenantId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.testQuestions.QcKnowledge" >
+    insert into qc_knowledge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="knowPoint != null" >
+        knowPoint,
+      </if>
+      <if test="knowDescription != null" >
+        knowDescription,
+      </if>
+      <if test="parentId != null" >
+        parentId,
+      </if>
+      <if test="fullPath != null" >
+        fullPath,
+      </if>
+      <if test="kindex != null" >
+        kindex,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="knowPoint != null" >
+        #{knowPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="knowDescription != null" >
+        #{knowDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="fullPath != null" >
+        #{fullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="kindex != null" >
+        #{kindex,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.testQuestions.QcKnowledge" >
+    update qc_knowledge
+    <set >
+      <if test="knowPoint != null" >
+        knowPoint = #{knowPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="knowDescription != null" >
+        knowDescription = #{knowDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parentId = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="fullPath != null" >
+        fullPath = #{fullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="kindex != null" >
+        kindex = #{kindex,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.testQuestions.QcKnowledge" >
+    update qc_knowledge
+    set knowPoint = #{knowPoint,jdbcType=VARCHAR},
+      knowDescription = #{knowDescription,jdbcType=VARCHAR},
+      parentId = #{parentId,jdbcType=INTEGER},
+      fullPath = #{fullPath,jdbcType=VARCHAR},
+      kindex = #{kindex,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

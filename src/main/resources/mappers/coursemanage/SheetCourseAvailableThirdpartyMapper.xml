@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.SheetCourseAvailableThirdpartyMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.SheetCourseAvailableThirdparty" >
+    <constructor >
+      <idArg column="course_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="courseName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sourcePubStatus" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sourceOpenScope" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="creator" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="teacherName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="keywords" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isAvailable" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isFromThirdParty" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    course_id, courseName, sourcePubStatus, sourceOpenScope, creator, teacherName, orgId, 
+    tenantId, tenantName, keywords, isAvailable, isFromThirdParty
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sheet_course_available_thirdparty
+    where course_id = #{course_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sheet_course_available_thirdparty
+    where course_id = #{course_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.SheetCourseAvailableThirdparty" >
+    insert into sheet_course_available_thirdparty (course_id, courseName, sourcePubStatus, 
+      sourceOpenScope, creator, teacherName, 
+      orgId, tenantId, tenantName, 
+      keywords, isAvailable, isFromThirdParty
+      )
+    values (#{course_id,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{sourcePubStatus,jdbcType=VARCHAR}, 
+      #{sourceOpenScope,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{teacherName,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR}, #{tenantName,jdbcType=VARCHAR}, 
+      #{keywords,jdbcType=VARCHAR}, #{isAvailable,jdbcType=VARCHAR}, #{isFromThirdParty,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.SheetCourseAvailableThirdparty" >
+    insert into sheet_course_available_thirdparty
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        course_id,
+      </if>
+      <if test="courseName != null" >
+        courseName,
+      </if>
+      <if test="sourcePubStatus != null" >
+        sourcePubStatus,
+      </if>
+      <if test="sourceOpenScope != null" >
+        sourceOpenScope,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="teacherName != null" >
+        teacherName,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="tenantName != null" >
+        tenantName,
+      </if>
+      <if test="keywords != null" >
+        keywords,
+      </if>
+      <if test="isAvailable != null" >
+        isAvailable,
+      </if>
+      <if test="isFromThirdParty != null" >
+        isFromThirdParty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="course_id != null" >
+        #{course_id,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcePubStatus != null" >
+        #{sourcePubStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOpenScope != null" >
+        #{sourceOpenScope,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantName != null" >
+        #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="isAvailable != null" >
+        #{isAvailable,jdbcType=VARCHAR},
+      </if>
+      <if test="isFromThirdParty != null" >
+        #{isFromThirdParty,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.coursemanage.SheetCourseAvailableThirdparty" >
+    update sheet_course_available_thirdparty
+    <set >
+      <if test="courseName != null" >
+        courseName = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcePubStatus != null" >
+        sourcePubStatus = #{sourcePubStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOpenScope != null" >
+        sourceOpenScope = #{sourceOpenScope,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        teacherName = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantName != null" >
+        tenantName = #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="isAvailable != null" >
+        isAvailable = #{isAvailable,jdbcType=VARCHAR},
+      </if>
+      <if test="isFromThirdParty != null" >
+        isFromThirdParty = #{isFromThirdParty,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where course_id = #{course_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.SheetCourseAvailableThirdparty" >
+    update sheet_course_available_thirdparty
+    set courseName = #{courseName,jdbcType=VARCHAR},
+      sourcePubStatus = #{sourcePubStatus,jdbcType=VARCHAR},
+      sourceOpenScope = #{sourceOpenScope,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      teacherName = #{teacherName,jdbcType=VARCHAR},
+      orgId = #{orgId,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=VARCHAR},
+      tenantName = #{tenantName,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      isAvailable = #{isAvailable,jdbcType=VARCHAR},
+      isFromThirdParty = #{isFromThirdParty,jdbcType=VARCHAR}
+    where course_id = #{course_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

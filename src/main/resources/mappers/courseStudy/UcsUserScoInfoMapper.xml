@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.UcsUserScoInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.UcsUserScoInfo" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="User_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Course_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="SCOID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="AUNCH" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PARAMETERSTRING" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LESSONSTATUS" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PREREQUISITES" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EXITCOURSE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ENTRY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SESSIONTIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TOTALTIME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MASTERYSCORE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SEQUENCE" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LESSONLOCATION" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, User_ID as userID, Course_id as courseId, SCOID, AUNCH, PARAMETERSTRING, LESSONSTATUS, PREREQUISITES,
+    EXITCOURSE, ENTRY, SESSIONTIME, TOTALTIME, MASTERYSCORE, SEQUENCE, TYPE, LESSONLOCATION, 
+    year
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ucs_userscoinfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ucs_userscoinfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.UcsUserScoInfo" >
+    insert into ucs_userscoinfo (ID, User_ID, Course_id, 
+      SCOID, AUNCH, PARAMETERSTRING, 
+      LESSONSTATUS, PREREQUISITES, EXITCOURSE, 
+      ENTRY, SESSIONTIME, TOTALTIME, 
+      MASTERYSCORE, SEQUENCE, TYPE, 
+      LESSONLOCATION, year)
+    values (#{ID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, #{courseId,jdbcType=BIGINT},
+      #{SCOID,jdbcType=VARCHAR}, #{AUNCH,jdbcType=VARCHAR}, #{PARAMETERSTRING,jdbcType=VARCHAR}, 
+      #{LESSONSTATUS,jdbcType=VARCHAR}, #{PREREQUISITES,jdbcType=VARCHAR}, #{EXITCOURSE,jdbcType=VARCHAR}, 
+      #{ENTRY,jdbcType=VARCHAR}, #{SESSIONTIME,jdbcType=VARCHAR}, #{TOTALTIME,jdbcType=VARCHAR}, 
+      #{MASTERYSCORE,jdbcType=VARCHAR}, #{SEQUENCE,jdbcType=INTEGER}, #{TYPE,jdbcType=VARCHAR}, 
+      #{LESSONLOCATION,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.UcsUserScoInfo" >
+    insert into ucs_userscoinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="userID != null" >
+        User_ID,
+      </if>
+      <if test="courseId != null" >
+        Course_id,
+      </if>
+      <if test="SCOID != null" >
+        SCOID,
+      </if>
+      <if test="AUNCH != null" >
+        AUNCH,
+      </if>
+      <if test="PARAMETERSTRING != null" >
+        PARAMETERSTRING,
+      </if>
+      <if test="LESSONSTATUS != null" >
+        LESSONSTATUS,
+      </if>
+      <if test="PREREQUISITES != null" >
+        PREREQUISITES,
+      </if>
+      <if test="EXITCOURSE != null" >
+        EXITCOURSE,
+      </if>
+      <if test="ENTRY != null" >
+        ENTRY,
+      </if>
+      <if test="SESSIONTIME != null" >
+        SESSIONTIME,
+      </if>
+      <if test="TOTALTIME != null" >
+        TOTALTIME,
+      </if>
+      <if test="MASTERYSCORE != null" >
+        MASTERYSCORE,
+      </if>
+      <if test="SEQUENCE != null" >
+        SEQUENCE,
+      </if>
+      <if test="TYPE != null" >
+        TYPE,
+      </if>
+      <if test="LESSONLOCATION != null" >
+        LESSONLOCATION,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="SCOID != null" >
+        #{SCOID,jdbcType=VARCHAR},
+      </if>
+      <if test="AUNCH != null" >
+        #{AUNCH,jdbcType=VARCHAR},
+      </if>
+      <if test="PARAMETERSTRING != null" >
+        #{PARAMETERSTRING,jdbcType=VARCHAR},
+      </if>
+      <if test="LESSONSTATUS != null" >
+        #{LESSONSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="PREREQUISITES != null" >
+        #{PREREQUISITES,jdbcType=VARCHAR},
+      </if>
+      <if test="EXITCOURSE != null" >
+        #{EXITCOURSE,jdbcType=VARCHAR},
+      </if>
+      <if test="ENTRY != null" >
+        #{ENTRY,jdbcType=VARCHAR},
+      </if>
+      <if test="SESSIONTIME != null" >
+        #{SESSIONTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="TOTALTIME != null" >
+        #{TOTALTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="MASTERYSCORE != null" >
+        #{MASTERYSCORE,jdbcType=VARCHAR},
+      </if>
+      <if test="SEQUENCE != null" >
+        #{SEQUENCE,jdbcType=INTEGER},
+      </if>
+      <if test="TYPE != null" >
+        #{TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="LESSONLOCATION != null" >
+        #{LESSONLOCATION,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseStudy.UcsUserScoInfo" >
+    update ucs_userscoinfo
+    <set >
+      <if test="userID != null" >
+        User_ID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        Course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="SCOID != null" >
+        SCOID = #{SCOID,jdbcType=VARCHAR},
+      </if>
+      <if test="AUNCH != null" >
+        AUNCH = #{AUNCH,jdbcType=VARCHAR},
+      </if>
+      <if test="PARAMETERSTRING != null" >
+        PARAMETERSTRING = #{PARAMETERSTRING,jdbcType=VARCHAR},
+      </if>
+      <if test="LESSONSTATUS != null" >
+        LESSONSTATUS = #{LESSONSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="PREREQUISITES != null" >
+        PREREQUISITES = #{PREREQUISITES,jdbcType=VARCHAR},
+      </if>
+      <if test="EXITCOURSE != null" >
+        EXITCOURSE = #{EXITCOURSE,jdbcType=VARCHAR},
+      </if>
+      <if test="ENTRY != null" >
+        ENTRY = #{ENTRY,jdbcType=VARCHAR},
+      </if>
+      <if test="SESSIONTIME != null" >
+        SESSIONTIME = #{SESSIONTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="TOTALTIME != null" >
+        TOTALTIME = #{TOTALTIME,jdbcType=VARCHAR},
+      </if>
+      <if test="MASTERYSCORE != null" >
+        MASTERYSCORE = #{MASTERYSCORE,jdbcType=VARCHAR},
+      </if>
+      <if test="SEQUENCE != null" >
+        SEQUENCE = #{SEQUENCE,jdbcType=INTEGER},
+      </if>
+      <if test="TYPE != null" >
+        TYPE = #{TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="LESSONLOCATION != null" >
+        LESSONLOCATION = #{LESSONLOCATION,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.courseStudy.UcsUserScoInfo" >
+    update ucs_userscoinfo
+    set User_ID = #{userID,jdbcType=INTEGER},
+      Course_id = #{courseId,jdbcType=BIGINT},
+      SCOID = #{SCOID,jdbcType=VARCHAR},
+      AUNCH = #{AUNCH,jdbcType=VARCHAR},
+      PARAMETERSTRING = #{PARAMETERSTRING,jdbcType=VARCHAR},
+      LESSONSTATUS = #{LESSONSTATUS,jdbcType=VARCHAR},
+      PREREQUISITES = #{PREREQUISITES,jdbcType=VARCHAR},
+      EXITCOURSE = #{EXITCOURSE,jdbcType=VARCHAR},
+      ENTRY = #{ENTRY,jdbcType=VARCHAR},
+      SESSIONTIME = #{SESSIONTIME,jdbcType=VARCHAR},
+      TOTALTIME = #{TOTALTIME,jdbcType=VARCHAR},
+      MASTERYSCORE = #{MASTERYSCORE,jdbcType=VARCHAR},
+      SEQUENCE = #{SEQUENCE,jdbcType=INTEGER},
+      TYPE = #{TYPE,jdbcType=VARCHAR},
+      LESSONLOCATION = #{LESSONLOCATION,jdbcType=VARCHAR},
+      year = #{year,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <select id="findByMap" resultType="com.elearning.pojo.courseStudy.UcsUserScoInfo">
+    SELECT <include refid="Base_Column_List"/> from ucs_userscoinfo where 1=1
+    <if test="courseId != null ">
+      and Course_id = #{courseId,jdbcType=BIGINT}
+    </if>
+    <if test="userID != null ">
+      and User_ID = #{userID,jdbcType=INTEGER}
+    </if>
+    order by model.id asc
+  </select>
+
+
+</mapper>

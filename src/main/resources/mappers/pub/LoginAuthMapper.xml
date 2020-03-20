@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.LoginAuthMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.LoginAuth" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="authenId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modifytime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="type" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, authenId, modifytime, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from loginauth
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from loginauth
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.LoginAuth" >
+    insert into loginauth (id, operatorId, authenId, 
+      modifytime, type)
+    values (#{id,jdbcType=INTEGER}, #{operatorId,jdbcType=BIGINT}, #{authenId,jdbcType=VARCHAR}, 
+      #{modifytime,jdbcType=TIMESTAMP}, #{type,jdbcType=BOOLEAN})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.LoginAuth" >
+    insert into loginauth
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="authenId != null" >
+        authenId,
+      </if>
+      <if test="modifytime != null" >
+        modifytime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="authenId != null" >
+        #{authenId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.LoginAuth" >
+    update loginauth
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="authenId != null" >
+        authenId = #{authenId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null" >
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.LoginAuth" >
+    update loginauth
+    set operatorId = #{operatorId,jdbcType=BIGINT},
+      authenId = #{authenId,jdbcType=VARCHAR},
+      modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

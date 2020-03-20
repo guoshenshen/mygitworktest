@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.resourceManage.RsmMyCollectBookMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.resourceManage.RsmMyCollectBook" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bookId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bookName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="collectTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="recommenderId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="recommenderName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recommendTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="publisher" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="picurl" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, bookId, bookName, collectTime, recommenderId, recommenderName, recommendTime, 
+    publisher, picurl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rsm_mycollectbook
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rsm_mycollectbook
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.resourceManage.RsmMyCollectBook" >
+    insert into rsm_mycollectbook (id, operatorId, bookId, 
+      bookName, collectTime, recommenderId, 
+      recommenderName, recommendTime, publisher, 
+      picurl)
+    values (#{id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
+      #{bookName,jdbcType=VARCHAR}, #{collectTime,jdbcType=TIMESTAMP}, #{recommenderId,jdbcType=INTEGER}, 
+      #{recommenderName,jdbcType=VARCHAR}, #{recommendTime,jdbcType=TIMESTAMP}, #{publisher,jdbcType=VARCHAR}, 
+      #{picurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.resourceManage.RsmMyCollectBook" >
+    insert into rsm_mycollectbook
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="bookId != null" >
+        bookId,
+      </if>
+      <if test="bookName != null" >
+        bookName,
+      </if>
+      <if test="collectTime != null" >
+        collectTime,
+      </if>
+      <if test="recommenderId != null" >
+        recommenderId,
+      </if>
+      <if test="recommenderName != null" >
+        recommenderName,
+      </if>
+      <if test="recommendTime != null" >
+        recommendTime,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+      <if test="picurl != null" >
+        picurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectTime != null" >
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommenderId != null" >
+        #{recommenderId,jdbcType=INTEGER},
+      </if>
+      <if test="recommenderName != null" >
+        #{recommenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendTime != null" >
+        #{recommendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null" >
+        #{picurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.resourceManage.RsmMyCollectBook" >
+    update rsm_mycollectbook
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        bookId = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null" >
+        bookName = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectTime != null" >
+        collectTime = #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommenderId != null" >
+        recommenderId = #{recommenderId,jdbcType=INTEGER},
+      </if>
+      <if test="recommenderName != null" >
+        recommenderName = #{recommenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendTime != null" >
+        recommendTime = #{recommendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null" >
+        picurl = #{picurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.resourceManage.RsmMyCollectBook" >
+    update rsm_mycollectbook
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      bookId = #{bookId,jdbcType=INTEGER},
+      bookName = #{bookName,jdbcType=VARCHAR},
+      collectTime = #{collectTime,jdbcType=TIMESTAMP},
+      recommenderId = #{recommenderId,jdbcType=INTEGER},
+      recommenderName = #{recommenderName,jdbcType=VARCHAR},
+      recommendTime = #{recommendTime,jdbcType=TIMESTAMP},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      picurl = #{picurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

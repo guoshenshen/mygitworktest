@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.ResourceItemMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.ResourceItem" >
+    <constructor >
+      <arg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="resourceId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="itemId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="resourceType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="itemType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.ResourceItem" >
+    insert into resourceitem (id, resourceId, itemId, 
+      resourceType, itemType)
+    values (#{id,jdbcType=BIGINT}, #{resourceId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, 
+      #{resourceType,jdbcType=INTEGER}, #{itemType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.ResourceItem" >
+    insert into resourceitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="resourceId != null" >
+        resourceId,
+      </if>
+      <if test="itemId != null" >
+        itemId,
+      </if>
+      <if test="resourceType != null" >
+        resourceType,
+      </if>
+      <if test="itemType != null" >
+        itemType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=INTEGER},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

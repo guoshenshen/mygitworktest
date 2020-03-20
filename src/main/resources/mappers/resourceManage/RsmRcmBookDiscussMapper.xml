@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.resourceManage.RsmRcmBookDiscussMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    <constructor >
+      <idArg column="discussId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="discussTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bookId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="bookName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="picurl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="discussType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentDiscussId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isReply" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    <constructor >
+      <idArg column="discussId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="discussTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bookId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="bookName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="picurl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="discussType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentDiscussId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isReply" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    discussId, operatorId, operatorName, discussTime, score, bookId, bookName, picurl, 
+    discussType, parentDiscussId, isReply,content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+
+    from rsm_rcmbookdiscuss
+    where discussId = #{discussId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rsm_rcmbookdiscuss
+    where discussId = #{discussId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    insert into rsm_rcmbookdiscuss (discussId, operatorId, operatorName, 
+      discussTime, score, bookId, 
+      bookName, picurl, discussType, 
+      parentDiscussId, isReply, content
+      )
+    values (#{discussId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, 
+      #{discussTime,jdbcType=TIMESTAMP}, #{score,jdbcType=INTEGER}, #{bookId,jdbcType=BIGINT}, 
+      #{bookName,jdbcType=VARCHAR}, #{picurl,jdbcType=VARCHAR}, #{discussType,jdbcType=INTEGER}, 
+      #{parentDiscussId,jdbcType=INTEGER}, #{isReply,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    insert into rsm_rcmbookdiscuss
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="discussId != null" >
+        discussId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="discussTime != null" >
+        discussTime,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="bookId != null" >
+        bookId,
+      </if>
+      <if test="bookName != null" >
+        bookName,
+      </if>
+      <if test="picurl != null" >
+        picurl,
+      </if>
+      <if test="discussType != null" >
+        discussType,
+      </if>
+      <if test="parentDiscussId != null" >
+        parentDiscussId,
+      </if>
+      <if test="isReply != null" >
+        isReply,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="discussId != null" >
+        #{discussId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="discussTime != null" >
+        #{discussTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null" >
+        #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="discussType != null" >
+        #{discussType,jdbcType=INTEGER},
+      </if>
+      <if test="parentDiscussId != null" >
+        #{parentDiscussId,jdbcType=INTEGER},
+      </if>
+      <if test="isReply != null" >
+        #{isReply,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    update rsm_rcmbookdiscuss
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="discussTime != null" >
+        discussTime = #{discussTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        bookId = #{bookId,jdbcType=BIGINT},
+      </if>
+      <if test="bookName != null" >
+        bookName = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null" >
+        picurl = #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="discussType != null" >
+        discussType = #{discussType,jdbcType=INTEGER},
+      </if>
+      <if test="parentDiscussId != null" >
+        parentDiscussId = #{parentDiscussId,jdbcType=INTEGER},
+      </if>
+      <if test="isReply != null" >
+        isReply = #{isReply,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where discussId = #{discussId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    update rsm_rcmbookdiscuss
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      discussTime = #{discussTime,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=INTEGER},
+      bookId = #{bookId,jdbcType=BIGINT},
+      bookName = #{bookName,jdbcType=VARCHAR},
+      picurl = #{picurl,jdbcType=VARCHAR},
+      discussType = #{discussType,jdbcType=INTEGER},
+      parentDiscussId = #{parentDiscussId,jdbcType=INTEGER},
+      isReply = #{isReply,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where discussId = #{discussId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    update rsm_rcmbookdiscuss
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      discussTime = #{discussTime,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=INTEGER},
+      bookId = #{bookId,jdbcType=BIGINT},
+      bookName = #{bookName,jdbcType=VARCHAR},
+      picurl = #{picurl,jdbcType=VARCHAR},
+      discussType = #{discussType,jdbcType=INTEGER},
+      parentDiscussId = #{parentDiscussId,jdbcType=INTEGER},
+      isReply = #{isReply,jdbcType=INTEGER}
+    where discussId = #{discussId,jdbcType=INTEGER}
+  </update>
+
+  <select id="getCourseScore" resultType="java.lang.Double" parameterType="map">
+    SELECT
+      SUM(score)/COUNT(score) as score
+    from
+      rsm_rcmbookdiscuss
+    where
+       bookId = #{bookId} and  isReply = #{isReply,jdbcType=INTEGER}
+    and  discussType = #{discussType,jdbcType=INTEGER}
+
+  </select>
+
+  <select id="getScoreDistribute" resultType="com.elearning.vo.MapVo" parameterType="map">
+    select score as `key` ,count(score) as `value`  from rsm_rcmbookdiscuss  where 1=1
+    <if test="isReply != null">
+
+      and  isReply = #{isReply,jdbcType=INTEGER}
+    </if>
+    <if test="bookId != null ">
+      and bookId = #{bookId,jdbcType=BIGINT}
+    </if>
+    <if test="discussType != null" >
+      and discussType = #{discussType,jdbcType=INTEGER}
+    </if>
+    group by score order by score asc
+  </select>
+
+  <select id="listRsmRcm" resultType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" >
+    SELECT bookId,score,COUNT(score) as `count` FROM rsm_rcmbookdiscuss WHERE score IS NOT NULL GROUP BY bookid,score;
+  </select>
+  <select id="getRsmRcmbookdiscussList" resultType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" parameterType="map">
+    SELECT  <include refid="Base_Column_List"/>
+    from rsm_rcmbookdiscuss where parentDiscussId IS NULL  and content != ""
+    <if test="operatorName != null ">
+      and operatorName like CONCAT('%',#{operatorName},'%')
+    </if>
+    <if test="operatorId != null ">
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+    </if>
+    <if test="discussType != null ">
+      and discussType = #{discussType,jdbcType=INTEGER}
+    </if>
+    <if test="bookId != null ">
+      and bookId = #{bookId,jdbcType=BIGINT}
+    </if>
+    <if test="isReply != null ">
+      and isReply = #{isReply}
+    </if>
+    order by discussTime desc
+  </select>
+
+   <select id="getRsmRcmbookdiscussByparentDiscussId" resultType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" parameterType="map">
+      SELECT <include refid="Base_Column_List"/>
+      from rsm_rcmbookdiscuss where parentDiscussId = #{parentDiscussId} and bookId = #{bookId,jdbcType=BIGINT} and isReply = 1
+
+   </select>
+
+    <select id="getListByBookIdAndDiscussTypeAndIsReply" resultType="com.elearning.pojo.resourceManage.RsmRcmBookDiscuss" parameterType="map">
+        SELECT <include refid="Base_Column_List"/>  from rsm_rcmbookdiscuss
+        WHERE bookId = #{bookId} and discussType = #{discussType} and isReply = #{isReply}
+    </select>
+
+
+
+</mapper>

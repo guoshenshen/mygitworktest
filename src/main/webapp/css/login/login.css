@@ -1,0 +1,610 @@
+.popmask {
+    width:100%;
+    height:100%;
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    opacity:0.4;
+    background-color:rgb(0,0,0);
+    filter:alpha(opacity=40);       /* IE */
+  	-moz-opacity:0.4;              /* Mozilla */
+  	-khtml-opacity:0.4; 
+}
+
+
+#J-login{
+	font-family: "微软雅黑","黑体", Verdana, Tahoma;
+}
+
+.popmask.fadeIn {
+    -webkit-animation-name: none;
+    animation-name: none;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+
+#aLine {
+    float:right;
+}
+
+.popmask a:hover {
+    color: #08c;
+    text-decoration: underline;
+}
+ins, a {
+    text-decoration: none;
+}
+.fn-clear::after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.fn-clear {
+}
+
+iframe, .iframe {
+    border: 0 none;
+}
+
+.loginbox{
+	display:none; 
+    border-radius: 5px;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1001;
+    top: 40%;
+    left: 50%;
+    margin-left: -143px;
+    margin-top: -120px;
+}
+
+
+.login #loginWay{
+	width:52px;
+	height:52px;
+	position:absolute;
+	background-repeat:no-repeat;
+	right:5px;
+	top:5px;
+}
+
+
+.passwordLoginStatus #loginWay{
+	 background-image: url('../../image/sprite/loginStatus.png');
+	 background-position: 6px 0px;
+	 display:none;
+}
+
+
+.qrLoginStatus  #loginWay{
+	 background-image: url('../../image/sprite/loginStatus.png');
+	 background-position: -55px 2px;
+}
+
+
+.login .pobbox-close{
+	font-size: 23px;
+    text-decoration: none;
+    margin-left: 20px;
+    z-index:1001;
+    font-family: "微软雅黑","黑体", Verdana, Tahoma;
+}
+
+.login {
+    border: 1px solid #a7a7a7;
+    overflow: hidden;
+    width: 350px;
+    height: 380px;
+    background:none;
+    position:fixed;
+    box-sizing: content-box;
+}
+.login a {
+    color: #0ae;
+}
+.login-modern {
+    border: 1px solid transparent;
+}
+:root .login-modern {
+}
+
+
+
+.ui-form , .quick-form, #loginUserInfo{
+    font-size: 12px;
+    line-height: 1.5;
+    width: 70%;
+    position: relative;
+}
+
+.qrLoginStatus .ui-form{
+	display:none;
+}
+
+.passwordLoginStatus .quick-form{
+	display:none;
+}
+
+
+.ui-form, .ui-form *, .quick-form, .quick-form *,#loginUserInfo *{
+    list-style: outside none none;
+    margin: 0 auto;
+}
+
+.ui-form fieldset {
+    border: 0 none;
+    padding-left:9px;
+    padding-right:9px;
+}
+.ui-form-title {
+    color: #4d4d4d;
+    font: 500 18px/28px tahoma,arial,"Hiragino Sans GB","Microsoft Yahei",����;
+    font-size:16px; 
+    font-weight: bold;
+    padding: 26px 0 16px;
+    text-align: center;
+    width: 100%;
+}
+.login-modern .ui-form-title {
+   color:#f60;
+}
+.login-sso .ui-form-title {
+    text-align: center;
+}
+.ui-form-item::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.ui-form-item {
+    padding: 0 0 10px ;
+    position: relative;
+    display:block;
+    float:left;
+    width:100%;
+}
+.ui-form-item-12pd {
+    padding-bottom: 12px;
+}
+.ui-form-item-20pd {
+    padding-bottom: 20px;
+}
+.ui-form-item-30pd {
+    padding-bottom: 28px;
+}
+.ui-form-item input {
+    vertical-align: middle;
+}
+.ui-form-other {
+    height: 18px;
+    line-height: 18px;
+    padding-top: 7px;
+    position: relative;
+}
+.ui-form-other-fg {
+    padding-top: 4px;
+}
+.ui-form-other .textlink-ml20 {
+    margin-left: 5px;
+}
+.ui-form-other .forgot {
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+.ui-form-other .register {
+    color: #0ae;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 7px;
+}
+.ui-form-explain {
+    display: none;
+    height: 0;
+    overflow: hidden;
+}
+.ui-form-text {
+    color: #4d4d4d;
+    font-size: 14px;
+    height: 18px;
+    line-height: 18px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.login-modern .ui-form-text {
+    color: #fff;
+}
+
+.login .ui-form .object-shim-class {
+    border: 1px solid #a7a7a7;
+    display: inline-block;
+    height: 38px;
+    width: 177px;
+}
+.login-modern .ui-form-item .object-shim-class {
+    border: 1px solid #fff;
+    display: inline-block;
+}
+.ui-form .object-shim-class .ui-input {
+}
+@font-face {
+    font-family: "iconauth";
+    src: url("//at.alicdn.com/t/font_1441789796_8667505.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1441789796_8667505.woff") format("woff"), url("//at.alicdn.com/t/font_1441789796_8667505.ttf") format("truetype"), url("//at.alicdn.com/t/font_1441789796_8667505.svg#iconauth") format("svg");
+}
+.iconauth {
+    color: #fff;
+    font-family: iconauth !important;
+    font-size: 12px;
+    font-style: normal;
+}
+#J-checkcode-voice-bg .iconauth {
+    color: #0ae;
+    font-size: 20px;
+    line-height: 40px;
+}
+.ui-label {
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 38px;
+    width: 39px;
+}
+.login .ui-label {
+    border-bottom: 1px solid #a7a7a7;
+    border-left: 1px solid #a7a7a7;
+    border-top: 1px solid #a7a7a7;
+}
+.login .ui-label:hover {
+    border-bottom: 1px solid #6d6d6d;
+    border-left: 1px solid #6d6d6d;
+    border-top: 1px solid #6d6d6d;
+}
+.ui-label .ui-icon {
+    background-color: #aaabab;
+    background-repeat: no-repeat;
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    text-indent:0;
+    overflow: hidden;
+    text-align: center;
+    width: 39px;
+}
+.ui-label:hover .ui-icon, .ui-label-hover .ui-icon {
+    background-color: #6d6d6d;
+    cursor: pointer;
+}
+.ui-icon-userDEF {
+    background-position: -2px 5px;
+}
+.ui-icon-securityON {
+    background-position: -42px 5px;
+}
+.ui-icon-securityOFF {
+    background-position: -84px 5px;
+}
+.ui-icon-securityERR {
+    background-position: -250px 6px;
+}
+.ui-input {
+    border-radius: 0;
+    box-shadow: none;
+    color: #595959;
+    float: left;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    padding: 9px;
+    position: relative;
+    vertical-align: middle;
+}
+.login .ui-input {
+    border: 1px solid #a7a7a7;
+}
+.login-modern .ui-input {
+    border: 1px solid #fff;
+}
+.ui-input-normal, .standardPwdContainer .ui-input, .alieditContainer .ui-input {
+    width: 167px;
+    box-sizing: content-box;
+}
+.ui-input-checkcode {
+    width: 69px;
+}
+.ui-input:hover, .ui-input-hover {
+}
+.ui-input:focus, .ui-input-focus {
+    color: #595959;
+    outline-style: none;
+}
+.ui-input[disabled] {
+    background: #f2f2f2 none repeat scroll 0 0;
+}
+.ui-input:disabled {
+    background: #f2f2f2 none repeat scroll 0 0;
+}
+.placeholder {
+    color: #ccc;
+}
+.ui-form-item .alieditContainer {
+    background: #fff none repeat scroll 0 0;
+    border: 0 none;
+    display: inline-block;
+    height: 40px;
+    width: 187px;
+}
+.ui-form-item .alieditContainer object, .ui-form-item .alieditContainer embed {
+    height: 40px;
+    width: 179px;
+}
+.ui-form-item .alieditContainer .aliedit-install {
+    background: #818282 none repeat scroll 0 0;
+    border: 0 none;
+    color: #fffefe !important;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    min-width: 179px;
+    text-align: center !important;
+    width: 179px;
+}
+.ui-form-item .alieditContainer .edit-tips {
+    color: #08c !important;
+    margin-top: 0;
+    text-align: center;
+    top: -75px;
+    width: 180px;
+    z-index: 10;
+}
+.light-dialog {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+}
+.alieditContainer input.ui-input {
+}
+
+.login .textlink, .login .textlink:hover {
+    color: #fff;
+}
+
+.login-modern .textlink, .login-modern .textlink:hover {
+    color: #fff;
+}
+
+.login-modern .textlink-ml20:hover{
+	color:#0ae;
+}
+
+.login .login_info{
+	color:#f60;	
+	display:none;
+	width:225px;
+	text-decoration: none;
+	FONT-SIZE: 14px;
+    cursor: text;
+}
+
+.textlink-ml20{
+	font-size:12px;
+	
+}
+
+.ui-button * {
+    margin: 0;
+    padding: 0;
+}
+.login .ui-button {
+    background: #0ae none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 36px;
+    outline: 0 none;
+    padding: 0 20px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 187px;
+}
+a.ui-button {
+    color: #fff;
+    width: 179px;
+}
+.ui-button:hover, a.ui-button:hover {
+    background-color: #00a3d2;
+    border-color: #00a3d2;
+    text-decoration: none;
+}
+.ui-button-disabled, a.ui-button-disabled, .ui-button-disabled:hover, a.ui-button-disabled:hover {
+    background: #cacccd none repeat scroll 0 0;
+    border-radius: 4px;
+    color: #999;
+    cursor: default;
+    filter: none;
+}
+
+.hidden {
+    display: none;
+}
+.alieditContainer * {
+    vertical-align: bottom;
+}
+.alieditContainer {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    vertical-align: bottom;
+    width: 184px;
+}
+.alieditContainer object {
+    height: 24px;
+    width: 100%;
+}
+.alieditContainer a.aliedit-install {
+    border: 1px solid #aeaeae;
+    color: #06f !important;
+    display: block;
+    height: 100%;
+    line-height: 24px;
+    min-width: 184px;
+    text-align: center;
+}
+
+
+#verifyCode_container{
+	position:relative;
+}
+
+#verifyCode_container #verifyCodeImg{
+	position: absolute;
+    width: 40%;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+}
+
+#verifyCode_container #verifyCodeImg:hover{
+	cursor:pointer;
+}
+
+html {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+}
+
+
+#J-login #loginMask{
+	width:100%;
+	height:100%;
+	float:left;
+	display:block;
+	position:absolute;
+	background-color:rgb(0,0,0);
+    filter:alpha(opacity=70);       /* IE */
+  	-moz-opacity:0.7;              /* �ϰ�Mozilla */
+  	-khtml-opacity:0.7; 
+  	opacity:0.7;
+  	z-index:-1;
+}
+
+
+#J-login #loginUserInfo{
+	width:100%;
+	height:280px;
+	display:none;
+	overflow-x: hidden;
+}
+
+#J-login #loginUserInfo .userHead{
+	padding-left:40px;
+	padding-right:40px;
+	margin:0 auto;
+	margin-bottom:20px;
+	width:100px;
+	height:100px;
+	float:none;
+	display:block;
+}
+
+#J-login #loginUserInfo .userHead img{
+	width:100%;
+	height:100%;
+}
+
+#J-login #loginUserInfo .userInfo{
+	width:100%;
+	/* min-width:200px; */
+	height:30px;
+	float:none;
+	font-size: 15px;
+	text-align:center;
+	color:#f60;
+	display:block;
+}
+#loginUserInfo .login_info{
+	margin-top:30px;
+	width:100%;
+	text-align:center;
+}
+#J-login #J-submit{
+	float:left;
+}
+
+
+.qrcode-login .qrcode-main{
+	margin-top:5px;
+	position:relative;
+}
+
+.qrcode-mod .qrcode-img{
+	width:140px;
+	height:140px;
+}
+
+.qrcode-mod .qrcode-img img{
+	width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.qrcode-main .msg-err{
+	display:none;
+	position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.msg-err h6{
+	color:#fff;
+	text-align:center;
+}
+
+.msg-err .J_QRCodeRefresh{
+	background-color: #ff0036;
+    line-height: 2em;
+    display: block;
+    padding: 0 10px;
+    margin-top:20px;
+    color: #fff;
+}
+
+.qrcode-mod.needRefresh .qrcode-main .msg-err{
+	display:block;
+} 
+
+
+.qrcode-mod.needRefresh .qrcode-img{
+	opacity:0.2;
+	filter: alpha(opacity=20);
+}
+
+.qrcode-mod .qrcode-desc{
+	text-align:center;
+	color:#fff;
+	margin-top:40px;
+}
+
+.qrcode-login .login-links{
+	position: absolute;
+    bottom: -50px;
+    right: -35px;
+}

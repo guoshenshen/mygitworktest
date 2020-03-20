@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.recommend.MailreCommendMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.recommend.MailreCommend" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="mailName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="modifyDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="sendTime" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sendCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sendInterval" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="editFinished" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="mailContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hasSend" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="isAuto" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="classHourNotify" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="templateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, orgId, mailName, createDate, modifyDate, sendTime, sendCount, sendInterval, 
+    editFinished, mailContent, hasSend, isAuto, classHourNotify, templateId, tenantId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mailrecommend
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mailrecommend
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.recommend.MailreCommend" >
+    insert into mailrecommend (id, operatorId, orgId, 
+      mailName, createDate, modifyDate, 
+      sendTime, sendCount, sendInterval, 
+      editFinished, mailContent, hasSend, 
+      isAuto, classHourNotify, templateId, 
+      tenantId)
+    values (#{id,jdbcType=BIGINT}, #{operatorId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{mailName,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}, #{modifyDate,jdbcType=DATE}, 
+      #{sendTime,jdbcType=INTEGER}, #{sendCount,jdbcType=INTEGER}, #{sendInterval,jdbcType=INTEGER}, 
+      #{editFinished,jdbcType=BOOLEAN}, #{mailContent,jdbcType=VARCHAR}, #{hasSend,jdbcType=BOOLEAN}, 
+      #{isAuto,jdbcType=BOOLEAN}, #{classHourNotify,jdbcType=BOOLEAN}, #{templateId,jdbcType=INTEGER}, 
+      #{tenantId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.recommend.MailreCommend" >
+    insert into mailrecommend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="mailName != null" >
+        mailName,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate,
+      </if>
+      <if test="sendTime != null" >
+        sendTime,
+      </if>
+      <if test="sendCount != null" >
+        sendCount,
+      </if>
+      <if test="sendInterval != null" >
+        sendInterval,
+      </if>
+      <if test="editFinished != null" >
+        editFinished,
+      </if>
+      <if test="mailContent != null" >
+        mailContent,
+      </if>
+      <if test="hasSend != null" >
+        hasSend,
+      </if>
+      <if test="isAuto != null" >
+        isAuto,
+      </if>
+      <if test="classHourNotify != null" >
+        classHourNotify,
+      </if>
+      <if test="templateId != null" >
+        templateId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="mailName != null" >
+        #{mailName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=DATE},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=INTEGER},
+      </if>
+      <if test="sendCount != null" >
+        #{sendCount,jdbcType=INTEGER},
+      </if>
+      <if test="sendInterval != null" >
+        #{sendInterval,jdbcType=INTEGER},
+      </if>
+      <if test="editFinished != null" >
+        #{editFinished,jdbcType=BOOLEAN},
+      </if>
+      <if test="mailContent != null" >
+        #{mailContent,jdbcType=VARCHAR},
+      </if>
+      <if test="hasSend != null" >
+        #{hasSend,jdbcType=BOOLEAN},
+      </if>
+      <if test="isAuto != null" >
+        #{isAuto,jdbcType=BOOLEAN},
+      </if>
+      <if test="classHourNotify != null" >
+        #{classHourNotify,jdbcType=BOOLEAN},
+      </if>
+      <if test="templateId != null" >
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.recommend.MailreCommend" >
+    update mailrecommend
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="mailName != null" >
+        mailName = #{mailName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate = #{modifyDate,jdbcType=DATE},
+      </if>
+      <if test="sendTime != null" >
+        sendTime = #{sendTime,jdbcType=INTEGER},
+      </if>
+      <if test="sendCount != null" >
+        sendCount = #{sendCount,jdbcType=INTEGER},
+      </if>
+      <if test="sendInterval != null" >
+        sendInterval = #{sendInterval,jdbcType=INTEGER},
+      </if>
+      <if test="editFinished != null" >
+        editFinished = #{editFinished,jdbcType=BOOLEAN},
+      </if>
+      <if test="mailContent != null" >
+        mailContent = #{mailContent,jdbcType=VARCHAR},
+      </if>
+      <if test="hasSend != null" >
+        hasSend = #{hasSend,jdbcType=BOOLEAN},
+      </if>
+      <if test="isAuto != null" >
+        isAuto = #{isAuto,jdbcType=BOOLEAN},
+      </if>
+      <if test="classHourNotify != null" >
+        classHourNotify = #{classHourNotify,jdbcType=BOOLEAN},
+      </if>
+      <if test="templateId != null" >
+        templateId = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.recommend.MailreCommend" >
+    update mailrecommend
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      mailName = #{mailName,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=DATE},
+      modifyDate = #{modifyDate,jdbcType=DATE},
+      sendTime = #{sendTime,jdbcType=INTEGER},
+      sendCount = #{sendCount,jdbcType=INTEGER},
+      sendInterval = #{sendInterval,jdbcType=INTEGER},
+      editFinished = #{editFinished,jdbcType=BOOLEAN},
+      mailContent = #{mailContent,jdbcType=VARCHAR},
+      hasSend = #{hasSend,jdbcType=BOOLEAN},
+      isAuto = #{isAuto,jdbcType=BOOLEAN},
+      classHourNotify = #{classHourNotify,jdbcType=BOOLEAN},
+      templateId = #{templateId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

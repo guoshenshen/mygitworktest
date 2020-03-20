@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.Role" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="role_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isVirRole" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="creatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="roleCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="roleUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgsname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentOrgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="defaultResourceId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, role_Name, isVirRole, orgId, creatorId, createTime, comment, roleCode, roleUrl, 
+    orgsname, parentOrgId, defaultResourceId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+    <select id="findByCondition" resultType="com.elearning.pojo.systemManage.Role">
+      select t.ID,t.role_Name as roleName,t.createTime AS createtime,t.comment,t.creatorId,t.roleCode,t.roleUrl,t.isVirRole,t.orgId,t.orgsname,t.parentOrgId, t.defaultResourceId FROM role t WHERE t.creatorId=#{operatorId}
+      union
+      select m.ID,m.role_Name as roleName,m.createTime AS createtime,m.comment,m.creatorId,m.roleCode,m.roleUrl,m.isVirRole,m.orgId,m.orgsname,m.parentOrgId, m.defaultResourceId FROM role m,user_role ur WHERE m.ID=ur.Role_ID AND ur.User_ID=#{operatorId}
+      <if test="roleName!=null">
+        and m.role_Name like #{roleName}
+      </if>
+      order by createtime DESC
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from role
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.Role" useGeneratedKeys="true" keyProperty="id">
+    insert into role (ID, role_Name, isVirRole, 
+      orgId, creatorId, createTime, 
+      comment, roleCode, roleUrl, 
+      orgsname, parentOrgId, defaultResourceId
+      )
+    values (#{ID,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{isVirRole,jdbcType=INTEGER},
+      #{orgId,jdbcType=INTEGER}, #{creatorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{comment,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}, #{roleUrl,jdbcType=VARCHAR}, 
+      #{orgsname,jdbcType=VARCHAR}, #{parentOrgId,jdbcType=INTEGER}, #{defaultResourceId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.Role" >
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="roleName != null" >
+        role_Name,
+      </if>
+      <if test="isVirRole != null" >
+        isVirRole,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="creatorId != null" >
+        creatorId,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="roleCode != null" >
+        roleCode,
+      </if>
+      <if test="roleUrl != null" >
+        roleUrl,
+      </if>
+      <if test="orgsname != null" >
+        orgsname,
+      </if>
+      <if test="parentOrgId != null" >
+        parentOrgId,
+      </if>
+      <if test="defaultResourceId != null" >
+        defaultResourceId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVirRole != null" >
+        #{isVirRole,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleUrl != null" >
+        #{roleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="orgsname != null" >
+        #{orgsname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgId != null" >
+        #{parentOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultResourceId != null" >
+        #{defaultResourceId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.Role" >
+    update role
+    <set >
+      <if test="roleName != null" >
+        role_Name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVirRole != null" >
+        isVirRole = #{isVirRole,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null" >
+        roleCode = #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleUrl != null" >
+        roleUrl = #{roleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="orgsname != null" >
+        orgsname = #{orgsname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgId != null" >
+        parentOrgId = #{parentOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultResourceId != null" >
+        defaultResourceId = #{defaultResourceId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.Role" >
+    update role
+    set role_Name = #{roleName,jdbcType=VARCHAR},
+      isVirRole = #{isVirRole,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      creatorId = #{creatorId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      comment = #{comment,jdbcType=VARCHAR},
+      roleCode = #{roleCode,jdbcType=VARCHAR},
+      roleUrl = #{roleUrl,jdbcType=VARCHAR},
+      orgsname = #{orgsname,jdbcType=VARCHAR},
+      parentOrgId = #{parentOrgId,jdbcType=INTEGER},
+      defaultResourceId = #{defaultResourceId,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

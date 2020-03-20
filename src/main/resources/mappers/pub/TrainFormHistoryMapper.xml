@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.TrainFormHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.TrainFormHistory" >
+    <constructor >
+      <arg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="train_Id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainWay" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isStationTrain" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="trainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subTrainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ProgramNo" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="startTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="sponsorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="organizerName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="telephone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="organizerEmail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="days" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="stationId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attendants" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attendantCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifBJ" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isEnrolled" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="isIssued" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="isNeedCheck" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="programStartTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="programEndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="sponsorID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="organizerID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="invlCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyWordsTag" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="iconId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="topbandId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="creamProject" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainMode" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="upTenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attendedCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="monitorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="monitorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fee" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="isNoted" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="researchPostNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="managePostNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="supportPostNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="outSideNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="workerNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="feeChannel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cad_report" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="item_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="feeLevel" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="generateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.pub.TrainFormHistoryWithBLOBs" >
+    <constructor >
+      <arg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="train_Id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainWay" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isStationTrain" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="trainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subTrainTypeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ProgramNo" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="startTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="sponsorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="organizerName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="telephone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="organizerEmail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="days" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="stationId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attendants" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attendantCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifBJ" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isEnrolled" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="isIssued" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="isNeedCheck" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="programStartTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="programEndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="sponsorID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="organizerID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="invlCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyWordsTag" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="iconId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="topbandId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="creamProject" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainMode" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="upTenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attendedCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="monitorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="monitorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fee" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="isNoted" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="researchPostNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="managePostNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="supportPostNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="outSideNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="workerNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="feeChannel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cad_report" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="item_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="feeLevel" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="generateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="trainingContent" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="trainGoal" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="comment" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    trainingContent, trainGoal, comment
+  </sql>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.TrainFormHistoryWithBLOBs" >
+    insert into trainformhistory (ID, train_Id, trainName, 
+      trainWay, isStationTrain, trainTypeID, 
+      subTrainTypeID, ProgramNo, startTime, 
+      endTime, sponsorName, organizerName, 
+      telephone, organizerEmail, classHour, 
+      days, stationId, attendants, 
+      attendantCount, ifBJ, location, 
+      isEnrolled, isIssued, isNeedCheck, 
+      programStartTime, programEndTime, sponsorID, 
+      organizerID, orgId, orgName, 
+      year, invlCount, operatorId, 
+      keyWordsTag, openScope, iconId, 
+      topbandId, creamProject, trainMode, 
+      tenantId, upTenantId, attendedCount, 
+      monitorId, monitorName, fee, 
+      isNoted, researchPostNum, managePostNum, 
+      supportPostNum, outSideNum, workerNum, 
+      feeChannel, cad_report, item_type, 
+      feeLevel, generateTime, trainingContent, 
+      trainGoal, comment)
+    values (#{ID,jdbcType=INTEGER}, #{train_Id,jdbcType=INTEGER}, #{trainName,jdbcType=VARCHAR}, 
+      #{trainWay,jdbcType=INTEGER}, #{isStationTrain,jdbcType=BOOLEAN}, #{trainTypeID,jdbcType=INTEGER}, 
+      #{subTrainTypeID,jdbcType=INTEGER}, #{programNo,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{sponsorName,jdbcType=VARCHAR}, #{organizerName,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{organizerEmail,jdbcType=VARCHAR}, #{classHour,jdbcType=DOUBLE}, 
+      #{days,jdbcType=DOUBLE}, #{stationId,jdbcType=VARCHAR}, #{attendants,jdbcType=VARCHAR}, 
+      #{attendantCount,jdbcType=INTEGER}, #{ifBJ,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, 
+      #{isEnrolled,jdbcType=BOOLEAN}, #{isIssued,jdbcType=BOOLEAN}, #{isNeedCheck,jdbcType=BOOLEAN}, 
+      #{programStartTime,jdbcType=TIMESTAMP}, #{programEndTime,jdbcType=TIMESTAMP}, #{sponsorID,jdbcType=VARCHAR}, 
+      #{organizerID,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, 
+      #{year,jdbcType=VARCHAR}, #{invlCount,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, 
+      #{keyWordsTag,jdbcType=VARCHAR}, #{openScope,jdbcType=INTEGER}, #{iconId,jdbcType=INTEGER}, 
+      #{topbandId,jdbcType=INTEGER}, #{creamProject,jdbcType=INTEGER}, #{trainMode,jdbcType=INTEGER}, 
+      #{tenantId,jdbcType=INTEGER}, #{upTenantId,jdbcType=INTEGER}, #{attendedCount,jdbcType=INTEGER}, 
+      #{monitorId,jdbcType=INTEGER}, #{monitorName,jdbcType=VARCHAR}, #{fee,jdbcType=DOUBLE}, 
+      #{isNoted,jdbcType=INTEGER}, #{researchPostNum,jdbcType=INTEGER}, #{managePostNum,jdbcType=INTEGER}, 
+      #{supportPostNum,jdbcType=INTEGER}, #{outSideNum,jdbcType=INTEGER}, #{workerNum,jdbcType=INTEGER}, 
+      #{feeChannel,jdbcType=VARCHAR}, #{cad_report,jdbcType=INTEGER}, #{item_type,jdbcType=INTEGER}, 
+      #{feeLevel,jdbcType=INTEGER}, #{generateTime,jdbcType=TIMESTAMP}, #{trainingContent,jdbcType=LONGVARCHAR}, 
+      #{trainGoal,jdbcType=LONGVARCHAR}, #{comment,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.TrainFormHistoryWithBLOBs" >
+    insert into trainformhistory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="train_Id != null" >
+        train_Id,
+      </if>
+      <if test="trainName != null" >
+        trainName,
+      </if>
+      <if test="trainWay != null" >
+        trainWay,
+      </if>
+      <if test="isStationTrain != null" >
+        isStationTrain,
+      </if>
+      <if test="trainTypeID != null" >
+        trainTypeID,
+      </if>
+      <if test="subTrainTypeID != null" >
+        subTrainTypeID,
+      </if>
+      <if test="programNo != null" >
+        ProgramNo,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="sponsorName != null" >
+        sponsorName,
+      </if>
+      <if test="organizerName != null" >
+        organizerName,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="organizerEmail != null" >
+        organizerEmail,
+      </if>
+      <if test="classHour != null" >
+        classHour,
+      </if>
+      <if test="days != null" >
+        days,
+      </if>
+      <if test="stationId != null" >
+        stationId,
+      </if>
+      <if test="attendants != null" >
+        attendants,
+      </if>
+      <if test="attendantCount != null" >
+        attendantCount,
+      </if>
+      <if test="ifBJ != null" >
+        ifBJ,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="isEnrolled != null" >
+        isEnrolled,
+      </if>
+      <if test="isIssued != null" >
+        isIssued,
+      </if>
+      <if test="isNeedCheck != null" >
+        isNeedCheck,
+      </if>
+      <if test="programStartTime != null" >
+        programStartTime,
+      </if>
+      <if test="programEndTime != null" >
+        programEndTime,
+      </if>
+      <if test="sponsorID != null" >
+        sponsorID,
+      </if>
+      <if test="organizerID != null" >
+        organizerID,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="invlCount != null" >
+        invlCount,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="keyWordsTag != null" >
+        keyWordsTag,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+      <if test="iconId != null" >
+        iconId,
+      </if>
+      <if test="topbandId != null" >
+        topbandId,
+      </if>
+      <if test="creamProject != null" >
+        creamProject,
+      </if>
+      <if test="trainMode != null" >
+        trainMode,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="upTenantId != null" >
+        upTenantId,
+      </if>
+      <if test="attendedCount != null" >
+        attendedCount,
+      </if>
+      <if test="monitorId != null" >
+        monitorId,
+      </if>
+      <if test="monitorName != null" >
+        monitorName,
+      </if>
+      <if test="fee != null" >
+        fee,
+      </if>
+      <if test="isNoted != null" >
+        isNoted,
+      </if>
+      <if test="researchPostNum != null" >
+        researchPostNum,
+      </if>
+      <if test="managePostNum != null" >
+        managePostNum,
+      </if>
+      <if test="supportPostNum != null" >
+        supportPostNum,
+      </if>
+      <if test="outSideNum != null" >
+        outSideNum,
+      </if>
+      <if test="workerNum != null" >
+        workerNum,
+      </if>
+      <if test="feeChannel != null" >
+        feeChannel,
+      </if>
+      <if test="cad_report != null" >
+        cad_report,
+      </if>
+      <if test="item_type != null" >
+        item_type,
+      </if>
+      <if test="feeLevel != null" >
+        feeLevel,
+      </if>
+      <if test="generateTime != null" >
+        generateTime,
+      </if>
+      <if test="trainingContent != null" >
+        trainingContent,
+      </if>
+      <if test="trainGoal != null" >
+        trainGoal,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="train_Id != null" >
+        #{train_Id,jdbcType=INTEGER},
+      </if>
+      <if test="trainName != null" >
+        #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainWay != null" >
+        #{trainWay,jdbcType=INTEGER},
+      </if>
+      <if test="isStationTrain != null" >
+        #{isStationTrain,jdbcType=BOOLEAN},
+      </if>
+      <if test="trainTypeID != null" >
+        #{trainTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="subTrainTypeID != null" >
+        #{subTrainTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="programNo != null" >
+        #{programNo,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sponsorName != null" >
+        #{sponsorName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerName != null" >
+        #{organizerName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerEmail != null" >
+        #{organizerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="days != null" >
+        #{days,jdbcType=DOUBLE},
+      </if>
+      <if test="stationId != null" >
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="attendants != null" >
+        #{attendants,jdbcType=VARCHAR},
+      </if>
+      <if test="attendantCount != null" >
+        #{attendantCount,jdbcType=INTEGER},
+      </if>
+      <if test="ifBJ != null" >
+        #{ifBJ,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnrolled != null" >
+        #{isEnrolled,jdbcType=BOOLEAN},
+      </if>
+      <if test="isIssued != null" >
+        #{isIssued,jdbcType=BOOLEAN},
+      </if>
+      <if test="isNeedCheck != null" >
+        #{isNeedCheck,jdbcType=BOOLEAN},
+      </if>
+      <if test="programStartTime != null" >
+        #{programStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="programEndTime != null" >
+        #{programEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sponsorID != null" >
+        #{sponsorID,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerID != null" >
+        #{organizerID,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="invlCount != null" >
+        #{invlCount,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="keyWordsTag != null" >
+        #{keyWordsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="iconId != null" >
+        #{iconId,jdbcType=INTEGER},
+      </if>
+      <if test="topbandId != null" >
+        #{topbandId,jdbcType=INTEGER},
+      </if>
+      <if test="creamProject != null" >
+        #{creamProject,jdbcType=INTEGER},
+      </if>
+      <if test="trainMode != null" >
+        #{trainMode,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="upTenantId != null" >
+        #{upTenantId,jdbcType=INTEGER},
+      </if>
+      <if test="attendedCount != null" >
+        #{attendedCount,jdbcType=INTEGER},
+      </if>
+      <if test="monitorId != null" >
+        #{monitorId,jdbcType=INTEGER},
+      </if>
+      <if test="monitorName != null" >
+        #{monitorName,jdbcType=VARCHAR},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=DOUBLE},
+      </if>
+      <if test="isNoted != null" >
+        #{isNoted,jdbcType=INTEGER},
+      </if>
+      <if test="researchPostNum != null" >
+        #{researchPostNum,jdbcType=INTEGER},
+      </if>
+      <if test="managePostNum != null" >
+        #{managePostNum,jdbcType=INTEGER},
+      </if>
+      <if test="supportPostNum != null" >
+        #{supportPostNum,jdbcType=INTEGER},
+      </if>
+      <if test="outSideNum != null" >
+        #{outSideNum,jdbcType=INTEGER},
+      </if>
+      <if test="workerNum != null" >
+        #{workerNum,jdbcType=INTEGER},
+      </if>
+      <if test="feeChannel != null" >
+        #{feeChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="cad_report != null" >
+        #{cad_report,jdbcType=INTEGER},
+      </if>
+      <if test="item_type != null" >
+        #{item_type,jdbcType=INTEGER},
+      </if>
+      <if test="feeLevel != null" >
+        #{feeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="generateTime != null" >
+        #{generateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainingContent != null" >
+        #{trainingContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="trainGoal != null" >
+        #{trainGoal,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

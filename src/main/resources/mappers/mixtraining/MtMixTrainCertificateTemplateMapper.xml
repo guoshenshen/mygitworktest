@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainCertificateTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainCertificateTemplate" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateTemplateName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="certificateTemplatePath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isDefault" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="certificateTemplateType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="usedTimes" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, certificateTemplateName, certificateTemplatePath, operatorId, isDefault, tenantId, 
+    orgId, createDate, certificateTemplateType, usedTimes, openScope, status
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtraincertificatetemplate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtraincertificatetemplate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateTemplate" >
+    insert into mt_mixtraincertificatetemplate (id, certificateTemplateName, certificateTemplatePath, 
+      operatorId, isDefault, tenantId, 
+      orgId, createDate, certificateTemplateType, 
+      usedTimes, openScope, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{certificateTemplateName,jdbcType=VARCHAR}, #{certificateTemplatePath,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=INTEGER}, #{isDefault,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, #{certificateTemplateType,jdbcType=INTEGER}, 
+      #{usedTimes,jdbcType=INTEGER}, #{openScope,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateTemplate" >
+    insert into mt_mixtraincertificatetemplate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="certificateTemplateName != null" >
+        certificateTemplateName,
+      </if>
+      <if test="certificateTemplatePath != null" >
+        certificateTemplatePath,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="isDefault != null" >
+        isDefault,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="certificateTemplateType != null" >
+        certificateTemplateType,
+      </if>
+      <if test="usedTimes != null" >
+        usedTimes,
+      </if>
+      <if test="openScope != null" >
+        openScope,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTemplateName != null" >
+        #{certificateTemplateName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateTemplatePath != null" >
+        #{certificateTemplatePath,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="certificateTemplateType != null" >
+        #{certificateTemplateType,jdbcType=INTEGER},
+      </if>
+      <if test="usedTimes != null" >
+        #{usedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateTemplate" >
+    update mt_mixtraincertificatetemplate
+    <set >
+      <if test="certificateTemplateName != null" >
+        certificateTemplateName = #{certificateTemplateName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateTemplatePath != null" >
+        certificateTemplatePath = #{certificateTemplatePath,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null" >
+        isDefault = #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="certificateTemplateType != null" >
+        certificateTemplateType = #{certificateTemplateType,jdbcType=INTEGER},
+      </if>
+      <if test="usedTimes != null" >
+        usedTimes = #{usedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="openScope != null" >
+        openScope = #{openScope,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateTemplate" >
+    update mt_mixtraincertificatetemplate
+    set certificateTemplateName = #{certificateTemplateName,jdbcType=VARCHAR},
+      certificateTemplatePath = #{certificateTemplatePath,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      isDefault = #{isDefault,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      createDate = #{createDate,jdbcType=DATE},
+      certificateTemplateType = #{certificateTemplateType,jdbcType=INTEGER},
+      usedTimes = #{usedTimes,jdbcType=INTEGER},
+      openScope = #{openScope,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByOperatorId" resultType="com.elearning.pojo.mixtraining.MtMixTrainCertificateTemplate" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from mt_mixtraincertificatetemplate
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+  </select>
+
+</mapper>

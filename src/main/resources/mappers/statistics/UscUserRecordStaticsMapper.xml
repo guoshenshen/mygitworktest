@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.statistics.UscUserRecordStaticsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.statistics.UscUserRecordStatics" >
+    <constructor >
+      <idArg column="recordId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="empCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainTypeName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="achievement" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isKeyFigure" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveStatusName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recordId, operatorId, empCode, operatorName, trainId, trainCode, trainName, trainTypeName, 
+    classHour, startTime, endTime, year, achievement, isKeyFigure, tenantId, approveStatusName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from usc_userrecordstatics
+    where recordId = #{recordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from usc_userrecordstatics
+    where recordId = #{recordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.statistics.UscUserRecordStatics" >
+    insert into usc_userrecordstatics (recordId, operatorId, empCode, 
+      operatorName, trainId, trainCode, 
+      trainName, trainTypeName, classHour, 
+      startTime, endTime, year, 
+      achievement, isKeyFigure, tenantId, 
+      approveStatusName)
+    values (#{recordId,jdbcType=BIGINT}, #{operatorId,jdbcType=INTEGER}, #{empCode,jdbcType=VARCHAR}, 
+      #{operatorName,jdbcType=VARCHAR}, #{trainId,jdbcType=INTEGER}, #{trainCode,jdbcType=VARCHAR}, 
+      #{trainName,jdbcType=VARCHAR}, #{trainTypeName,jdbcType=VARCHAR}, #{classHour,jdbcType=DOUBLE}, 
+      #{startTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{year,jdbcType=VARCHAR}, 
+      #{achievement,jdbcType=VARCHAR}, #{isKeyFigure,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{approveStatusName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.statistics.UscUserRecordStatics" >
+    insert into usc_userrecordstatics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        recordId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="empCode != null" >
+        empCode,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="trainCode != null" >
+        trainCode,
+      </if>
+      <if test="trainName != null" >
+        trainName,
+      </if>
+      <if test="trainTypeName != null" >
+        trainTypeName,
+      </if>
+      <if test="classHour != null" >
+        classHour,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="achievement != null" >
+        achievement,
+      </if>
+      <if test="isKeyFigure != null" >
+        isKeyFigure,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="approveStatusName != null" >
+        approveStatusName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="empCode != null" >
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="trainCode != null" >
+        #{trainCode,jdbcType=VARCHAR},
+      </if>
+      <if test="trainName != null" >
+        #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTypeName != null" >
+        #{trainTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="achievement != null" >
+        #{achievement,jdbcType=VARCHAR},
+      </if>
+      <if test="isKeyFigure != null" >
+        #{isKeyFigure,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="approveStatusName != null" >
+        #{approveStatusName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.statistics.UscUserRecordStatics" >
+    update usc_userrecordstatics
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="empCode != null" >
+        empCode = #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="trainCode != null" >
+        trainCode = #{trainCode,jdbcType=VARCHAR},
+      </if>
+      <if test="trainName != null" >
+        trainName = #{trainName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTypeName != null" >
+        trainTypeName = #{trainTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="classHour != null" >
+        classHour = #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="achievement != null" >
+        achievement = #{achievement,jdbcType=VARCHAR},
+      </if>
+      <if test="isKeyFigure != null" >
+        isKeyFigure = #{isKeyFigure,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="approveStatusName != null" >
+        approveStatusName = #{approveStatusName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where recordId = #{recordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.statistics.UscUserRecordStatics" >
+    update usc_userrecordstatics
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      empCode = #{empCode,jdbcType=VARCHAR},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      trainId = #{trainId,jdbcType=INTEGER},
+      trainCode = #{trainCode,jdbcType=VARCHAR},
+      trainName = #{trainName,jdbcType=VARCHAR},
+      trainTypeName = #{trainTypeName,jdbcType=VARCHAR},
+      classHour = #{classHour,jdbcType=DOUBLE},
+      startTime = #{startTime,jdbcType=DATE},
+      endTime = #{endTime,jdbcType=DATE},
+      year = #{year,jdbcType=VARCHAR},
+      achievement = #{achievement,jdbcType=VARCHAR},
+      isKeyFigure = #{isKeyFigure,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      approveStatusName = #{approveStatusName,jdbcType=VARCHAR}
+    where recordId = #{recordId,jdbcType=BIGINT}
+  </update>
+
+  <select id="findByExample" resultType="com.elearning.pojo.statistics.UscUserRecordStatics" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from usc_userrecordstatics
+    where 1=1
+    <if test="operatorId != null" >
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+    </if>
+    <if test="empCode != null" >
+      and empCode = #{empCode,jdbcType=VARCHAR}
+    </if>
+    <if test="operatorName != null" >
+      and operatorName = #{operatorName,jdbcType=VARCHAR}
+    </if>
+    <if test="trainId != null" >
+      and trainId = #{trainId,jdbcType=INTEGER}
+    </if>
+    <if test="trainCode != null" >
+      and trainCode = #{trainCode,jdbcType=VARCHAR}
+    </if>
+    <if test="trainName != null" >
+      and trainName = #{trainName,jdbcType=VARCHAR}
+    </if>
+    <if test="trainTypeName != null" >
+      and trainTypeName = #{trainTypeName,jdbcType=VARCHAR}
+    </if>
+    <if test="classHour != null" >
+      and classHour = #{classHour,jdbcType=DOUBLE}
+    </if>
+    <if test="startTime != null" >
+      and startTime = #{startTime,jdbcType=DATE}
+    </if>
+    <if test="endTime != null" >
+      and endTime = #{endTime,jdbcType=DATE}
+    </if>
+    <if test="year != null" >
+      and year = #{year,jdbcType=VARCHAR}
+    </if>
+    <if test="achievement != null" >
+      and achievement = #{achievement,jdbcType=VARCHAR}
+    </if>
+    <if test="isKeyFigure != null" >
+      and isKeyFigure = #{isKeyFigure,jdbcType=INTEGER}
+    </if>
+    <if test="tenantId != null" >
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+    </if>
+    <if test="approveStatusName != null" >
+      and approveStatusName = #{approveStatusName,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
+
+</mapper>

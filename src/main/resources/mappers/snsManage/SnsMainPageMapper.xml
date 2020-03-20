@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.snsManage.SnsMainPageMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.snsManage.SnsMainPage" >
+    <constructor >
+      <idArg column="infoId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="infoType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="publishDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="infoFromUserId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="debateRecordUserId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="deleteRecordUserId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="resourceId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="infoName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.snsManage.SnsMainPage" >
+    <constructor >
+      <idArg column="infoId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="infoType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="publishDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="infoFromUserId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="debateRecordUserId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="deleteRecordUserId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="resourceId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="infoName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    infoId, operatorId, infoType, url, publishDate, infoFromUserId, debateRecordUserId, 
+    deleteRecordUserId, resourceId, infoName
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sns_mainpage
+    where infoId = #{infoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sns_mainpage
+    where infoId = #{infoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.snsManage.SnsMainPage" >
+    insert into sns_mainpage (infoId, operatorId, infoType, 
+      url, publishDate, infoFromUserId, 
+      debateRecordUserId, deleteRecordUserId, 
+      resourceId, infoName, content
+      )
+    values (#{infoId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{infoType,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR}, #{publishDate,jdbcType=TIMESTAMP}, #{infoFromUserId,jdbcType=VARCHAR}, 
+      #{debateRecordUserId,jdbcType=VARCHAR}, #{deleteRecordUserId,jdbcType=VARCHAR}, 
+      #{resourceId,jdbcType=INTEGER}, #{infoName,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.snsManage.SnsMainPage" >
+    insert into sns_mainpage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="infoId != null" >
+        infoId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="infoType != null" >
+        infoType,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="publishDate != null" >
+        publishDate,
+      </if>
+      <if test="infoFromUserId != null" >
+        infoFromUserId,
+      </if>
+      <if test="debateRecordUserId != null" >
+        debateRecordUserId,
+      </if>
+      <if test="deleteRecordUserId != null" >
+        deleteRecordUserId,
+      </if>
+      <if test="resourceId != null" >
+        resourceId,
+      </if>
+      <if test="infoName != null" >
+        infoName,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="infoId != null" >
+        #{infoId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="infoType != null" >
+        #{infoType,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDate != null" >
+        #{publishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="infoFromUserId != null" >
+        #{infoFromUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="debateRecordUserId != null" >
+        #{debateRecordUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteRecordUserId != null" >
+        #{deleteRecordUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="infoName != null" >
+        #{infoName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.snsManage.SnsMainPage" >
+    update sns_mainpage
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="infoType != null" >
+        infoType = #{infoType,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDate != null" >
+        publishDate = #{publishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="infoFromUserId != null" >
+        infoFromUserId = #{infoFromUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="debateRecordUserId != null" >
+        debateRecordUserId = #{debateRecordUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteRecordUserId != null" >
+        deleteRecordUserId = #{deleteRecordUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null" >
+        resourceId = #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="infoName != null" >
+        infoName = #{infoName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where infoId = #{infoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.snsManage.SnsMainPage" >
+    update sns_mainpage
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      infoType = #{infoType,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      publishDate = #{publishDate,jdbcType=TIMESTAMP},
+      infoFromUserId = #{infoFromUserId,jdbcType=VARCHAR},
+      debateRecordUserId = #{debateRecordUserId,jdbcType=VARCHAR},
+      deleteRecordUserId = #{deleteRecordUserId,jdbcType=VARCHAR},
+      resourceId = #{resourceId,jdbcType=INTEGER},
+      infoName = #{infoName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where infoId = #{infoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.snsManage.SnsMainPage" >
+    update sns_mainpage
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      infoType = #{infoType,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      publishDate = #{publishDate,jdbcType=TIMESTAMP},
+      infoFromUserId = #{infoFromUserId,jdbcType=VARCHAR},
+      debateRecordUserId = #{debateRecordUserId,jdbcType=VARCHAR},
+      deleteRecordUserId = #{deleteRecordUserId,jdbcType=VARCHAR},
+      resourceId = #{resourceId,jdbcType=INTEGER},
+      infoName = #{infoName,jdbcType=VARCHAR}
+    where infoId = #{infoId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainApproveMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainApprove" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="planId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="approverName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="approveDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="approveStatusName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, trainId, planId, operatorId, year, approverName, approveDate, approveStatusName, 
+    comment, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainapprove
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mt_mixtrainapprove
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainApprove" >
+    insert into mt_mixtrainapprove (id, trainId, planId, 
+      operatorId, year, approverName, 
+      approveDate, approveStatusName, comment, 
+      type)
+    values (#{id,jdbcType=BIGINT}, #{trainId,jdbcType=INTEGER}, #{planId,jdbcType=BIGINT}, 
+      #{operatorId,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, #{approverName,jdbcType=VARCHAR}, 
+      #{approveDate,jdbcType=DATE}, #{approveStatusName,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainApprove" >
+    insert into mt_mixtrainapprove
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="planId != null" >
+        planId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="approverName != null" >
+        approverName,
+      </if>
+      <if test="approveDate != null" >
+        approveDate,
+      </if>
+      <if test="approveStatusName != null" >
+        approveStatusName,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="planId != null" >
+        #{planId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="approverName != null" >
+        #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveDate != null" >
+        #{approveDate,jdbcType=DATE},
+      </if>
+      <if test="approveStatusName != null" >
+        #{approveStatusName,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainApprove" >
+    update mt_mixtrainapprove
+    <set >
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="planId != null" >
+        planId = #{planId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="approverName != null" >
+        approverName = #{approverName,jdbcType=VARCHAR},
+      </if>
+      <if test="approveDate != null" >
+        approveDate = #{approveDate,jdbcType=DATE},
+      </if>
+      <if test="approveStatusName != null" >
+        approveStatusName = #{approveStatusName,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainApprove" >
+    update mt_mixtrainapprove
+    set trainId = #{trainId,jdbcType=INTEGER},
+      planId = #{planId,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      year = #{year,jdbcType=VARCHAR},
+      approverName = #{approverName,jdbcType=VARCHAR},
+      approveDate = #{approveDate,jdbcType=DATE},
+      approveStatusName = #{approveStatusName,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

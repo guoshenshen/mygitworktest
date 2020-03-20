@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.resourceManage.SnsResourceReportMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.resourceManage.SnsResourceReport" >
+    <constructor >
+      <idArg column="reportId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="resourceId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="reportContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reportReasonType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="reportorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="replyContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reportId, resourceId, reportContent, reportReasonType, reportorId, replyContent, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sns_resourcereport
+    where reportId = #{reportId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sns_resourcereport
+    where reportId = #{reportId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.resourceManage.SnsResourceReport" >
+    insert into sns_resourcereport (reportId, resourceId, reportContent, 
+      reportReasonType, reportorId, replyContent, 
+      status)
+    values (#{reportId,jdbcType=INTEGER}, #{resourceId,jdbcType=BIGINT}, #{reportContent,jdbcType=VARCHAR}, 
+      #{reportReasonType,jdbcType=INTEGER}, #{reportorId,jdbcType=INTEGER}, #{replyContent,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.resourceManage.SnsResourceReport" >
+    insert into sns_resourcereport
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reportId != null" >
+        reportId,
+      </if>
+      <if test="resourceId != null" >
+        resourceId,
+      </if>
+      <if test="reportContent != null" >
+        reportContent,
+      </if>
+      <if test="reportReasonType != null" >
+        reportReasonType,
+      </if>
+      <if test="reportorId != null" >
+        reportorId,
+      </if>
+      <if test="replyContent != null" >
+        replyContent,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reportId != null" >
+        #{reportId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="reportContent != null" >
+        #{reportContent,jdbcType=VARCHAR},
+      </if>
+      <if test="reportReasonType != null" >
+        #{reportReasonType,jdbcType=INTEGER},
+      </if>
+      <if test="reportorId != null" >
+        #{reportorId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.resourceManage.SnsResourceReport" >
+    update sns_resourcereport
+    <set >
+      <if test="resourceId != null" >
+        resourceId = #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="reportContent != null" >
+        reportContent = #{reportContent,jdbcType=VARCHAR},
+      </if>
+      <if test="reportReasonType != null" >
+        reportReasonType = #{reportReasonType,jdbcType=INTEGER},
+      </if>
+      <if test="reportorId != null" >
+        reportorId = #{reportorId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        replyContent = #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where reportId = #{reportId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.resourceManage.SnsResourceReport" >
+    update sns_resourcereport
+    set resourceId = #{resourceId,jdbcType=BIGINT},
+      reportContent = #{reportContent,jdbcType=VARCHAR},
+      reportReasonType = #{reportReasonType,jdbcType=INTEGER},
+      reportorId = #{reportorId,jdbcType=INTEGER},
+      replyContent = #{replyContent,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where reportId = #{reportId,jdbcType=INTEGER}
+  </update>
+</mapper>

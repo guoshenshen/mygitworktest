@@ -1,0 +1,64 @@
+/*-----------------------------------------------------------------------------------------------*/
+/*                   A BETTER TOOLTIP - POWERED BY JQUERY AWESOMENESS                            */
+/*                   AUTHOR: jon cazier                                                          */
+/*                   EMAIL: jon at 3nhanced dot com                                              */
+/*-----------------------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------------------*/
+/*                                  CSS RESET THANKS TO ERIC MEYER                               */
+/*                   http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/                */
+/*-----------------------------------------------------------------------------------------------*/
+
+/* remember to define focus styles! */
+
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+blockquote:before, blockquote:after,
+q:before, q:after {content: '"';}
+blockquote, q {quotes: '"' '"';}
+
+/*-----------------------------------------------------------------------------------------------*/
+/*                                          GENERAL STYLES                                       */
+/*-----------------------------------------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------------------------------------------*/
+/*                                          GENERAL LAYOUT                                       */
+/*-----------------------------------------------------------------------------------------------*/
+
+
+	
+	.tTip {z-index: 1;height:320px;left: 1px;width: 375px; position: absolute; cursor: pointer; color: #104E8B;
+	       background-color:#FFFFF0 ; text-align: left;
+	       padding-left:12px;
+           border: 2px #D7D7D7 solid;
+           font-family: "Microsoft Yahei";
+	}
+	
+	.tTip li{height:18px;margin-top:20px;padding-left:20px;}
+	
+	.tip {color: #333;}
+	
+		#cloud1 {top: 93px; left: 230px;}
+		#cloud2 {top: 168px; left: 440px;}
+		#cloud3 {top: 228px; left: 100px;}
+		#cloud4 {top: 350px; left: 370px;}
+		#cloud5 {top: 370px; left: 60px;}
+				
+/*-----------------------------------------------------------------------------------------------*/
+/*                                         TOOLTIP STYLES                                        */
+/*-----------------------------------------------------------------------------------------------*/
+
+.tip {
+	width: 500px;
+	padding-top: 37px;
+	
+	overflow: hidden;
+	display: none;
+	position: absolute;
+	z-index: 5000;
+	background: transparent url(/image/tip/tipTop.png) no-repeat top;}
+	
+.tipMid {background: transparent url(/image/tip/tipMid.png) repeat-y; padding: 0 25px 20px 25px;}
+.tipBtm {background: transparent url(/image/tip/tipBtm.png) no-repeat bottom; height: 32px;}

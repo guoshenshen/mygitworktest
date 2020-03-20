@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainUserArrangeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainUserArrange" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="addrbookId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isJoin" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, userID, addrbookId, isJoin
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainuserarrange
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtrainuserarrange
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserArrange" >
+    insert into mt_mixtrainuserarrange (ID, userID, addrbookId, 
+      isJoin)
+    values (#{ID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, #{addrbookId,jdbcType=INTEGER}, 
+      #{isJoin,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserArrange" >
+    insert into mt_mixtrainuserarrange
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="addrbookId != null" >
+        addrbookId,
+      </if>
+      <if test="isJoin != null" >
+        isJoin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="addrbookId != null" >
+        #{addrbookId,jdbcType=INTEGER},
+      </if>
+      <if test="isJoin != null" >
+        #{isJoin,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserArrange" >
+    update mt_mixtrainuserarrange
+    <set >
+      <if test="userID != null" >
+        userID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="addrbookId != null" >
+        addrbookId = #{addrbookId,jdbcType=INTEGER},
+      </if>
+      <if test="isJoin != null" >
+        isJoin = #{isJoin,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserArrange" >
+    update mt_mixtrainuserarrange
+    set userID = #{userID,jdbcType=INTEGER},
+      addrbookId = #{addrbookId,jdbcType=INTEGER},
+      isJoin = #{isJoin,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findMtMixTrainUserArrangeListByAddrBookId" resultType="com.elearning.vo.BasicUserForm" parameterType="map" >
+    SELECT a.operatorID, a.operatorName, d.orgName, c.oemail as email, c.otel1 as tel, a.userID, d.tenantID
+    FROM Eosoperator a,Mt_MixTrainUserArrange b, eosorg_t_employee c, eosorg_t_organization d WHERE a.operatorId=b.userId
+    AND c.operatorID = a.operatorID AND d.orgID = c.orgID  AND a.status=1 and b.addrbookId= #{addrbookId}
+  </select>
+
+  <select id="getListByAddrbookId" resultType="com.elearning.pojo.mixtraining.MtMixTrainUserArrange" >
+    select
+    <include refid="Base_Column_List" />
+    from mt_mixtrainuserarrange
+    where addrbookId = #{addrbookId,jdbcType=INTEGER}
+  </select>
+
+  <select id="getListByAddrbookIdAndIperatorIdsInMap" resultType="com.elearning.pojo.mixtraining.MtMixTrainUserArrange" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from mt_mixtrainuserarrange
+    where addrbookId = #{addrbookId,jdbcType=INTEGER} and userID in
+    <foreach collection="operatorIds" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.CigitUsersMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.CigitUsers" >
+    <constructor >
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="empCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.CigitUsers" >
+    insert into cigit_users (operatorName, userID, empCode, 
+      orgName)
+    values (#{operatorName,jdbcType=VARCHAR}, #{userID,jdbcType=VARCHAR}, #{empCode,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.CigitUsers" >
+    insert into cigit_users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="empCode != null" >
+        empCode,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null" >
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

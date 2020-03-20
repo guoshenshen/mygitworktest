@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.info.InfoReceiveRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.info.InfoReceiveRecord" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SentMessageID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ReceiverID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ViewTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ViewStat" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SentMessageID, ReceiverID, ViewTime, ViewStat
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from info_receiverecord
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from info_receiverecord
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.info.InfoReceiveRecord" >
+    insert into info_receiverecord (ID, SentMessageID, ReceiverID, 
+      ViewTime, ViewStat)
+    values (#{ID,jdbcType=INTEGER}, #{sentMessageID,jdbcType=INTEGER}, #{receiverID,jdbcType=INTEGER}, 
+      #{viewTime,jdbcType=TIMESTAMP}, #{viewStat,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.info.InfoReceiveRecord" >
+    insert into info_receiverecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="sentMessageID != null" >
+        SentMessageID,
+      </if>
+      <if test="receiverID != null" >
+        ReceiverID,
+      </if>
+      <if test="viewTime != null" >
+        ViewTime,
+      </if>
+      <if test="viewStat != null" >
+        ViewStat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="sentMessageID != null" >
+        #{sentMessageID,jdbcType=INTEGER},
+      </if>
+      <if test="receiverID != null" >
+        #{receiverID,jdbcType=INTEGER},
+      </if>
+      <if test="viewTime != null" >
+        #{viewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewStat != null" >
+        #{viewStat,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.info.InfoReceiveRecord" >
+    update info_receiverecord
+    <set >
+      <if test="sentMessageID != null" >
+        SentMessageID = #{sentMessageID,jdbcType=INTEGER},
+      </if>
+      <if test="receiverID != null" >
+        ReceiverID = #{receiverID,jdbcType=INTEGER},
+      </if>
+      <if test="viewTime != null" >
+        ViewTime = #{viewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewStat != null" >
+        ViewStat = #{viewStat,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.info.InfoReceiveRecord" >
+    update info_receiverecord
+    set SentMessageID = #{sentMessageID,jdbcType=INTEGER},
+      ReceiverID = #{receiverID,jdbcType=INTEGER},
+      ViewTime = #{viewTime,jdbcType=TIMESTAMP},
+      ViewStat = #{viewStat,jdbcType=CHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.recommend.SeriesBannerMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.recommend.SeriesBanner" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="seriesId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bannerId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="orderweight" jdbcType="TINYINT" javaType="java.lang.Byte" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, seriesId, bannerId, type, orderweight
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from series_banner
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from series_banner
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.recommend.SeriesBanner" >
+    insert into series_banner (id, seriesId, bannerId, 
+      type, orderweight)
+    values (#{id,jdbcType=INTEGER}, #{seriesId,jdbcType=INTEGER}, #{bannerId,jdbcType=INTEGER}, 
+      #{type,jdbcType=TINYINT}, #{orderweight,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.recommend.SeriesBanner" >
+    insert into series_banner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="seriesId != null" >
+        seriesId,
+      </if>
+      <if test="bannerId != null" >
+        bannerId,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="orderweight != null" >
+        orderweight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="seriesId != null" >
+        #{seriesId,jdbcType=INTEGER},
+      </if>
+      <if test="bannerId != null" >
+        #{bannerId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="orderweight != null" >
+        #{orderweight,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.recommend.SeriesBanner" >
+    update series_banner
+    <set >
+      <if test="seriesId != null" >
+        seriesId = #{seriesId,jdbcType=INTEGER},
+      </if>
+      <if test="bannerId != null" >
+        bannerId = #{bannerId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="orderweight != null" >
+        orderweight = #{orderweight,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.recommend.SeriesBanner" >
+    update series_banner
+    set seriesId = #{seriesId,jdbcType=INTEGER},
+      bannerId = #{bannerId,jdbcType=INTEGER},
+      type = #{type,jdbcType=TINYINT},
+      orderweight = #{orderweight,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findSeriesBannerByCondition" resultType="com.elearning.pojo.recommend.SeriesBanner">
+    SELECT <include refid="Base_Column_List"/> FROM series_banner
+    WHERE  1=1
+    <if test="seriesId != null ">
+      and seriesId = #{seriesId,jdbcType=INTEGER}
+    </if>
+    <if test="bannerId != null ">
+      and bannerId = #{bannerId,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

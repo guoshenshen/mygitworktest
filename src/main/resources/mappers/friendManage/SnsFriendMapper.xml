@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.friendManage.SnsFriendMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.friendManage.SnsFriend" >
+    <constructor >
+      <idArg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="friendId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="friendName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="groupId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="message" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operatorId, friendId, friendName, groupId, status, message, operatorName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.friendManage.SnsFriendKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sns_friend
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and friendId = #{friendId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.friendManage.SnsFriendKey" >
+    delete from sns_friend
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and friendId = #{friendId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.friendManage.SnsFriend" >
+    insert into sns_friend (operatorId, friendId, friendName, 
+      groupId, status, message, 
+      operatorName)
+    values (#{operatorId,jdbcType=INTEGER}, #{friendId,jdbcType=INTEGER}, #{friendName,jdbcType=VARCHAR}, 
+      #{groupId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{message,jdbcType=VARCHAR}, 
+      #{operatorName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.friendManage.SnsFriend" >
+    insert into sns_friend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="friendId != null" >
+        friendId,
+      </if>
+      <if test="friendName != null" >
+        friendName,
+      </if>
+      <if test="groupId != null" >
+        groupId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="friendId != null" >
+        #{friendId,jdbcType=INTEGER},
+      </if>
+      <if test="friendName != null" >
+        #{friendName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.friendManage.SnsFriend" >
+    update sns_friend
+    <set >
+      <if test="friendName != null" >
+        friendName = #{friendName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        groupId = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and friendId = #{friendId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.friendManage.SnsFriend" >
+    update sns_friend
+    set friendName = #{friendName,jdbcType=VARCHAR},
+      groupId = #{groupId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      message = #{message,jdbcType=VARCHAR},
+      operatorName = #{operatorName,jdbcType=VARCHAR}
+    where operatorId = #{operatorId,jdbcType=INTEGER}
+      and friendId = #{friendId,jdbcType=INTEGER}
+  </update>
+</mapper>

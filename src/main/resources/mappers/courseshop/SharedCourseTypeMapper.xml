@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseshop.SharedCourseTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseshop.SharedCourseType" >
+    <constructor >
+      <idArg column="sharedCourseTypeId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sharedCourseTypeName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fullPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="typeIndex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sharedCourseTypeId, sharedCourseTypeName, parentId, fullPath, typeIndex, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sharedcoursetype
+    where sharedCourseTypeId = #{sharedCourseTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sharedcoursetype
+    where sharedCourseTypeId = #{sharedCourseTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.courseshop.SharedCourseType" >
+    insert into sharedcoursetype (sharedCourseTypeId, sharedCourseTypeName, 
+      parentId, fullPath, typeIndex, 
+      remark)
+    values (#{sharedCourseTypeId,jdbcType=INTEGER}, #{sharedCourseTypeName,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{fullPath,jdbcType=VARCHAR}, #{typeIndex,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseshop.SharedCourseType" >
+    insert into sharedcoursetype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sharedCourseTypeId != null" >
+        sharedCourseTypeId,
+      </if>
+      <if test="sharedCourseTypeName != null" >
+        sharedCourseTypeName,
+      </if>
+      <if test="parentId != null" >
+        parentId,
+      </if>
+      <if test="fullPath != null" >
+        fullPath,
+      </if>
+      <if test="typeIndex != null" >
+        typeIndex,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sharedCourseTypeId != null" >
+        #{sharedCourseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="sharedCourseTypeName != null" >
+        #{sharedCourseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="fullPath != null" >
+        #{fullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="typeIndex != null" >
+        #{typeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseshop.SharedCourseType" >
+    update sharedcoursetype
+    <set >
+      <if test="sharedCourseTypeName != null" >
+        sharedCourseTypeName = #{sharedCourseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parentId = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="fullPath != null" >
+        fullPath = #{fullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="typeIndex != null" >
+        typeIndex = #{typeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sharedCourseTypeId = #{sharedCourseTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.courseshop.SharedCourseType" >
+    update sharedcoursetype
+    set sharedCourseTypeName = #{sharedCourseTypeName,jdbcType=VARCHAR},
+      parentId = #{parentId,jdbcType=INTEGER},
+      fullPath = #{fullPath,jdbcType=VARCHAR},
+      typeIndex = #{typeIndex,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where sharedCourseTypeId = #{sharedCourseTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

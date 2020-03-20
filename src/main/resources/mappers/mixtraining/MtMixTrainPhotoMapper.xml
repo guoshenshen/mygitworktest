@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainPhotoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainPhoto" >
+    <constructor >
+      <idArg column="photoId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="photoName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pictureUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uploadDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    photoId, photoName, operatorId, operatorName, trainId, pictureUrl, uploadDate, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainphoto
+    where photoId = #{photoId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mt_mixtrainphoto
+    where photoId = #{photoId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainPhoto" >
+    insert into mt_mixtrainphoto (photoId, photoName, operatorId, 
+      operatorName, trainId, pictureUrl, 
+      uploadDate, description)
+    values (#{photoId,jdbcType=BIGINT}, #{photoName,jdbcType=VARCHAR}, #{operatorId,jdbcType=INTEGER}, 
+      #{operatorName,jdbcType=VARCHAR}, #{trainId,jdbcType=INTEGER}, #{pictureUrl,jdbcType=VARCHAR}, 
+      #{uploadDate,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainPhoto" >
+    insert into mt_mixtrainphoto
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        photoId,
+      </if>
+      <if test="photoName != null" >
+        photoName,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="pictureUrl != null" >
+        pictureUrl,
+      </if>
+      <if test="uploadDate != null" >
+        uploadDate,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        #{photoId,jdbcType=BIGINT},
+      </if>
+      <if test="photoName != null" >
+        #{photoName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="pictureUrl != null" >
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDate != null" >
+        #{uploadDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainPhoto" >
+    update mt_mixtrainphoto
+    <set >
+      <if test="photoName != null" >
+        photoName = #{photoName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="pictureUrl != null" >
+        pictureUrl = #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDate != null" >
+        uploadDate = #{uploadDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where photoId = #{photoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainPhoto" >
+    update mt_mixtrainphoto
+    set photoName = #{photoName,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      trainId = #{trainId,jdbcType=INTEGER},
+      pictureUrl = #{pictureUrl,jdbcType=VARCHAR},
+      uploadDate = #{uploadDate,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR}
+    where photoId = #{photoId,jdbcType=BIGINT}
+  </update>
+</mapper>

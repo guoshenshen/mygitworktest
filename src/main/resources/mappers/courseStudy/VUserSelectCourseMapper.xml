@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.VUserSelectCourseMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.VUserSelectCourse" >
+    <constructor >
+      <arg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="courseArrangeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="courseID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.VUserSelectCourse" >
+    insert into v_userselectcourse (ID, year, courseArrangeID, 
+      courseID, userID)
+    values (#{ID,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, #{courseArrangeID,jdbcType=INTEGER}, 
+      #{courseID,jdbcType=BIGINT}, #{userID,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.VUserSelectCourse" >
+    insert into v_userselectcourse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="courseArrangeID != null" >
+        courseArrangeID,
+      </if>
+      <if test="courseID != null" >
+        courseID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="courseArrangeID != null" >
+        #{courseArrangeID,jdbcType=INTEGER},
+      </if>
+      <if test="courseID != null" >
+        #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

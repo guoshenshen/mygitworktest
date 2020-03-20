@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.CourseTempMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.CourseTemp" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Course_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="Category" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, Course_id, Category
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_temp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_temp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.CourseTemp" >
+    insert into course_temp (id, Course_id, Category
+      )
+    values (#{id,jdbcType=INTEGER}, #{course_id,jdbcType=BIGINT}, #{category,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.CourseTemp" >
+    insert into course_temp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="course_id != null" >
+        Course_id,
+      </if>
+      <if test="category != null" >
+        Category,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="course_id != null" >
+        #{course_id,jdbcType=BIGINT},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.coursemanage.CourseTemp" >
+    update course_temp
+    <set >
+      <if test="course_id != null" >
+        Course_id = #{course_id,jdbcType=BIGINT},
+      </if>
+      <if test="category != null" >
+        Category = #{category,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.CourseTemp" >
+    update course_temp
+    set Course_id = #{course_id,jdbcType=BIGINT},
+      Category = #{category,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,183 @@
+.hoverContainer{
+	position:relative;
+}
+
+
+.u-userCard{
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 1px 6px #aaa;
+    -moz-box-shadow: 1px 1px 6px #aaa;
+    box-shadow: 1px 1px 6px #aaa;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+    border: 1px solid #aaa;
+}
+
+
+.u-userCard .userCardBackground{
+	width:100%;
+	height:68px;
+	position:absolute;
+	background: url(../../image/skin/default-userCard.jpg) center top no-repeat;
+	top:0px;
+	left:0px;
+}
+
+
+.u-userCard .main{
+	height:160px;
+    width: 260px;
+    position:relative;
+    padding: 30px 10px 12px 10px;
+}
+
+.u-userCard .face{
+	float:left;
+	-webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 0px 2px #aaa;
+    -moz-box-shadow: 0px 0px 2px #aaa;
+    box-shadow: 0px 0px 2px #aaa;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    padding: 2px;
+}
+
+.u-userCard .info {
+    width: 140px;
+    height: 36px;
+    padding: 42px 0 0 28px;
+    float: left;
+}
+
+.u-userCard .info .name {
+    font-size: 14px;
+    max-width: 147px;
+    color: #333;
+    font-family: '微软雅黑';
+    font-weight: bold;
+    line-height: 20px;
+    text-decoration:none;
+}
+
+.u-userCard .nameloginfo {
+    margin-bottom: 3px;
+    margin-top: 3px;
+    text-align:left;
+}
+
+.u-userCard .u-usrattstatis{
+	text-align:left;
+}
+
+.u-userCard .info .gztxt {
+    color: #999;
+    font-size: 12px;
+}
+
+.u-usrAttStatis, .u-usrAttStatis .link {
+    font: 12px/22px '宋体';
+    color: #666;
+    text-decoration:none;
+}
+
+.u-userCard .des {
+    padding: 10px 0 5px 0;
+    margin: 0px;
+    text-align: left;
+    font-size: 12px;
+    color: #999;
+    line-height: 1.5;
+    width: 120px;
+    height: 16px;
+    overflow: hidden;
+    text-overflow :ellipsis;
+    word-wrap: break-word;
+    word-break: break-all; 
+    white-space: nowrap;
+}
+
+.u-userCard .gz {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.u-usrAttOp.j-disable {
+    color: #333;
+    cursor: default;
+}
+
+
+.u-usrAttOp {    
+    width: 54px;
+    height: 21px;
+    text-align: left;
+    font: 12px/21px '宋体';
+    background: url(../../image/sprite/friendsUI.png) no-repeat;
+    display:none;
+}
+
+
+.f-fr {
+    float: right;
+}
+
+.u-usrAttOp .op {
+    color: #999;
+    padding-right: 7px;
+}
+
+
+.u-usrAttOp.j-disable-1 {
+    background-position: 0 -90px;
+    width: 83px;
+    color: #333;
+    cursor: default;
+    padding-left: 23px;
+    display:block;
+}
+
+.u-usrAttOp.j-able-1{
+	background-position:0 0px;
+	display:block;
+}
+
+.ableInfo,.disableInfo{
+	display:none;
+}
+
+.j-disable-1 .disableInfo{
+	display:block;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.j-able-1 .ableInfo{
+	display:block;
+	text-decoration:none;
+	cursor:pointer;
+	padding-left: 23px;
+	box-sizing:border-box;
+}
+
+.ableInfo,.ableInfo:hover{
+	color:#fff;
+}
+
+.u-userCard .loading {
+    width: 243px;
+    text-align: center;
+    line-height: 40px;
+}
+

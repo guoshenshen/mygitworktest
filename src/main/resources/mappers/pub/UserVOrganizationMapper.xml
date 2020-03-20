@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.UserVOrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.UserVOrganization" >
+    <constructor >
+      <idArg column="operatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgSeq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="statusModifyDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="createID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operatorID, orgID, status, orgSeq, statusModifyDate, createID, createDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.pub.UserVOrganizationKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_vorganization
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and orgID = #{orgID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.pub.UserVOrganizationKey" >
+    delete from user_vorganization
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and orgID = #{orgID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.UserVOrganization" >
+    insert into user_vorganization (operatorID, orgID, status, 
+      orgSeq, statusModifyDate, createID, 
+      createDate)
+    values (#{operatorID,jdbcType=INTEGER}, #{orgID,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{orgSeq,jdbcType=VARCHAR}, #{statusModifyDate,jdbcType=TIMESTAMP}, #{createID,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.UserVOrganization" >
+    insert into user_vorganization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="orgID != null" >
+        orgID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="orgSeq != null" >
+        orgSeq,
+      </if>
+      <if test="statusModifyDate != null" >
+        statusModifyDate,
+      </if>
+      <if test="createID != null" >
+        createID,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="orgID != null" >
+        #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orgSeq != null" >
+        #{orgSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="statusModifyDate != null" >
+        #{statusModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createID != null" >
+        #{createID,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.UserVOrganization" >
+    update user_vorganization
+    <set >
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orgSeq != null" >
+        orgSeq = #{orgSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="statusModifyDate != null" >
+        statusModifyDate = #{statusModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createID != null" >
+        createID = #{createID,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and orgID = #{orgID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.UserVOrganization" >
+    update user_vorganization
+    set status = #{status,jdbcType=INTEGER},
+      orgSeq = #{orgSeq,jdbcType=VARCHAR},
+      statusModifyDate = #{statusModifyDate,jdbcType=TIMESTAMP},
+      createID = #{createID,jdbcType=INTEGER},
+      createDate = #{createDate,jdbcType=TIMESTAMP}
+    where operatorID = #{operatorID,jdbcType=INTEGER}
+      and orgID = #{orgID,jdbcType=INTEGER}
+  </update>
+
+  <select id="getUserVorganizationListByOperatorId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List" />  FROM user_vorganization  WHERE operatorID = #{operatorID}
+  </select>
+
+</mapper>

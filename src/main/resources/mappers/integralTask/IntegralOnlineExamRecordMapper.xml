@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralOnlineExamRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralOnlineExamRecord" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="examid" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="paperId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="replyId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="userId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="paperScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="percentAge" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="dealWithSingleToken" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recordTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, examid, paperId, replyId, userId, paperScore, percentAge, dealWithSingleToken, 
+    recordTime, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_onlineexam_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_onlineexam_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralOnlineExamRecord" >
+    insert into integral_onlineexam_record (id, examid, paperId, 
+      replyId, userId, paperScore, 
+      percentAge, dealWithSingleToken, recordTime, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{examid,jdbcType=BIGINT}, #{paperId,jdbcType=BIGINT}, 
+      #{replyId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{paperScore,jdbcType=DOUBLE}, 
+      #{percentAge,jdbcType=DOUBLE}, #{dealWithSingleToken,jdbcType=VARCHAR}, #{recordTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralOnlineExamRecord" >
+    insert into integral_onlineexam_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="examid != null" >
+        examid,
+      </if>
+      <if test="paperId != null" >
+        paperId,
+      </if>
+      <if test="replyId != null" >
+        replyId,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="paperScore != null" >
+        paperScore,
+      </if>
+      <if test="percentAge != null" >
+        percentAge,
+      </if>
+      <if test="dealWithSingleToken != null" >
+        dealWithSingleToken,
+      </if>
+      <if test="recordTime != null" >
+        recordTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="examid != null" >
+        #{examid,jdbcType=BIGINT},
+      </if>
+      <if test="paperId != null" >
+        #{paperId,jdbcType=BIGINT},
+      </if>
+      <if test="replyId != null" >
+        #{replyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="paperScore != null" >
+        #{paperScore,jdbcType=DOUBLE},
+      </if>
+      <if test="percentAge != null" >
+        #{percentAge,jdbcType=DOUBLE},
+      </if>
+      <if test="dealWithSingleToken != null" >
+        #{dealWithSingleToken,jdbcType=VARCHAR},
+      </if>
+      <if test="recordTime != null" >
+        #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralOnlineExamRecord" >
+    update integral_onlineexam_record
+    <set >
+      <if test="examid != null" >
+        examid = #{examid,jdbcType=BIGINT},
+      </if>
+      <if test="paperId != null" >
+        paperId = #{paperId,jdbcType=BIGINT},
+      </if>
+      <if test="replyId != null" >
+        replyId = #{replyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="paperScore != null" >
+        paperScore = #{paperScore,jdbcType=DOUBLE},
+      </if>
+      <if test="percentAge != null" >
+        percentAge = #{percentAge,jdbcType=DOUBLE},
+      </if>
+      <if test="dealWithSingleToken != null" >
+        dealWithSingleToken = #{dealWithSingleToken,jdbcType=VARCHAR},
+      </if>
+      <if test="recordTime != null" >
+        recordTime = #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralOnlineExamRecord" >
+    update integral_onlineexam_record
+    set examid = #{examid,jdbcType=BIGINT},
+      paperId = #{paperId,jdbcType=BIGINT},
+      replyId = #{replyId,jdbcType=BIGINT},
+      userId = #{userId,jdbcType=BIGINT},
+      paperScore = #{paperScore,jdbcType=DOUBLE},
+      percentAge = #{percentAge,jdbcType=DOUBLE},
+      dealWithSingleToken = #{dealWithSingleToken,jdbcType=VARCHAR},
+      recordTime = #{recordTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

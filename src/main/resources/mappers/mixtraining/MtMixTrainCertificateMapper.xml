@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainCertificateMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainCertificate" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="certificateTemplateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateNo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="certificateContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="certificateOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="certificateDate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="certificateType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isApply" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="applyStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveOrgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveTenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isTrainPoint" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="certificateStartNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveStatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="approveContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, certificateUrl, operatorId, trainId, createDate, certificateTemplateId, certificateNo, 
+    certificateContent, certificateOrgName, certificateDate, certificateType, isApply, 
+    certificateStatus, applyStatus, approveOrgId, approveTenantId, orgId, tenantId, isTrainPoint, 
+    certificateStartNum, approveStatus, approveContent, userName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtraincertificate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtraincertificate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificate" >
+    insert into mt_mixtraincertificate (id, certificateUrl, operatorId, 
+      trainId, createDate, certificateTemplateId, 
+      certificateNo, certificateContent, certificateOrgName, 
+      certificateDate, certificateType, isApply, 
+      certificateStatus, applyStatus, approveOrgId, 
+      approveTenantId, orgId, tenantId, 
+      isTrainPoint, certificateStartNum, approveStatus, 
+      approveContent, userName)
+    values (#{id,jdbcType=INTEGER}, #{certificateUrl,jdbcType=VARCHAR}, #{operatorId,jdbcType=INTEGER}, 
+      #{trainId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, #{certificateTemplateId,jdbcType=INTEGER}, 
+      #{certificateNo,jdbcType=VARCHAR}, #{certificateContent,jdbcType=VARCHAR}, #{certificateOrgName,jdbcType=VARCHAR}, 
+      #{certificateDate,jdbcType=VARCHAR}, #{certificateType,jdbcType=INTEGER}, #{isApply,jdbcType=INTEGER}, 
+      #{certificateStatus,jdbcType=INTEGER}, #{applyStatus,jdbcType=INTEGER}, #{approveOrgId,jdbcType=INTEGER}, 
+      #{approveTenantId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{isTrainPoint,jdbcType=INTEGER}, #{certificateStartNum,jdbcType=INTEGER}, #{approveStatus,jdbcType=INTEGER}, 
+      #{approveContent,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificate" >
+    insert into mt_mixtraincertificate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="certificateUrl != null" >
+        certificateUrl,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="certificateTemplateId != null" >
+        certificateTemplateId,
+      </if>
+      <if test="certificateNo != null" >
+        certificateNo,
+      </if>
+      <if test="certificateContent != null" >
+        certificateContent,
+      </if>
+      <if test="certificateOrgName != null" >
+        certificateOrgName,
+      </if>
+      <if test="certificateDate != null" >
+        certificateDate,
+      </if>
+      <if test="certificateType != null" >
+        certificateType,
+      </if>
+      <if test="isApply != null" >
+        isApply,
+      </if>
+      <if test="certificateStatus != null" >
+        certificateStatus,
+      </if>
+      <if test="applyStatus != null" >
+        applyStatus,
+      </if>
+      <if test="approveOrgId != null" >
+        approveOrgId,
+      </if>
+      <if test="approveTenantId != null" >
+        approveTenantId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="isTrainPoint != null" >
+        isTrainPoint,
+      </if>
+      <if test="certificateStartNum != null" >
+        certificateStartNum,
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus,
+      </if>
+      <if test="approveContent != null" >
+        approveContent,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="certificateUrl != null" >
+        #{certificateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="certificateTemplateId != null" >
+        #{certificateTemplateId,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo != null" >
+        #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateContent != null" >
+        #{certificateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateOrgName != null" >
+        #{certificateOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateDate != null" >
+        #{certificateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="isApply != null" >
+        #{isApply,jdbcType=INTEGER},
+      </if>
+      <if test="certificateStatus != null" >
+        #{certificateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyStatus != null" >
+        #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="approveOrgId != null" >
+        #{approveOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="approveTenantId != null" >
+        #{approveTenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="isTrainPoint != null" >
+        #{isTrainPoint,jdbcType=INTEGER},
+      </if>
+      <if test="certificateStartNum != null" >
+        #{certificateStartNum,jdbcType=INTEGER},
+      </if>
+      <if test="approveStatus != null" >
+        #{approveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="approveContent != null" >
+        #{approveContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificate" >
+    update mt_mixtraincertificate
+    <set >
+      <if test="certificateUrl != null" >
+        certificateUrl = #{certificateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="certificateTemplateId != null" >
+        certificateTemplateId = #{certificateTemplateId,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo != null" >
+        certificateNo = #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateContent != null" >
+        certificateContent = #{certificateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateOrgName != null" >
+        certificateOrgName = #{certificateOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateDate != null" >
+        certificateDate = #{certificateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        certificateType = #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="isApply != null" >
+        isApply = #{isApply,jdbcType=INTEGER},
+      </if>
+      <if test="certificateStatus != null" >
+        certificateStatus = #{certificateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applyStatus != null" >
+        applyStatus = #{applyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="approveOrgId != null" >
+        approveOrgId = #{approveOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="approveTenantId != null" >
+        approveTenantId = #{approveTenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="isTrainPoint != null" >
+        isTrainPoint = #{isTrainPoint,jdbcType=INTEGER},
+      </if>
+      <if test="certificateStartNum != null" >
+        certificateStartNum = #{certificateStartNum,jdbcType=INTEGER},
+      </if>
+      <if test="approveStatus != null" >
+        approveStatus = #{approveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="approveContent != null" >
+        approveContent = #{approveContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificate" >
+    update mt_mixtraincertificate
+    set certificateUrl = #{certificateUrl,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      trainId = #{trainId,jdbcType=INTEGER},
+      createDate = #{createDate,jdbcType=DATE},
+      certificateTemplateId = #{certificateTemplateId,jdbcType=INTEGER},
+      certificateNo = #{certificateNo,jdbcType=VARCHAR},
+      certificateContent = #{certificateContent,jdbcType=VARCHAR},
+      certificateOrgName = #{certificateOrgName,jdbcType=VARCHAR},
+      certificateDate = #{certificateDate,jdbcType=VARCHAR},
+      certificateType = #{certificateType,jdbcType=INTEGER},
+      isApply = #{isApply,jdbcType=INTEGER},
+      certificateStatus = #{certificateStatus,jdbcType=INTEGER},
+      applyStatus = #{applyStatus,jdbcType=INTEGER},
+      approveOrgId = #{approveOrgId,jdbcType=INTEGER},
+      approveTenantId = #{approveTenantId,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      isTrainPoint = #{isTrainPoint,jdbcType=INTEGER},
+      certificateStartNum = #{certificateStartNum,jdbcType=INTEGER},
+      approveStatus = #{approveStatus,jdbcType=INTEGER},
+      approveContent = #{approveContent,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

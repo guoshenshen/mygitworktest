@@ -1,0 +1,183 @@
+.topic_class_course_bg{
+	width: 1000px;
+    margin: 15px auto;
+}
+.topic_class_course_learn{
+	width:100%;
+	height:114px;
+	background: url(http://www.casmooc.cn/image/academicianCourseBanner.jpg);
+}
+
+.topMain{
+	width:1080px;
+}
+.topClassCourseHead{
+	/*overflow:hidden;*/
+	float:none;
+	margin:0 auto;
+	width:100%;
+	/*height: 315px;*/
+	height:340px;
+	/*background: url(../image/caskj_11.png) repeat-x 0% 30%;*/
+}
+
+.topClassCourseHead1{
+	/*width:980px;height:315px;*/
+	width:1080px;
+	height:340px;
+	background:#fff;
+    margin:0 auto;
+    overflow: hidden;
+	/*background: url(../../image/partyHead.jpg);*/
+}
+
+.topClassCourseHead2{
+	/*width:980px;*/
+	width:1080px;
+	height:41px;
+	background:#cb0b0e;
+    margin:0 auto;
+    overflow: hidden;
+}
+
+.topClassCourseMain_bg {
+    width:100%;
+	min-height: 580px;
+}
+
+
+
+.contentTitle {
+	/*width:980px;*/
+	width:1080px;
+	height:60px;
+	padding-top:0;	
+}
+
+.contentTitle1 {
+	/*width:946px;*/
+	width:1032px;
+	height:40px;
+	line-height:40px;
+	margin-top:15px;	
+}
+
+.contentTitleLeft{
+	float:left;
+	width:850px;
+	margin-left:17px;
+	line-height:40px;
+	font-family:'微软雅黑';
+	font-size:26px;
+	color:#bb1e20;
+
+}
+
+.contentTitleRight{
+	float:left;
+	width:50px;
+	line-height:25px;
+	padding-top:15px;
+	font-family:'微软雅黑';
+	font-size:14px;
+}
+
+.contentTitleBanner{
+	width:942px;
+	height:4px;
+	margin:0 auto;
+	background: url(../../image/contentTitleBanner.jpg);
+}
+.contentTitleBannerLeft{
+	width:100px;
+	height:4px;
+	margin-left:15px;
+	margin-top:5px;
+	background-color:rgb(187, 30, 32);
+	float:left;
+}
+.contentTitleBannerRight{
+	/*width:842px;*/
+	width:950px;
+	height:4px;
+	margin-top:5px;
+	background-color:#E3E1E0;
+	float:left;
+}
+
+
+.topicclass_jszy_pic{
+	width:1080px;
+	/*height:1332px;*/
+	height:auto;
+	display:block;
+	margin-bottom:50px;
+	min-height: 100px;
+	
+}
+
+.topicclass_picLine{
+	width:1080px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+.topicclass_jszy_pic .topicclass_picLine .trainListContent li.li_courseItem{
+	float:left;
+	width: 260px;
+	margin:10px -5px 15px 15px;
+}
+
+
+.topicclass_jszy_pic_d{
+	width:240px;
+	margin-right:33px;
+	float:left;
+}
+.topicclass_jszy_pic_d img{
+	width:240px;
+	height:124px;
+}
+.topicclass_jszy_h{
+	width:240px;
+	height:20px;
+	line-height:20px;
+	*margin-bottom:20px;
+}
+
+.topicclass_jszy_z{
+	width:240px;
+	line-height:30px;
+	color:#666666;
+	font-size:14px;
+	
+}
+.topicclass_jszy_z a{
+	
+	color:#666666;
+	font-size:14px;
+	
+}
+
+.topicclass_jszy_x{
+	width:240px;
+	height:20px;
+	line-height:20px;
+	color:#666666;
+	font-size:14px;
+	margin-bottom:20px;
+}
+
+.topicclass_jszy_x div.elementary_num{
+	width:80px;
+	height:20px;
+	line-height:20px;
+	color:#666666;
+	font-size:14px;
+	margin-bottom:20px;
+	float:left
+}
+
+.topicclass_jszy_x ul{
+	margin-left:10px;
+}

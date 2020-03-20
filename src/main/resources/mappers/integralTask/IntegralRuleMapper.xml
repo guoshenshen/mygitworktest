@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralRule" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="itemCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="itemName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="itemCategoryCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="creator" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updator" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="updateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="limitCount" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="limitUnit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hasLimit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="creatorId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="updatorId" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, itemCode, itemName, itemCategoryCode, score, creator, createTime, updator, updateTime, 
+    limitCount, limitUnit, hasLimit, detail, status, creatorId, updatorId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_rule
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_rule
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralRule" >
+    insert into integral_rule (id, itemCode, itemName, 
+      itemCategoryCode, score, creator, 
+      createTime, updator, updateTime, 
+      limitCount, limitUnit, hasLimit, 
+      detail, status, creatorId, 
+      updatorId)
+    values (#{id,jdbcType=BIGINT}, #{itemCode,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
+      #{itemCategoryCode,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{limitCount,jdbcType=VARCHAR}, #{limitUnit,jdbcType=VARCHAR}, #{hasLimit,jdbcType=VARCHAR}, 
+      #{detail,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{creatorId,jdbcType=BIGINT}, 
+      #{updatorId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralRule" >
+    insert into integral_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemCode != null" >
+        itemCode,
+      </if>
+      <if test="itemName != null" >
+        itemName,
+      </if>
+      <if test="itemCategoryCode != null" >
+        itemCategoryCode,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+      <if test="limitCount != null" >
+        limitCount,
+      </if>
+      <if test="limitUnit != null" >
+        limitUnit,
+      </if>
+      <if test="hasLimit != null" >
+        hasLimit,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="creatorId != null" >
+        creatorId,
+      </if>
+      <if test="updatorId != null" >
+        updatorId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="itemCode != null" >
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCategoryCode != null" >
+        #{itemCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitCount != null" >
+        #{limitCount,jdbcType=VARCHAR},
+      </if>
+      <if test="limitUnit != null" >
+        #{limitUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="hasLimit != null" >
+        #{hasLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=BIGINT},
+      </if>
+      <if test="updatorId != null" >
+        #{updatorId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralRule" >
+    update integral_rule
+    <set >
+      <if test="itemCode != null" >
+        itemCode = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        itemName = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCategoryCode != null" >
+        itemCategoryCode = #{itemCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitCount != null" >
+        limitCount = #{limitCount,jdbcType=VARCHAR},
+      </if>
+      <if test="limitUnit != null" >
+        limitUnit = #{limitUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="hasLimit != null" >
+        hasLimit = #{hasLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=BIGINT},
+      </if>
+      <if test="updatorId != null" >
+        updatorId = #{updatorId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralRule" >
+    update integral_rule
+    set itemCode = #{itemCode,jdbcType=VARCHAR},
+      itemName = #{itemName,jdbcType=VARCHAR},
+      itemCategoryCode = #{itemCategoryCode,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      limitCount = #{limitCount,jdbcType=VARCHAR},
+      limitUnit = #{limitUnit,jdbcType=VARCHAR},
+      hasLimit = #{hasLimit,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      creatorId = #{creatorId,jdbcType=BIGINT},
+      updatorId = #{updatorId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findListByStatusAndItemCode" resultType="com.elearning.pojo.integralTask.IntegralRule" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from integral_rule where 1=1
+    <if test="status != null and status != ''" >
+      and status = #{status,jdbcType=VARCHAR}
+    </if>
+    <if test="itemCode != null and itemCode != ''" >
+      and itemCode = #{itemCode,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
+
+</mapper>

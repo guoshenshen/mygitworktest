@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainEva.TrainEvaSubMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainEva.TrainEvaSub" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subItemId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="originalMark" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="reviewMark" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentItemId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="itemId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, subItemId, tenantId, originalMark, reviewMark, comment, parentItemId, itemId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from train_eva_sub
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from train_eva_sub
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainEva.TrainEvaSub" >
+    insert into train_eva_sub (ID, subItemId, tenantId, 
+      originalMark, reviewMark, comment, 
+      parentItemId, itemId)
+    values (#{ID,jdbcType=INTEGER}, #{subItemId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{originalMark,jdbcType=DOUBLE}, #{reviewMark,jdbcType=DOUBLE}, #{comment,jdbcType=VARCHAR}, 
+      #{parentItemId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainEva.TrainEvaSub" >
+    insert into train_eva_sub
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="subItemId != null" >
+        subItemId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="originalMark != null" >
+        originalMark,
+      </if>
+      <if test="reviewMark != null" >
+        reviewMark,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="parentItemId != null" >
+        parentItemId,
+      </if>
+      <if test="itemId != null" >
+        itemId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="subItemId != null" >
+        #{subItemId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="originalMark != null" >
+        #{originalMark,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewMark != null" >
+        #{reviewMark,jdbcType=DOUBLE},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="parentItemId != null" >
+        #{parentItemId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainEva.TrainEvaSub" >
+    update train_eva_sub
+    <set >
+      <if test="subItemId != null" >
+        subItemId = #{subItemId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="originalMark != null" >
+        originalMark = #{originalMark,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewMark != null" >
+        reviewMark = #{reviewMark,jdbcType=DOUBLE},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="parentItemId != null" >
+        parentItemId = #{parentItemId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        itemId = #{itemId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainEva.TrainEvaSub" >
+    update train_eva_sub
+    set subItemId = #{subItemId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      originalMark = #{originalMark,jdbcType=DOUBLE},
+      reviewMark = #{reviewMark,jdbcType=DOUBLE},
+      comment = #{comment,jdbcType=VARCHAR},
+      parentItemId = #{parentItemId,jdbcType=INTEGER},
+      itemId = #{itemId,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

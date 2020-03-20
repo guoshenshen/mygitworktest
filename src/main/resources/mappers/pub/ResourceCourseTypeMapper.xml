@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.ResourceCourseTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.ResourceCourseType" >
+    <constructor >
+      <arg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="resourceId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="courseTypeId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="resourceType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.ResourceCourseType" >
+    insert into resource_coursetype (id, resourceId, courseTypeId, 
+      resourceType)
+    values (#{id,jdbcType=BIGINT}, #{resourceId,jdbcType=BIGINT}, #{courseTypeId,jdbcType=INTEGER}, 
+      #{resourceType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.ResourceCourseType" >
+    insert into resource_coursetype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="resourceId != null" >
+        resourceId,
+      </if>
+      <if test="courseTypeId != null" >
+        courseTypeId,
+      </if>
+      <if test="resourceType != null" >
+        resourceType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="courseTypeId != null" >
+        #{courseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.ResourceCourseType">
+    update resource_coursetype
+    <set >
+      <if test="resourceId != null" >
+        resourceId = #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="courseTypeId != null" >
+        courseTypeId = #{courseTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null" >
+        resourceType = #{resourceType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="findByResourceId" resultType="com.elearning.pojo.pub.ResourceCourseType">
+      SELECT * from resource_coursetype where resourceId = #{resourceId} and resourceType = #{resourceType}
+    </select>
+</mapper>

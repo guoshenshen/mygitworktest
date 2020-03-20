@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainEva.TrainInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainEva.TrainInfo" >
+    <constructor >
+      <arg column="id" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="item_Type" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.trainEva.TrainInfo" >
+    insert into traininfo (id, item_Type)
+    values (#{id,jdbcType=DOUBLE}, #{item_Type,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainEva.TrainInfo" >
+    insert into traininfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="item_Type != null" >
+        item_Type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DOUBLE},
+      </if>
+      <if test="item_Type != null" >
+        #{item_Type,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

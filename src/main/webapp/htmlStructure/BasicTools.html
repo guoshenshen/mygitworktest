@@ -1,0 +1,116 @@
+<div>
+	<!--显示评论编辑器  -->
+	<div id="discussEditor" class="separatePart" >
+		 <div class="discuss-operator u-userCardTrigger">   
+	        <img src="/image/headPic/male1.jpg" width="88px" height="100px" class="lazy headPic" id = "headSculpture" >
+            <div class="discuss-name"></div>       
+             <input type="hidden" class="infobox_userId replyRequrire" value="" name="operatorId" /> 
+             <input type="hidden" class="infobox_userName replyRequrire" value="" name="operatorName" /> 
+             <input type="hidden" class="infobox_itemType" value="1">		     
+	      </div>
+	      <div class="discuss-body">
+	          <div class="discuss-title">
+	                <span class="discuss-rating">请为该课程打分：</span>
+	                <div class="u-rating mark">
+	                	<div class="star"></div>
+	                	<div class="star"></div>
+	                	<div class="star"></div>
+	                	<div class="star"></div>
+	                	<div class="star"></div>
+	                	<span class="rating-tip"></span>
+	                	<div style="clear:both"></div>
+	                </div> 
+	                <div class="discuss-time"></div>      
+	             </div>    
+	     	   <div class="reply-box">
+				   <form>
+						<input type="hidden" name="score" value="3" class='needInfo' />
+		          		<input name="isReply" type="hidden" class='needInfo' />
+		          		<input name="bookId"  type="hidden" class='needInfo' /> 
+		          		<input name="discussType" type="hidden" class='needInfo' />   
+						<div class="contentwrap"><textarea name="content" placeholder=""></textarea></div>
+						<div class="bottombar">
+							<p class="size-leave J_SizeLeave">还能输入500字</p>
+							<p class='reply_p'><a class="J_Send replybtn btn">评 论</a></p>
+						</div>
+					</form>
+				</div>
+				<div class="discuss-content replyContent" >
+		       		<p class='info'></p>
+	           </div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	
+	<!-- 显示其他学员的评论 -->
+	<div class="otherReply separatePart" id="otherReply">
+            <div class="discuss-operator u-userCardTrigger">                            
+               	<img src="../image/headPic/male1.jpg" class="lazy headPic infobox_headPic" >
+               <div class="discuss-name "></div> 
+               <input type="hidden" class="infobox_userId replyRequrire" value="" name="operatorId" /> 
+               <input type="hidden" class="infobox_userName replyRequrire" value="" name="operatorName" /> 
+               <input type="hidden" class="infobox_itemType" value="1">
+            </div>        
+            <div class="discuss-body">
+            	<div class="discuss-title">
+                  <span class="discuss-rating">评分：</span>
+                  <input class="discuss-score" id="score" type="hidden" value="0">
+                  <div class="u-rating">
+                	<div class="star"></div>
+                	<div class="star"></div>
+                	<div class="star"></div>
+                	<div class="star"></div>
+                	<div class="star"></div>
+                	<span class="rating-tip"></span>
+                	<div style="clear:both"></div>
+                 </div> 	
+                 <div class="discuss-time">
+                  	<span></span>
+               	  </div>            
+               </div>    
+	       	  <div class="discuss-content">
+	       		<p class="commentInfo info"></p>
+	       		<p style="display:none" class="commentPublisher"></p>
+	       		<input type="hidden" name="bookId" value="" class=" replyRequrire" />
+	       		<input type="hidden" name="discussId" value="" class=" replyRequrire" />
+	       		<input type="hidden" name="score" value="" class=" replyRequrire" />
+	       		<input type="hidden" name="discussType" id="discussType" value="" class=" replyRequrire" />
+         		<div class="btn-reply">
+              		<div style="width:60px;float:right;margin-bottom:10px;">
+               			<a href="javascript:void(0);" class="J_Reply">
+               				<i></i>
+               				回&nbsp;复
+               			</a>
+           			</div>
+          		</div>
+          		<div class="reply-box-wrap"></div>      
+            </div> 
+		 </div> 
+	</div>
+	
+	<!-- 对评论的回复 -->
+	<div id="replyForReply" class="separatePart">
+	    <div class="discuss-reply">
+				<span class="reply-num"></span>
+				<span class="operatorName"></span>
+				<span>回复说：</span>
+    	        <div style="float:right" class="discuss-time">
+                   <span></span>
+               </div>
+         	<p class="info"></p>
+       	</div>
+	</div>
+	
+	<!-- 回复他人评论 -->
+	<div id='replyOther' class="separatePart">
+		<div class='reply-box'>
+			<i class='angle'></i>
+			<form>
+				<div class='contentwrap'><textarea name='content' placeholder=''></textarea></div>
+				<div class='bottombar'><p class='size-leave J_SizeLeave'>还能输入500字</p>
+				<p class='commentBtn'><a class='J_Back cancelbtn btn'>取消</a><a class='J_Send replybtn btn'>回 复</a></p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

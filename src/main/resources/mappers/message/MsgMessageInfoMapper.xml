@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.message.MsgMessageInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.message.MsgMessageInfo" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="validDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="inSystem" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isEmail" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="editorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isPublic" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="invalidDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="hasSend" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attachmentPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="backflag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isSMS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="smsContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recommendTag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="confirmType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ewm" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ewmType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="result" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="validDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="inSystem" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isEmail" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="editorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isPublic" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="invalidDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="hasSend" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attachmentPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="backflag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isSMS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="smsContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recommendTag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="confirmType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ewm" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ewmType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="result" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, title, status, validDate, inSystem, isEmail, editorID, isPublic, invalidDate, 
+    hasSend, attachmentPath, backflag, trainID, isSMS, tenantId, smsContent, recommendTag, 
+    confirmType, ewm, ewmType, code
+  </sql>
+  <sql id="Blob_Column_List" >
+    content, url, result
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from msg_messageinfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msg_messageinfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" >
+    insert into msg_messageinfo (ID, title, status, 
+      validDate, inSystem, isEmail, 
+      editorID, isPublic, invalidDate, 
+      hasSend, attachmentPath, backflag, 
+      trainID, isSMS, tenantId, 
+      smsContent, recommendTag, confirmType, 
+      ewm, ewmType, code, 
+      content, url, result
+      )
+    values (#{ID,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{validDate,jdbcType=TIMESTAMP}, #{inSystem,jdbcType=INTEGER}, #{isEmail,jdbcType=INTEGER}, 
+      #{editorID,jdbcType=INTEGER}, #{isPublic,jdbcType=INTEGER}, #{invalidDate,jdbcType=TIMESTAMP}, 
+      #{hasSend,jdbcType=INTEGER}, #{attachmentPath,jdbcType=VARCHAR}, #{backflag,jdbcType=INTEGER}, 
+      #{trainID,jdbcType=INTEGER}, #{isSMS,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{smsContent,jdbcType=VARCHAR}, #{recommendTag,jdbcType=INTEGER}, #{confirmType,jdbcType=INTEGER}, 
+      #{ewm,jdbcType=VARCHAR}, #{ewmType,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR}, #{url,jdbcType=LONGVARCHAR}, #{result,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="ID">
+      SELECT LAST_INSERT_ID() AS ID
+    </selectKey>
+    insert into msg_messageinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="validDate != null" >
+        validDate,
+      </if>
+      <if test="inSystem != null" >
+        inSystem,
+      </if>
+      <if test="isEmail != null" >
+        isEmail,
+      </if>
+      <if test="editorID != null" >
+        editorID,
+      </if>
+      <if test="isPublic != null" >
+        isPublic,
+      </if>
+      <if test="invalidDate != null" >
+        invalidDate,
+      </if>
+      <if test="hasSend != null" >
+        hasSend,
+      </if>
+      <if test="attachmentPath != null" >
+        attachmentPath,
+      </if>
+      <if test="backflag != null" >
+        backflag,
+      </if>
+      <if test="trainID != null" >
+        trainID,
+      </if>
+      <if test="isSMS != null" >
+        isSMS,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="smsContent != null" >
+        smsContent,
+      </if>
+      <if test="recommendTag != null" >
+        recommendTag,
+      </if>
+      <if test="confirmType != null" >
+        confirmType,
+      </if>
+      <if test="ewm != null" >
+        ewm,
+      </if>
+      <if test="ewmType != null" >
+        ewmType,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="validDate != null" >
+        #{validDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inSystem != null" >
+        #{inSystem,jdbcType=INTEGER},
+      </if>
+      <if test="isEmail != null" >
+        #{isEmail,jdbcType=INTEGER},
+      </if>
+      <if test="editorID != null" >
+        #{editorID,jdbcType=INTEGER},
+      </if>
+      <if test="isPublic != null" >
+        #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="invalidDate != null" >
+        #{invalidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hasSend != null" >
+        #{hasSend,jdbcType=INTEGER},
+      </if>
+      <if test="attachmentPath != null" >
+        #{attachmentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="backflag != null" >
+        #{backflag,jdbcType=INTEGER},
+      </if>
+      <if test="trainID != null" >
+        #{trainID,jdbcType=INTEGER},
+      </if>
+      <if test="isSMS != null" >
+        #{isSMS,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="smsContent != null" >
+        #{smsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendTag != null" >
+        #{recommendTag,jdbcType=INTEGER},
+      </if>
+      <if test="confirmType != null" >
+        #{confirmType,jdbcType=INTEGER},
+      </if>
+      <if test="ewm != null" >
+        #{ewm,jdbcType=VARCHAR},
+      </if>
+      <if test="ewmType != null" >
+        #{ewmType,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" >
+    update msg_messageinfo
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="validDate != null" >
+        validDate = #{validDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inSystem != null" >
+        inSystem = #{inSystem,jdbcType=INTEGER},
+      </if>
+      <if test="isEmail != null" >
+        isEmail = #{isEmail,jdbcType=INTEGER},
+      </if>
+      <if test="editorID != null" >
+        editorID = #{editorID,jdbcType=INTEGER},
+      </if>
+      <if test="isPublic != null" >
+        isPublic = #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="invalidDate != null" >
+        invalidDate = #{invalidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hasSend != null" >
+        hasSend = #{hasSend,jdbcType=INTEGER},
+      </if>
+      <if test="attachmentPath != null" >
+        attachmentPath = #{attachmentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="backflag != null" >
+        backflag = #{backflag,jdbcType=INTEGER},
+      </if>
+      <if test="trainID != null" >
+        trainID = #{trainID,jdbcType=INTEGER},
+      </if>
+      <if test="isSMS != null" >
+        isSMS = #{isSMS,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="smsContent != null" >
+        smsContent = #{smsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendTag != null" >
+        recommendTag = #{recommendTag,jdbcType=INTEGER},
+      </if>
+      <if test="confirmType != null" >
+        confirmType = #{confirmType,jdbcType=INTEGER},
+      </if>
+      <if test="ewm != null" >
+        ewm = #{ewm,jdbcType=VARCHAR},
+      </if>
+      <if test="ewmType != null" >
+        ewmType = #{ewmType,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" >
+    update msg_messageinfo
+    set title = #{title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      validDate = #{validDate,jdbcType=TIMESTAMP},
+      inSystem = #{inSystem,jdbcType=INTEGER},
+      isEmail = #{isEmail,jdbcType=INTEGER},
+      editorID = #{editorID,jdbcType=INTEGER},
+      isPublic = #{isPublic,jdbcType=INTEGER},
+      invalidDate = #{invalidDate,jdbcType=TIMESTAMP},
+      hasSend = #{hasSend,jdbcType=INTEGER},
+      attachmentPath = #{attachmentPath,jdbcType=VARCHAR},
+      backflag = #{backflag,jdbcType=INTEGER},
+      trainID = #{trainID,jdbcType=INTEGER},
+      isSMS = #{isSMS,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      smsContent = #{smsContent,jdbcType=VARCHAR},
+      recommendTag = #{recommendTag,jdbcType=INTEGER},
+      confirmType = #{confirmType,jdbcType=INTEGER},
+      ewm = #{ewm,jdbcType=VARCHAR},
+      ewmType = #{ewmType,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
+      url = #{url,jdbcType=LONGVARCHAR},
+      result = #{result,jdbcType=LONGVARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.message.MsgMessageInfo" >
+    update msg_messageinfo
+    set title = #{title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      validDate = #{validDate,jdbcType=TIMESTAMP},
+      inSystem = #{inSystem,jdbcType=INTEGER},
+      isEmail = #{isEmail,jdbcType=INTEGER},
+      editorID = #{editorID,jdbcType=INTEGER},
+      isPublic = #{isPublic,jdbcType=INTEGER},
+      invalidDate = #{invalidDate,jdbcType=TIMESTAMP},
+      hasSend = #{hasSend,jdbcType=INTEGER},
+      attachmentPath = #{attachmentPath,jdbcType=VARCHAR},
+      backflag = #{backflag,jdbcType=INTEGER},
+      trainID = #{trainID,jdbcType=INTEGER},
+      isSMS = #{isSMS,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      smsContent = #{smsContent,jdbcType=VARCHAR},
+      recommendTag = #{recommendTag,jdbcType=INTEGER},
+      confirmType = #{confirmType,jdbcType=INTEGER},
+      ewm = #{ewm,jdbcType=VARCHAR},
+      ewmType = #{ewmType,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByTrainId" resultType="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List" /> ,<include refid="Blob_Column_List" />  from msg_messageinfo where trainID = #{trainID,jdbcType=INTEGER} order by validDate desc
+  </select>
+
+  <select id="queryMessageList" resultType="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" parameterType="map">
+    SELECT <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />  from msg_messageinfo where 1=1
+    <if test="editorId != null">
+      and editorID = #{editorId}
+    </if>
+    <if test="title != null and  title != ''">
+      and title like CONCAT('%',#{title},'%')
+    </if>
+    <if test="category != null and  category != -1 ">
+      and isPublic = #{category}
+    </if>
+    <if test="searchTrainNull == null and  trainId != null ">
+      and trainID != #{trainId}
+    </if>
+    <if test="searchTrainNull != null">
+      and trainID is null
+    </if>
+    order by validDate desc
+  </select>
+
+  <select id="getListByEditorId" resultType="com.elearning.pojo.message.MsgMessageInfoWithBLOBs" parameterType="map">
+    SELECT <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />  from msg_messageinfo where 1=1
+    <if test="editorId != null">
+      and editorID = #{editorId}
+    </if>
+    order by validDate desc
+  </select>
+
+</mapper>

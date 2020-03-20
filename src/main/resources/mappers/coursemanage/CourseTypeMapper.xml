@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.CourseTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.CourseType" >
+    <constructor >
+      <idArg column="CourseType_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ParentID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="courseTypeName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FullPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TypeDesc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Tindex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CourseType_ID, ParentID, courseTypeName, FullPath, TypeDesc, Tindex, orgId, tenantId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from coursetype
+    where CourseType_ID = #{courseTypeID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from coursetype
+    where CourseType_ID = #{courseTypeID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.CourseType" >
+    insert into coursetype (CourseType_ID, ParentID, courseTypeName, 
+      FullPath, TypeDesc, Tindex, 
+      orgId, tenantId)
+    values (#{courseTypeID,jdbcType=INTEGER}, #{parentID,jdbcType=INTEGER}, #{courseTypeName,jdbcType=VARCHAR},
+      #{fullPath,jdbcType=VARCHAR}, #{typeDesc,jdbcType=VARCHAR}, #{tindex,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.CourseType" >
+    insert into coursetype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseTypeID != null" >
+        CourseType_ID,
+      </if>
+      <if test="parentID != null" >
+        ParentID,
+      </if>
+      <if test="courseTypeName != null" >
+        courseTypeName,
+      </if>
+      <if test="fullPath != null" >
+        FullPath,
+      </if>
+      <if test="typeDesc != null" >
+        TypeDesc,
+      </if>
+      <if test="tindex != null" >
+        Tindex,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseTypeID != null" >
+        #{courseTypeID,jdbcType=INTEGER},
+      </if>
+      <if test="parentID != null" >
+        #{parentID,jdbcType=INTEGER},
+      </if>
+      <if test="courseTypeName != null" >
+        #{courseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="fullPath != null" >
+        #{fullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="typeDesc != null" >
+        #{typeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tindex != null" >
+        #{tindex,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.coursemanage.CourseType" >
+    update coursetype
+    <set >
+      <if test="parentID != null" >
+        ParentID = #{parentID,jdbcType=INTEGER},
+      </if>
+      <if test="courseTypeName != null" >
+        courseTypeName = #{courseTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="fullPath != null" >
+        FullPath = #{fullPath,jdbcType=VARCHAR},
+      </if>
+      <if test="typeDesc != null" >
+        TypeDesc = #{typeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tindex != null" >
+        Tindex = #{tindex,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where CourseType_ID = #{courseTypeID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.CourseType" >
+    update coursetype
+    set ParentID = #{parentID,jdbcType=INTEGER},
+      courseTypeName = #{courseTypeName,jdbcType=VARCHAR},
+      FullPath = #{fullPath,jdbcType=VARCHAR},
+      TypeDesc = #{typeDesc,jdbcType=VARCHAR},
+      Tindex = #{tindex,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER}
+    where CourseType_ID = #{courseTypeID,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="listCourseTypeById" resultType="com.elearning.pojo.coursemanage.CourseType" parameterType="int">
+      SELECT
+        CourseType_ID as courseTypeID,ParentID,courseTypeName,FullPath
+      FROM
+        coursetype
+      WHERE
+        (coursetype.fullpath LIKE  CONCAT('',#{domainId},'.%') OR coursetype.fullpath LIKE CONCAT('%.',#{domainId},'.%'))
+      ORDER BY
+        IF(ISNULL(coursetype.ParentID),0,1) ASC, coursetype.ParentID ASC, coursetype.CourseType_ID ASC
+  </select>
+    <select id="findByCourseId" resultType="com.elearning.pojo.coursemanage.CourseType">
+      select ct.* from Coursetype ct,Course c,course_coursetype cct where c.course_Id=cct.course_Id and cct.courseType_Id=ct.CourseType_ID and c.course_Id=#{courseId}
+
+    </select>
+    <select id="findByMap" resultType="com.elearning.pojo.coursemanage.CourseType">
+      SELECT * from coursetype
+      where 1 = 1
+      <if test="parentID != null ">
+        and ParentID = #{parentID,jdbcType=INTEGER}
+      </if>
+      <if test="courseName != null ">
+        and courseTypeName = #{courseName,jdbcType=VARCHAR}
+      </if>
+    </select>
+
+    <select id="findByCourseName" resultType="com.elearning.pojo.coursemanage.CourseType">
+      SELECT CourseType_ID as courseTypeID, ParentID, courseTypeName, FullPath, TypeDesc, Tindex, orgId, tenantId from coursetype where courseTypeName = #{courseTypeName}
+    </select>
+
+    <select id="getCourseTypeNameByCourseId" resultType="string">
+      select ct.courseTypeName from resource_coursetype rct , coursetype ct
+      where rct.courseTypeId = ct.CourseType_ID  and rct.resourceId = #{courseId}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.SkinMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.Skin" >
+    <constructor >
+      <idArg column="skinId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="skinName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultLogo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultBottom" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="color" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultElearningName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customBottom" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customElearningName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="useFlag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="modifyFlag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cssDir" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultPageFlag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.systemManage.Skin" >
+    <constructor >
+      <idArg column="skinId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="skinName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultLogo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultBottom" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="color" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultElearningName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customBottom" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customElearningName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="useFlag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="modifyFlag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cssDir" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="defaultPageFlag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="customLogo" jdbcType="VARBINARY" javaType="_byte[]" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    skinId, skinName, defaultLogo, defaultBottom, color, defaultElearningName, customBottom, 
+    customElearningName, useFlag, modifyFlag, cssDir, defaultPageFlag
+  </sql>
+  <sql id="Blob_Column_List" >
+    customLogo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from skin
+    where skinId = #{skinId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from skin
+    where skinId = #{skinId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.Skin" >
+    insert into skin (skinId, skinName, defaultLogo, 
+      defaultBottom, color, defaultElearningName, 
+      customBottom, customElearningName, useFlag, 
+      modifyFlag, cssDir, defaultPageFlag, 
+      customLogo)
+    values (#{skinId,jdbcType=INTEGER}, #{skinName,jdbcType=VARCHAR}, #{defaultLogo,jdbcType=VARCHAR}, 
+      #{defaultBottom,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, #{defaultElearningName,jdbcType=VARCHAR}, 
+      #{customBottom,jdbcType=VARCHAR}, #{customElearningName,jdbcType=VARCHAR}, #{useFlag,jdbcType=INTEGER}, 
+      #{modifyFlag,jdbcType=INTEGER}, #{cssDir,jdbcType=VARCHAR}, #{defaultPageFlag,jdbcType=INTEGER}, 
+      #{customLogo,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.Skin" >
+    insert into skin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skinId != null" >
+        skinId,
+      </if>
+      <if test="skinName != null" >
+        skinName,
+      </if>
+      <if test="defaultLogo != null" >
+        defaultLogo,
+      </if>
+      <if test="defaultBottom != null" >
+        defaultBottom,
+      </if>
+      <if test="color != null" >
+        color,
+      </if>
+      <if test="defaultElearningName != null" >
+        defaultElearningName,
+      </if>
+      <if test="customBottom != null" >
+        customBottom,
+      </if>
+      <if test="customElearningName != null" >
+        customElearningName,
+      </if>
+      <if test="useFlag != null" >
+        useFlag,
+      </if>
+      <if test="modifyFlag != null" >
+        modifyFlag,
+      </if>
+      <if test="cssDir != null" >
+        cssDir,
+      </if>
+      <if test="defaultPageFlag != null" >
+        defaultPageFlag,
+      </if>
+      <if test="customLogo != null" >
+        customLogo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skinId != null" >
+        #{skinId,jdbcType=INTEGER},
+      </if>
+      <if test="skinName != null" >
+        #{skinName,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultLogo != null" >
+        #{defaultLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultBottom != null" >
+        #{defaultBottom,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultElearningName != null" >
+        #{defaultElearningName,jdbcType=VARCHAR},
+      </if>
+      <if test="customBottom != null" >
+        #{customBottom,jdbcType=VARCHAR},
+      </if>
+      <if test="customElearningName != null" >
+        #{customElearningName,jdbcType=VARCHAR},
+      </if>
+      <if test="useFlag != null" >
+        #{useFlag,jdbcType=INTEGER},
+      </if>
+      <if test="modifyFlag != null" >
+        #{modifyFlag,jdbcType=INTEGER},
+      </if>
+      <if test="cssDir != null" >
+        #{cssDir,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultPageFlag != null" >
+        #{defaultPageFlag,jdbcType=INTEGER},
+      </if>
+      <if test="customLogo != null" >
+        #{customLogo,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.Skin" >
+    update skin
+    <set >
+      <if test="skinName != null" >
+        skinName = #{skinName,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultLogo != null" >
+        defaultLogo = #{defaultLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultBottom != null" >
+        defaultBottom = #{defaultBottom,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultElearningName != null" >
+        defaultElearningName = #{defaultElearningName,jdbcType=VARCHAR},
+      </if>
+      <if test="customBottom != null" >
+        customBottom = #{customBottom,jdbcType=VARCHAR},
+      </if>
+      <if test="customElearningName != null" >
+        customElearningName = #{customElearningName,jdbcType=VARCHAR},
+      </if>
+      <if test="useFlag != null" >
+        useFlag = #{useFlag,jdbcType=INTEGER},
+      </if>
+      <if test="modifyFlag != null" >
+        modifyFlag = #{modifyFlag,jdbcType=INTEGER},
+      </if>
+      <if test="cssDir != null" >
+        cssDir = #{cssDir,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultPageFlag != null" >
+        defaultPageFlag = #{defaultPageFlag,jdbcType=INTEGER},
+      </if>
+      <if test="customLogo != null" >
+        customLogo = #{customLogo,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where skinId = #{skinId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.systemManage.Skin" >
+    update skin
+    set skinName = #{skinName,jdbcType=VARCHAR},
+      defaultLogo = #{defaultLogo,jdbcType=VARCHAR},
+      defaultBottom = #{defaultBottom,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      defaultElearningName = #{defaultElearningName,jdbcType=VARCHAR},
+      customBottom = #{customBottom,jdbcType=VARCHAR},
+      customElearningName = #{customElearningName,jdbcType=VARCHAR},
+      useFlag = #{useFlag,jdbcType=INTEGER},
+      modifyFlag = #{modifyFlag,jdbcType=INTEGER},
+      cssDir = #{cssDir,jdbcType=VARCHAR},
+      defaultPageFlag = #{defaultPageFlag,jdbcType=INTEGER},
+      customLogo = #{customLogo,jdbcType=VARBINARY}
+    where skinId = #{skinId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.Skin" >
+    update skin
+    set skinName = #{skinName,jdbcType=VARCHAR},
+      defaultLogo = #{defaultLogo,jdbcType=VARCHAR},
+      defaultBottom = #{defaultBottom,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      defaultElearningName = #{defaultElearningName,jdbcType=VARCHAR},
+      customBottom = #{customBottom,jdbcType=VARCHAR},
+      customElearningName = #{customElearningName,jdbcType=VARCHAR},
+      useFlag = #{useFlag,jdbcType=INTEGER},
+      modifyFlag = #{modifyFlag,jdbcType=INTEGER},
+      cssDir = #{cssDir,jdbcType=VARCHAR},
+      defaultPageFlag = #{defaultPageFlag,jdbcType=INTEGER}
+    where skinId = #{skinId,jdbcType=INTEGER}
+  </update>
+</mapper>

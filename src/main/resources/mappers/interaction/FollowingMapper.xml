@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.interaction.FollowingMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.interaction.Following" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="follows" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isFollowedBy" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="followsType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, follows, isFollowedBy, followsType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from following
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from following
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.interaction.Following" >
+    insert into following (id, follows, isFollowedBy, 
+      followsType)
+    values (#{id,jdbcType=INTEGER}, #{follows,jdbcType=INTEGER}, #{isFollowedBy,jdbcType=INTEGER}, 
+      #{followsType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.interaction.Following" >
+    insert into following
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="follows != null" >
+        follows,
+      </if>
+      <if test="isFollowedBy != null" >
+        isFollowedBy,
+      </if>
+      <if test="followsType != null" >
+        followsType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="follows != null" >
+        #{follows,jdbcType=INTEGER},
+      </if>
+      <if test="isFollowedBy != null" >
+        #{isFollowedBy,jdbcType=INTEGER},
+      </if>
+      <if test="followsType != null" >
+        #{followsType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.interaction.Following" >
+    update following
+    <set >
+      <if test="follows != null" >
+        follows = #{follows,jdbcType=INTEGER},
+      </if>
+      <if test="isFollowedBy != null" >
+        isFollowedBy = #{isFollowedBy,jdbcType=INTEGER},
+      </if>
+      <if test="followsType != null" >
+        followsType = #{followsType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.interaction.Following" >
+    update following
+    set follows = #{follows,jdbcType=INTEGER},
+      isFollowedBy = #{isFollowedBy,jdbcType=INTEGER},
+      followsType = #{followsType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findFollowsCount" resultType="int" parameterType="java.lang.Integer" >
+    SELECT COUNT(*) FROM following WHERE isFollowedBy = #{isFollowedBy}
+    AND followsType = 1 AND EXISTS (SELECT * FROM eosoperator WHERE operatorId=follows AND STATUS=1)
+  </select>
+
+  <select id="findFansCount" resultType="int" parameterType="java.lang.Integer" >
+    SELECT COUNT(*) FROM Following WHERE follows = #{follows}
+    AND EXISTS (SELECT * FROM eosoperator WHERE operatorId=isFollowedBy AND STATUS=1)
+  </select>
+
+  <select id="findFollowOrgsCount" resultType="int" parameterType="java.lang.Integer" >
+    SELECT COUNT(*) FROM Following WHERE isFollowedBy = #{isFollowedBy} AND followsType = 0
+  </select>
+
+  <select id="getFollowingType" resultType="int" parameterType="java.lang.Integer" >
+    select followsType from Following where follows = #{follows}
+  </select>
+
+  <select id="getListByFollowsAndIsFolloweBy" resultType="com.elearning.pojo.interaction.Following" parameterType="map" >
+    select followsType from Following where 1=1
+    <if test="follows != null" >
+      and follows = #{follows,jdbcType=INTEGER}
+    </if>
+    <if test="isFollowedBy != null" >
+      and isFollowedBy = #{isFollowedBy,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+</mapper>

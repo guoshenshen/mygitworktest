@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtTrainNewsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtTrainNews" >
+    <constructor >
+      <idArg column="newsId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newsTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="recommendTag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newsType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="subNewsType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" >
+    <constructor >
+      <idArg column="newsId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newsTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="recommendTag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newsType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="subNewsType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newsContent" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="newsAbstract" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    newsId, operatorId, newsTitle, createTime, trainId, tenantId, recommendTag, status, 
+    newsType, orgId, orgName, subNewsType
+  </sql>
+  <sql id="Blob_Column_List" >
+    newsContent, newsAbstract
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mt_trainnews
+    where newsId = #{newsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_trainnews
+    where newsId = #{newsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" >
+    insert into mt_trainnews (newsId, operatorId, newsTitle, 
+      createTime, trainId, tenantId, 
+      recommendTag, status, newsType, 
+      orgId, orgName, subNewsType, 
+      newsContent, newsAbstract)
+    values (#{newsId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{newsTitle,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{trainId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{recommendTag,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{newsType,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, #{subNewsType,jdbcType=INTEGER}, 
+      #{newsContent,jdbcType=LONGVARCHAR}, #{newsAbstract,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" >
+    insert into mt_trainnews
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="newsId != null" >
+        newsId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="newsTitle != null" >
+        newsTitle,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="recommendTag != null" >
+        recommendTag,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="newsType != null" >
+        newsType,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="subNewsType != null" >
+        subNewsType,
+      </if>
+      <if test="newsContent != null" >
+        newsContent,
+      </if>
+      <if test="newsAbstract != null" >
+        newsAbstract,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="newsId != null" >
+        #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="newsTitle != null" >
+        #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendTag != null" >
+        #{recommendTag,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="newsType != null" >
+        #{newsType,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="subNewsType != null" >
+        #{subNewsType,jdbcType=INTEGER},
+      </if>
+      <if test="newsContent != null" >
+        #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="newsAbstract != null" >
+        #{newsAbstract,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" >
+    update mt_trainnews
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="newsTitle != null" >
+        newsTitle = #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendTag != null" >
+        recommendTag = #{recommendTag,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="newsType != null" >
+        newsType = #{newsType,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="subNewsType != null" >
+        subNewsType = #{subNewsType,jdbcType=INTEGER},
+      </if>
+      <if test="newsContent != null" >
+        newsContent = #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="newsAbstract != null" >
+        newsAbstract = #{newsAbstract,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where newsId = #{newsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" >
+    update mt_trainnews
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      newsTitle = #{newsTitle,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      trainId = #{trainId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      recommendTag = #{recommendTag,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      newsType = #{newsType,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      subNewsType = #{subNewsType,jdbcType=INTEGER},
+      newsContent = #{newsContent,jdbcType=LONGVARCHAR},
+      newsAbstract = #{newsAbstract,jdbcType=LONGVARCHAR}
+    where newsId = #{newsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtTrainNews" >
+    update mt_trainnews
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      newsTitle = #{newsTitle,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      trainId = #{trainId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      recommendTag = #{recommendTag,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      newsType = #{newsType,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      subNewsType = #{subNewsType,jdbcType=INTEGER}
+    where newsId = #{newsId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByTrainId" resultType="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />  from mt_trainnews
+    WHERE status=1092 AND trainId = #{trainId,jdbcType=INTEGER} order by createTime desc
+  </select>
+
+  <select id="findListByTrainIdOrderByCreateTime" resultType="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />  from mt_trainnews
+    WHERE trainId = #{trainId,jdbcType=INTEGER} ORDER BY createTime DESC
+  </select>
+
+  <select id="listNews" resultType="com.elearning.pojo.mixtraining.MtTrainNewsWithBLOBs" parameterType="map">
+    SELECT <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />  from mt_trainnews
+    WHERE 1=1
+    <if test="operatorId != null and operatorId != '' ">
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+    </if>
+    <if test="newsFlag != null and newsFlag != '' ">
+      and trainId is null
+    </if>
+    <if test="newsFlag == null or newsFlag == '' ">
+      <if test="trainId != null and trainId != '' ">
+        and trainId = #{trainId,jdbcType=INTEGER}
+      </if>
+    </if>
+    <if test="newsName != null and newsName != '' ">
+      and newsTitle like CONCAT('%',#{newsName},'%')
+    </if>
+    and tenantId = #{tenantId,jdbcType=INTEGER}
+    order by createTime desc
+  </select>
+
+
+</mapper>

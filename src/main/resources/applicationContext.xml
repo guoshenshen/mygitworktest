@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <context:component-scan base-package="com.elearning" />
+
+    <!--<context:annotation-config/>-->
+    <aop:aspectj-autoproxy/>
+
+
+    <import resource="applicationContext-datasource.xml"/>
+
+
+
+    <jaxws:client id="commonToolsService" serviceClass="cn.kepu.elearningfs.webservice.ICommonToolsService"
+                  address="http://159.226.28.53/elearning-fs/services/commonToolsService" />
+
+    <jaxws:client id="courseWebService"  serviceClass="cn.kepu.elnbase.webservice.coursemanage.ICourseWebService"
+            address="http://159.226.83.91:8080/elnbase/services/CourseWebService">
+    </jaxws:client>
+</beans>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.onlinetraining.KeyWordsTagMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.onlinetraining.KeyWordsTag" >
+    <constructor >
+      <idArg column="tagID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyWords" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tagID, keyWords
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from keywordstag
+    where tagID = #{tagID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from keywordstag
+    where tagID = #{tagID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.onlinetraining.KeyWordsTag" >
+    insert into keywordstag (tagID, keyWords)
+    values (#{tagID,jdbcType=INTEGER}, #{keyWords,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.onlinetraining.KeyWordsTag" >
+    insert into keywordstag
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tagID != null" >
+        tagID,
+      </if>
+      <if test="keyWords != null" >
+        keyWords,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tagID != null" >
+        #{tagID,jdbcType=INTEGER},
+      </if>
+      <if test="keyWords != null" >
+        #{keyWords,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.onlinetraining.KeyWordsTag" >
+    update keywordstag
+    <set >
+      <if test="keyWords != null" >
+        keyWords = #{keyWords,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tagID = #{tagID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.onlinetraining.KeyWordsTag" >
+    update keywordstag
+    set keyWords = #{keyWords,jdbcType=VARCHAR}
+    where tagID = #{tagID,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByKeyWords" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from keywordstag
+    where keyWords = #{keyWords,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainCertificateUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainCertificateUser" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userCertificateUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="certificateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userCertificateNo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="finalVersion" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="source" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="templateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userCertificateNoPattern" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, trainId, userId, userCertificateUrl, certificateId, userCertificateNo, tenantId, 
+    userName, finalVersion, source, templateId, userCertificateNoPattern
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtraincertificateuser
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtraincertificateuser
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateUser" >
+    insert into mt_mixtraincertificateuser (id, trainId, userId, 
+      userCertificateUrl, certificateId, userCertificateNo, 
+      tenantId, userName, finalVersion, 
+      source, templateId, userCertificateNoPattern
+      )
+    values (#{id,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{userCertificateUrl,jdbcType=VARCHAR}, #{certificateId,jdbcType=INTEGER}, #{userCertificateNo,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{finalVersion,jdbcType=BOOLEAN}, 
+      #{source,jdbcType=BOOLEAN}, #{templateId,jdbcType=INTEGER}, #{userCertificateNoPattern,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateUser" >
+    insert into mt_mixtraincertificateuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="userCertificateUrl != null" >
+        userCertificateUrl,
+      </if>
+      <if test="certificateId != null" >
+        certificateId,
+      </if>
+      <if test="userCertificateNo != null" >
+        userCertificateNo,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+      <if test="finalVersion != null" >
+        finalVersion,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="templateId != null" >
+        templateId,
+      </if>
+      <if test="userCertificateNoPattern != null" >
+        userCertificateNoPattern,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userCertificateUrl != null" >
+        #{userCertificateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateId != null" >
+        #{certificateId,jdbcType=INTEGER},
+      </if>
+      <if test="userCertificateNo != null" >
+        #{userCertificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="finalVersion != null" >
+        #{finalVersion,jdbcType=BOOLEAN},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=BOOLEAN},
+      </if>
+      <if test="templateId != null" >
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="userCertificateNoPattern != null" >
+        #{userCertificateNoPattern,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateUser" >
+    update mt_mixtraincertificateuser
+    <set >
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userCertificateUrl != null" >
+        userCertificateUrl = #{userCertificateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateId != null" >
+        certificateId = #{certificateId,jdbcType=INTEGER},
+      </if>
+      <if test="userCertificateNo != null" >
+        userCertificateNo = #{userCertificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="finalVersion != null" >
+        finalVersion = #{finalVersion,jdbcType=BOOLEAN},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=BOOLEAN},
+      </if>
+      <if test="templateId != null" >
+        templateId = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="userCertificateNoPattern != null" >
+        userCertificateNoPattern = #{userCertificateNoPattern,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainCertificateUser" >
+    update mt_mixtraincertificateuser
+    set trainId = #{trainId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
+      userCertificateUrl = #{userCertificateUrl,jdbcType=VARCHAR},
+      certificateId = #{certificateId,jdbcType=INTEGER},
+      userCertificateNo = #{userCertificateNo,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      userName = #{userName,jdbcType=VARCHAR},
+      finalVersion = #{finalVersion,jdbcType=BOOLEAN},
+      source = #{source,jdbcType=BOOLEAN},
+      templateId = #{templateId,jdbcType=INTEGER},
+      userCertificateNoPattern = #{userCertificateNoPattern,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

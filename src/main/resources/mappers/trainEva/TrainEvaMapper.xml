@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainEva.TrainEvaMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainEva.TrainEva" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="itemId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="originalMark" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="reviewMark" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="originalTotalScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="reviewTotalScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="submitDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upreportOrgIds" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, tenantId, orgId, operatorId, operatorName, itemId, originalMark, reviewMark, 
+    originalTotalScore, reviewTotalScore, submitDate, comment, upreportOrgIds
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from train_eva
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from train_eva
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainEva.TrainEva" >
+    insert into train_eva (ID, tenantId, orgId, 
+      operatorId, operatorName, itemId, 
+      originalMark, reviewMark, originalTotalScore, 
+      reviewTotalScore, submitDate, comment, 
+      upreportOrgIds)
+    values (#{ID,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, #{itemId,jdbcType=INTEGER}, 
+      #{originalMark,jdbcType=DOUBLE}, #{reviewMark,jdbcType=DOUBLE}, #{originalTotalScore,jdbcType=DOUBLE}, 
+      #{reviewTotalScore,jdbcType=DOUBLE}, #{submitDate,jdbcType=TIMESTAMP}, #{comment,jdbcType=VARCHAR}, 
+      #{upreportOrgIds,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainEva.TrainEva" >
+    insert into train_eva
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="itemId != null" >
+        itemId,
+      </if>
+      <if test="originalMark != null" >
+        originalMark,
+      </if>
+      <if test="reviewMark != null" >
+        reviewMark,
+      </if>
+      <if test="originalTotalScore != null" >
+        originalTotalScore,
+      </if>
+      <if test="reviewTotalScore != null" >
+        reviewTotalScore,
+      </if>
+      <if test="submitDate != null" >
+        submitDate,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="upreportOrgIds != null" >
+        upreportOrgIds,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="originalMark != null" >
+        #{originalMark,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewMark != null" >
+        #{reviewMark,jdbcType=DOUBLE},
+      </if>
+      <if test="originalTotalScore != null" >
+        #{originalTotalScore,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewTotalScore != null" >
+        #{reviewTotalScore,jdbcType=DOUBLE},
+      </if>
+      <if test="submitDate != null" >
+        #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="upreportOrgIds != null" >
+        #{upreportOrgIds,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainEva.TrainEva" >
+    update train_eva
+    <set >
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        itemId = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="originalMark != null" >
+        originalMark = #{originalMark,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewMark != null" >
+        reviewMark = #{reviewMark,jdbcType=DOUBLE},
+      </if>
+      <if test="originalTotalScore != null" >
+        originalTotalScore = #{originalTotalScore,jdbcType=DOUBLE},
+      </if>
+      <if test="reviewTotalScore != null" >
+        reviewTotalScore = #{reviewTotalScore,jdbcType=DOUBLE},
+      </if>
+      <if test="submitDate != null" >
+        submitDate = #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="upreportOrgIds != null" >
+        upreportOrgIds = #{upreportOrgIds,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainEva.TrainEva" >
+    update train_eva
+    set tenantId = #{tenantId,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      itemId = #{itemId,jdbcType=INTEGER},
+      originalMark = #{originalMark,jdbcType=DOUBLE},
+      reviewMark = #{reviewMark,jdbcType=DOUBLE},
+      originalTotalScore = #{originalTotalScore,jdbcType=DOUBLE},
+      reviewTotalScore = #{reviewTotalScore,jdbcType=DOUBLE},
+      submitDate = #{submitDate,jdbcType=TIMESTAMP},
+      comment = #{comment,jdbcType=VARCHAR},
+      upreportOrgIds = #{upreportOrgIds,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

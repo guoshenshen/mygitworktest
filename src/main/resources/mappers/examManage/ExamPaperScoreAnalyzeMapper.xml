@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.examManage.ExamPaperScoreAnalyzeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.examManage.ExamPaperScoreAnalyze" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="minScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="maxScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, examID, minScore, maxScore
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam_paperscoreanalyze
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam_paperscoreanalyze
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.examManage.ExamPaperScoreAnalyze" >
+    insert into exam_paperscoreanalyze (ID, examID, minScore, 
+      maxScore)
+    values (#{ID,jdbcType=INTEGER}, #{examID,jdbcType=INTEGER}, #{minScore,jdbcType=DOUBLE}, 
+      #{maxScore,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.examManage.ExamPaperScoreAnalyze" >
+    insert into exam_paperscoreanalyze
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="examID != null" >
+        examID,
+      </if>
+      <if test="minScore != null" >
+        minScore,
+      </if>
+      <if test="maxScore != null" >
+        maxScore,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="examID != null" >
+        #{examID,jdbcType=INTEGER},
+      </if>
+      <if test="minScore != null" >
+        #{minScore,jdbcType=DOUBLE},
+      </if>
+      <if test="maxScore != null" >
+        #{maxScore,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.examManage.ExamPaperScoreAnalyze" >
+    update exam_paperscoreanalyze
+    <set >
+      <if test="examID != null" >
+        examID = #{examID,jdbcType=INTEGER},
+      </if>
+      <if test="minScore != null" >
+        minScore = #{minScore,jdbcType=DOUBLE},
+      </if>
+      <if test="maxScore != null" >
+        maxScore = #{maxScore,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.examManage.ExamPaperScoreAnalyze" >
+    update exam_paperscoreanalyze
+    set examID = #{examID,jdbcType=INTEGER},
+      minScore = #{minScore,jdbcType=DOUBLE},
+      maxScore = #{maxScore,jdbcType=DOUBLE}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

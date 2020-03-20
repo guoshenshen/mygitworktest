@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainNeeds.TnQuestionnAireItemAnswerMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainNeeds.TnQuestionnAireItemAnswer" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="itemID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Qn_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="otherAnswer" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="answerID" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.trainNeeds.TnQuestionnAireItemAnswer" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="itemID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Qn_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="otherAnswer" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="answerID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="answer" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, itemID, Qn_id, otherAnswer, answerID
+  </sql>
+  <sql id="Blob_Column_List" >
+    answer
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tn_questionnaireitemanswer
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tn_questionnaireitemanswer
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainNeeds.TnQuestionnAireItemAnswer" >
+    insert into tn_questionnaireitemanswer (ID, itemID, Qn_id, 
+      otherAnswer, answerID, answer
+      )
+    values (#{ID,jdbcType=INTEGER}, #{itemID,jdbcType=INTEGER}, #{qn_id,jdbcType=INTEGER}, 
+      #{otherAnswer,jdbcType=VARCHAR}, #{answerID,jdbcType=VARCHAR}, #{answer,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainNeeds.TnQuestionnAireItemAnswer" >
+    insert into tn_questionnaireitemanswer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="itemID != null" >
+        itemID,
+      </if>
+      <if test="qn_id != null" >
+        Qn_id,
+      </if>
+      <if test="otherAnswer != null" >
+        otherAnswer,
+      </if>
+      <if test="answerID != null" >
+        answerID,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="itemID != null" >
+        #{itemID,jdbcType=INTEGER},
+      </if>
+      <if test="qn_id != null" >
+        #{qn_id,jdbcType=INTEGER},
+      </if>
+      <if test="otherAnswer != null" >
+        #{otherAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="answerID != null" >
+        #{answerID,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainNeeds.TnQuestionnAireItemAnswer" >
+    update tn_questionnaireitemanswer
+    <set >
+      <if test="itemID != null" >
+        itemID = #{itemID,jdbcType=INTEGER},
+      </if>
+      <if test="qn_id != null" >
+        Qn_id = #{qn_id,jdbcType=INTEGER},
+      </if>
+      <if test="otherAnswer != null" >
+        otherAnswer = #{otherAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="answerID != null" >
+        answerID = #{answerID,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.trainNeeds.TnQuestionnAireItemAnswer" >
+    update tn_questionnaireitemanswer
+    set itemID = #{itemID,jdbcType=INTEGER},
+      Qn_id = #{qn_id,jdbcType=INTEGER},
+      otherAnswer = #{otherAnswer,jdbcType=VARCHAR},
+      answerID = #{answerID,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=LONGVARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainNeeds.TnQuestionnAireItemAnswer" >
+    update tn_questionnaireitemanswer
+    set itemID = #{itemID,jdbcType=INTEGER},
+      Qn_id = #{qn_id,jdbcType=INTEGER},
+      otherAnswer = #{otherAnswer,jdbcType=VARCHAR},
+      answerID = #{answerID,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

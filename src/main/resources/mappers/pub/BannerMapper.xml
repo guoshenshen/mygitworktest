@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.BannerMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.Banner" >
+    <constructor >
+      <idArg column="bannerId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bannerTemplateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="modifyTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="type" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="timeInfo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sponsor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openOrgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="visible" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="needDecorate" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isDefault" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="defaultMonth" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bannerInfoId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="publishTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="bannerDetail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bannerTag" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isHomePageAlwaysVisible" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="bannerTemplateUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bannerId, bannerTemplateId, createTime, modifyTime, type, title, timeInfo, location, 
+    sponsor, url, operatorId, openOrgSEQ, tenantId, visible, needDecorate, isDefault, 
+    defaultMonth, bannerInfoId, publishTime, bannerDetail, bannerTag, isHomePageAlwaysVisible, 
+    orgId, bannerTemplateUrl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from banner
+    where bannerId = #{bannerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from banner
+    where bannerId = #{bannerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.Banner" >
+    insert into banner (bannerId, bannerTemplateId, createTime, 
+      modifyTime, type, title, 
+      timeInfo, location, sponsor, 
+      url, operatorId, openOrgSEQ, 
+      tenantId, visible, needDecorate, 
+      isDefault, defaultMonth, bannerInfoId, 
+      publishTime, bannerDetail, bannerTag, 
+      isHomePageAlwaysVisible, orgId, bannerTemplateUrl
+      )
+    values (#{bannerId,jdbcType=INTEGER}, #{bannerTemplateId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, 
+      #{modifyTime,jdbcType=DATE}, #{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{timeInfo,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{sponsor,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{operatorId,jdbcType=INTEGER}, #{openOrgSEQ,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, #{needDecorate,jdbcType=INTEGER}, 
+      #{isDefault,jdbcType=INTEGER}, #{defaultMonth,jdbcType=INTEGER}, #{bannerInfoId,jdbcType=BIGINT}, 
+      #{publishTime,jdbcType=DATE}, #{bannerDetail,jdbcType=VARCHAR}, #{bannerTag,jdbcType=VARCHAR}, 
+      #{isHomePageAlwaysVisible,jdbcType=INTEGER}, #{orgId,jdbcType=BIGINT}, #{bannerTemplateUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.Banner" >
+    insert into banner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bannerId != null" >
+        bannerId,
+      </if>
+      <if test="bannerTemplateId != null" >
+        bannerTemplateId,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="modifyTime != null" >
+        modifyTime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="timeInfo != null" >
+        timeInfo,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="sponsor != null" >
+        sponsor,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="openOrgSEQ != null" >
+        openOrgSEQ,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="visible != null" >
+        visible,
+      </if>
+      <if test="needDecorate != null" >
+        needDecorate,
+      </if>
+      <if test="isDefault != null" >
+        isDefault,
+      </if>
+      <if test="defaultMonth != null" >
+        defaultMonth,
+      </if>
+      <if test="bannerInfoId != null" >
+        bannerInfoId,
+      </if>
+      <if test="publishTime != null" >
+        publishTime,
+      </if>
+      <if test="bannerDetail != null" >
+        bannerDetail,
+      </if>
+      <if test="bannerTag != null" >
+        bannerTag,
+      </if>
+      <if test="isHomePageAlwaysVisible != null" >
+        isHomePageAlwaysVisible,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="bannerTemplateUrl != null" >
+        bannerTemplateUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bannerId != null" >
+        #{bannerId,jdbcType=INTEGER},
+      </if>
+      <if test="bannerTemplateId != null" >
+        #{bannerTemplateId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="timeInfo != null" >
+        #{timeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null" >
+        #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openOrgSEQ != null" >
+        #{openOrgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null" >
+        #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="needDecorate != null" >
+        #{needDecorate,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="defaultMonth != null" >
+        #{defaultMonth,jdbcType=INTEGER},
+      </if>
+      <if test="bannerInfoId != null" >
+        #{bannerInfoId,jdbcType=BIGINT},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=DATE},
+      </if>
+      <if test="bannerDetail != null" >
+        #{bannerDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerTag != null" >
+        #{bannerTag,jdbcType=VARCHAR},
+      </if>
+      <if test="isHomePageAlwaysVisible != null" >
+        #{isHomePageAlwaysVisible,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="bannerTemplateUrl != null" >
+        #{bannerTemplateUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.Banner" >
+    update banner
+    <set >
+      <if test="bannerTemplateId != null" >
+        bannerTemplateId = #{bannerTemplateId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="modifyTime != null" >
+        modifyTime = #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="timeInfo != null" >
+        timeInfo = #{timeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null" >
+        sponsor = #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openOrgSEQ != null" >
+        openOrgSEQ = #{openOrgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null" >
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="needDecorate != null" >
+        needDecorate = #{needDecorate,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null" >
+        isDefault = #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="defaultMonth != null" >
+        defaultMonth = #{defaultMonth,jdbcType=INTEGER},
+      </if>
+      <if test="bannerInfoId != null" >
+        bannerInfoId = #{bannerInfoId,jdbcType=BIGINT},
+      </if>
+      <if test="publishTime != null" >
+        publishTime = #{publishTime,jdbcType=DATE},
+      </if>
+      <if test="bannerDetail != null" >
+        bannerDetail = #{bannerDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerTag != null" >
+        bannerTag = #{bannerTag,jdbcType=VARCHAR},
+      </if>
+      <if test="isHomePageAlwaysVisible != null" >
+        isHomePageAlwaysVisible = #{isHomePageAlwaysVisible,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="bannerTemplateUrl != null" >
+        bannerTemplateUrl = #{bannerTemplateUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bannerId = #{bannerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.Banner" >
+    update banner
+    set bannerTemplateId = #{bannerTemplateId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=DATE},
+      modifyTime = #{modifyTime,jdbcType=DATE},
+      type = #{type,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      timeInfo = #{timeInfo,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      sponsor = #{sponsor,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      openOrgSEQ = #{openOrgSEQ,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
+      needDecorate = #{needDecorate,jdbcType=INTEGER},
+      isDefault = #{isDefault,jdbcType=INTEGER},
+      defaultMonth = #{defaultMonth,jdbcType=INTEGER},
+      bannerInfoId = #{bannerInfoId,jdbcType=BIGINT},
+      publishTime = #{publishTime,jdbcType=DATE},
+      bannerDetail = #{bannerDetail,jdbcType=VARCHAR},
+      bannerTag = #{bannerTag,jdbcType=VARCHAR},
+      isHomePageAlwaysVisible = #{isHomePageAlwaysVisible,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=BIGINT},
+      bannerTemplateUrl = #{bannerTemplateUrl,jdbcType=VARCHAR}
+    where bannerId = #{bannerId,jdbcType=INTEGER}
+  </update>
+</mapper>

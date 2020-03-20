@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.notificationPush.NotificationPushClassHourMsgMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.notificationPush.NotificationPushClassHourMsg" >
+    <constructor >
+      <idArg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="isEmail" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isSMS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastModifiedDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="lastModifiedOperatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lastModifiedOperatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="notifyScope" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="frequency" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="day" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tenantId, title, status, createDate, isEmail, isSMS, lastModifiedDate, lastModifiedOperatorName, 
+    lastModifiedOperatorId, notifyScope, frequency, day
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from notification_push_classhourmsg
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from notification_push_classhourmsg
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.notificationPush.NotificationPushClassHourMsg" >
+    insert into notification_push_classhourmsg (tenantId, title, status, 
+      createDate, isEmail, isSMS, 
+      lastModifiedDate, lastModifiedOperatorName, 
+      lastModifiedOperatorId, notifyScope, frequency, 
+      day)
+    values (#{tenantId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{isEmail,jdbcType=INTEGER}, #{isSMS,jdbcType=INTEGER}, 
+      #{lastModifiedDate,jdbcType=TIMESTAMP}, #{lastModifiedOperatorName,jdbcType=VARCHAR}, 
+      #{lastModifiedOperatorId,jdbcType=INTEGER}, #{notifyScope,jdbcType=INTEGER}, #{frequency,jdbcType=INTEGER}, 
+      #{day,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.notificationPush.NotificationPushClassHourMsg" >
+    insert into notification_push_classhourmsg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="isEmail != null" >
+        isEmail,
+      </if>
+      <if test="isSMS != null" >
+        isSMS,
+      </if>
+      <if test="lastModifiedDate != null" >
+        lastModifiedDate,
+      </if>
+      <if test="lastModifiedOperatorName != null" >
+        lastModifiedOperatorName,
+      </if>
+      <if test="lastModifiedOperatorId != null" >
+        lastModifiedOperatorId,
+      </if>
+      <if test="notifyScope != null" >
+        notifyScope,
+      </if>
+      <if test="frequency != null" >
+        frequency,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isEmail != null" >
+        #{isEmail,jdbcType=INTEGER},
+      </if>
+      <if test="isSMS != null" >
+        #{isSMS,jdbcType=INTEGER},
+      </if>
+      <if test="lastModifiedDate != null" >
+        #{lastModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedOperatorName != null" >
+        #{lastModifiedOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedOperatorId != null" >
+        #{lastModifiedOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="notifyScope != null" >
+        #{notifyScope,jdbcType=INTEGER},
+      </if>
+      <if test="frequency != null" >
+        #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.notificationPush.NotificationPushClassHourMsg" >
+    update notification_push_classhourmsg
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isEmail != null" >
+        isEmail = #{isEmail,jdbcType=INTEGER},
+      </if>
+      <if test="isSMS != null" >
+        isSMS = #{isSMS,jdbcType=INTEGER},
+      </if>
+      <if test="lastModifiedDate != null" >
+        lastModifiedDate = #{lastModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedOperatorName != null" >
+        lastModifiedOperatorName = #{lastModifiedOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedOperatorId != null" >
+        lastModifiedOperatorId = #{lastModifiedOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="notifyScope != null" >
+        notifyScope = #{notifyScope,jdbcType=INTEGER},
+      </if>
+      <if test="frequency != null" >
+        frequency = #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="day != null" >
+        day = #{day,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.notificationPush.NotificationPushClassHourMsg" >
+    update notification_push_classhourmsg
+    set title = #{title,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
+      isEmail = #{isEmail,jdbcType=INTEGER},
+      isSMS = #{isSMS,jdbcType=INTEGER},
+      lastModifiedDate = #{lastModifiedDate,jdbcType=TIMESTAMP},
+      lastModifiedOperatorName = #{lastModifiedOperatorName,jdbcType=VARCHAR},
+      lastModifiedOperatorId = #{lastModifiedOperatorId,jdbcType=INTEGER},
+      notifyScope = #{notifyScope,jdbcType=INTEGER},
+      frequency = #{frequency,jdbcType=INTEGER},
+      day = #{day,jdbcType=INTEGER}
+    where tenantId = #{tenantId,jdbcType=INTEGER}
+  </update>
+</mapper>

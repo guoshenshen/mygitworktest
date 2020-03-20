@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainNeeds.TnAssignUserMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainNeeds.TnAssignUser" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="basicInfoID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="valid" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="submitTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, basicInfoID, userID, valid, submitTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tn_assignuser
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tn_assignuser
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainNeeds.TnAssignUser" >
+    insert into tn_assignuser (ID, basicInfoID, userID, 
+      valid, submitTime)
+    values (#{ID,jdbcType=INTEGER}, #{basicInfoID,jdbcType=INTEGER}, #{userID,jdbcType=INTEGER}, 
+      #{valid,jdbcType=BOOLEAN}, #{submitTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainNeeds.TnAssignUser" >
+    insert into tn_assignuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="basicInfoID != null" >
+        basicInfoID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+      <if test="submitTime != null" >
+        submitTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="basicInfoID != null" >
+        #{basicInfoID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=BOOLEAN},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainNeeds.TnAssignUser" >
+    update tn_assignuser
+    <set >
+      <if test="basicInfoID != null" >
+        basicInfoID = #{basicInfoID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        userID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=BOOLEAN},
+      </if>
+      <if test="submitTime != null" >
+        submitTime = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainNeeds.TnAssignUser" >
+    update tn_assignuser
+    set basicInfoID = #{basicInfoID,jdbcType=INTEGER},
+      userID = #{userID,jdbcType=INTEGER},
+      valid = #{valid,jdbcType=BOOLEAN},
+      submitTime = #{submitTime,jdbcType=TIMESTAMP}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateBySurveyIdAndUserIdList" parameterType="map" >
+    update tn_assignuser
+    set valid = FALSE
+    where basicInfoID = #{surveyId,jdbcType=BIGINT} and userID in
+    <foreach collection="userIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.coursemanage.CourseVideoConvertMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.coursemanage.CourseVideoConvert" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="courseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="taskId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="convertDescription" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, courseId, taskId, convertDescription
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_videoconvert
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_videoconvert
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.coursemanage.CourseVideoConvert" >
+    insert into course_videoconvert (id, courseId, taskId, 
+      convertDescription)
+    values (#{id,jdbcType=INTEGER}, #{courseId,jdbcType=BIGINT}, #{taskId,jdbcType=INTEGER}, 
+      #{convertDescription,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.coursemanage.CourseVideoConvert" >
+    insert into course_videoconvert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="courseId != null" >
+        courseId,
+      </if>
+      <if test="taskId != null" >
+        taskId,
+      </if>
+      <if test="convertDescription != null" >
+        convertDescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="convertDescription != null" >
+        #{convertDescription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.coursemanage.CourseVideoConvert" >
+    update course_videoconvert
+    <set >
+      <if test="courseId != null" >
+        courseId = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null" >
+        taskId = #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="convertDescription != null" >
+        convertDescription = #{convertDescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.coursemanage.CourseVideoConvert" >
+    update course_videoconvert
+    set courseId = #{courseId,jdbcType=BIGINT},
+      taskId = #{taskId,jdbcType=INTEGER},
+      convertDescription = #{convertDescription,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findCourseVideoconvertByCourseId" parameterType="long" resultType="com.elearning.pojo.coursemanage.CourseVideoConvert">
+    SELECT <include refid="Base_Column_List"/> from course_videoconvert
+    where courseId = #{courseId,jdbcType=BIGINT}
+  </select>
+
+  <select id="findByCourseId" resultType="com.elearning.pojo.coursemanage.CourseVideoConvert">
+    SELECT <include refid="Base_Column_List"/> from course_videoconvert where courseId = #{courseId,jdbcType=BIGINT}
+  </select>
+
+
+</mapper>

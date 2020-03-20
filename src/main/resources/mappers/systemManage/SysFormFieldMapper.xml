@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.SysFormFieldMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.SysFormField" >
+    <constructor >
+      <idArg column="formId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="fieldAttribute" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fieldName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fieldSeq" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="visible" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="colspan" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="detailVisible" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="studentVisible" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="queryVisible" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="queryCondition" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="defaultValue" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="valueFormat" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dataResource" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentAttribute" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="formula" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="scope" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    formId, tenantId, fieldAttribute, fieldName, fieldSeq, visible, colspan, detailVisible, 
+    studentVisible, queryVisible, queryCondition, defaultValue, valueFormat, dataResource, 
+    parentAttribute, formula, scope
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.systemManage.SysFormFieldKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_formfield
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+      and fieldAttribute = #{fieldAttribute,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.systemManage.SysFormFieldKey" >
+    delete from sys_formfield
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+      and fieldAttribute = #{fieldAttribute,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.SysFormField" >
+    insert into sys_formfield (formId, tenantId, fieldAttribute, 
+      fieldName, fieldSeq, visible, 
+      colspan, detailVisible, studentVisible, 
+      queryVisible, queryCondition, defaultValue, 
+      valueFormat, dataResource, parentAttribute, 
+      formula, scope)
+    values (#{formId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{fieldAttribute,jdbcType=VARCHAR}, 
+      #{fieldName,jdbcType=VARCHAR}, #{fieldSeq,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, 
+      #{colspan,jdbcType=INTEGER}, #{detailVisible,jdbcType=INTEGER}, #{studentVisible,jdbcType=INTEGER}, 
+      #{queryVisible,jdbcType=INTEGER}, #{queryCondition,jdbcType=INTEGER}, #{defaultValue,jdbcType=VARCHAR}, 
+      #{valueFormat,jdbcType=VARCHAR}, #{dataResource,jdbcType=INTEGER}, #{parentAttribute,jdbcType=VARCHAR}, 
+      #{formula,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.SysFormField" >
+    insert into sys_formfield
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="formId != null" >
+        formId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="fieldAttribute != null" >
+        fieldAttribute,
+      </if>
+      <if test="fieldName != null" >
+        fieldName,
+      </if>
+      <if test="fieldSeq != null" >
+        fieldSeq,
+      </if>
+      <if test="visible != null" >
+        visible,
+      </if>
+      <if test="colspan != null" >
+        colspan,
+      </if>
+      <if test="detailVisible != null" >
+        detailVisible,
+      </if>
+      <if test="studentVisible != null" >
+        studentVisible,
+      </if>
+      <if test="queryVisible != null" >
+        queryVisible,
+      </if>
+      <if test="queryCondition != null" >
+        queryCondition,
+      </if>
+      <if test="defaultValue != null" >
+        defaultValue,
+      </if>
+      <if test="valueFormat != null" >
+        valueFormat,
+      </if>
+      <if test="dataResource != null" >
+        dataResource,
+      </if>
+      <if test="parentAttribute != null" >
+        parentAttribute,
+      </if>
+      <if test="formula != null" >
+        formula,
+      </if>
+      <if test="scope != null" >
+        scope,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="formId != null" >
+        #{formId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldAttribute != null" >
+        #{fieldAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null" >
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldSeq != null" >
+        #{fieldSeq,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null" >
+        #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="colspan != null" >
+        #{colspan,jdbcType=INTEGER},
+      </if>
+      <if test="detailVisible != null" >
+        #{detailVisible,jdbcType=INTEGER},
+      </if>
+      <if test="studentVisible != null" >
+        #{studentVisible,jdbcType=INTEGER},
+      </if>
+      <if test="queryVisible != null" >
+        #{queryVisible,jdbcType=INTEGER},
+      </if>
+      <if test="queryCondition != null" >
+        #{queryCondition,jdbcType=INTEGER},
+      </if>
+      <if test="defaultValue != null" >
+        #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="valueFormat != null" >
+        #{valueFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="dataResource != null" >
+        #{dataResource,jdbcType=INTEGER},
+      </if>
+      <if test="parentAttribute != null" >
+        #{parentAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null" >
+        #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null" >
+        #{scope,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.SysFormField" >
+    update sys_formfield
+    <set >
+      <if test="fieldName != null" >
+        fieldName = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldSeq != null" >
+        fieldSeq = #{fieldSeq,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null" >
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="colspan != null" >
+        colspan = #{colspan,jdbcType=INTEGER},
+      </if>
+      <if test="detailVisible != null" >
+        detailVisible = #{detailVisible,jdbcType=INTEGER},
+      </if>
+      <if test="studentVisible != null" >
+        studentVisible = #{studentVisible,jdbcType=INTEGER},
+      </if>
+      <if test="queryVisible != null" >
+        queryVisible = #{queryVisible,jdbcType=INTEGER},
+      </if>
+      <if test="queryCondition != null" >
+        queryCondition = #{queryCondition,jdbcType=INTEGER},
+      </if>
+      <if test="defaultValue != null" >
+        defaultValue = #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="valueFormat != null" >
+        valueFormat = #{valueFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="dataResource != null" >
+        dataResource = #{dataResource,jdbcType=INTEGER},
+      </if>
+      <if test="parentAttribute != null" >
+        parentAttribute = #{parentAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null" >
+        formula = #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null" >
+        scope = #{scope,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+      and fieldAttribute = #{fieldAttribute,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.SysFormField" >
+    update sys_formfield
+    set fieldName = #{fieldName,jdbcType=VARCHAR},
+      fieldSeq = #{fieldSeq,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
+      colspan = #{colspan,jdbcType=INTEGER},
+      detailVisible = #{detailVisible,jdbcType=INTEGER},
+      studentVisible = #{studentVisible,jdbcType=INTEGER},
+      queryVisible = #{queryVisible,jdbcType=INTEGER},
+      queryCondition = #{queryCondition,jdbcType=INTEGER},
+      defaultValue = #{defaultValue,jdbcType=VARCHAR},
+      valueFormat = #{valueFormat,jdbcType=VARCHAR},
+      dataResource = #{dataResource,jdbcType=INTEGER},
+      parentAttribute = #{parentAttribute,jdbcType=VARCHAR},
+      formula = #{formula,jdbcType=VARCHAR},
+      scope = #{scope,jdbcType=VARCHAR}
+    where formId = #{formId,jdbcType=INTEGER}
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+      and fieldAttribute = #{fieldAttribute,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getSysFormfieldSeqsMap" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_formfield
+    where formId = #{formId,jdbcType=INTEGER} and tenantId=0  ORDER BY fieldSeq
+  </select>
+
+
+</mapper>

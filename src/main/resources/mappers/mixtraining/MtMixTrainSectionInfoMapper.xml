@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainSectionInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainSectionInfo" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="programBasicInfoID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sectionNO" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sectionName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sectionType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="Location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="arrangeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.mixtraining.MtMixTrainSectionInfoWithBLOBs" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="programBasicInfoID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sectionNO" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sectionName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sectionType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="endTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="Location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="arrangeID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainGoal" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="trainContent" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, programBasicInfoID, sectionNO, sectionName, sectionType, endTime, Location, startTime, 
+    classHour, arrangeID
+  </sql>
+  <sql id="Blob_Column_List" >
+    trainGoal, trainContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mt_mixtrainsectioninfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtrainsectioninfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainSectionInfoWithBLOBs" >
+    insert into mt_mixtrainsectioninfo (ID, programBasicInfoID, sectionNO, 
+      sectionName, sectionType, endTime, 
+      Location, startTime, classHour, 
+      arrangeID, trainGoal, trainContent
+      )
+    values (#{ID,jdbcType=INTEGER}, #{programBasicInfoID,jdbcType=INTEGER}, #{sectionNO,jdbcType=INTEGER}, 
+      #{sectionName,jdbcType=VARCHAR}, #{sectionType,jdbcType=INTEGER}, #{endTime,jdbcType=DATE}, 
+      #{location,jdbcType=VARCHAR}, #{startTime,jdbcType=DATE}, #{classHour,jdbcType=DOUBLE}, 
+      #{arrangeID,jdbcType=INTEGER}, #{trainGoal,jdbcType=LONGVARCHAR}, #{trainContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainSectionInfoWithBLOBs" >
+    insert into mt_mixtrainsectioninfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="programBasicInfoID != null" >
+        programBasicInfoID,
+      </if>
+      <if test="sectionNO != null" >
+        sectionNO,
+      </if>
+      <if test="sectionName != null" >
+        sectionName,
+      </if>
+      <if test="sectionType != null" >
+        sectionType,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="location != null" >
+        Location,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="classHour != null" >
+        classHour,
+      </if>
+      <if test="arrangeID != null" >
+        arrangeID,
+      </if>
+      <if test="trainGoal != null" >
+        trainGoal,
+      </if>
+      <if test="trainContent != null" >
+        trainContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="programBasicInfoID != null" >
+        #{programBasicInfoID,jdbcType=INTEGER},
+      </if>
+      <if test="sectionNO != null" >
+        #{sectionNO,jdbcType=INTEGER},
+      </if>
+      <if test="sectionName != null" >
+        #{sectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="sectionType != null" >
+        #{sectionType,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="arrangeID != null" >
+        #{arrangeID,jdbcType=INTEGER},
+      </if>
+      <if test="trainGoal != null" >
+        #{trainGoal,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="trainContent != null" >
+        #{trainContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainSectionInfoWithBLOBs" >
+    update mt_mixtrainsectioninfo
+    <set >
+      <if test="programBasicInfoID != null" >
+        programBasicInfoID = #{programBasicInfoID,jdbcType=INTEGER},
+      </if>
+      <if test="sectionNO != null" >
+        sectionNO = #{sectionNO,jdbcType=INTEGER},
+      </if>
+      <if test="sectionName != null" >
+        sectionName = #{sectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="sectionType != null" >
+        sectionType = #{sectionType,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="location != null" >
+        Location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="classHour != null" >
+        classHour = #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="arrangeID != null" >
+        arrangeID = #{arrangeID,jdbcType=INTEGER},
+      </if>
+      <if test="trainGoal != null" >
+        trainGoal = #{trainGoal,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="trainContent != null" >
+        trainContent = #{trainContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.mixtraining.MtMixTrainSectionInfoWithBLOBs" >
+    update mt_mixtrainsectioninfo
+    set programBasicInfoID = #{programBasicInfoID,jdbcType=INTEGER},
+      sectionNO = #{sectionNO,jdbcType=INTEGER},
+      sectionName = #{sectionName,jdbcType=VARCHAR},
+      sectionType = #{sectionType,jdbcType=INTEGER},
+      endTime = #{endTime,jdbcType=DATE},
+      Location = #{location,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=DATE},
+      classHour = #{classHour,jdbcType=DOUBLE},
+      arrangeID = #{arrangeID,jdbcType=INTEGER},
+      trainGoal = #{trainGoal,jdbcType=LONGVARCHAR},
+      trainContent = #{trainContent,jdbcType=LONGVARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainSectionInfo" >
+    update mt_mixtrainsectioninfo
+    set programBasicInfoID = #{programBasicInfoID,jdbcType=INTEGER},
+      sectionNO = #{sectionNO,jdbcType=INTEGER},
+      sectionName = #{sectionName,jdbcType=VARCHAR},
+      sectionType = #{sectionType,jdbcType=INTEGER},
+      endTime = #{endTime,jdbcType=DATE},
+      Location = #{location,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=DATE},
+      classHour = #{classHour,jdbcType=DOUBLE},
+      arrangeID = #{arrangeID,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

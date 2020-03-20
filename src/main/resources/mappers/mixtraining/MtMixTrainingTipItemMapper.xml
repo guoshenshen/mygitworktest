@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainingTipItemMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainingTipItem" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="itemName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tipDays" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isBeforeOrAfter" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tipId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isDefalut" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remarks" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="seqNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, itemName, tipDays, isBeforeOrAfter, tipId, isDefalut, remarks, seqNum, status, 
+    operatorId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainingtip_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtrainingtip_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipItem" >
+    insert into mt_mixtrainingtip_item (id, itemName, tipDays, 
+      isBeforeOrAfter, tipId, isDefalut, 
+      remarks, seqNum, status, 
+      operatorId)
+    values (#{id,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{tipDays,jdbcType=INTEGER}, 
+      #{isBeforeOrAfter,jdbcType=INTEGER}, #{tipId,jdbcType=INTEGER}, #{isDefalut,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{seqNum,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipItem" >
+    insert into mt_mixtrainingtip_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemName != null" >
+        itemName,
+      </if>
+      <if test="tipDays != null" >
+        tipDays,
+      </if>
+      <if test="isBeforeOrAfter != null" >
+        isBeforeOrAfter,
+      </if>
+      <if test="tipId != null" >
+        tipId,
+      </if>
+      <if test="isDefalut != null" >
+        isDefalut,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="seqNum != null" >
+        seqNum,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="tipDays != null" >
+        #{tipDays,jdbcType=INTEGER},
+      </if>
+      <if test="isBeforeOrAfter != null" >
+        #{isBeforeOrAfter,jdbcType=INTEGER},
+      </if>
+      <if test="tipId != null" >
+        #{tipId,jdbcType=INTEGER},
+      </if>
+      <if test="isDefalut != null" >
+        #{isDefalut,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNum != null" >
+        #{seqNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipItem" >
+    update mt_mixtrainingtip_item
+    <set >
+      <if test="itemName != null" >
+        itemName = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="tipDays != null" >
+        tipDays = #{tipDays,jdbcType=INTEGER},
+      </if>
+      <if test="isBeforeOrAfter != null" >
+        isBeforeOrAfter = #{isBeforeOrAfter,jdbcType=INTEGER},
+      </if>
+      <if test="tipId != null" >
+        tipId = #{tipId,jdbcType=INTEGER},
+      </if>
+      <if test="isDefalut != null" >
+        isDefalut = #{isDefalut,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNum != null" >
+        seqNum = #{seqNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipItem" >
+    update mt_mixtrainingtip_item
+    set itemName = #{itemName,jdbcType=VARCHAR},
+      tipDays = #{tipDays,jdbcType=INTEGER},
+      isBeforeOrAfter = #{isBeforeOrAfter,jdbcType=INTEGER},
+      tipId = #{tipId,jdbcType=INTEGER},
+      isDefalut = #{isDefalut,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      seqNum = #{seqNum,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findListByTipId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from mt_mixtrainingtip_item
+    where tipId = #{tipId,jdbcType=INTEGER}
+  </select>
+
+</mapper>

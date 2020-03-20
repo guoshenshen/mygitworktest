@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.BackbonePeopleMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.BackbonePeople" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="keyFigureYear" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="editorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="lastModifyDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="lastEditorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, operatorName, keyFigureYear, editorID, orgID, createDate, lastModifyDate, 
+    lastEditorId, status, orgName, tenantOrgName, tenantId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from backbonepeople
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from backbonepeople
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.BackbonePeople" >
+    insert into backbonepeople (id, operatorId, operatorName, 
+      keyFigureYear, editorID, orgID, 
+      createDate, lastModifyDate, lastEditorId, 
+      status, orgName, tenantOrgName, 
+      tenantId)
+    values (#{id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, 
+      #{keyFigureYear,jdbcType=INTEGER}, #{editorID,jdbcType=INTEGER}, #{orgID,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{lastModifyDate,jdbcType=TIMESTAMP}, #{lastEditorId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, #{tenantOrgName,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.BackbonePeople" >
+    insert into backbonepeople
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="keyFigureYear != null" >
+        keyFigureYear,
+      </if>
+      <if test="editorID != null" >
+        editorID,
+      </if>
+      <if test="orgID != null" >
+        orgID,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="lastModifyDate != null" >
+        lastModifyDate,
+      </if>
+      <if test="lastEditorId != null" >
+        lastEditorId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="tenantOrgName != null" >
+        tenantOrgName,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="keyFigureYear != null" >
+        #{keyFigureYear,jdbcType=INTEGER},
+      </if>
+      <if test="editorID != null" >
+        #{editorID,jdbcType=INTEGER},
+      </if>
+      <if test="orgID != null" >
+        #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditorId != null" >
+        #{lastEditorId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantOrgName != null" >
+        #{tenantOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.BackbonePeople" >
+    update backbonepeople
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="keyFigureYear != null" >
+        keyFigureYear = #{keyFigureYear,jdbcType=INTEGER},
+      </if>
+      <if test="editorID != null" >
+        editorID = #{editorID,jdbcType=INTEGER},
+      </if>
+      <if test="orgID != null" >
+        orgID = #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null" >
+        lastModifyDate = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditorId != null" >
+        lastEditorId = #{lastEditorId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantOrgName != null" >
+        tenantOrgName = #{tenantOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.BackbonePeople" >
+    update backbonepeople
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      keyFigureYear = #{keyFigureYear,jdbcType=INTEGER},
+      editorID = #{editorID,jdbcType=INTEGER},
+      orgID = #{orgID,jdbcType=INTEGER},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
+      lastModifyDate = #{lastModifyDate,jdbcType=TIMESTAMP},
+      lastEditorId = #{lastEditorId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      tenantOrgName = #{tenantOrgName,jdbcType=VARCHAR},
+      tenantId = #{tenantId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.Integral" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="totalScore" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="userId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="ranking" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="operateCause" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="userName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="signInScore" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="commentScore" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="replyScore" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="summaryScore" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="onlineStudyScore" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="offlineTrainScore" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="onlineExamScore" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="updateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, totalScore, userId, ranking, operatorId, operateTime, operateCause, orgId, userName, 
+    signInScore, commentScore, replyScore, summaryScore, onlineStudyScore, offlineTrainScore, 
+    onlineExamScore, orgName, status, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from integral
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.Integral" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS ID
+    </selectKey>
+    insert into integral (id, totalScore, userId, 
+      ranking, operatorId, operateTime, 
+      operateCause, orgId, userName, 
+      signInScore, commentScore, replyScore, 
+      summaryScore, onlineStudyScore, offlineTrainScore, 
+      onlineExamScore, orgName, status, 
+      updateTime)
+    values (#{id,jdbcType=INTEGER}, #{totalScore,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{ranking,jdbcType=BIGINT}, #{operatorId,jdbcType=BIGINT}, #{operateTime,jdbcType=TIMESTAMP}, 
+      #{operateCause,jdbcType=VARCHAR}, #{orgId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
+      #{signInScore,jdbcType=BIGINT}, #{commentScore,jdbcType=BIGINT}, #{replyScore,jdbcType=BIGINT}, 
+      #{summaryScore,jdbcType=BIGINT}, #{onlineStudyScore,jdbcType=BIGINT}, #{offlineTrainScore,jdbcType=DOUBLE}, 
+      #{onlineExamScore,jdbcType=BIGINT}, #{orgName,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.Integral" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS ID
+    </selectKey>
+    insert into integral
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="totalScore != null" >
+        totalScore,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="ranking != null" >
+        ranking,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operateTime != null" >
+        operateTime,
+      </if>
+      <if test="operateCause != null" >
+        operateCause,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+      <if test="signInScore != null" >
+        signInScore,
+      </if>
+      <if test="commentScore != null" >
+        commentScore,
+      </if>
+      <if test="replyScore != null" >
+        replyScore,
+      </if>
+      <if test="summaryScore != null" >
+        summaryScore,
+      </if>
+      <if test="onlineStudyScore != null" >
+        onlineStudyScore,
+      </if>
+      <if test="offlineTrainScore != null" >
+        offlineTrainScore,
+      </if>
+      <if test="onlineExamScore != null" >
+        onlineExamScore,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="totalScore != null" >
+        #{totalScore,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="ranking != null" >
+        #{ranking,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateCause != null" >
+        #{operateCause,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="signInScore != null" >
+        #{signInScore,jdbcType=BIGINT},
+      </if>
+      <if test="commentScore != null" >
+        #{commentScore,jdbcType=BIGINT},
+      </if>
+      <if test="replyScore != null" >
+        #{replyScore,jdbcType=BIGINT},
+      </if>
+      <if test="summaryScore != null" >
+        #{summaryScore,jdbcType=BIGINT},
+      </if>
+      <if test="onlineStudyScore != null" >
+        #{onlineStudyScore,jdbcType=BIGINT},
+      </if>
+      <if test="offlineTrainScore != null" >
+        #{offlineTrainScore,jdbcType=DOUBLE},
+      </if>
+      <if test="onlineExamScore != null" >
+        #{onlineExamScore,jdbcType=BIGINT},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.Integral" >
+    update integral
+    <set >
+      <if test="totalScore != null" >
+        totalScore = #{totalScore,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="ranking != null" >
+        ranking = #{ranking,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        operateTime = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateCause != null" >
+        operateCause = #{operateCause,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="signInScore != null" >
+        signInScore = #{signInScore,jdbcType=BIGINT},
+      </if>
+      <if test="commentScore != null" >
+        commentScore = #{commentScore,jdbcType=BIGINT},
+      </if>
+      <if test="replyScore != null" >
+        replyScore = #{replyScore,jdbcType=BIGINT},
+      </if>
+      <if test="summaryScore != null" >
+        summaryScore = #{summaryScore,jdbcType=BIGINT},
+      </if>
+      <if test="onlineStudyScore != null" >
+        onlineStudyScore = #{onlineStudyScore,jdbcType=BIGINT},
+      </if>
+      <if test="offlineTrainScore != null" >
+        offlineTrainScore = #{offlineTrainScore,jdbcType=DOUBLE},
+      </if>
+      <if test="onlineExamScore != null" >
+        onlineExamScore = #{onlineExamScore,jdbcType=BIGINT},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.Integral" >
+    update integral
+    set totalScore = #{totalScore,jdbcType=BIGINT},
+      userId = #{userId,jdbcType=BIGINT},
+      ranking = #{ranking,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=BIGINT},
+      operateTime = #{operateTime,jdbcType=TIMESTAMP},
+      operateCause = #{operateCause,jdbcType=VARCHAR},
+      orgId = #{orgId,jdbcType=BIGINT},
+      userName = #{userName,jdbcType=VARCHAR},
+      signInScore = #{signInScore,jdbcType=BIGINT},
+      commentScore = #{commentScore,jdbcType=BIGINT},
+      replyScore = #{replyScore,jdbcType=BIGINT},
+      summaryScore = #{summaryScore,jdbcType=BIGINT},
+      onlineStudyScore = #{onlineStudyScore,jdbcType=BIGINT},
+      offlineTrainScore = #{offlineTrainScore,jdbcType=DOUBLE},
+      onlineExamScore = #{onlineExamScore,jdbcType=BIGINT},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getListByUserIdAndStatus" resultType="com.elearning.pojo.integralTask.Integral" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from integral
+    where 1=1
+    <if test="userId != null" >
+      and userId = #{userId,jdbcType=BIGINT}
+    </if>
+
+    <if test="status != null" >
+      and status = #{status,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+
+</mapper>

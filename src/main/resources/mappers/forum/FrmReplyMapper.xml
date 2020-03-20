@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.forum.FrmReplyMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.forum.FrmReply" >
+    <constructor >
+      <idArg column="replyId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reFloor" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ipCreated" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="threadId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="boardId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    replyId, CreateTime, content, reFloor, ipCreated, title, operatorId, threadId, tenantId, 
+    operatorName, boardId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from frm_reply
+    where replyId = #{replyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from frm_reply
+    where replyId = #{replyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.forum.FrmReply" >
+    insert into frm_reply (replyId, CreateTime, content, 
+      reFloor, ipCreated, title, 
+      operatorId, threadId, tenantId, 
+      operatorName, boardId)
+    values (#{replyId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, 
+      #{reFloor,jdbcType=INTEGER}, #{ipCreated,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=INTEGER}, #{threadId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{operatorName,jdbcType=VARCHAR}, #{boardId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.forum.FrmReply" >
+    insert into frm_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        replyId,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="reFloor != null" >
+        reFloor,
+      </if>
+      <if test="ipCreated != null" >
+        ipCreated,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="threadId != null" >
+        threadId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="boardId != null" >
+        boardId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="replyId != null" >
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="reFloor != null" >
+        #{reFloor,jdbcType=INTEGER},
+      </if>
+      <if test="ipCreated != null" >
+        #{ipCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="threadId != null" >
+        #{threadId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="boardId != null" >
+        #{boardId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.forum.FrmReply" >
+    update frm_reply
+    <set >
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="reFloor != null" >
+        reFloor = #{reFloor,jdbcType=INTEGER},
+      </if>
+      <if test="ipCreated != null" >
+        ipCreated = #{ipCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="threadId != null" >
+        threadId = #{threadId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="boardId != null" >
+        boardId = #{boardId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where replyId = #{replyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.forum.FrmReply" >
+    update frm_reply
+    set CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=VARCHAR},
+      reFloor = #{reFloor,jdbcType=INTEGER},
+      ipCreated = #{ipCreated,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      threadId = #{threadId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      boardId = #{boardId,jdbcType=INTEGER}
+    where replyId = #{replyId,jdbcType=INTEGER}
+  </update>
+</mapper>

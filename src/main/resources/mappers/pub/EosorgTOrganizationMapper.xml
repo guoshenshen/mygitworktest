@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.EosorgTOrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.EosorgTOrganization" >
+    <constructor >
+      <idArg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ORGLEVEL" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentOrgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgTypeID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ORGSCOPE" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="orgAddress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zipCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MANAGERID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="LINKMAN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LINKMANTEL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="webURL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="positionID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="archiveNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sortID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgClass" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userGroupID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="datachg_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="send_datachg_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="rec_datachg_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sortAll" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="extParam1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="extParam2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="skinId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isOrg" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isVirOrg" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attachedOrgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="logo" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.pub.EosorgTOrganization" >
+    <constructor >
+      <idArg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ORGLEVEL" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentOrgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgTypeID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ORGSCOPE" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="orgAddress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zipCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MANAGERID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="LINKMAN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LINKMANTEL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EMAIL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="webURL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="positionID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="archiveNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sortID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgClass" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userGroupID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="datachg_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="send_datachg_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="rec_datachg_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sortAll" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="extParam1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="extParam2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="skinId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isOrg" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isVirOrg" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attachedOrgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="logo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ADDRESSCODE" jdbcType="VARBINARY" javaType="_byte[]" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+   orgID, orgCode, orgName, ORGLEVEL, parentOrgID, orgSEQ, orgTypeID, ORGSCOPE, orgAddress,
+    zipCode, MANAGERID, LINKMAN, LINKMANTEL, EMAIL, webURL, memo, positionID, archiveNum, 
+    sortID, orgClass, userGroupID, datachg_num , send_datachg_num , rec_datachg_num , sortAll,
+    extParam1, extParam2, skinId, isOrg, isVirOrg, attachedOrgId, status, tenantId, logo
+  </sql>
+  <sql id="basicOrgForm">
+    org.orgId,org.orgName,org.orgCode,org.orgSeq,org.logo,org.status,org.isOrg,org.isVirOrg,org.tenantId
+  </sql>
+  <sql id="Blob_Column_List" >
+    ADDRESSCODE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from eosorg_t_organization
+    where orgID = #{orgID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from eosorg_t_organization
+    where orgID = #{orgID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.EosorgTOrganization" >
+    insert into eosorg_t_organization (orgID, orgCode, orgName, 
+      ORGLEVEL, parentOrgID, orgSEQ, 
+      orgTypeID, ORGSCOPE, orgAddress, 
+      zipCode, MANAGERID, LINKMAN, 
+      LINKMANTEL, EMAIL, webURL, 
+      memo, positionID, archiveNum, 
+      sortID, orgClass, userGroupID, 
+      datachg_num, send_datachg_num, rec_datachg_num, 
+      sortAll, extParam1, extParam2, 
+      skinId, isOrg, isVirOrg, 
+      attachedOrgId, status, tenantId, 
+      logo, ADDRESSCODE)
+    values (#{orgID,jdbcType=INTEGER}, #{orgCode,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, 
+      #{ORGLEVEL,jdbcType=INTEGER}, #{parentOrgID,jdbcType=INTEGER}, #{orgSEQ,jdbcType=VARCHAR}, 
+      #{orgTypeID,jdbcType=VARCHAR}, #{ORGSCOPE,jdbcType=CHAR}, #{orgAddress,jdbcType=VARCHAR}, 
+      #{zipCode,jdbcType=VARCHAR}, #{MANAGERID,jdbcType=INTEGER}, #{LINKMAN,jdbcType=VARCHAR}, 
+      #{LINKMANTEL,jdbcType=VARCHAR}, #{EMAIL,jdbcType=VARCHAR}, #{webURL,jdbcType=VARCHAR}, 
+      #{memo,jdbcType=VARCHAR}, #{positionID,jdbcType=INTEGER}, #{archiveNum,jdbcType=VARCHAR}, 
+      #{sortID,jdbcType=INTEGER}, #{orgClass,jdbcType=VARCHAR}, #{userGroupID,jdbcType=VARCHAR}, 
+      #{datachg_num,jdbcType=VARCHAR}, #{send_datachg_num,jdbcType=VARCHAR}, #{rec_datachg_num,jdbcType=VARCHAR},
+      #{sortAll,jdbcType=INTEGER}, #{extParam1,jdbcType=VARCHAR}, #{extParam2,jdbcType=VARCHAR}, 
+      #{skinId,jdbcType=INTEGER}, #{isOrg,jdbcType=INTEGER}, #{isVirOrg,jdbcType=INTEGER}, 
+      #{attachedOrgId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{logo,jdbcType=VARCHAR}, #{ADDRESSCODE,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.EosorgTOrganization" >
+    insert into eosorg_t_organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orgID != null" >
+        orgID,
+      </if>
+      <if test="orgCode != null" >
+        orgCode,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="ORGLEVEL != null" >
+        ORGLEVEL,
+      </if>
+      <if test="parentOrgID != null" >
+        parentOrgID,
+      </if>
+      <if test="orgSEQ != null" >
+        orgSEQ,
+      </if>
+      <if test="orgTypeID != null" >
+        orgTypeID,
+      </if>
+      <if test="ORGSCOPE != null" >
+        ORGSCOPE,
+      </if>
+      <if test="orgAddress != null" >
+        orgAddress,
+      </if>
+      <if test="zipCode != null" >
+        zipCode,
+      </if>
+      <if test="MANAGERID != null" >
+        MANAGERID,
+      </if>
+      <if test="LINKMAN != null" >
+        LINKMAN,
+      </if>
+      <if test="LINKMANTEL != null" >
+        LINKMANTEL,
+      </if>
+      <if test="EMAIL != null" >
+        EMAIL,
+      </if>
+      <if test="webURL != null" >
+        webURL,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="positionID != null" >
+        positionID,
+      </if>
+      <if test="archiveNum != null" >
+        archiveNum,
+      </if>
+      <if test="sortID != null" >
+        sortID,
+      </if>
+      <if test="orgClass != null" >
+        orgClass,
+      </if>
+      <if test="userGroupID != null" >
+        userGroupID,
+      </if>
+      <if test="datachg_num != null" >
+        datachg_num,
+
+      </if>
+      <if test="send_datachg_num != null" >
+        send_datachg_num,
+      </if>
+      <if test="rec_datachg_num != null" >
+        rec_datachg_num,
+      </if>
+      <if test="sortAll != null" >
+        sortAll,
+      </if>
+      <if test="extParam1 != null" >
+        extParam1,
+      </if>
+      <if test="extParam2 != null" >
+        extParam2,
+      </if>
+      <if test="skinId != null" >
+        skinId,
+      </if>
+      <if test="isOrg != null" >
+        isOrg,
+      </if>
+      <if test="isVirOrg != null" >
+        isVirOrg,
+      </if>
+      <if test="attachedOrgId != null" >
+        attachedOrgId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="ADDRESSCODE != null" >
+        ADDRESSCODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orgID != null" >
+        #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="ORGLEVEL != null" >
+        #{ORGLEVEL,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrgID != null" >
+        #{parentOrgID,jdbcType=INTEGER},
+      </if>
+      <if test="orgSEQ != null" >
+        #{orgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="orgTypeID != null" >
+        #{orgTypeID,jdbcType=VARCHAR},
+      </if>
+      <if test="ORGSCOPE != null" >
+        #{ORGSCOPE,jdbcType=CHAR},
+      </if>
+      <if test="orgAddress != null" >
+        #{orgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="MANAGERID != null" >
+        #{MANAGERID,jdbcType=INTEGER},
+      </if>
+      <if test="LINKMAN != null" >
+        #{LINKMAN,jdbcType=VARCHAR},
+      </if>
+      <if test="LINKMANTEL != null" >
+        #{LINKMANTEL,jdbcType=VARCHAR},
+      </if>
+      <if test="EMAIL != null" >
+        #{EMAIL,jdbcType=VARCHAR},
+      </if>
+      <if test="webURL != null" >
+        #{webURL,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="positionID != null" >
+        #{positionID,jdbcType=INTEGER},
+      </if>
+      <if test="archiveNum != null" >
+        #{archiveNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sortID != null" >
+        #{sortID,jdbcType=INTEGER},
+      </if>
+      <if test="orgClass != null" >
+        #{orgClass,jdbcType=VARCHAR},
+      </if>
+      <if test="userGroupID != null" >
+        #{userGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="datachg_num != null" >
+        #{datachg_num,jdbcType=VARCHAR},
+      </if>
+      <if test="send_datachg_num != null" >
+        #{send_datachg_num,jdbcType=VARCHAR},
+      </if>
+      <if test="rec_datachg_num != null" >
+        #{rec_datachg_num,jdbcType=VARCHAR},
+      </if>
+      <if test="sortAll != null" >
+        #{sortAll,jdbcType=INTEGER},
+      </if>
+      <if test="extParam1 != null" >
+        #{extParam1,jdbcType=VARCHAR},
+      </if>
+      <if test="extParam2 != null" >
+        #{extParam2,jdbcType=VARCHAR},
+      </if>
+      <if test="skinId != null" >
+        #{skinId,jdbcType=INTEGER},
+      </if>
+      <if test="isOrg != null" >
+        #{isOrg,jdbcType=INTEGER},
+      </if>
+      <if test="isVirOrg != null" >
+        #{isVirOrg,jdbcType=INTEGER},
+      </if>
+      <if test="attachedOrgId != null" >
+        #{attachedOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="ADDRESSCODE != null" >
+        #{ADDRESSCODE,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.EosorgTOrganization" >
+    update eosorg_t_organization
+    <set >
+      <if test="orgCode != null" >
+        orgCode = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="ORGLEVEL != null" >
+        ORGLEVEL = #{ORGLEVEL,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrgID != null" >
+        parentOrgID = #{parentOrgID,jdbcType=INTEGER},
+      </if>
+      <if test="orgSEQ != null" >
+        orgSEQ = #{orgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="orgTypeID != null" >
+        orgTypeID = #{orgTypeID,jdbcType=VARCHAR},
+      </if>
+      <if test="ORGSCOPE != null" >
+        ORGSCOPE = #{ORGSCOPE,jdbcType=CHAR},
+      </if>
+      <if test="orgAddress != null" >
+        orgAddress = #{orgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        zipCode = #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="MANAGERID != null" >
+        MANAGERID = #{MANAGERID,jdbcType=INTEGER},
+      </if>
+      <if test="LINKMAN != null" >
+        LINKMAN = #{LINKMAN,jdbcType=VARCHAR},
+      </if>
+      <if test="LINKMANTEL != null" >
+        LINKMANTEL = #{LINKMANTEL,jdbcType=VARCHAR},
+      </if>
+      <if test="EMAIL != null" >
+        EMAIL = #{EMAIL,jdbcType=VARCHAR},
+      </if>
+      <if test="webURL != null" >
+        webURL = #{webURL,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="positionID != null" >
+        positionID = #{positionID,jdbcType=INTEGER},
+      </if>
+      <if test="archiveNum != null" >
+        archiveNum = #{archiveNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sortID != null" >
+        sortID = #{sortID,jdbcType=INTEGER},
+      </if>
+      <if test="orgClass != null" >
+        orgClass = #{orgClass,jdbcType=VARCHAR},
+      </if>
+      <if test="userGroupID != null" >
+        userGroupID = #{userGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="datachg_num != null" >
+        datachg_num = #{datachg_num,jdbcType=VARCHAR},
+      </if>
+      <if test="send_datachg_num != null" >
+        send_datachg_num = #{send_datachg_num,jdbcType=VARCHAR},
+      </if>
+      <if test="rec_datachg_num != null" >
+        rec_datachg_num = #{rec_datachg_num,jdbcType=VARCHAR},
+      </if>
+      <if test="sortAll != null" >
+        sortAll = #{sortAll,jdbcType=INTEGER},
+      </if>
+      <if test="extParam1 != null" >
+        extParam1 = #{extParam1,jdbcType=VARCHAR},
+      </if>
+      <if test="extParam2 != null" >
+        extParam2 = #{extParam2,jdbcType=VARCHAR},
+      </if>
+      <if test="skinId != null" >
+        skinId = #{skinId,jdbcType=INTEGER},
+      </if>
+      <if test="isOrg != null" >
+        isOrg = #{isOrg,jdbcType=INTEGER},
+      </if>
+      <if test="isVirOrg != null" >
+        isVirOrg = #{isVirOrg,jdbcType=INTEGER},
+      </if>
+      <if test="attachedOrgId != null" >
+        attachedOrgId = #{attachedOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="ADDRESSCODE != null" >
+        ADDRESSCODE = #{ADDRESSCODE,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where orgID = #{orgID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.pub.EosorgTOrganization" >
+    update eosorg_t_organization
+    set orgCode = #{orgCode,jdbcType=VARCHAR},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      ORGLEVEL = #{ORGLEVEL,jdbcType=INTEGER},
+      parentOrgID = #{parentOrgID,jdbcType=INTEGER},
+      orgSEQ = #{orgSEQ,jdbcType=VARCHAR},
+      orgTypeID = #{orgTypeID,jdbcType=VARCHAR},
+      ORGSCOPE = #{ORGSCOPE,jdbcType=CHAR},
+      orgAddress = #{orgAddress,jdbcType=VARCHAR},
+      zipCode = #{zipCode,jdbcType=VARCHAR},
+      MANAGERID = #{MANAGERID,jdbcType=INTEGER},
+      LINKMAN = #{LINKMAN,jdbcType=VARCHAR},
+      LINKMANTEL = #{LINKMANTEL,jdbcType=VARCHAR},
+      EMAIL = #{EMAIL,jdbcType=VARCHAR},
+      webURL = #{webURL,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      positionID = #{positionID,jdbcType=INTEGER},
+      archiveNum = #{archiveNum,jdbcType=VARCHAR},
+      sortID = #{sortID,jdbcType=INTEGER},
+      orgClass = #{orgClass,jdbcType=VARCHAR},
+      userGroupID = #{userGroupID,jdbcType=VARCHAR},
+      datachg_num = #{datachg_num,jdbcType=VARCHAR},
+      send_datachg_num = #{send_datachg_num,jdbcType=VARCHAR},
+      rec_datachg_num = #{rec_datachg_num,jdbcType=VARCHAR},
+      sortAll = #{sortAll,jdbcType=INTEGER},
+      extParam1 = #{extParam1,jdbcType=VARCHAR},
+      extParam2 = #{extParam2,jdbcType=VARCHAR},
+      skinId = #{skinId,jdbcType=INTEGER},
+      isOrg = #{isOrg,jdbcType=INTEGER},
+      isVirOrg = #{isVirOrg,jdbcType=INTEGER},
+      attachedOrgId = #{attachedOrgId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      logo = #{logo,jdbcType=VARCHAR},
+      ADDRESSCODE = #{ADDRESSCODE,jdbcType=VARBINARY}
+    where orgID = #{orgID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.EosorgTOrganization" >
+    update eosorg_t_organization
+    set orgCode = #{orgCode,jdbcType=VARCHAR},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      ORGLEVEL = #{ORGLEVEL,jdbcType=INTEGER},
+      parentOrgID = #{parentOrgID,jdbcType=INTEGER},
+      orgSEQ = #{orgSEQ,jdbcType=VARCHAR},
+      orgTypeID = #{orgTypeID,jdbcType=VARCHAR},
+      ORGSCOPE = #{ORGSCOPE,jdbcType=CHAR},
+      orgAddress = #{orgAddress,jdbcType=VARCHAR},
+      zipCode = #{zipCode,jdbcType=VARCHAR},
+      MANAGERID = #{MANAGERID,jdbcType=INTEGER},
+      LINKMAN = #{LINKMAN,jdbcType=VARCHAR},
+      LINKMANTEL = #{LINKMANTEL,jdbcType=VARCHAR},
+      EMAIL = #{EMAIL,jdbcType=VARCHAR},
+      webURL = #{webURL,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      positionID = #{positionID,jdbcType=INTEGER},
+      archiveNum = #{archiveNum,jdbcType=VARCHAR},
+      sortID = #{sortID,jdbcType=INTEGER},
+      orgClass = #{orgClass,jdbcType=VARCHAR},
+      userGroupID = #{userGroupID,jdbcType=VARCHAR},
+      datachg_num = #{datachg_num,jdbcType=VARCHAR},
+      send_datachg_num = #{send_datachg_num,jdbcType=VARCHAR},
+      rec_datachg_num = #{rec_datachg_num,jdbcType=VARCHAR},
+      sortAll = #{sortAll,jdbcType=INTEGER},
+      extParam1 = #{extParam1,jdbcType=VARCHAR},
+      extParam2 = #{extParam2,jdbcType=VARCHAR},
+      skinId = #{skinId,jdbcType=INTEGER},
+      isOrg = #{isOrg,jdbcType=INTEGER},
+      isVirOrg = #{isVirOrg,jdbcType=INTEGER},
+      attachedOrgId = #{attachedOrgId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      logo = #{logo,jdbcType=VARCHAR}
+    where orgID = #{orgID,jdbcType=INTEGER}
+  </update>
+
+  <select id="getListByIds" resultType="com.elearning.pojo.pub.EosorgTOrganization" parameterType="map">
+    SELECT <include refid="Blob_Column_List"/>,<include refid="Base_Column_List"/>
+    from eosorg_t_organization where orgID IN
+    <foreach collection="orgIdList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+      order by FIELD( orgId , <foreach collection="orgIdList" index="index" item="item"  separator="," >#{item}</foreach> )
+  </select>
+
+
+  <select id="findSecondaryParentOrgId" resultType="java.lang.String" parameterType="int">
+    SELECT orgSEQ FROM eosorg_t_organization where orgID = #{orgId} and status = 1
+  </select>
+  <select id="findOrgAndSubTenantIdList" resultType="java.lang.Integer">
+    select t.tenantId from Tenant t,eosorg_t_organization eo where eo.status = 1 and t.orgId = eo.orgId
+    <if test="orgId != null and orgId != 1">
+      and eo.orgSEQ like CONCAT('%.',#{orgId,jdbcType=INTEGER},'.%')
+    </if>
+  </select>
+    <select id="findBasicInfoByCondition" resultType="com.elearning.vo.pub.BasicOrgForm">
+    SELECT <include refid="basicOrgForm" />
+    FROM eosorg_t_organization org
+    WHERE  1=1
+      <if test="orgCode!=null">
+        and org.orgCode=#{orgCode}
+      </if>
+      <if test="orgseqLike!= null">
+        and org.orgseq like #{orgseqLike}
+      </if>
+      <if test="orgName!= null">
+        and org.orgName like #{orgName}
+      </if>
+
+    </select>
+  <select id="getTenantedOrg" resultType="com.elearning.pojo.pub.EosorgTOrganization">
+    SELECT <include refid="Blob_Column_List"/>,<include refid="Base_Column_List"/>
+    from eosorg_t_organization where orgID IN
+    <foreach collection="orgIdList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and status=1 and tenantId is not null
+    order by length(orgseq) desc
+  </select>
+  <select id="findByTenantId" resultType="com.elearning.pojo.pub.EosorgTOrganization">
+    SELECT <include refid="Blob_Column_List"/>,<include refid="Base_Column_List"/>
+    from eosorg_t_organization,tenant where eosorg_t_organization.orgId=tenant.orgId and tenant.tenantId=#{tenantId}
+  </select>
+
+  <select id="findBasicInfoByConditionSQL" resultType="com.elearning.vo.pub.BasicOrgForm">
+    select <include refid="basicOrgForm" />
+    from eosorg_t_organization org
+    <if test="sqlQuery != null">
+      ${sqlQuery}
+    </if>
+    <if test="orderPageString != null">
+      ${orderPageString}
+    </if>
+
+  </select>
+
+  <select id="getSubOrgInfo" resultType="com.elearning.vo.pub.BasicOrgForm">
+    select <include refid="basicOrgForm" />
+    from eosorg_t_organization org LEFT JOIN ordertenant ot  ON  org.orgId=ot.orgId WHERE 1=1
+    <if test="parentOrgId != null">
+      and org.parentOrgId=#{parentOrgId}
+    </if>
+    <if test="status!=null">
+      and org.status=#{status}
+    </if>
+    ORDER BY IF(ISNULL(ot.order),0,1) DESC, ot.order ASC, org.status DESC, org.sortId, CONVERT(org.orgName USING 'gbk')
+  </select>
+
+  <select id="getListByOrgNameAndParentOrgIdAndStatus" resultType="com.elearning.pojo.pub.EosorgTOrganization" parameterType="map">
+    select
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+     from eosorg_t_organization where 1=1 and orgName = #{orgName}
+    <if test="parentOrgId != null">
+      and parentOrgId = #{parentOrgId}
+    </if>
+    <if test="status != null">
+      and status = #{status}
+    </if>
+    <if test="status == null">
+      and status = true
+    </if>
+    order by status desc,sortId, CONVERT(orgName USING 'gbk')
+  </select>
+
+  <select id="findOneStepSubOrg" resultType="com.elearning.pojo.pub.EosorgTOrganization" parameterType="map">
+    select
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+     from eosorg_t_organization where status = 1
+    <if test="orgIdList != null">
+      and orgID in
+      <foreach collection="orgIdList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    order by  CONVERT(orgName USING 'gbk')
+  </select>
+
+  <select id="findSubOrgById" resultType="int" parameterType="int">
+    SELECT model.orgID FROM eosorg_t_organization AS model where 1 = 1
+    <if test="_parameter == 1">
+      and model.orgSeq LIKE '1.%' OR model.orgId = 1 OR model.parentOrgID = 1
+    </if>
+    <if test="_parameter != 1">
+      and model.orgSeq LIKE CONCAT('%',#{_parameter},'%') OR model.orgID = #{_parameter} OR model.parentOrgID = #{_parameter}
+    </if>
+  </select>
+
+</mapper>

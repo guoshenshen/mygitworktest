@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.CaptionsMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.Captions" >
+    <constructor >
+      <arg column="captionsId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="courseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="captionsChinese" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="captionsEnglish" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    captionsId, courseId, captionsChinese, captionsEnglish, createDate
+  </sql>
+
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.Captions" >
+    insert into captions (captionsId, courseId, captionsChinese, 
+      captionsEnglish, createDate)
+    values (#{captionsId,jdbcType=BIGINT}, #{courseId,jdbcType=BIGINT}, #{captionsChinese,jdbcType=VARCHAR}, 
+      #{captionsEnglish,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.Captions" >
+    insert into captions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="captionsId != null" >
+        captionsId,
+      </if>
+      <if test="courseId != null" >
+        courseId,
+      </if>
+      <if test="captionsChinese != null" >
+        captionsChinese,
+      </if>
+      <if test="captionsEnglish != null" >
+        captionsEnglish,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="captionsId != null" >
+        #{captionsId,jdbcType=BIGINT},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="captionsChinese != null" >
+        #{captionsChinese,jdbcType=VARCHAR},
+      </if>
+      <if test="captionsEnglish != null" >
+        #{captionsEnglish,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="getCaptionsByCaptionsIdReturnList" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from captions
+    where captionsId = #{captionsId,jdbcType=BIGINT}
+  </select>
+    <select id="getCaptionsByCourseId" resultType="com.elearning.pojo.courseStudy.Captions">
+      SELECT <include refid="Base_Column_List"/>
+      FROM captions
+      where courseId = #{courseId}
+    </select>
+
+</mapper>

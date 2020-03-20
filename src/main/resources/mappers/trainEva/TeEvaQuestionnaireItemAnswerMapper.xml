@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.trainEva.TeEvaQuestionnaireItemAnswerMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.trainEva.TeEvaQuestionnaireItemAnswer" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="itemID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Qn_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, itemID, answer, Qn_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from te_evaquestionnaireitemanswer
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from te_evaquestionnaireitemanswer
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.trainEva.TeEvaQuestionnaireItemAnswer" >
+    insert into te_evaquestionnaireitemanswer (ID, itemID, answer, 
+      Qn_id)
+    values (#{ID,jdbcType=INTEGER}, #{itemID,jdbcType=INTEGER}, #{answer,jdbcType=VARCHAR}, 
+      #{qn_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.trainEva.TeEvaQuestionnaireItemAnswer" >
+    insert into te_evaquestionnaireitemanswer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="itemID != null" >
+        itemID,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="qn_id != null" >
+        Qn_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="itemID != null" >
+        #{itemID,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="qn_id != null" >
+        #{qn_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.trainEva.TeEvaQuestionnaireItemAnswer" >
+    update te_evaquestionnaireitemanswer
+    <set >
+      <if test="itemID != null" >
+        itemID = #{itemID,jdbcType=INTEGER},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="qn_id != null" >
+        Qn_id = #{qn_id,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.trainEva.TeEvaQuestionnaireItemAnswer" >
+    update te_evaquestionnaireitemanswer
+    set itemID = #{itemID,jdbcType=INTEGER},
+      answer = #{answer,jdbcType=VARCHAR},
+      Qn_id = #{qn_id,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

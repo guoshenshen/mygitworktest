@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.courseStudy.TrainSummaryMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.courseStudy.TrainSummary" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="train_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="summaryName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attachmentPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isTrainEffect" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="multiplyTimes" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="totalFee" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="completedNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyCompletedRadio" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="totalNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="calibratedNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainPlanExeRate" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="learnFinishedRate" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="needFinishedNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="totalTime" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="averageTime" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastModifiedDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="lastEditorOperatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastRefreshDataTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.courseStudy.TrainSummaryWithBLOBs" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="year" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="train_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="submitDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="summaryName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attachmentPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isTrainEffect" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="multiplyTimes" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="totalFee" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="completedNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="keyCompletedRadio" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="totalNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="calibratedNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trainPlanExeRate" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="learnFinishedRate" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="needFinishedNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="totalTime" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="averageTime" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastModifiedDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="lastEditorOperatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastRefreshDataTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="conclusion" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="overallProfile" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, year, train_id, operatorId, submitDate, summaryName, attachmentPath, orgName, 
+    parentOrgName, userName, isTrainEffect, multiplyTimes, totalFee, completedNum, keyCompletedRadio, 
+    totalNum, calibratedNum, comment, trainPlanExeRate, learnFinishedRate, needFinishedNum, 
+    totalTime, averageTime, tenantId, lastModifiedDate, lastEditorOperatorId, lastRefreshDataTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    conclusion, overallProfile
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from trainsummary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trainsummary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.courseStudy.TrainSummaryWithBLOBs" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+    insert into trainsummary (id, year, train_id, 
+      operatorId, submitDate, summaryName, 
+      attachmentPath, orgName, parentOrgName, 
+      userName, isTrainEffect, multiplyTimes, 
+      totalFee, completedNum, keyCompletedRadio, 
+      totalNum, calibratedNum, comment, 
+      trainPlanExeRate, learnFinishedRate, needFinishedNum, 
+      totalTime, averageTime, tenantId, 
+      lastModifiedDate, lastEditorOperatorId, 
+      lastRefreshDataTime, conclusion, 
+      overallProfile)
+    values (#{id,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, #{train_id,jdbcType=INTEGER}, 
+      #{operatorId,jdbcType=INTEGER}, #{submitDate,jdbcType=TIMESTAMP}, #{summaryName,jdbcType=VARCHAR}, 
+      #{attachmentPath,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{parentOrgName,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{isTrainEffect,jdbcType=INTEGER}, #{multiplyTimes,jdbcType=INTEGER}, 
+      #{totalFee,jdbcType=DOUBLE}, #{completedNum,jdbcType=INTEGER}, #{keyCompletedRadio,jdbcType=DOUBLE}, 
+      #{totalNum,jdbcType=INTEGER}, #{calibratedNum,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, 
+      #{trainPlanExeRate,jdbcType=DOUBLE}, #{learnFinishedRate,jdbcType=DOUBLE}, #{needFinishedNum,jdbcType=INTEGER}, 
+      #{totalTime,jdbcType=DOUBLE}, #{averageTime,jdbcType=DOUBLE}, #{tenantId,jdbcType=INTEGER}, 
+      #{lastModifiedDate,jdbcType=TIMESTAMP}, #{lastEditorOperatorId,jdbcType=INTEGER}, 
+      #{lastRefreshDataTime,jdbcType=TIMESTAMP}, #{conclusion,jdbcType=LONGVARCHAR}, 
+      #{overallProfile,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.courseStudy.TrainSummaryWithBLOBs" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+    insert into trainsummary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="train_id != null" >
+        train_id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="submitDate != null" >
+        submitDate,
+      </if>
+      <if test="summaryName != null" >
+        summaryName,
+      </if>
+      <if test="attachmentPath != null" >
+        attachmentPath,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="parentOrgName != null" >
+        parentOrgName,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+      <if test="isTrainEffect != null" >
+        isTrainEffect,
+      </if>
+      <if test="multiplyTimes != null" >
+        multiplyTimes,
+      </if>
+      <if test="totalFee != null" >
+        totalFee,
+      </if>
+      <if test="completedNum != null" >
+        completedNum,
+      </if>
+      <if test="keyCompletedRadio != null" >
+        keyCompletedRadio,
+      </if>
+      <if test="totalNum != null" >
+        totalNum,
+      </if>
+      <if test="calibratedNum != null" >
+        calibratedNum,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="trainPlanExeRate != null" >
+        trainPlanExeRate,
+      </if>
+      <if test="learnFinishedRate != null" >
+        learnFinishedRate,
+      </if>
+      <if test="needFinishedNum != null" >
+        needFinishedNum,
+      </if>
+      <if test="totalTime != null" >
+        totalTime,
+      </if>
+      <if test="averageTime != null" >
+        averageTime,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="lastModifiedDate != null" >
+        lastModifiedDate,
+      </if>
+      <if test="lastEditorOperatorId != null" >
+        lastEditorOperatorId,
+      </if>
+      <if test="lastRefreshDataTime != null" >
+        lastRefreshDataTime,
+      </if>
+      <if test="conclusion != null" >
+        conclusion,
+      </if>
+      <if test="overallProfile != null" >
+        overallProfile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="train_id != null" >
+        #{train_id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="submitDate != null" >
+        #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="summaryName != null" >
+        #{summaryName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentPath != null" >
+        #{attachmentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgName != null" >
+        #{parentOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTrainEffect != null" >
+        #{isTrainEffect,jdbcType=INTEGER},
+      </if>
+      <if test="multiplyTimes != null" >
+        #{multiplyTimes,jdbcType=INTEGER},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=DOUBLE},
+      </if>
+      <if test="completedNum != null" >
+        #{completedNum,jdbcType=INTEGER},
+      </if>
+      <if test="keyCompletedRadio != null" >
+        #{keyCompletedRadio,jdbcType=DOUBLE},
+      </if>
+      <if test="totalNum != null" >
+        #{totalNum,jdbcType=INTEGER},
+      </if>
+      <if test="calibratedNum != null" >
+        #{calibratedNum,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="trainPlanExeRate != null" >
+        #{trainPlanExeRate,jdbcType=DOUBLE},
+      </if>
+      <if test="learnFinishedRate != null" >
+        #{learnFinishedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="needFinishedNum != null" >
+        #{needFinishedNum,jdbcType=INTEGER},
+      </if>
+      <if test="totalTime != null" >
+        #{totalTime,jdbcType=DOUBLE},
+      </if>
+      <if test="averageTime != null" >
+        #{averageTime,jdbcType=DOUBLE},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="lastModifiedDate != null" >
+        #{lastModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditorOperatorId != null" >
+        #{lastEditorOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="lastRefreshDataTime != null" >
+        #{lastRefreshDataTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conclusion != null" >
+        #{conclusion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="overallProfile != null" >
+        #{overallProfile,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.courseStudy.TrainSummaryWithBLOBs" >
+    update trainsummary
+    <set >
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="train_id != null" >
+        train_id = #{train_id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="submitDate != null" >
+        submitDate = #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="summaryName != null" >
+        summaryName = #{summaryName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentPath != null" >
+        attachmentPath = #{attachmentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrgName != null" >
+        parentOrgName = #{parentOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTrainEffect != null" >
+        isTrainEffect = #{isTrainEffect,jdbcType=INTEGER},
+      </if>
+      <if test="multiplyTimes != null" >
+        multiplyTimes = #{multiplyTimes,jdbcType=INTEGER},
+      </if>
+      <if test="totalFee != null" >
+        totalFee = #{totalFee,jdbcType=DOUBLE},
+      </if>
+      <if test="completedNum != null" >
+        completedNum = #{completedNum,jdbcType=INTEGER},
+      </if>
+      <if test="keyCompletedRadio != null" >
+        keyCompletedRadio = #{keyCompletedRadio,jdbcType=DOUBLE},
+      </if>
+      <if test="totalNum != null" >
+        totalNum = #{totalNum,jdbcType=INTEGER},
+      </if>
+      <if test="calibratedNum != null" >
+        calibratedNum = #{calibratedNum,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="trainPlanExeRate != null" >
+        trainPlanExeRate = #{trainPlanExeRate,jdbcType=DOUBLE},
+      </if>
+      <if test="learnFinishedRate != null" >
+        learnFinishedRate = #{learnFinishedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="needFinishedNum != null" >
+        needFinishedNum = #{needFinishedNum,jdbcType=INTEGER},
+      </if>
+      <if test="totalTime != null" >
+        totalTime = #{totalTime,jdbcType=DOUBLE},
+      </if>
+      <if test="averageTime != null" >
+        averageTime = #{averageTime,jdbcType=DOUBLE},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="lastModifiedDate != null" >
+        lastModifiedDate = #{lastModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditorOperatorId != null" >
+        lastEditorOperatorId = #{lastEditorOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="lastRefreshDataTime != null" >
+        lastRefreshDataTime = #{lastRefreshDataTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conclusion != null" >
+        conclusion = #{conclusion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="overallProfile != null" >
+        overallProfile = #{overallProfile,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.courseStudy.TrainSummaryWithBLOBs" >
+    update trainsummary
+    set year = #{year,jdbcType=VARCHAR},
+      train_id = #{train_id,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      submitDate = #{submitDate,jdbcType=TIMESTAMP},
+      summaryName = #{summaryName,jdbcType=VARCHAR},
+      attachmentPath = #{attachmentPath,jdbcType=VARCHAR},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      parentOrgName = #{parentOrgName,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR},
+      isTrainEffect = #{isTrainEffect,jdbcType=INTEGER},
+      multiplyTimes = #{multiplyTimes,jdbcType=INTEGER},
+      totalFee = #{totalFee,jdbcType=DOUBLE},
+      completedNum = #{completedNum,jdbcType=INTEGER},
+      keyCompletedRadio = #{keyCompletedRadio,jdbcType=DOUBLE},
+      totalNum = #{totalNum,jdbcType=INTEGER},
+      calibratedNum = #{calibratedNum,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      trainPlanExeRate = #{trainPlanExeRate,jdbcType=DOUBLE},
+      learnFinishedRate = #{learnFinishedRate,jdbcType=DOUBLE},
+      needFinishedNum = #{needFinishedNum,jdbcType=INTEGER},
+      totalTime = #{totalTime,jdbcType=DOUBLE},
+      averageTime = #{averageTime,jdbcType=DOUBLE},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      lastModifiedDate = #{lastModifiedDate,jdbcType=TIMESTAMP},
+      lastEditorOperatorId = #{lastEditorOperatorId,jdbcType=INTEGER},
+      lastRefreshDataTime = #{lastRefreshDataTime,jdbcType=TIMESTAMP},
+      conclusion = #{conclusion,jdbcType=LONGVARCHAR},
+      overallProfile = #{overallProfile,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.courseStudy.TrainSummary" >
+    update trainsummary
+    set year = #{year,jdbcType=VARCHAR},
+      train_id = #{train_id,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      submitDate = #{submitDate,jdbcType=TIMESTAMP},
+      summaryName = #{summaryName,jdbcType=VARCHAR},
+      attachmentPath = #{attachmentPath,jdbcType=VARCHAR},
+      orgName = #{orgName,jdbcType=VARCHAR},
+      parentOrgName = #{parentOrgName,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR},
+      isTrainEffect = #{isTrainEffect,jdbcType=INTEGER},
+      multiplyTimes = #{multiplyTimes,jdbcType=INTEGER},
+      totalFee = #{totalFee,jdbcType=DOUBLE},
+      completedNum = #{completedNum,jdbcType=INTEGER},
+      keyCompletedRadio = #{keyCompletedRadio,jdbcType=DOUBLE},
+      totalNum = #{totalNum,jdbcType=INTEGER},
+      calibratedNum = #{calibratedNum,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      trainPlanExeRate = #{trainPlanExeRate,jdbcType=DOUBLE},
+      learnFinishedRate = #{learnFinishedRate,jdbcType=DOUBLE},
+      needFinishedNum = #{needFinishedNum,jdbcType=INTEGER},
+      totalTime = #{totalTime,jdbcType=DOUBLE},
+      averageTime = #{averageTime,jdbcType=DOUBLE},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      lastModifiedDate = #{lastModifiedDate,jdbcType=TIMESTAMP},
+      lastEditorOperatorId = #{lastEditorOperatorId,jdbcType=INTEGER},
+      lastRefreshDataTime = #{lastRefreshDataTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByExample" resultType="com.elearning.pojo.courseStudy.TrainSummaryWithBLOBs" parameterType="map">
+    select <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+    from trainsummary where 1 = 1
+    <if test="year != null" >
+      and year = #{year,jdbcType=VARCHAR}
+    </if>
+    <if test="train_id != null" >
+      and train_id = #{train_id,jdbcType=INTEGER}
+    </if>
+    <if test="operatorId != null" >
+      and operatorId = #{operatorId,jdbcType=INTEGER}
+    </if>
+    <if test="submitDate != null" >
+      and submitDate = #{submitDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="summaryName != null" >
+      and summaryName = #{summaryName,jdbcType=VARCHAR}
+    </if>
+    <if test="attachmentPath != null" >
+      and attachmentPath = #{attachmentPath,jdbcType=VARCHAR},
+    </if>
+    <if test="orgName != null" >
+      and orgName = #{orgName,jdbcType=VARCHAR}
+    </if>
+    <if test="parentOrgName != null" >
+      and parentOrgName = #{parentOrgName,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null" >
+      and userName = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="isTrainEffect != null" >
+      and isTrainEffect = #{isTrainEffect,jdbcType=INTEGER}
+    </if>
+    <if test="multiplyTimes != null" >
+      and multiplyTimes = #{multiplyTimes,jdbcType=INTEGER}
+    </if>
+    <if test="totalFee != null" >
+      and totalFee = #{totalFee,jdbcType=DOUBLE}
+    </if>
+    <if test="completedNum != null" >
+      and completedNum = #{completedNum,jdbcType=INTEGER}
+    </if>
+    <if test="keyCompletedRadio != null" >
+      and keyCompletedRadio = #{keyCompletedRadio,jdbcType=DOUBLE}
+    </if>
+    <if test="totalNum != null" >
+      and totalNum = #{totalNum,jdbcType=INTEGER}
+    </if>
+    <if test="calibratedNum != null" >
+      and calibratedNum = #{calibratedNum,jdbcType=INTEGER}
+    </if>
+    <if test="comment != null" >
+      and comment = #{comment,jdbcType=VARCHAR}
+    </if>
+    <if test="trainPlanExeRate != null" >
+      and trainPlanExeRate = #{trainPlanExeRate,jdbcType=DOUBLE}
+    </if>
+    <if test="learnFinishedRate != null" >
+      and learnFinishedRate = #{learnFinishedRate,jdbcType=DOUBLE}
+    </if>
+    <if test="needFinishedNum != null" >
+      and needFinishedNum = #{needFinishedNum,jdbcType=INTEGER}
+    </if>
+    <if test="totalTime != null" >
+      and totalTime = #{totalTime,jdbcType=DOUBLE}
+    </if>
+    <if test="averageTime != null" >
+      and averageTime = #{averageTime,jdbcType=DOUBLE}
+    </if>
+    <if test="tenantId != null" >
+      and tenantId = #{tenantId,jdbcType=INTEGER}
+    </if>
+    <if test="lastModifiedDate != null" >
+      and lastModifiedDate = #{lastModifiedDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="lastEditorOperatorId != null" >
+      and lastEditorOperatorId = #{lastEditorOperatorId,jdbcType=INTEGER}
+    </if>
+    <if test="lastRefreshDataTime != null" >
+      and lastRefreshDataTime = #{lastRefreshDataTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="conclusion != null" >
+      and conclusion = #{conclusion,jdbcType=LONGVARCHAR}
+    </if>
+    <if test="overallProfile != null" >
+      and overallProfile = #{overallProfile,jdbcType=LONGVARCHAR}
+    </if>
+  </select>
+
+  <select id="queryUserTrainSummaryList" resultType="com.elearning.pojo.courseStudy.TrainSummaryWithBLOBs" parameterType="map">
+    select t.* from trainsummary t where 1=1
+    <if test="trainId != null and trainId != ''" >
+      and t.train_id = #{trainId,jdbcType=INTEGER}
+    </if>
+    <if test="year != null and year != ''" >
+      and t.year = #{year,jdbcType=VARCHAR}
+    </if>
+    <if test="isTrainEffect != null and isTrainEffect != ''" >
+      and t.isTrainEffect = #{isTrainEffect,jdbcType=INTEGER}
+    </if>
+    <if test="operatorId != null and operatorId != ''" >
+      <if test="(summaryFlag != null and summaryFlag != '') or (userJoinTrainFlag != null and userJoinTrainFlag == false )" >
+        and t.operatorId = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="summaryFlag == null and userJoinTrainFlag == null" >
+        and t.operatorId = #{operatorId,jdbcType=INTEGER}
+      </if>
+    </if>
+    <if test="userName != null and userName != ''" >
+      and t.userName like CONCAT('%',#{userName},'%')
+    </if>
+    <if test="parentOrgName != null and parentOrgName != ''" >
+      and t.parentOrgName like CONCAT('%',#{parentOrgName},'%')
+    </if>
+    <if test="orgName != null and orgName != ''" >
+      and t.orgName like CONCAT('%',#{orgName},'%')
+    </if>
+    <if test="summaryName != null and summaryName != ''" >
+      and t.summaryName like CONCAT('%',#{summaryName},'%')
+    </if>
+    <if test="tenantId != null and tenantId != ''" >
+      and t.tenantId = #{tenantId,jdbcType=INTEGER}
+    </if>
+    <if test="tenantIdList != null and tenantIdList != ''" >
+      and t.tenantId in
+      <foreach collection="tenantIdList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    order by t.year desc
+  </select>
+
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.message.MsgMessageAttachFileMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.message.MsgMessageAttachFile" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="msgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attachFileNO" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attachFileName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, msgID, attachFileNO, attachFileName, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msg_message_attachfile
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msg_message_attachfile
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.message.MsgMessageAttachFile" >
+    insert into msg_message_attachfile (ID, msgID, attachFileNO, 
+      attachFileName, url)
+    values (#{ID,jdbcType=INTEGER}, #{msgID,jdbcType=INTEGER}, #{attachFileNO,jdbcType=INTEGER}, 
+      #{attachFileName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.message.MsgMessageAttachFile" >
+    insert into msg_message_attachfile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="msgID != null" >
+        msgID,
+      </if>
+      <if test="attachFileNO != null" >
+        attachFileNO,
+      </if>
+      <if test="attachFileName != null" >
+        attachFileName,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="msgID != null" >
+        #{msgID,jdbcType=INTEGER},
+      </if>
+      <if test="attachFileNO != null" >
+        #{attachFileNO,jdbcType=INTEGER},
+      </if>
+      <if test="attachFileName != null" >
+        #{attachFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.message.MsgMessageAttachFile" >
+    update msg_message_attachfile
+    <set >
+      <if test="msgID != null" >
+        msgID = #{msgID,jdbcType=INTEGER},
+      </if>
+      <if test="attachFileNO != null" >
+        attachFileNO = #{attachFileNO,jdbcType=INTEGER},
+      </if>
+      <if test="attachFileName != null" >
+        attachFileName = #{attachFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.message.MsgMessageAttachFile" >
+    update msg_message_attachfile
+    set msgID = #{msgID,jdbcType=INTEGER},
+      attachFileNO = #{attachFileNO,jdbcType=INTEGER},
+      attachFileName = #{attachFileName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

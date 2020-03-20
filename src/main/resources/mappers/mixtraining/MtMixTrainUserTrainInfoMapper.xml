@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainUserTrainInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="section_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="classHour" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="score" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="userName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="attendable" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attended" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="attendType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hurrySummary" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentOrgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, trainID, section_id, userID, classHour, score, remark, userName, attendable, 
+    status, attended, attendType, hurrySummary, parentOrgName, orgName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainusertraininfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtrainusertraininfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" >
+    insert into mt_mixtrainusertraininfo (ID, trainID, section_id, 
+      userID, classHour, score, 
+      remark, userName, attendable, 
+      status, attended, attendType, 
+      hurrySummary, parentOrgName, orgName
+      )
+    values (#{ID,jdbcType=INTEGER}, #{trainID,jdbcType=INTEGER}, #{section_id,jdbcType=INTEGER}, 
+      #{userID,jdbcType=INTEGER}, #{classHour,jdbcType=DOUBLE}, #{score,jdbcType=DOUBLE}, 
+      #{remark,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{attendable,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{attended,jdbcType=INTEGER}, #{attendType,jdbcType=INTEGER}, 
+      #{hurrySummary,jdbcType=INTEGER}, #{parentOrgName,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" >
+    insert into mt_mixtrainusertraininfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="trainID != null" >
+        trainID,
+      </if>
+      <if test="section_id != null" >
+        section_id,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="classHour != null" >
+        classHour,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+      <if test="attendable != null" >
+        attendable,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="attended != null" >
+        attended,
+      </if>
+      <if test="attendType != null" >
+        attendType,
+      </if>
+      <if test="hurrySummary != null" >
+        hurrySummary,
+      </if>
+      <if test="parentOrgName != null" >
+        parentOrgName,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="trainID != null" >
+        #{trainID,jdbcType=INTEGER},
+      </if>
+      <if test="section_id != null" >
+        #{section_id,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="classHour != null" >
+        #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="attendable != null" >
+        #{attendable,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="attended != null" >
+        #{attended,jdbcType=INTEGER},
+      </if>
+      <if test="attendType != null" >
+        #{attendType,jdbcType=INTEGER},
+      </if>
+      <if test="hurrySummary != null" >
+        #{hurrySummary,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrgName != null" >
+        #{parentOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" >
+    update mt_mixtrainusertraininfo
+    <set >
+      <if test="trainID != null" >
+        trainID = #{trainID,jdbcType=INTEGER},
+      </if>
+      <if test="section_id != null" >
+        section_id = #{section_id,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        userID = #{userID,jdbcType=INTEGER},
+      </if>
+      <if test="classHour != null" >
+        classHour = #{classHour,jdbcType=DOUBLE},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="attendable != null" >
+        attendable = #{attendable,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="attended != null" >
+        attended = #{attended,jdbcType=INTEGER},
+      </if>
+      <if test="attendType != null" >
+        attendType = #{attendType,jdbcType=INTEGER},
+      </if>
+      <if test="hurrySummary != null" >
+        hurrySummary = #{hurrySummary,jdbcType=INTEGER},
+      </if>
+      <if test="parentOrgName != null" >
+        parentOrgName = #{parentOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        orgName = #{orgName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" >
+    update mt_mixtrainusertraininfo
+    set trainID = #{trainID,jdbcType=INTEGER},
+      section_id = #{section_id,jdbcType=INTEGER},
+      userID = #{userID,jdbcType=INTEGER},
+      classHour = #{classHour,jdbcType=DOUBLE},
+      score = #{score,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR},
+      attendable = #{attendable,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      attended = #{attended,jdbcType=INTEGER},
+      attendType = #{attendType,jdbcType=INTEGER},
+      hurrySummary = #{hurrySummary,jdbcType=INTEGER},
+      parentOrgName = #{parentOrgName,jdbcType=VARCHAR},
+      orgName = #{orgName,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List"/>  from mt_mixtrainusertraininfo WHERE userID = #{userID,jdbcType=INTEGER}
+  </select>
+
+  <select id="findByTrainId" resultType="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List"/>  from mt_mixtrainusertraininfo WHERE trainID = #{trainID,jdbcType=INTEGER}
+  </select>
+
+  <select id="getListByUserIDAndTrainID" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT <include refid="Base_Column_List"/>  from mt_mixtrainusertraininfo WHERE userID = #{userID,jdbcType=INTEGER} and trainID = #{trainID,jdbcType=INTEGER}
+  </select>
+
+  <select id="getListByUserIDAndTrainIDAndStatus" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>  from mt_mixtrainusertraininfo
+    WHERE userID = #{userID,jdbcType=INTEGER}
+    and trainID = #{trainID,jdbcType=INTEGER}
+    and status = #{status,jdbcType=INTEGER}
+  </select>
+
+  <select id="searchMtMixTrainUserTrainInfoList" resultType="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" parameterType="map">
+    SELECT m.*  from eosoperator e,mt_mixtrainusertraininfo m WHERE e.operatorId = m.userID AND m.trainID=#{trainId} AND e.status=1
+    <if test="parentOrgName != null and parentOrgName != ''" >
+      and m.parentOrgName like CONCAT('%',#{parentOrgName},'%')
+    </if>
+    <if test="status != null and status != ''" >
+      and m.status=#{status}
+    </if>
+    <if test="attendType != null and attendType != ''" >
+      and m.attendType=#{attendType}
+    </if>
+    <if test="attended != null and attended != ''" >
+      and m.attended=#{attended}
+    </if>
+    <if test="userName != null and userName != ''" >
+      and m.userName like CONCAT('%',#{userName},'%')
+    </if>
+    <if test="attendable != null and attendable != ''" >
+      and m.attendable=#{attendable}
+    </if>
+    <if test="classHourVerified != null and classHourVerified == 0" >
+      and (m.classHour=0 or m.classHour is null)
+    </if>
+    <if test="classHourVerified != null and classHourVerified == 1" >
+      and m.classHour>0
+    </if>
+    order by parentOrgName asc,orgName asc
+  </select>
+
+  <select id="getListByMap" resultType="com.elearning.pojo.mixtraining.MtMixTrainUserTrainInfo" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>  from mt_mixtrainusertraininfo where 1=1
+    <if test="trainID != null" >
+      and trainID = #{trainID,jdbcType=INTEGER}
+    </if>
+    <if test="section_id != null" >
+      and section_id = #{section_id,jdbcType=INTEGER}
+    </if>
+    <if test="userID != null" >
+      and userID = #{userID,jdbcType=INTEGER}
+    </if>
+    <if test="classHour != null" >
+      and classHour = #{classHour,jdbcType=DOUBLE}
+    </if>
+    <if test="score != null" >
+      and score = #{score,jdbcType=DOUBLE}
+    </if>
+    <if test="remark != null" >
+      and remark = #{remark,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null" >
+      and userName = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="attendable != null" >
+      and attendable = #{attendable,jdbcType=INTEGER}
+    </if>
+    <if test="status != null" >
+      and status = #{status,jdbcType=INTEGER}
+    </if>
+    <if test="attended != null" >
+      and attended = #{attended,jdbcType=INTEGER}
+    </if>
+    <if test="attendType != null" >
+      and attendType = #{attendType,jdbcType=INTEGER}
+    </if>
+    <if test="hurrySummary != null" >
+      and hurrySummary = #{hurrySummary,jdbcType=INTEGER}
+    </if>
+    <if test="parentOrgName != null" >
+      and parentOrgName = #{parentOrgName,jdbcType=VARCHAR}
+    </if>
+    <if test="orgName != null" >
+      and orgName = #{orgName,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="findCountByTrainId" resultType="int">
+    select count(*) from train_sign_record where sign_id = #{trainId} and state = 1
+  </select>
+
+  <sql id="basicUserInfo">
+    employee.operatorId as operatorId, employee.address as headPic, employee.oemail as email, employee.otel1 as tel, employee.mobileNo as mobile,
+     employee.gender as gender, org.orgId as orgId, org.tenantId as tenantId, org.orgName as orgName, operator.operatorName as operatorName,
+      operator.userId as userId, employee.orgName as orgName
+  </sql>
+
+  <select id="getAttendedListForParmMap" resultType="com.elearning.vo.BasicUserForm" parameterType="map">
+    select
+    <include refid="basicUserInfo" />
+    from Eosorg_T_Employee employee, eosoperator operator, eosorg_t_organization org , mt_mixtrainusertrainInfo mt
+    WHERE operator.operatorId = mt.userId AND mt.trainId=#{trainId} AND mt.attended = 1
+    and org.orgId = employee.orgId and operator.operatorId = employee.operatorId and operator.status = 1
+    <if test="userName != null and userName != ''">
+      and operator.operatorName like  CONCAT('%',#{userName},'%')
+    </if>
+    ORDER BY org.orgseq ASC
+  </select>
+
+</mapper>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.testPaper.TpaPaperStrategyQuesTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.testPaper.TpaPaperStrategyQuesType" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyQuesType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyQuesSeq" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyQuesNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="strategyQuesScore" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, strategyId, strategyQuesType, strategyQuesSeq, strategyQuesNum, strategyQuesScore
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tpa_paper_strategyquestype
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tpa_paper_strategyquestype
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategyQuesType" >
+    insert into tpa_paper_strategyquestype (ID, strategyId, strategyQuesType, 
+      strategyQuesSeq, strategyQuesNum, strategyQuesScore
+      )
+    values (#{ID,jdbcType=INTEGER}, #{strategyId,jdbcType=INTEGER}, #{strategyQuesType,jdbcType=INTEGER}, 
+      #{strategyQuesSeq,jdbcType=INTEGER}, #{strategyQuesNum,jdbcType=INTEGER}, #{strategyQuesScore,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategyQuesType" >
+    insert into tpa_paper_strategyquestype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="strategyId != null" >
+        strategyId,
+      </if>
+      <if test="strategyQuesType != null" >
+        strategyQuesType,
+      </if>
+      <if test="strategyQuesSeq != null" >
+        strategyQuesSeq,
+      </if>
+      <if test="strategyQuesNum != null" >
+        strategyQuesNum,
+      </if>
+      <if test="strategyQuesScore != null" >
+        strategyQuesScore,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="strategyId != null" >
+        #{strategyId,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesType != null" >
+        #{strategyQuesType,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesSeq != null" >
+        #{strategyQuesSeq,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesNum != null" >
+        #{strategyQuesNum,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesScore != null" >
+        #{strategyQuesScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategyQuesType" >
+    update tpa_paper_strategyquestype
+    <set >
+      <if test="strategyId != null" >
+        strategyId = #{strategyId,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesType != null" >
+        strategyQuesType = #{strategyQuesType,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesSeq != null" >
+        strategyQuesSeq = #{strategyQuesSeq,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesNum != null" >
+        strategyQuesNum = #{strategyQuesNum,jdbcType=INTEGER},
+      </if>
+      <if test="strategyQuesScore != null" >
+        strategyQuesScore = #{strategyQuesScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.testPaper.TpaPaperStrategyQuesType" >
+    update tpa_paper_strategyquestype
+    set strategyId = #{strategyId,jdbcType=INTEGER},
+      strategyQuesType = #{strategyQuesType,jdbcType=INTEGER},
+      strategyQuesSeq = #{strategyQuesSeq,jdbcType=INTEGER},
+      strategyQuesNum = #{strategyQuesNum,jdbcType=INTEGER},
+      strategyQuesScore = #{strategyQuesScore,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByStrategyId" resultType="com.elearning.pojo.testPaper.TpaPaperStrategyQuesType" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from tpa_paper_strategyquestype
+    where strategyId = #{strategyId,jdbcType=INTEGER}
+  </select>
+
+  <select id="getListByStrategyIdAndStrategyQuesSeq" resultType="com.elearning.pojo.testPaper.TpaPaperStrategyQuesType" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from tpa_paper_strategyquestype
+    where 1 = 1
+    <if test="strategyId != null" >
+      and strategyId = #{strategyId,jdbcType=INTEGER}
+    </if>
+    <if test="strategyQuesSeq != null" >
+      and strategyQuesSeq = #{strategyQuesSeq,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+</mapper>

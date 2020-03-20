@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.material.AlbumMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.material.Album" >
+    <constructor >
+      <arg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="albumName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="creatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="type" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+      <arg column="resourceId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="openOrgSeq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cover" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, albumName, createDate, creatorName, type, resourceId, openOrgSeq, description, cover
+  </sql>
+
+  <select id="findById" resultType="com.elearning.pojo.material.Album" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from album
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <insert id="insert" parameterType="com.elearning.pojo.material.Album" >
+    insert into album (id, albumName, createDate, 
+      creatorName, type, resourceId, 
+      openOrgSeq, description, cover
+      )
+    values (#{id,jdbcType=BIGINT}, #{albumName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{creatorName,jdbcType=VARCHAR}, #{type,jdbcType=BOOLEAN}, #{resourceId,jdbcType=BIGINT}, 
+      #{openOrgSeq,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.material.Album" >
+    insert into album
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="albumName != null" >
+        albumName,
+      </if>
+      <if test="createDate != null" >
+        createDate,
+      </if>
+      <if test="creatorName != null" >
+        creatorName,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="resourceId != null" >
+        resourceId,
+      </if>
+      <if test="openOrgSeq != null" >
+        openOrgSeq,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="cover != null" >
+        cover,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="albumName != null" >
+        #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="openOrgSeq != null" >
+        #{openOrgSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null" >
+        #{cover,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.material.Album" >
+    update album
+    <set >
+      <if test="albumName != null" >
+        albumName = #{albumName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="resourceId != null" >
+        resourceId = #{resourceId,jdbcType=BIGINT},
+      </if>
+      <if test="openOrgSeq != null" >
+        openOrgSeq = #{openOrgSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null" >
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getAlbumByIdReturnList" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from album
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="findByBasicCondition" resultType="com.elearning.pojo.material.Album" parameterType="map" >
+    select <include refid="Base_Column_List" /> from album
+    where 1 = 1 and type = #{type} and resourceId =  #{resourceId}
+    <if test="openOrgSeq != null" >
+      and openOrgSeq in
+      <foreach collection="openOrgSeq" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    order by createDate asc
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from album
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+</mapper>

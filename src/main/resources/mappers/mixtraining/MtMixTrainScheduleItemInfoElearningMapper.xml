@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainScheduleItemInfoElearningMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainScheduleItemInfoElearning" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="scheduleItemName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="scheduleDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="scheduleStartTime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="scheduleEndTime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="courseName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="courseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="isCourseStore" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacherName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="teacherId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isTeacherStore" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="scheduleId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="onOrOffLineFlag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isCourseComplete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fileName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="filePath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isTrainTheme" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hoster" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hasCourseUrl" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="location" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, scheduleItemName, scheduleDate, scheduleStartTime, scheduleEndTime, courseName, 
+    courseId, isCourseStore, teacherName, teacherId, isTeacherStore, remark, scheduleId, 
+    operatorId, onOrOffLineFlag, isCourseComplete, fileName, filePath, isTrainTheme, 
+    hoster, hasCourseUrl, location
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainschedule_iteminfo_elearning
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_mixtrainschedule_iteminfo_elearning
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainScheduleItemInfoElearning" >
+    insert into mt_mixtrainschedule_iteminfo_elearning (id, scheduleItemName, scheduleDate, 
+      scheduleStartTime, scheduleEndTime, courseName, 
+      courseId, isCourseStore, teacherName, 
+      teacherId, isTeacherStore, remark, 
+      scheduleId, operatorId, onOrOffLineFlag, 
+      isCourseComplete, fileName, filePath, 
+      isTrainTheme, hoster, hasCourseUrl, 
+      location)
+    values (#{id,jdbcType=INTEGER}, #{scheduleItemName,jdbcType=VARCHAR}, #{scheduleDate,jdbcType=DATE}, 
+      #{scheduleStartTime,jdbcType=VARCHAR}, #{scheduleEndTime,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, 
+      #{courseId,jdbcType=BIGINT}, #{isCourseStore,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, 
+      #{teacherId,jdbcType=INTEGER}, #{isTeacherStore,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{scheduleId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{onOrOffLineFlag,jdbcType=INTEGER}, 
+      #{isCourseComplete,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, 
+      #{isTrainTheme,jdbcType=INTEGER}, #{hoster,jdbcType=VARCHAR}, #{hasCourseUrl,jdbcType=INTEGER}, 
+      #{location,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainScheduleItemInfoElearning" >
+    insert into mt_mixtrainschedule_iteminfo_elearning
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="scheduleItemName != null" >
+        scheduleItemName,
+      </if>
+      <if test="scheduleDate != null" >
+        scheduleDate,
+      </if>
+      <if test="scheduleStartTime != null" >
+        scheduleStartTime,
+      </if>
+      <if test="scheduleEndTime != null" >
+        scheduleEndTime,
+      </if>
+      <if test="courseName != null" >
+        courseName,
+      </if>
+      <if test="courseId != null" >
+        courseId,
+      </if>
+      <if test="isCourseStore != null" >
+        isCourseStore,
+      </if>
+      <if test="teacherName != null" >
+        teacherName,
+      </if>
+      <if test="teacherId != null" >
+        teacherId,
+      </if>
+      <if test="isTeacherStore != null" >
+        isTeacherStore,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="scheduleId != null" >
+        scheduleId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="onOrOffLineFlag != null" >
+        onOrOffLineFlag,
+      </if>
+      <if test="isCourseComplete != null" >
+        isCourseComplete,
+      </if>
+      <if test="fileName != null" >
+        fileName,
+      </if>
+      <if test="filePath != null" >
+        filePath,
+      </if>
+      <if test="isTrainTheme != null" >
+        isTrainTheme,
+      </if>
+      <if test="hoster != null" >
+        hoster,
+      </if>
+      <if test="hasCourseUrl != null" >
+        hasCourseUrl,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleItemName != null" >
+        #{scheduleItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleDate != null" >
+        #{scheduleDate,jdbcType=DATE},
+      </if>
+      <if test="scheduleStartTime != null" >
+        #{scheduleStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleEndTime != null" >
+        #{scheduleEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="isCourseStore != null" >
+        #{isCourseStore,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="isTeacherStore != null" >
+        #{isTeacherStore,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleId != null" >
+        #{scheduleId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="onOrOffLineFlag != null" >
+        #{onOrOffLineFlag,jdbcType=INTEGER},
+      </if>
+      <if test="isCourseComplete != null" >
+        #{isCourseComplete,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="isTrainTheme != null" >
+        #{isTrainTheme,jdbcType=INTEGER},
+      </if>
+      <if test="hoster != null" >
+        #{hoster,jdbcType=VARCHAR},
+      </if>
+      <if test="hasCourseUrl != null" >
+        #{hasCourseUrl,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainScheduleItemInfoElearning" >
+    update mt_mixtrainschedule_iteminfo_elearning
+    <set >
+      <if test="scheduleItemName != null" >
+        scheduleItemName = #{scheduleItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleDate != null" >
+        scheduleDate = #{scheduleDate,jdbcType=DATE},
+      </if>
+      <if test="scheduleStartTime != null" >
+        scheduleStartTime = #{scheduleStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleEndTime != null" >
+        scheduleEndTime = #{scheduleEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        courseName = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        courseId = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="isCourseStore != null" >
+        isCourseStore = #{isCourseStore,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null" >
+        teacherName = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        teacherId = #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="isTeacherStore != null" >
+        isTeacherStore = #{isTeacherStore,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="scheduleId != null" >
+        scheduleId = #{scheduleId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="onOrOffLineFlag != null" >
+        onOrOffLineFlag = #{onOrOffLineFlag,jdbcType=INTEGER},
+      </if>
+      <if test="isCourseComplete != null" >
+        isCourseComplete = #{isCourseComplete,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        fileName = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        filePath = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="isTrainTheme != null" >
+        isTrainTheme = #{isTrainTheme,jdbcType=INTEGER},
+      </if>
+      <if test="hoster != null" >
+        hoster = #{hoster,jdbcType=VARCHAR},
+      </if>
+      <if test="hasCourseUrl != null" >
+        hasCourseUrl = #{hasCourseUrl,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainScheduleItemInfoElearning" >
+    update mt_mixtrainschedule_iteminfo_elearning
+    set scheduleItemName = #{scheduleItemName,jdbcType=VARCHAR},
+      scheduleDate = #{scheduleDate,jdbcType=DATE},
+      scheduleStartTime = #{scheduleStartTime,jdbcType=VARCHAR},
+      scheduleEndTime = #{scheduleEndTime,jdbcType=VARCHAR},
+      courseName = #{courseName,jdbcType=VARCHAR},
+      courseId = #{courseId,jdbcType=BIGINT},
+      isCourseStore = #{isCourseStore,jdbcType=INTEGER},
+      teacherName = #{teacherName,jdbcType=VARCHAR},
+      teacherId = #{teacherId,jdbcType=INTEGER},
+      isTeacherStore = #{isTeacherStore,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      scheduleId = #{scheduleId,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      onOrOffLineFlag = #{onOrOffLineFlag,jdbcType=INTEGER},
+      isCourseComplete = #{isCourseComplete,jdbcType=INTEGER},
+      fileName = #{fileName,jdbcType=VARCHAR},
+      filePath = #{filePath,jdbcType=VARCHAR},
+      isTrainTheme = #{isTrainTheme,jdbcType=INTEGER},
+      hoster = #{hoster,jdbcType=VARCHAR},
+      hasCourseUrl = #{hasCourseUrl,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

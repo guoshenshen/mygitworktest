@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.forum.FrmThreadMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.forum.FrmThread" >
+    <constructor >
+      <idArg column="threadId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="dateLastReplied" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="hit" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ipCreated" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="readonly" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="replyCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="topped" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lastRepliedOperatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="boardId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastRepliedOperatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.forum.FrmThread" >
+    <constructor >
+      <idArg column="threadId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="dateLastReplied" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="hit" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ipCreated" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="readonly" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="replyCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="topped" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lastRepliedOperatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="boardId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lastRepliedOperatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    threadId, CreateTime, dateLastReplied, hit, ipCreated, readonly, replyCount, title, 
+    topped, operatorId, operatorName, lastRepliedOperatorId, boardId, tenantId, lastRepliedOperatorName
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from frm_thread
+    where threadId = #{threadId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from frm_thread
+    where threadId = #{threadId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.forum.FrmThread" >
+    insert into frm_thread (threadId, CreateTime, dateLastReplied, 
+      hit, ipCreated, readonly, 
+      replyCount, title, topped, 
+      operatorId, operatorName, lastRepliedOperatorId, 
+      boardId, tenantId, lastRepliedOperatorName, 
+      content)
+    values (#{threadId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{dateLastReplied,jdbcType=TIMESTAMP}, 
+      #{hit,jdbcType=INTEGER}, #{ipCreated,jdbcType=VARCHAR}, #{readonly,jdbcType=INTEGER}, 
+      #{replyCount,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{topped,jdbcType=INTEGER}, 
+      #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, #{lastRepliedOperatorId,jdbcType=INTEGER}, 
+      #{boardId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, #{lastRepliedOperatorName,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.forum.FrmThread" >
+    insert into frm_thread
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="threadId != null" >
+        threadId,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+      <if test="dateLastReplied != null" >
+        dateLastReplied,
+      </if>
+      <if test="hit != null" >
+        hit,
+      </if>
+      <if test="ipCreated != null" >
+        ipCreated,
+      </if>
+      <if test="readonly != null" >
+        readonly,
+      </if>
+      <if test="replyCount != null" >
+        replyCount,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="topped != null" >
+        topped,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="lastRepliedOperatorId != null" >
+        lastRepliedOperatorId,
+      </if>
+      <if test="boardId != null" >
+        boardId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="lastRepliedOperatorName != null" >
+        lastRepliedOperatorName,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="threadId != null" >
+        #{threadId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateLastReplied != null" >
+        #{dateLastReplied,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hit != null" >
+        #{hit,jdbcType=INTEGER},
+      </if>
+      <if test="ipCreated != null" >
+        #{ipCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="readonly != null" >
+        #{readonly,jdbcType=INTEGER},
+      </if>
+      <if test="replyCount != null" >
+        #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="topped != null" >
+        #{topped,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastRepliedOperatorId != null" >
+        #{lastRepliedOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="boardId != null" >
+        #{boardId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="lastRepliedOperatorName != null" >
+        #{lastRepliedOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.forum.FrmThread" >
+    update frm_thread
+    <set >
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateLastReplied != null" >
+        dateLastReplied = #{dateLastReplied,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hit != null" >
+        hit = #{hit,jdbcType=INTEGER},
+      </if>
+      <if test="ipCreated != null" >
+        ipCreated = #{ipCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="readonly != null" >
+        readonly = #{readonly,jdbcType=INTEGER},
+      </if>
+      <if test="replyCount != null" >
+        replyCount = #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="topped != null" >
+        topped = #{topped,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastRepliedOperatorId != null" >
+        lastRepliedOperatorId = #{lastRepliedOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="boardId != null" >
+        boardId = #{boardId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="lastRepliedOperatorName != null" >
+        lastRepliedOperatorName = #{lastRepliedOperatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where threadId = #{threadId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.forum.FrmThread" >
+    update frm_thread
+    set CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      dateLastReplied = #{dateLastReplied,jdbcType=TIMESTAMP},
+      hit = #{hit,jdbcType=INTEGER},
+      ipCreated = #{ipCreated,jdbcType=VARCHAR},
+      readonly = #{readonly,jdbcType=INTEGER},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      topped = #{topped,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      lastRepliedOperatorId = #{lastRepliedOperatorId,jdbcType=INTEGER},
+      boardId = #{boardId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      lastRepliedOperatorName = #{lastRepliedOperatorName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where threadId = #{threadId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.forum.FrmThread" >
+    update frm_thread
+    set CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      dateLastReplied = #{dateLastReplied,jdbcType=TIMESTAMP},
+      hit = #{hit,jdbcType=INTEGER},
+      ipCreated = #{ipCreated,jdbcType=VARCHAR},
+      readonly = #{readonly,jdbcType=INTEGER},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      topped = #{topped,jdbcType=INTEGER},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      lastRepliedOperatorId = #{lastRepliedOperatorId,jdbcType=INTEGER},
+      boardId = #{boardId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      lastRepliedOperatorName = #{lastRepliedOperatorName,jdbcType=VARCHAR}
+    where threadId = #{threadId,jdbcType=INTEGER}
+  </update>
+</mapper>

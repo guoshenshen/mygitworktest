@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.TopicClassStudy.TopicBannerMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.TopicClassStudy.TopicBanner" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bannerPicUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bannerClass" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="templateClass" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgId" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bannerPicUrl, description, title, bannerClass, templateClass, orgId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topicbanner
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topicbanner
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.TopicClassStudy.TopicBanner" >
+    insert into topicbanner (id, bannerPicUrl, description, 
+      title, bannerClass, templateClass, 
+      orgId)
+    values (#{id,jdbcType=INTEGER}, #{bannerPicUrl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{bannerClass,jdbcType=VARCHAR}, #{templateClass,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.TopicClassStudy.TopicBanner" >
+    insert into topicbanner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bannerPicUrl != null" >
+        bannerPicUrl,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="bannerClass != null" >
+        bannerClass,
+      </if>
+      <if test="templateClass != null" >
+        templateClass,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bannerPicUrl != null" >
+        #{bannerPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerClass != null" >
+        #{bannerClass,jdbcType=VARCHAR},
+      </if>
+      <if test="templateClass != null" >
+        #{templateClass,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.TopicClassStudy.TopicBanner" >
+    update topicbanner
+    <set >
+      <if test="bannerPicUrl != null" >
+        bannerPicUrl = #{bannerPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerClass != null" >
+        bannerClass = #{bannerClass,jdbcType=VARCHAR},
+      </if>
+      <if test="templateClass != null" >
+        templateClass = #{templateClass,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.TopicClassStudy.TopicBanner" >
+    update topicbanner
+    set bannerPicUrl = #{bannerPicUrl,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      bannerClass = #{bannerClass,jdbcType=VARCHAR},
+      templateClass = #{templateClass,jdbcType=VARCHAR},
+      orgId = #{orgId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findListByMap" resultType="com.elearning.pojo.TopicClassStudy.TopicBanner">
+    SELECT <include refid="Base_Column_List"/> from topicbanner
+    WHERE  1=1
+    <if test="name != null ">
+      and title like CONCAT('%',#{name},'%')
+    </if>
+    <if test="orgId != null ">
+      and orgId = #{orgId,jdbcType=BIGINT}
+    </if>
+    order by id desc
+  </select>
+    <select id="findOrderedBanner" resultType="com.elearning.pojo.TopicClassStudy.TopicBanner">
+      SELECT tb.id, tb.bannerPicUrl, tb.description, tb.title, tb.bannerClass, tb.templateClass, tb.orgId from topicbanner tb , series_banner s_b
+      where s_b.bannerId=tb.id and s_b.seriesId=#{seriesId} and s_b.type = #{type}  order by s_b.orderweight asc
+    </select>
+</mapper>

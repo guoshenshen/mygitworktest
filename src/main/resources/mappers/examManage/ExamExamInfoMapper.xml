@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.examManage.ExamExamInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.examManage.ExamExamInfo" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ExamTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="TotalTime" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="examType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examStyle" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="proportion" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="isApply" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isNeedApprove" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacher_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="joinCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="finishCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="regCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isPublish" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifDisplayAnswer" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifRepeatExam" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.examManage.ExamExamInfo" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ExamTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="startTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="TotalTime" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="examType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examStyle" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="proportion" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="isApply" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isNeedApprove" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacher_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="joinCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="finishCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="regCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isPublish" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifDisplayAnswer" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ifRepeatExam" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examDescription" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ExamTitle, startTime, endTime, TotalTime, examType, examStyle, proportion, isApply, 
+    isNeedApprove, teacher_id, joinCount, finishCount, regCount, isPublish, orgId, trainId, 
+    ifDisplayAnswer, ifRepeatExam
+  </sql>
+  <sql id="Blob_Column_List" >
+    examDescription
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from exam_examinfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam_examinfo
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.examManage.ExamExamInfo" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="ID">
+      SELECT LAST_INSERT_ID() AS ID
+    </selectKey>
+    insert into exam_examinfo (ID, ExamTitle, startTime,
+      endTime, TotalTime, examType, 
+      examStyle, proportion, isApply, 
+      isNeedApprove, teacher_id, joinCount, 
+      finishCount, regCount, isPublish, 
+      orgId, trainId, ifDisplayAnswer, 
+      ifRepeatExam, examDescription)
+    values (#{ID,jdbcType=INTEGER}, #{examTitle,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP},
+      #{endTime,jdbcType=TIMESTAMP}, #{totalTime,jdbcType=DOUBLE}, #{examType,jdbcType=INTEGER}, 
+      #{examStyle,jdbcType=INTEGER}, #{proportion,jdbcType=DOUBLE}, #{isApply,jdbcType=INTEGER}, 
+      #{isNeedApprove,jdbcType=INTEGER}, #{teacher_id,jdbcType=INTEGER}, #{joinCount,jdbcType=INTEGER}, 
+      #{finishCount,jdbcType=INTEGER}, #{regCount,jdbcType=INTEGER}, #{isPublish,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER}, #{ifDisplayAnswer,jdbcType=INTEGER}, 
+      #{ifRepeatExam,jdbcType=INTEGER}, #{examDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.examManage.ExamExamInfo" >
+  <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="ID">
+      SELECT LAST_INSERT_ID() AS ID
+  </selectKey>
+    insert into exam_examinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="examTitle != null" >
+        ExamTitle,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="totalTime != null" >
+        TotalTime,
+      </if>
+      <if test="examType != null" >
+        examType,
+      </if>
+      <if test="examStyle != null" >
+        examStyle,
+      </if>
+      <if test="proportion != null" >
+        proportion,
+      </if>
+      <if test="isApply != null" >
+        isApply,
+      </if>
+      <if test="isNeedApprove != null" >
+        isNeedApprove,
+      </if>
+      <if test="teacher_id != null" >
+        teacher_id,
+      </if>
+      <if test="joinCount != null" >
+        joinCount,
+      </if>
+      <if test="finishCount != null" >
+        finishCount,
+      </if>
+      <if test="regCount != null" >
+        regCount,
+      </if>
+      <if test="isPublish != null" >
+        isPublish,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="ifDisplayAnswer != null" >
+        ifDisplayAnswer,
+      </if>
+      <if test="ifRepeatExam != null" >
+        ifRepeatExam,
+      </if>
+      <if test="examDescription != null" >
+        examDescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="examTitle != null" >
+        #{examTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalTime != null" >
+        #{totalTime,jdbcType=DOUBLE},
+      </if>
+      <if test="examType != null" >
+        #{examType,jdbcType=INTEGER},
+      </if>
+      <if test="examStyle != null" >
+        #{examStyle,jdbcType=INTEGER},
+      </if>
+      <if test="proportion != null" >
+        #{proportion,jdbcType=DOUBLE},
+      </if>
+      <if test="isApply != null" >
+        #{isApply,jdbcType=INTEGER},
+      </if>
+      <if test="isNeedApprove != null" >
+        #{isNeedApprove,jdbcType=INTEGER},
+      </if>
+      <if test="teacher_id != null" >
+        #{teacher_id,jdbcType=INTEGER},
+      </if>
+      <if test="joinCount != null" >
+        #{joinCount,jdbcType=INTEGER},
+      </if>
+      <if test="finishCount != null" >
+        #{finishCount,jdbcType=INTEGER},
+      </if>
+      <if test="regCount != null" >
+        #{regCount,jdbcType=INTEGER},
+      </if>
+      <if test="isPublish != null" >
+        #{isPublish,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="ifDisplayAnswer != null" >
+        #{ifDisplayAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="ifRepeatExam != null" >
+        #{ifRepeatExam,jdbcType=INTEGER},
+      </if>
+      <if test="examDescription != null" >
+        #{examDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.examManage.ExamExamInfo" >
+    update exam_examinfo
+    <set >
+      <if test="examTitle != null" >
+        ExamTitle = #{examTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalTime != null" >
+        TotalTime = #{totalTime,jdbcType=DOUBLE},
+      </if>
+      <if test="examType != null" >
+        examType = #{examType,jdbcType=INTEGER},
+      </if>
+      <if test="examStyle != null" >
+        examStyle = #{examStyle,jdbcType=INTEGER},
+      </if>
+      <if test="proportion != null" >
+        proportion = #{proportion,jdbcType=DOUBLE},
+      </if>
+      <if test="isApply != null" >
+        isApply = #{isApply,jdbcType=INTEGER},
+      </if>
+      <if test="isNeedApprove != null" >
+        isNeedApprove = #{isNeedApprove,jdbcType=INTEGER},
+      </if>
+      <if test="teacher_id != null" >
+        teacher_id = #{teacher_id,jdbcType=INTEGER},
+      </if>
+      <if test="joinCount != null" >
+        joinCount = #{joinCount,jdbcType=INTEGER},
+      </if>
+      <if test="finishCount != null" >
+        finishCount = #{finishCount,jdbcType=INTEGER},
+      </if>
+      <if test="regCount != null" >
+        regCount = #{regCount,jdbcType=INTEGER},
+      </if>
+      <if test="isPublish != null" >
+        isPublish = #{isPublish,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        trainId = #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="ifDisplayAnswer != null" >
+        ifDisplayAnswer = #{ifDisplayAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="ifRepeatExam != null" >
+        ifRepeatExam = #{ifRepeatExam,jdbcType=INTEGER},
+      </if>
+      <if test="examDescription != null" >
+        examDescription = #{examDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.examManage.ExamExamInfo" >
+    update exam_examinfo
+    set ExamTitle = #{examTitle,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=TIMESTAMP},
+      endTime = #{endTime,jdbcType=TIMESTAMP},
+      TotalTime = #{totalTime,jdbcType=DOUBLE},
+      examType = #{examType,jdbcType=INTEGER},
+      examStyle = #{examStyle,jdbcType=INTEGER},
+      proportion = #{proportion,jdbcType=DOUBLE},
+      isApply = #{isApply,jdbcType=INTEGER},
+      isNeedApprove = #{isNeedApprove,jdbcType=INTEGER},
+      teacher_id = #{teacher_id,jdbcType=INTEGER},
+      joinCount = #{joinCount,jdbcType=INTEGER},
+      finishCount = #{finishCount,jdbcType=INTEGER},
+      regCount = #{regCount,jdbcType=INTEGER},
+      isPublish = #{isPublish,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      trainId = #{trainId,jdbcType=INTEGER},
+      ifDisplayAnswer = #{ifDisplayAnswer,jdbcType=INTEGER},
+      ifRepeatExam = #{ifRepeatExam,jdbcType=INTEGER},
+      examDescription = #{examDescription,jdbcType=LONGVARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.examManage.ExamExamInfo" >
+    update exam_examinfo
+    set ExamTitle = #{examTitle,jdbcType=VARCHAR},
+      startTime = #{startTime,jdbcType=TIMESTAMP},
+      endTime = #{endTime,jdbcType=TIMESTAMP},
+      TotalTime = #{totalTime,jdbcType=DOUBLE},
+      examType = #{examType,jdbcType=INTEGER},
+      examStyle = #{examStyle,jdbcType=INTEGER},
+      proportion = #{proportion,jdbcType=DOUBLE},
+      isApply = #{isApply,jdbcType=INTEGER},
+      isNeedApprove = #{isNeedApprove,jdbcType=INTEGER},
+      teacher_id = #{teacher_id,jdbcType=INTEGER},
+      joinCount = #{joinCount,jdbcType=INTEGER},
+      finishCount = #{finishCount,jdbcType=INTEGER},
+      regCount = #{regCount,jdbcType=INTEGER},
+      isPublish = #{isPublish,jdbcType=INTEGER},
+      orgId = #{orgId,jdbcType=INTEGER},
+      trainId = #{trainId,jdbcType=INTEGER},
+      ifDisplayAnswer = #{ifDisplayAnswer,jdbcType=INTEGER},
+      ifRepeatExam = #{ifRepeatExam,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllExamByUserAndTime" resultMap="BaseResultMap" parameterType="map">
+
+   select a.* from exam_examinfo AS a,exam_exam_user AS b where a.isPublish = 1  and b.operatorId=#{operatorId} and a.id = b.exam_id
+    <if test="systemTime != null and systemTime != '' ">
+      and LOCATE(#{systemTime},a.startTime)
+    </if>
+    <if test="searchContent != null and searchContent != '' ">
+      and  a.examTitle like CONCAT('%',#{searchContent},'%')
+    </if>
+    <if test="examType != null and examType != '' and examType != 2">
+      and a.examType=#{examType}
+    </if>
+    <if test="trainId != null and trainId != '' ">
+      and a.trainId=#{trainId}
+    </if>
+
+    UNION
+
+    <if test="orgStr == null or orgStr == '' ">
+      select c.* from EXAM_ExamInfo AS c,Exam_Exam_Dept AS d where c.isPublish=1 and c.id=d.exam_id
+      <if test="systemTime != null and systemTime != '' ">
+        and LOCATE(#{systemTime},c.startTime)
+      </if>
+      <if test="searchContent != null and searchContent != '' ">
+        and  c.examTitle like CONCAT('%',#{searchContent},'%')
+      </if>
+      <if test="examType != null and examType != '' and examType != 2">
+        and c.examType=#{examType}
+      </if>
+      <if test="trainId != null and trainId != '' ">
+        and c.trainId=#{trainId}
+      </if>
+      UNION
+    </if>
+    <if test="orgStr != null and orgStr != '' ">
+      select c.* from EXAM_ExamInfo AS c,Exam_Exam_Dept AS d where c.isPublish=1 and d.orgid IN(#{orgStr}) and c.id = d.exam_id
+      <if test="systemTime != null and systemTime != '' ">
+        and LOCATE(#{systemTime},c.startTime)
+      </if>
+      <if test="searchContent != null and searchContent != '' ">
+        and  c.examTitle like CONCAT('%',#{searchContent},'%')
+      </if>
+      <if test="examType != null and examType != '' and examType != 2">
+        and c.examType=#{examType}
+      </if>
+      <if test="trainId != null and trainId != '' ">
+        and c.trainId=#{trainId}
+      </if>
+      UNION
+    </if>
+
+    select e.* from EXAM_ExamInfo AS e,EXAM_ExamReg AS f where e.isPublish=1 and e.id=f.examID and f.employeeID=#{operatorId}
+    <if test="systemTime != null and systemTime != '' ">
+      and LOCATE(#{systemTime},e.startTime)
+    </if>
+    <if test="searchContent != null and searchContent != '' ">
+      and  e.examTitle like CONCAT('%',#{searchContent},'%')
+    </if>
+    <if test="examType != null and examType != '' and examType != 2">
+      and e.examType=#{examType}
+    </if>
+    <if test="trainId != null and trainId != '' ">
+      and e.trainId=#{trainId}
+    </if>
+
+    UNION
+
+    select examinfo.* from EXAM_ExamInfo AS examinfo,usertrain as usertrain where examinfo.isPublish=1 and examinfo.trainId = usertrain.train_id and usertrain.operatorID = #{operatorId}
+    <if test="systemTime != null and systemTime != '' ">
+      and LOCATE(#{systemTime},examinfo.startTime)
+    </if>
+    <if test="searchContent != null and searchContent != '' ">
+      and  examinfo.examTitle like CONCAT('%',#{searchContent},'%')
+    </if>
+    <if test="examType != null and examType != '' and examType != 2">
+      and examinfo.examType=#{examType}
+    </if>
+    <if test="trainId != null and trainId != '' ">
+      and examinfo.trainId=#{trainId}
+    </if>
+
+    order by 1 desc
+
+  </select>
+
+  <select id="findMaxScoreForSelfTest" resultType="java.lang.Double">
+    SELECT MAX(a.paperScore) FROM exam_exam_userscore AS a,tpa_papers AS b,exam_userreply As c where a.employeeID = #{operatorId} and  a.examID = #{examId} and b.classifyId = #{classifyId}
+    and c.submitDate is not null and c.paperId=a.paperId  and a.paperId = b.ID
+  </select>
+
+  <select id="getListByTrainId" resultType="com.elearning.pojo.examManage.ExamExamInfo" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from exam_examinfo
+    where trainId = #{trainId,jdbcType=INTEGER}
+  </select>
+
+  <select id="findMaxScoreForUniteTest" resultType="java.lang.Double" parameterType="map">
+    SELECT MAX(a.paperScore) FROM exam_exam_userscore AS a,exam_userreply As b where 1=1
+    <if test="employeeId != null and employeeId != '' ">
+      and a.employeeID = #{employeeId}
+    </if>
+    <if test="examId != null and examId != '' ">
+      and a.examID = #{examId}
+    </if>
+    AND a.examID = b.exam_id AND a.employeeID = b.operatorId AND a.replyId = b.id
+
+  </select>
+
+  <select id="getListByTrainIdOrExamTitleOrExamType" resultType="com.elearning.pojo.examManage.ExamExamInfo" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+    from exam_examinfo where 1=1
+    <if test="trainId != null and trainId != '' ">
+      and trainId = #{trainId}
+    </if>
+    <if test="trainId == null or trainId == '' ">
+      and trainId is null
+    </if>
+    <if test="examTitle != null and examTitle != '' ">
+      and examTitle like CONCAT('%',#{examTitle},'%')
+    </if>
+    <if test="examType != 2 ">
+      and examType = #{examType}
+    </if>
+    <if test="subOrgList != null and subOrgList.size > 0 ">
+      and orgId in
+      <foreach collection="subOrgList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+
+    order by ID desc
+
+  </select>
+
+  <select id="listExamInqueryResult" resultType="com.elearning.pojo.examManage.ExamExamInfo" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+    from exam_examinfo where 1=1
+    <if test="trainId != null and trainId != '' ">
+      and trainId = #{trainId}
+    </if>
+    <if test="trainId == null or trainId == '' ">
+      and trainId is null
+    </if>
+    <if test="subOrgList != null and subOrgList.size > 0 ">
+      and orgId in
+      <foreach collection="subOrgList" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    order by ID desc
+  </select>
+
+  <select id="getListByExamIdForObject" resultType="com.elearning.vo.examManage.SimpleExanForm" parameterType="map" >
+    SELECT a.totalScore,a.employeeId, b.submitDate,a.replyId FROM exam_exam_userscore AS a,exam_userreply AS b
+    WHERE a.employeeID = b.operatorId AND a.examID = b.exam_id AND  a.replyId = b.id
+    <if test="examId != null and examId != '' ">
+      and a.examId = #{examId}
+    </if>
+    <if test="operatorId != null and operatorId != '' ">
+      and a.employeeId = #{operatorId}
+    </if>
+    ORDER BY a.ID DESC
+  </select>
+
+  <select id="getListByExamIdForObject2" resultType="com.elearning.vo.examManage.SimpleExanForm" parameterType="map" >
+    SELECT a.totalScore,a.employeeId, b.submitDate,a.replyId FROM exam_exam_userscore AS a,exam_userreply AS b
+    WHERE a.employeeID = b.operatorId AND a.examID = b.exam_id
+    <if test="examId != null and examId != '' ">
+      and a.examId = #{examId}
+    </if>
+    <if test="operatorId != null and operatorId != '' ">
+      and a.employeeId = #{operatorId}
+    </if>
+    ORDER BY a.ID DESC
+  </select>
+
+
+</mapper>

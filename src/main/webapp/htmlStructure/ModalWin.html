@@ -1,0 +1,215 @@
+<div>
+<!-- 组织机构树显示 -->
+<div class="orgSelectWindow modalWin" data-remodal-id="modal_orgSelectWindow" role='dialog' aria-labelledby='modal1Title' aria-describedby='modal1Desc' >
+  <button data-remodal-action="close" class="remodal-close" ></button>
+  <div class="box">
+	  	<div class="btn-wrapper">
+	  		<div class="tools">
+	  			<span class="showCasTenant"  style="display:none" title="点击在全院范围检索">全院检索</span>
+  				<span class="search">
+					<input id="search-info" name="search"  type="text" placeholder="单位|部门名称" value=''/>
+					<a href="javascript:void(0);" class="search-icon"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+			</div>
+			<div class="floatTools">
+				<button class="remodal-confirm">确定</button>
+			</div>
+	  	</div>
+  </div>
+  <div class="orgList list-wrapper" id="orgList"></div>
+</div>
+
+<!-- 已选择机构列表 显示-->
+<div  class="orgListWindow modalWin" data-remodal-id="modal_orgList" role='dialog'  aria-labelledby='modal1Title' aria-describedby='modal1Desc' >
+  <button data-remodal-action="close" class="remodal-close" ></button>
+  <div class="box">
+  		<div class='class="btn-wrapper"'>
+  			<div class="tools">
+  				<span class="selectAll tool"><input type="checkbox" />全选</span>
+  				<span class="delete tool" title="点击删除选中机构">删除</span>
+  				<span class="search">
+					<input id="search-info" name="search"  type="text" placeholder="部门|隶属机构" />
+					<a href="javascript:void(0);" class="search-icon"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+				<span class="search-info-tip" style="display:none">&nbsp;</span>
+			</div>
+  		</div>
+    </div>
+    <div class="orgList-wrapper list-wrapper">
+	  	<table class="standardOrgListTable standardTable">	
+	  	</table>
+   </div>
+</div>
+
+<!-- 人员选择方式菜单 -->
+<div class="userSelectWindow modalWin normal" data-remodal-id="modal_userSelectWay" role='dialog' aria-labelledby='modal1Title' aria-describedby='modal1Desc' >
+  <div class="box"><button data-remodal-action="close" class="remodal-close" ></button></div>
+  <div class="userSelectWay-wrapper wrapper">
+  		<a href="javascript:void(0);"  class="userSelectButton orgWay">从部门添加</a>
+		<a href="javascript:void(0);"  class="userSelectButton addrBookWay">从通讯录中添加</a>
+		<a href="javascript:void(0);"  class="userSelectButton importWay">从excel导入</a>
+	</div>
+</div>
+
+
+<!-- 通过组织机构选择人员界面 -->
+<div class="userSelectByOrgWindow modalWin userSelectMode" data-remodal-id="modal_userSelectByOrgWindow" role='dialog' aria-labelledby='modal1Title' aria-describedby='modal1Desc' > 
+	<div class="box">
+	    <button data-remodal-action="close" class="remodal-close" ></button>
+  		<div class='btn-wrapper'>
+  			<div class="tools_left orgTool">
+  				<span class="search">
+					<input id="search-info" name="search" value="" type="text" placeholder="单位">
+					<a href="javascript:void(0);" class="search-icon"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+  			</div>
+  			<div class="tools operatorTool">
+  				<span class="showCasTenant tool" title="点击在全院范围检索">全院检索</span>
+  				<span class="selectAll tool"><input type="checkbox" />全选</span>
+	  			<span class="search tool">
+					<input id="search-info" name="search" value="" type="text" placeholder="姓名|部门|邮箱">
+					<a href="javascript:void(0);" class="search-icon" title="点击搜索"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+				<span class="search-info-tip" style="display:none">&nbsp;</span>
+				<button class="button remodal-confirm tool" style="margin-left: 120px;">确定</button>
+			</div>
+  		</div>
+    </div>
+    <div class="userSelectFrame modalWin" id="selectUserByOrg">
+    	<div class="orgList" id="orgList"></div>
+    	<div class="userList-wrapper list-wrapper" id="userList">
+    		<table class="standardTable ">	
+    			<tbody>
+    				<tr class="title">
+	    				<th class="check"></th>
+	    				<th>用户姓名</th>
+	    				<th>单位</th>
+	    				<th>账号</th>
+	    				<th>邮箱</th>
+	    				<th></th>
+	    			</tr>
+    			</tbody>
+    		</table>
+    	</div>
+    </div>
+</div>
+
+<!-- 人员导入方式选择人员界面 -->
+<div class="userSelectByImportWindow modalWin userSelectMode no-index" data-remodal-id="modal_userSelectByImportWindow" role="dialog"  aria-labelledby='modal1Title' aria-describedby='modal1Desc' style=="width:">
+	<div class="box">
+		<button data-remodal-action="close" class="remodal-close" ></button>
+		<div class="btn-wrapper">
+			<div class="tools operatorTool">
+  				<span class="selectAll tool"><input type="checkbox" />全选</span>
+	  			<span class="search tool">
+					<input id="search-info" name="search" value="" type="text" placeholder="姓名|部门|邮箱">
+					<a href="javascript:void(0);" class="search-icon" title="点击搜索"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+				<span class="search-info-tip" style="display:none">&nbsp;</span>
+				<button class="button remodal-confirm tool" style="margin-left: 120px;">确定</button>
+			</div>
+		</div>
+	</div>
+	<div class="userSelectFrame modalWin" id="selectUserByImport">
+		<div class="importListGuide list-wrapper" id="importListGuide">
+			<div class="layer" style="margin-top:10px;">
+				<button class="uploadifive-button" style="margin-bottom: 15px;width:100px;position: absolute;;" onclick="javascript:openwindowtocenter('/modelExcel/outputExcel.jsp?file=achieveUser.xls','导入示例查看',600,600)">下载导入示例</button>
+				<input type="file" name="file_upload" id="file_upload" />
+			</div>
+			<div class="layer" style="margin-top:10px;">
+				<a href="../modelExcel/achieveUser.xls" download="achieveUser.xls">下载excel示例</a>
+			</div>
+			<div class="tipInfo">
+				<div class="progressBar">
+					<div class="barAll">
+						<div class="barFinished progress-bar-striped">
+						</div>
+						<em class="tip lastPart"></em>
+					</div>
+				</div>
+				<div id="uploadInfo"></div>
+				<div id="fileQueue" style="display:none"></div>
+			</div>
+		</div>
+		<div class="userList-wrapper list-wrapper" id="userList">
+			<table class="standardTable ">	
+	   			<tbody>
+	   				<tr class="title">
+	    				<th class="check"></th>
+	    				<th>用户姓名</th>
+	    				<th>单位</th>
+	    				<th>账号</th>
+	    				<th>邮箱</th>
+	    				<th></th>
+	    			</tr>
+	   			</tbody>
+	   		</table>
+		</div>
+	</div>
+</div>
+
+<!-- 通讯录显示 -->
+<div class="userSelectByAddrBookWindow modalWin userSelectMode" data-remodal-id="modal_userSelectByaddrBookWindow" role='dialog' aria-labelledby='modal1Title' aria-describedby='modal1Desc'>
+	<div class="box">
+		<button data-remodal-action="close" class="remodal-close" ></button>
+	  	<div class="btn-wrapper">
+	  		<div class="tools_left orgTool">
+  				<span class="search">
+					<input id="search-info" name="search" value="" type="text" placeholder="通讯录|人员姓名">
+					<a href="javascript:void(0);" class="search-icon"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+  			</div>
+  			<div class="tools operatorTool">
+  				<span class="selectAll tool"><input type="checkbox" />全选</span>
+	  			<span class="search tool">
+					<input id="search-info" name="search" value="" type="text" placeholder="姓名|部门|邮箱">
+					<a href="javascript:void(0);" class="search-icon" title="点击搜索"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+				<span class="search-info-tip" style="display:none">&nbsp;</span>
+				<button class="button remodal-confirm tool" style="margin-left: 120px;">确定</button>
+			</div>
+	  	</div>
+	</div>
+	<div class="userSelectFrame modalWin" id="selectUserByAddressBook">
+    	<div class="addrBooklist list-wrapper" id="addreBooklist"></div>
+    	<div class="userList-wrapper list-wrapper" id="userList">
+    		<table class="standardTable ">	
+    			<tbody>
+    				<tr class="title">
+	    				<th class="check"></th>
+	    				<th>用户姓名</th>
+	    				<th>单位</th>
+	    				<th>账号</th>
+	    				<th>邮箱</th>
+	    				<th></th>
+	    			</tr>
+    			</tbody>
+    		</table>
+    	</div>
+    </div>
+</div>
+
+<!-- 已选择人员列表 显示-->
+<div  class="userListWindow modalWin" data-remodal-id="modal_userList" role='dialog'  aria-labelledby='modal1Title' aria-describedby='modal1Desc' >
+  <button data-remodal-action="close" class="remodal-close" ></button>
+  <div class="userListFrame">
+  	<div class="box">
+  		<div class='class="btn-wrapper"'>
+  			<div class="tools">
+  				<span class="selectAll  tool"><input type="checkbox" />全选</span>
+  				<span class="delete  tool" title="点击删除选中人员">删除</span>
+	  			<span class="search  tool">
+					<input id="search-info" name="search" value="" type="text" placeholder="姓名|单位|邮箱">
+					<a href="javascript:void(0);" class="search-icon"><img src="/image/search01.png" alt="搜索"></a>
+				</span>
+				<span class="search-info-tip" style="display:none">&nbsp;</span>
+			</div>
+  		</div>
+    </div>
+    <div class="userList-wrapper list-wrapper">
+	  	<table class="standardUserListTable standardTable">	
+	  	</table>
+  </div>
+  </div>
+</div>
+</div>

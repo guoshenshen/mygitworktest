@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.integralTask.IntegralPermitMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.integralTask.IntegralPermit" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="updatePermit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="deletePermit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="addPermit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="checkPermit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="updateStuIntegPermit" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, operatorId, updatePermit, deletePermit, addPermit, status, checkPermit, updateStuIntegPermit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from integral_permit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from integral_permit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.integralTask.IntegralPermit" >
+    insert into integral_permit (id, operatorId, updatePermit, 
+      deletePermit, addPermit, status, 
+      checkPermit, updateStuIntegPermit)
+    values (#{id,jdbcType=BIGINT}, #{operatorId,jdbcType=BIGINT}, #{updatePermit,jdbcType=VARCHAR}, 
+      #{deletePermit,jdbcType=VARCHAR}, #{addPermit,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{checkPermit,jdbcType=VARCHAR}, #{updateStuIntegPermit,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.integralTask.IntegralPermit" >
+    insert into integral_permit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="updatePermit != null" >
+        updatePermit,
+      </if>
+      <if test="deletePermit != null" >
+        deletePermit,
+      </if>
+      <if test="addPermit != null" >
+        addPermit,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="checkPermit != null" >
+        checkPermit,
+      </if>
+      <if test="updateStuIntegPermit != null" >
+        updateStuIntegPermit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="updatePermit != null" >
+        #{updatePermit,jdbcType=VARCHAR},
+      </if>
+      <if test="deletePermit != null" >
+        #{deletePermit,jdbcType=VARCHAR},
+      </if>
+      <if test="addPermit != null" >
+        #{addPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="checkPermit != null" >
+        #{checkPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStuIntegPermit != null" >
+        #{updateStuIntegPermit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.integralTask.IntegralPermit" >
+    update integral_permit
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="updatePermit != null" >
+        updatePermit = #{updatePermit,jdbcType=VARCHAR},
+      </if>
+      <if test="deletePermit != null" >
+        deletePermit = #{deletePermit,jdbcType=VARCHAR},
+      </if>
+      <if test="addPermit != null" >
+        addPermit = #{addPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="checkPermit != null" >
+        checkPermit = #{checkPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStuIntegPermit != null" >
+        updateStuIntegPermit = #{updateStuIntegPermit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.integralTask.IntegralPermit" >
+    update integral_permit
+    set operatorId = #{operatorId,jdbcType=BIGINT},
+      updatePermit = #{updatePermit,jdbcType=VARCHAR},
+      deletePermit = #{deletePermit,jdbcType=VARCHAR},
+      addPermit = #{addPermit,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      checkPermit = #{checkPermit,jdbcType=VARCHAR},
+      updateStuIntegPermit = #{updateStuIntegPermit,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

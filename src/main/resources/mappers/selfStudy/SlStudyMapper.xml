@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.selfStudy.SlStudyMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.selfStudy.SlStudy" >
+    <constructor >
+      <idArg column="slStudyId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="orgId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="courseId" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="beginTime" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="endTime" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="extParam" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    slStudyId, orgId, courseId, operatorId, beginTime, endTime, extParam
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sl_study
+    where slStudyId = #{slStudyId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sl_study
+    where slStudyId = #{slStudyId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.selfStudy.SlStudy" >
+    insert into sl_study (slStudyId, orgId, courseId, 
+      operatorId, beginTime, endTime, 
+      extParam)
+    values (#{slStudyId,jdbcType=BIGINT}, #{orgId,jdbcType=INTEGER}, #{courseId,jdbcType=BIGINT}, 
+      #{operatorId,jdbcType=INTEGER}, #{beginTime,jdbcType=TIME}, #{endTime,jdbcType=TIME}, 
+      #{extParam,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.selfStudy.SlStudy" >
+    insert into sl_study
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="slStudyId != null" >
+        slStudyId,
+      </if>
+      <if test="orgId != null" >
+        orgId,
+      </if>
+      <if test="courseId != null" >
+        courseId,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="beginTime != null" >
+        beginTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="extParam != null" >
+        extParam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="slStudyId != null" >
+        #{slStudyId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=TIME},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIME},
+      </if>
+      <if test="extParam != null" >
+        #{extParam,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.selfStudy.SlStudy" >
+    update sl_study
+    <set >
+      <if test="orgId != null" >
+        orgId = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        courseId = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        beginTime = #{beginTime,jdbcType=TIME},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=TIME},
+      </if>
+      <if test="extParam != null" >
+        extParam = #{extParam,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where slStudyId = #{slStudyId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.selfStudy.SlStudy" >
+    update sl_study
+    set orgId = #{orgId,jdbcType=INTEGER},
+      courseId = #{courseId,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      beginTime = #{beginTime,jdbcType=TIME},
+      endTime = #{endTime,jdbcType=TIME},
+      extParam = #{extParam,jdbcType=VARCHAR}
+    where slStudyId = #{slStudyId,jdbcType=BIGINT}
+  </update>
+</mapper>

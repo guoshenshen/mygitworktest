@@ -1,0 +1,257 @@
+@charset "utf-8";
+
+/*-- 一级导航 --*/
+.nav {
+border-bottom:3px #33CCFF;
+list-style:none;margin:0px;padding:0px;
+margin-bottom:10px;
+float:left;
+}
+.nav li{
+list-style-type:none;
+float:left;
+}
+.nav li a{
+font-size:15px;
+color:#FFFFFF;
+font-weight:600;
+text-decoration:none;
+padding-top:4px;
+display:block;
+width:100px;
+height:22px;
+text-align:center;
+
+background-color:#B0DEFF;
+margin-left:2px;
+}
+.nav li a:hover{
+font-size:15px;
+font-weight:600;
+background-color:#42B2EF;
+color:#FFFFFF;
+}
+.nav li a#current{
+font-size:15px;
+background-color:#42B2EF;
+font-weight:600;
+color:#FFFFFF;
+
+}
+
+/*-- 步骤导航 --*/
+.stepNav {
+margin-top:50px;
+margin-bottom:10px;
+float:left;
+}
+.stepNav li{
+list-style-type:none;
+margin-right:10px;
+float:left;
+
+}
+.stepNav li a{
+font-weight:600;
+
+text-decoration:none;
+padding-top:4px;
+display:block;
+width:160px;
+height:22px;
+text-align:center;
+font-size:13px;
+color:#FFFFFF;
+
+background-image:url(/image/b7-3.jpg);
+margin-left:5px;
+}
+.stepNav li a.prevStep{
+font-weight:600;
+background-color:#C9C9C9;
+color:#000000;
+
+}
+.nextStep {
+margin-top:10px;
+float:right;
+}
+
+/*-- 步骤导航2 --*/
+.stepNav4 {
+margin-top:50px;
+margin-bottom:10px;
+float:left;
+}
+.stepNav4 li{
+list-style-type:none;
+margin-right:10px;
+float:left;
+
+}
+.stepNav4 li a{
+font-weight:600;
+
+text-decoration:none;
+padding-top:4px;
+display:block;
+width:160px;
+height:22px;
+text-align:center;
+font-size:13px;
+color:#FFFFFF;
+
+background-image:url(/image/b7-3.jpg);
+margin-left:5px;
+}
+.stepNav4 li a.prevStep{
+font-weight:600;
+background-color:#C9C9C9;
+color:#000000;
+
+}
+
+
+/*-- 二级步骤导航 --*/
+.subStepNav {
+margin-top:10px;
+margin-bottom:10px;
+float:center;
+}
+.subStepNav li{
+list-style-type:none;
+margin-right:10px;
+float:left;
+}
+.subStepNav li a{
+color:#FFFFFF;
+text-decoration:none;
+padding-top:2px;
+padding-bottom:2px;
+display:block;
+width:150px;
+height:15px;
+font-size:13px;
+text-align:center;
+
+margin-left:5px;
+background-image:url(/image/b7-3.jpg);
+}
+.subStepNav li a.prevSubStep{
+background-color:#C9C9C9;
+color:#000000;
+}
+
+
+.multichoice {
+padding-bottom:5px;
+border-bottom:#DDDDDD 3px solid;
+margin-bottom:20px;
+}
+
+
+/*-- 查询Form --*/
+.search_form table{
+width:100%;
+}
+.search_form table .label{
+text-align:right;
+}
+.search_form table .action{
+text-align:right;
+}
+
+/*-- 结果列表 --*/
+.search_sum {
+margin-right:7px;
+float:left;
+}
+.search_count {
+float:left;
+}
+
+.search_table table {
+width:100%;
+text-align:center;
+}
+
+.search_select {
+float:left;
+
+}
+.search_page {
+float:right;
+
+}
+
+
+/*-- 基本信息Form --*/
+.basic_info table {
+width:100%;
+}
+.basic_info table .label{
+width:25%;
+text-align:right;
+}
+.basic_info table #remark{
+width:50%;
+}
+.basic_info table .action{
+text-align:right;
+}
+
+/*--表头颜色修改--*/
+th {
+background-image:url(/image/b7-3.jpg);
+font-size:13px;
+color:#FFFFFF;
+height:19px;
+}
+
+td{
+font-size:13px;
+
+}
+
+/*--表单内容相对位置--*/
+.dyn_form_item div.dyn_form_item_label{
+width:50%;
+float:left;
+}
+.dyn_form_item div.dyn_form_item_input input{
+margin-left:3px;
+margin-bottom:3px;
+float:left;
+}
+.dyn_form_item div.dyn_form_item_label{
+width:50%;
+float:left;
+}
+.dyn_form_item div.dyn_form_item_input input{
+margin-left:3px;
+margin-bottom:3px;
+float:left;
+}
+
+/*-- 分割线 --*/
+.splitter{
+margin-top:30px;
+margin-bottom:10px;
+border-top:solid #BCBCBC;
+border-top-width:medium;
+width:25%;
+}
+
+/*--培训细节文字修改--*/
+.OfficeQuery{
+font-size:15px;
+color:#000000;
+width:100%;
+}
+
+/*--出错信息--*/
+.errorMessage
+{
+font-size:13px;
+color:red;
+}

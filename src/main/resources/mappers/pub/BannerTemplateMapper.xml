@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.BannerTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.BannerTemplate" >
+    <constructor >
+      <idArg column="banner_template_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="tenantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="templatePicUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="templateName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="templateType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="className" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="publish" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="openScopeOrgSeq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modifyTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    banner_template_id, operatorId, tenantId, templatePicUrl, description, templateName, 
+    templateType, className, publish, openScopeOrgSeq, modifyTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bannertemplate
+    where banner_template_id = #{banner_template_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bannertemplate
+    where banner_template_id = #{banner_template_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.BannerTemplate" >
+    insert into bannertemplate (banner_template_id, operatorId, tenantId, 
+      templatePicUrl, description, templateName, 
+      templateType, className, publish, 
+      openScopeOrgSeq, modifyTime)
+    values (#{banner_template_id,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{tenantId,jdbcType=INTEGER}, 
+      #{templatePicUrl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, 
+      #{templateType,jdbcType=INTEGER}, #{className,jdbcType=VARCHAR}, #{publish,jdbcType=INTEGER}, 
+      #{openScopeOrgSeq,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.BannerTemplate" >
+    insert into bannertemplate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="banner_template_id != null" >
+        banner_template_id,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="tenantId != null" >
+        tenantId,
+      </if>
+      <if test="templatePicUrl != null" >
+        templatePicUrl,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="templateName != null" >
+        templateName,
+      </if>
+      <if test="templateType != null" >
+        templateType,
+      </if>
+      <if test="className != null" >
+        className,
+      </if>
+      <if test="publish != null" >
+        publish,
+      </if>
+      <if test="openScopeOrgSeq != null" >
+        openScopeOrgSeq,
+      </if>
+      <if test="modifyTime != null" >
+        modifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="banner_template_id != null" >
+        #{banner_template_id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="templatePicUrl != null" >
+        #{templatePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateType != null" >
+        #{templateType,jdbcType=INTEGER},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="publish != null" >
+        #{publish,jdbcType=INTEGER},
+      </if>
+      <if test="openScopeOrgSeq != null" >
+        #{openScopeOrgSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.BannerTemplate" >
+    update bannertemplate
+    <set >
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null" >
+        tenantId = #{tenantId,jdbcType=INTEGER},
+      </if>
+      <if test="templatePicUrl != null" >
+        templatePicUrl = #{templatePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        templateName = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateType != null" >
+        templateType = #{templateType,jdbcType=INTEGER},
+      </if>
+      <if test="className != null" >
+        className = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="publish != null" >
+        publish = #{publish,jdbcType=INTEGER},
+      </if>
+      <if test="openScopeOrgSeq != null" >
+        openScopeOrgSeq = #{openScopeOrgSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where banner_template_id = #{banner_template_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.BannerTemplate" >
+    update bannertemplate
+    set operatorId = #{operatorId,jdbcType=INTEGER},
+      tenantId = #{tenantId,jdbcType=INTEGER},
+      templatePicUrl = #{templatePicUrl,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      templateName = #{templateName,jdbcType=VARCHAR},
+      templateType = #{templateType,jdbcType=INTEGER},
+      className = #{className,jdbcType=VARCHAR},
+      publish = #{publish,jdbcType=INTEGER},
+      openScopeOrgSeq = #{openScopeOrgSeq,jdbcType=VARCHAR},
+      modifyTime = #{modifyTime,jdbcType=TIMESTAMP}
+    where banner_template_id = #{banner_template_id,jdbcType=INTEGER}
+  </update>
+</mapper>

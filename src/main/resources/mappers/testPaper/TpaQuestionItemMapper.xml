@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.testPaper.TpaQuestionItemMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.testPaper.TpaQuestionItem" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Question_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="qItemContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qItem_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Question_ID, qItemContent, qItem_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tpa_questionitem
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tpa_questionitem
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.testPaper.TpaQuestionItem" >
+    insert into tpa_questionitem (ID, Question_ID, qItemContent, 
+      qItem_name)
+    values (#{ID,jdbcType=INTEGER}, #{question_ID,jdbcType=INTEGER}, #{qItemContent,jdbcType=VARCHAR}, 
+      #{qItem_name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.testPaper.TpaQuestionItem" >
+    insert into tpa_questionitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="question_ID != null" >
+        Question_ID,
+      </if>
+      <if test="qItemContent != null" >
+        qItemContent,
+      </if>
+      <if test="qItem_name != null" >
+        qItem_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="question_ID != null" >
+        #{question_ID,jdbcType=INTEGER},
+      </if>
+      <if test="qItemContent != null" >
+        #{qItemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="qItem_name != null" >
+        #{qItem_name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.testPaper.TpaQuestionItem" >
+    update tpa_questionitem
+    <set >
+      <if test="question_ID != null" >
+        Question_ID = #{question_ID,jdbcType=INTEGER},
+      </if>
+      <if test="qItemContent != null" >
+        qItemContent = #{qItemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="qItem_name != null" >
+        qItem_name = #{qItem_name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.testPaper.TpaQuestionItem" >
+    update tpa_questionitem
+    set Question_ID = #{question_ID,jdbcType=INTEGER},
+      qItemContent = #{qItemContent,jdbcType=VARCHAR},
+      qItem_name = #{qItem_name,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="getListByQuestionId"  resultType="com.elearning.pojo.testPaper.TpaQuestionItem" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from tpa_questionitem
+    where Question_ID = #{questionId,jdbcType=INTEGER} order by CONVERT(qItem_name USING 'gbk') asc
+  </select>
+
+
+</mapper>

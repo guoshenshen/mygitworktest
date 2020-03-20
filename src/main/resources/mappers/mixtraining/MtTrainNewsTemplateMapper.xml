@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtTrainNewsTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" >
+    <constructor >
+      <idArg column="newsTemplateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newsTemplateName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="newsTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="newsAbstract" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" >
+    <constructor >
+      <idArg column="newsTemplateId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newsTemplateName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="newsTitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="newsAbstract" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="newsContent" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    newsTemplateId, newsTemplateName, newsTitle, newsAbstract
+  </sql>
+  <sql id="Blob_Column_List" >
+    newsContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mt_trainnnewstemplate
+    where newsTemplateId = #{newsTemplateId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mt_trainnnewstemplate
+    where newsTemplateId = #{newsTemplateId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" >
+    insert into mt_trainnnewstemplate (newsTemplateId, newsTemplateName, 
+      newsTitle, newsAbstract, newsContent
+      )
+    values (#{newsTemplateId,jdbcType=INTEGER}, #{newsTemplateName,jdbcType=VARCHAR}, 
+      #{newsTitle,jdbcType=VARCHAR}, #{newsAbstract,jdbcType=VARCHAR}, #{newsContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" >
+    insert into mt_trainnnewstemplate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="newsTemplateId != null" >
+        newsTemplateId,
+      </if>
+      <if test="newsTemplateName != null" >
+        newsTemplateName,
+      </if>
+      <if test="newsTitle != null" >
+        newsTitle,
+      </if>
+      <if test="newsAbstract != null" >
+        newsAbstract,
+      </if>
+      <if test="newsContent != null" >
+        newsContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="newsTemplateId != null" >
+        #{newsTemplateId,jdbcType=INTEGER},
+      </if>
+      <if test="newsTemplateName != null" >
+        #{newsTemplateName,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTitle != null" >
+        #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsAbstract != null" >
+        #{newsAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null" >
+        #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" >
+    update mt_trainnnewstemplate
+    <set >
+      <if test="newsTemplateName != null" >
+        newsTemplateName = #{newsTemplateName,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTitle != null" >
+        newsTitle = #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsAbstract != null" >
+        newsAbstract = #{newsAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null" >
+        newsContent = #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where newsTemplateId = #{newsTemplateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" >
+    update mt_trainnnewstemplate
+    set newsTemplateName = #{newsTemplateName,jdbcType=VARCHAR},
+      newsTitle = #{newsTitle,jdbcType=VARCHAR},
+      newsAbstract = #{newsAbstract,jdbcType=VARCHAR},
+      newsContent = #{newsContent,jdbcType=LONGVARCHAR}
+    where newsTemplateId = #{newsTemplateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" >
+    update mt_trainnnewstemplate
+    set newsTemplateName = #{newsTemplateName,jdbcType=VARCHAR},
+      newsTitle = #{newsTitle,jdbcType=VARCHAR},
+      newsAbstract = #{newsAbstract,jdbcType=VARCHAR}
+    where newsTemplateId = #{newsTemplateId,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="listNewsTemplate" resultType="com.elearning.pojo.mixtraining.MtTrainNewsTemplate" parameterType="map">
+    select <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+    from mt_trainnnewstemplate
+    where 1=1
+    <if test="newsTemplateName != null and newsTemplateName != ''">
+      and newsTemplateName = #{newsTemplateName,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>

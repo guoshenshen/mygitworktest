@@ -1,0 +1,159 @@
+body{
+	background: url(/image/survey/bg.jpg) repeat-x;
+    margin: 0px;
+    padding: 0px;
+    font-family: 宋体;
+    font-size: 14px;
+    color: #333333;
+    background-color: white;
+    padding-top:32px;
+}
+span.simpleButton {
+	color: #333333;
+    line-height: 1em;
+    cursor: pointer;
+    margin-right:6px;
+    float:none;
+    display: inline-block;
+    padding: 10px 16px 10px 16px;
+    font-size: 16px;
+    background-color: #f49d00;
+    font-weight: bold;
+    border-radius:5px;
+}
+span.blueSimpleButton {
+    background-color: #3c8bea;
+}
+span.orangeSimpleButton{
+	background-color:#f60;
+}
+p,div,span{margin:0px;padding:0px;}
+a{ text-decoration:none;}
+#top{}
+#top-title {
+    background: url(http://159.226.28.47/image/survey/top-bg.jpg) center bottom no-repeat;
+    height: 122px;
+    margin: 0px auto;
+    width: 980px;
+    position:relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#top-title #badge{
+	background: url(/image/survey/badge.png) center bottom no-repeat;
+    position: absolute;
+    width: 93px;
+    height: 93px;
+    top: 27px;
+    right: 63px;
+    cursor:pointer;
+    z-index:1;
+}
+
+#top-title-name{height:136px;line-height:136px;font-family:'黑体';font-size:24px;color:white;margin-left:170px;position: relative;}
+#top-link{position: absolute;right: 63px;top: 27px;}
+#center{margin:0px auto; width:978px;min-height:70%; background-color:white; border:1px  solid #92d2f6; overflow:auto;}
+#main{
+	width:760px;  
+	margin:0px auto;
+	margin-bottom:30px;
+}
+#survey-info {
+    background: url(/image/survey/s-info.jpg) left top no-repeat;
+    margin: 30px 0px;
+}
+#survey-info-content{
+	margin-left:40px;
+	line-height:28px;
+    font-family: "微软雅黑","黑体", Verdana, Tahoma;
+    color: #777;
+	
+}
+.question-name {
+    background: url(/image/survey/q-nav.jpg) left 5px no-repeat;
+    line-height: 30px;
+}
+.question-title{color:#3593cf;font-family:微软雅黑;margin-left:8px;font-weight:bold;}
+.question{margin:30px 0px;}
+.question-name-item{color:#333333;font-weight:bold;margin-left:30px; }
+.question-sep{border-bottom:1px dashed #cdd1d4;width:730px; margin:0px auto;margin-left:30px;}
+.question-option-x{height:30px;line-height:50px; margin-left:24px;color:#333333;}
+.marginRight30{margin-right:30px;}
+.question-option-y{margin-left:24px;color:#333333;}
+.question-option-y p{margin:10px;}
+#pagination{margin-top:50px;}
+.p-info{text-align:center;font-size:12px;}
+.p-num{margin:0px auto;width:684px;margin-top:30px;padding-bottom:80px;cursor:pointer}
+.num-selected{width:45px;height:30px;border:1px #cccccc solid;color:white;text-align:center;line-height:30px; float:left;margin-right:10px; background-color:#42a2dc;}
+.num{width:45px;height:30px;border:1px #cccccc solid;color:#333;text-align:center;line-height:30px;float:left;margin-right:10px;}
+.next{width:70px;height:30px;border:1px #cccccc solid;color:white;text-align:center;font-weight: bold;  line-height:30px;float:left;margin-right:10px; background-color:#44a7e1}
+#bottom{height:154px;}
+
+#simplefoot {
+    position: relative;
+    height: 80px;
+    width: 980px;
+    margin:0 auto;
+    float: none;
+    background: #E1E1E1;
+    color: #9194A5;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+}
+
+#bottombody{
+	height: 80px;
+    background: #e1e1e1;
+    color: #9194A5;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    width: 980px;
+    margin: 0 auto;
+}
+#link {
+    padding: 10px 0px;
+}
+
+.contact{text-align:center;color:#666666;font-size:12px;height:64px; line-height:64px;}
+.link{margin:0px auto;width:300px;}
+#p-5-2,#p-5-3,#p-5-4,#p-5-5,#p-5-6,#p-5-7,#p-5-8,#p-5-9,#p-5-10,#p-5-11,#p-5-12,#p-5-13,#p-5-14,#p-5-15,#p-5-16,#p-5-17{display:none;}
+
+
+.submitInfo{
+	font-family: '宋体,Arial';
+    font-size: 24px;
+    color: rgb(68, 68, 68);
+    display:inline-block;
+    margin: 0 auto;
+    display: inline-block;
+    position:relative;
+}
+
+
+.submitInfo .icon{
+	position:absolute;
+	left: -50px;
+    bottom: 0px;
+}
+
+.icon.success{
+	width: 40px;
+    height: 40px;
+    background: url(/image/sprite/tools3.png) left top no-repeat;
+    background-position: -104px 15px;
+}
+
+
+.icon.error{
+	background: url(/image/sprite/tools3.png) left top no-repeat;
+    background-position: -165px 10px;
+    width: 40px;
+    height: 40px;
+}
+
+textarea.answer{
+	cursor:pointer;
+}

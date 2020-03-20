@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.teacher.TchrTeacherUseCourseMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.teacher.TchrTeacherUseCourse" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="teacherID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="courseID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="isCourse" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="courseName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="materialPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, teacherID, courseID, isCourse, courseName, materialPath
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tchr_teacherusecourse
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tchr_teacherusecourse
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.teacher.TchrTeacherUseCourse" >
+    insert into tchr_teacherusecourse (id, teacherID, courseID, 
+      isCourse, courseName, materialPath
+      )
+    values (#{id,jdbcType=INTEGER}, #{teacherID,jdbcType=INTEGER}, #{courseID,jdbcType=BIGINT}, 
+      #{isCourse,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{materialPath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.teacher.TchrTeacherUseCourse" >
+    insert into tchr_teacherusecourse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="teacherID != null" >
+        teacherID,
+      </if>
+      <if test="courseID != null" >
+        courseID,
+      </if>
+      <if test="isCourse != null" >
+        isCourse,
+      </if>
+      <if test="courseName != null" >
+        courseName,
+      </if>
+      <if test="materialPath != null" >
+        materialPath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teacherID != null" >
+        #{teacherID,jdbcType=INTEGER},
+      </if>
+      <if test="courseID != null" >
+        #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="isCourse != null" >
+        #{isCourse,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialPath != null" >
+        #{materialPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.teacher.TchrTeacherUseCourse" >
+    update tchr_teacherusecourse
+    <set >
+      <if test="teacherID != null" >
+        teacherID = #{teacherID,jdbcType=INTEGER},
+      </if>
+      <if test="courseID != null" >
+        courseID = #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="isCourse != null" >
+        isCourse = #{isCourse,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null" >
+        courseName = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialPath != null" >
+        materialPath = #{materialPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.teacher.TchrTeacherUseCourse" >
+    update tchr_teacherusecourse
+    set teacherID = #{teacherID,jdbcType=INTEGER},
+      courseID = #{courseID,jdbcType=BIGINT},
+      isCourse = #{isCourse,jdbcType=INTEGER},
+      courseName = #{courseName,jdbcType=VARCHAR},
+      materialPath = #{materialPath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findByMap" resultType="com.elearning.pojo.teacher.TchrTeacherUseCourse">
+    select <include refid="Base_Column_List"/>
+    from tchr_teacherusecourse
+    where 1 = 1
+    <if test="courseId != null">
+      and courseID = #{courseId,jdbcType=BIGINT}
+    </if>
+    <if test="isCourse != null ">
+      and isCourse = #{isCourse,jdbcType=INTEGER}
+    </if>
+    <if test="courseName != null ">
+      and courseName = #{courseName,jdbcType=VARCHAR}
+    </if>
+    <if test="teacherId != null ">
+      and teacherID = #{teacherId,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="findByTeacherId" resultType="com.elearning.pojo.teacher.TchrTeacherUseCourse">
+    select <include refid="Base_Column_List"/>
+    from tchr_teacherusecourse
+    where teacherID = #{teacherId,jdbcType=INTEGER}
+  </select>
+
+
+</mapper>

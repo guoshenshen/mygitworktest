@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.VUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.VUserInfo" >
+    <constructor >
+      <arg column="operatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="empCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="EMPTYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EMPSTATUS" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="statusName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="regDate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="isKeyFigure" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="isCtnEduRequire" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="newEmployeeYear" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="statusModifyDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+    <sql id="v_userinfo" >
+        v.operatorID,v.userId,v.status,v.operatorName,v.empcode,v.orgId,v.emptype,v.empstatus,v.orgname,v.orgseq,v.statusName,v.regdate,v.isKeyFigure,v.isCtnEduRequire,v.newEmployeeYear,v.statusModifyDate
+    </sql>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.VUserInfo" >
+    insert into v_userinfo (operatorID, userID, status, 
+      operatorName, empCode, orgID, 
+      EMPTYPE, EMPSTATUS, orgName, 
+      orgSEQ, statusName, regDate, 
+      isKeyFigure, isCtnEduRequire, newEmployeeYear, 
+      statusModifyDate)
+    values (#{operatorID,jdbcType=INTEGER}, #{userID,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{operatorName,jdbcType=VARCHAR}, #{empCode,jdbcType=VARCHAR}, #{orgID,jdbcType=INTEGER}, 
+      #{EMPTYPE,jdbcType=VARCHAR}, #{EMPSTATUS,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, 
+      #{orgSEQ,jdbcType=VARCHAR}, #{statusName,jdbcType=VARCHAR}, #{regDate,jdbcType=DATE}, 
+      #{isKeyFigure,jdbcType=INTEGER}, #{isCtnEduRequire,jdbcType=INTEGER}, #{newEmployeeYear,jdbcType=INTEGER}, 
+      #{statusModifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.VUserInfo" >
+    insert into v_userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="empCode != null" >
+        empCode,
+      </if>
+      <if test="orgID != null" >
+        orgID,
+      </if>
+      <if test="EMPTYPE != null" >
+        EMPTYPE,
+      </if>
+      <if test="EMPSTATUS != null" >
+        EMPSTATUS,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="orgSEQ != null" >
+        orgSEQ,
+      </if>
+      <if test="statusName != null" >
+        statusName,
+      </if>
+      <if test="regDate != null" >
+        regDate,
+      </if>
+      <if test="isKeyFigure != null" >
+        isKeyFigure,
+      </if>
+      <if test="isCtnEduRequire != null" >
+        isCtnEduRequire,
+      </if>
+      <if test="newEmployeeYear != null" >
+        newEmployeeYear,
+      </if>
+      <if test="statusModifyDate != null" >
+        statusModifyDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null" >
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgID != null" >
+        #{orgID,jdbcType=INTEGER},
+      </if>
+      <if test="EMPTYPE != null" >
+        #{EMPTYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="EMPSTATUS != null" >
+        #{EMPSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSEQ != null" >
+        #{orgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="statusName != null" >
+        #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="regDate != null" >
+        #{regDate,jdbcType=DATE},
+      </if>
+      <if test="isKeyFigure != null" >
+        #{isKeyFigure,jdbcType=INTEGER},
+      </if>
+      <if test="isCtnEduRequire != null" >
+        #{isCtnEduRequire,jdbcType=INTEGER},
+      </if>
+      <if test="newEmployeeYear != null" >
+        #{newEmployeeYear,jdbcType=INTEGER},
+      </if>
+      <if test="statusModifyDate != null" >
+        #{statusModifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+    <select id="queryUserList" resultType="com.elearning.pojo.systemManage.VUserInfo">
+      select <include refid="v_userinfo" /> from v_userinfo v where 1=1
+      <if test="orgId !=null">
+        and  v.orgId=#{orgId}
+      </if>
+      <if test="operatorName !=null">
+        and  v.operatorName like #{operatorName}
+      </if>
+      <if test="orgseqLike!=null">
+        and v.orgseq like #{orgseqLike}
+      </if>
+      <if test="newEmployeeYear!=null">
+        and v.newEmployeeYear=#{newEmployeeYear}
+      </if>
+      <if test="isCtnEduRequire!=null">
+        and v.isCtnEduRequire=#{isCtnEduRequire}
+      </if>
+      <if test="status!=null">
+        and v.status=#{status}
+      </if>
+    </select>
+</mapper>

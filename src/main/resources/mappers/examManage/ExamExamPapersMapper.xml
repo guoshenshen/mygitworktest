@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.examManage.ExamExamPapersMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.examManage.ExamExamPapers" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="examID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="paperID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, examID, paperID, comment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam_exam_papers
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam_exam_papers
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.examManage.ExamExamPapers" >
+    insert into exam_exam_papers (ID, examID, paperID, 
+      comment)
+    values (#{ID,jdbcType=INTEGER}, #{examID,jdbcType=INTEGER}, #{paperID,jdbcType=INTEGER}, 
+      #{comment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.examManage.ExamExamPapers" >
+    insert into exam_exam_papers
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="examID != null" >
+        examID,
+      </if>
+      <if test="paperID != null" >
+        paperID,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="examID != null" >
+        #{examID,jdbcType=INTEGER},
+      </if>
+      <if test="paperID != null" >
+        #{paperID,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.examManage.ExamExamPapers" >
+    update exam_exam_papers
+    <set >
+      <if test="examID != null" >
+        examID = #{examID,jdbcType=INTEGER},
+      </if>
+      <if test="paperID != null" >
+        paperID = #{paperID,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.examManage.ExamExamPapers" >
+    update exam_exam_papers
+    set examID = #{examID,jdbcType=INTEGER},
+      paperID = #{paperID,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByExamId" resultType="com.elearning.pojo.examManage.ExamExamPapers" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from exam_exam_papers
+    where examID = #{examID,jdbcType=INTEGER}
+  </select>
+
+</mapper>

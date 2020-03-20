@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.mixtraining.MtMixTrainingTipTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.mixtraining.MtMixTrainingTipTrain" >
+    <constructor >
+      <idArg column="tipId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="trainId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isEmail" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tipId, trainId, status, isEmail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipTrainKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from mt_mixtrainingtip_train
+    where tipId = #{tipId,jdbcType=INTEGER}
+      and trainId = #{trainId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipTrainKey" >
+    delete from mt_mixtrainingtip_train
+    where tipId = #{tipId,jdbcType=INTEGER}
+      and trainId = #{trainId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipTrain" >
+    insert into mt_mixtrainingtip_train (tipId, trainId, status, 
+      isEmail)
+    values (#{tipId,jdbcType=INTEGER}, #{trainId,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{isEmail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipTrain" >
+    insert into mt_mixtrainingtip_train
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tipId != null" >
+        tipId,
+      </if>
+      <if test="trainId != null" >
+        trainId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isEmail != null" >
+        isEmail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tipId != null" >
+        #{tipId,jdbcType=INTEGER},
+      </if>
+      <if test="trainId != null" >
+        #{trainId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isEmail != null" >
+        #{isEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipTrain" >
+    update mt_mixtrainingtip_train
+    <set >
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isEmail != null" >
+        isEmail = #{isEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tipId = #{tipId,jdbcType=INTEGER}
+      and trainId = #{trainId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.mixtraining.MtMixTrainingTipTrain" >
+    update mt_mixtrainingtip_train
+    set status = #{status,jdbcType=VARCHAR},
+      isEmail = #{isEmail,jdbcType=VARCHAR}
+    where tipId = #{tipId,jdbcType=INTEGER}
+      and trainId = #{trainId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>  from mt_mixtrainingtip_train
+  </select>
+
+</mapper>

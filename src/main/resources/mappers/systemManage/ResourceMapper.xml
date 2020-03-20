@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.systemManage.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.systemManage.Resource" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="resourceName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parentId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="link" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="linkBase" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hyperlink" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="seq" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comment" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="defaultRole" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="iconDir" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="iconDirBase" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, code, resourceName, parentId, link, linkBase, hyperlink, seq, comment, status, defaultRole, iconDir, iconDirBase
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from resource
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resource
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.systemManage.Resource" >
+    insert into resource (ID, code, resourceName, 
+      parentId, link,linkBase, hyperlink, seq,
+      comment, status, defaultRole, 
+      iconDir, iconDirBase)
+    values (#{ID,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{resourceName,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{link,jdbcType=VARCHAR}, #{linkBase,jdbcType=VARCHAR}, #{hyperlink,jdbcType=VARCHAR}, #{seq,jdbcType=INTEGER},
+      #{comment,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{defaultRole,jdbcType=VARCHAR}, 
+      #{iconDir,jdbcType=VARCHAR}，#{iconDirBase,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.systemManage.Resource" >
+    insert into resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="resourceName != null" >
+        resourceName,
+      </if>
+      <if test="parentId != null" >
+        parentId,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="linkBase != null" >
+        linkBase,
+      </if>
+      <if test="hyperlink != null" >
+        hyperlink,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="defaultRole != null" >
+        defaultRole,
+      </if>
+      <if test="iconDir != null" >
+        iconDir,
+      </if>
+      <if test="iconDirBase != null" >
+        iconDirBase,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="linkBase != null" >
+        #{linkBase,jdbcType=VARCHAR},
+      </if>
+      <if test="hyperlink != null" >
+        #{hyperlink,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="defaultRole != null" >
+        #{defaultRole,jdbcType=VARCHAR},
+      </if>
+      <if test="iconDir != null" >
+        #{iconDir,jdbcType=VARCHAR},
+      </if>
+      <if test="iconDirBase != null" >
+        #{iconDirBase,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.systemManage.Resource" >
+    update resource
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceName != null" >
+        resourceName = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parentId = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="linkBase != null" >
+        linkBase = #{linkBase,jdbcType=VARCHAR},
+      </if>
+      <if test="hyperlink != null" >
+        link = #{hyperlink,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="defaultRole != null" >
+        defaultRole = #{defaultRole,jdbcType=VARCHAR},
+      </if>
+      <if test="iconDir != null" >
+        iconDir = #{iconDir,jdbcType=VARCHAR},
+      </if>
+      <if test="iconDirBase != null" >
+        iconDirBase = #{iconDirBase,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.systemManage.Resource" >
+    update resource
+    set code = #{code,jdbcType=VARCHAR},
+      resourceName = #{resourceName,jdbcType=VARCHAR},
+      parentId = #{parentId,jdbcType=INTEGER},
+      link = #{link,jdbcType=VARCHAR},
+      linkBase = #{linkBase,jdbcType=VARCHAR},
+      hyperlink = #{hyperlink,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      defaultRole = #{defaultRole,jdbcType=VARCHAR},
+      iconDir = #{iconDir,jdbcType=VARCHAR}
+      iconDirBase = #{iconDirBase,jdbcType=VARCHAR}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+
+  <select id="getResourceListByRoleId" resultType="com.elearning.pojo.systemManage.Resource" parameterType="map">
+    SELECT resource.*
+    from resource ,role_resource rr WHERE resource.ID = rr.resource_id AND rr.role_id = #{role_id} AND resource.parentId IS NULL AND resource.status = 1 ORDER BY resource.seq ASC
+  </select>
+
+  <select id="getResourceListByConditionSQL" resultType="com.elearning.pojo.systemManage.Resource" parameterType="map">
+    SELECT resource.*
+    from resource ,role_resource rr WHERE resource.id = rr.resource_id AND rr.role_id = #{roleId} AND resource.parentId=#{parentId} AND resource.status = #{status} ORDER BY resource.seq ASC
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap" >
+    SELECT  <include refid="Base_Column_List" /> from resource
+  </select>
+
+  <select id="getAllResource" resultType="com.elearning.pojo.systemManage.Resource" >
+    SELECT  <include refid="Base_Column_List" /> from resource where status = 1 order by id
+  </select>
+
+</mapper>

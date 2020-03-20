@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.TempUser1Mapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.TempUser1" >
+    <constructor >
+      <arg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="orgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="orgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operatorID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="empCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="eorgID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="eorgName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="eorgSEQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.TempUser1" >
+    insert into temp_user1 (id, orgName, operatorName, 
+      title, orgSEQ, operatorID, 
+      userID, empCode, eorgID, 
+      eorgName, eorgSEQ)
+    values (#{id,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{orgSEQ,jdbcType=VARCHAR}, #{operatorID,jdbcType=INTEGER}, 
+      #{userID,jdbcType=VARCHAR}, #{empCode,jdbcType=VARCHAR}, #{eorgID,jdbcType=INTEGER}, 
+      #{eorgName,jdbcType=VARCHAR}, #{eorgSEQ,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.TempUser1" >
+    insert into temp_user1
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orgName != null" >
+        orgName,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="orgSEQ != null" >
+        orgSEQ,
+      </if>
+      <if test="operatorID != null" >
+        operatorID,
+      </if>
+      <if test="userID != null" >
+        userID,
+      </if>
+      <if test="empCode != null" >
+        empCode,
+      </if>
+      <if test="eorgID != null" >
+        eorgID,
+      </if>
+      <if test="eorgName != null" >
+        eorgName,
+      </if>
+      <if test="eorgSEQ != null" >
+        eorgSEQ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSEQ != null" >
+        #{orgSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorID != null" >
+        #{operatorID,jdbcType=INTEGER},
+      </if>
+      <if test="userID != null" >
+        #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null" >
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eorgID != null" >
+        #{eorgID,jdbcType=INTEGER},
+      </if>
+      <if test="eorgName != null" >
+        #{eorgName,jdbcType=VARCHAR},
+      </if>
+      <if test="eorgSEQ != null" >
+        #{eorgSEQ,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

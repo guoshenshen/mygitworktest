@@ -1,0 +1,435 @@
+body{
+  	height:auto;
+    min-height:100%;
+}
+
+body.studentZone{
+	background: #eee;
+}
+
+.infoTable{
+	float:left;
+	display:block;
+	width:100%;
+}
+
+.infoTable a{
+	cursor:pointer;
+	text-decoration: none;
+	color: #3091b5;
+}
+
+.infoTable a:hover{
+	color:#f60;
+}
+
+font{
+	font-weight: bold;
+}
+
+
+/*我的课件页面*/
+
+.course-list li:hover{
+	background-color:#FFF6DC;
+}
+
+.course-list .course-pic{
+	cursor:pointer;
+}
+
+#content .course-list a{
+	cursor:pointer;
+	text-decoration: none;
+}
+
+#content .course-list a:hover{
+	color:#f60;
+}
+
+/************我的学习***********/
+
+
+
+table.onlineStudy{
+}
+
+table.archiveInfo td, table.archiveInfo th{
+  	max-width:300px;
+  	min-width:50px;
+  	text-align:left; 	
+  	padding-left:10px;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+
+
+/************学员对外展示空间************/
+
+.zoneHead{
+	background-color: #d3deea;
+	width:100%;
+	height: 120px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #cbcbcb;
+}
+
+
+.zone-headContent{
+	width: 1205px;
+	height:100px;
+	margin:0 auto;
+	padding-top:20px;
+}
+
+.zone-headPic{
+    width: 70px;
+    height: 70px;
+    box-shadow: 0 1px 3px #999;
+    cursor:pointer;
+    float: left;
+    display:block;
+}
+
+.zoneHead .zone-headPic{
+	margin: 0px 16px 0 0;
+    width: 70px;
+    height: 70px;
+    box-shadow: 0 1px 3px #999;
+    background-color: #fff;
+    cursor:pointer;
+}
+
+.zoneHead .zone-headPic img,.headPic{
+	width:100%;
+	height:100%;
+}
+
+.zoneHead .zone-userInfo{
+	float:left;	
+	margin-top:0px;
+	margin-left:10px;
+}
+
+.zone-userInfo .username{
+	height: 40px;
+    font: bold 26px/40px '微软雅黑';
+    color: #333;
+}
+
+.zone-userInfo .orgName{
+	width: 500px;
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+    max-height: 32px;
+    min-height: 10px;
+    word-wrap: break-word;
+    white-space: pre-line;
+	font-family: "Arial","Hiragino Sans GB", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";
+}
+
+.zone-fans{
+	float:right;
+	display:block;
+    height: 21px;
+    font-size: 15px;
+    font-family: 微软雅黑, "Microsoft YaHei";
+    min-width: 0px;
+    color: rgb(0, 0, 0);
+    border-radius: 0px;
+    margin-top: 49px;
+    padding: 0px;
+}
+
+.zone-fans span{
+	line-height: normal;
+    display: inline-block;
+    font-family: 微软雅黑, "Microsoft YaHei";
+    font-size: 16px;
+    color: #000;
+    text-align: left;
+    cursor:pointer;
+}
+
+.zone-fans span:hover{
+	color:#39a030;
+}
+
+.zoneContent{
+	width: 1205px;
+	margin:0 auto;
+	background-color: #fff;
+    -webkit-box-shadow: 0px 1px 2px #bbb;
+    -moz-box-shadow: 0px 1px 2px #bbb;
+    box-shadow: 0px 1px 2px #bbb;
+}
+
+.zoneContent .j-userTab{
+	height: 56px;
+    border-bottom: 1px solid #eee;
+    width:100%;
+}
+
+.j-userTab a.tabTitle{
+	width: 150px;
+    height: 55px;
+    display:block;
+    float:left;
+    text-align: center;
+    color: #999;
+    font: 16px/55px '微软雅黑';
+    /*border-right: 1px solid #eee;*/
+    border-bottom: 1px solid #eee;
+    margin-bottom: -1px;   
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.j-userTab a.currentTab{
+	 color: #333;
+	 border-bottom: 3px #55B929 solid;
+}
+
+.zoneContent .j-infoBox{
+	width:100%;
+	min-height:410px;
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding:30px 20px;
+    font-family: "Arial","Hiragino Sans GB", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";
+    font-size: 14px;
+}
+
+.j-infoBox #userInfo li {
+    margin: 0 0 35px 40px;
+    line-height: 24px;
+}
+
+.j-infoBox li div.title {
+    width: 80px;
+    color: #cccccc;
+    float:left;
+}
+
+.j-infoBox li div.content {
+    width: 840px;
+    padding: 0 10px 0 0;
+    word-wrap: break-word;
+    float:left;
+}
+
+.j-infoBox li:after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    content: ".";
+}
+
+.concernAndFans{
+	width:690px;
+}
+
+.concernAndFans .box{
+	border-bottom: 1px #E6E6E6 solid;
+	float:left;
+	width:100%;
+}
+
+
+.concernAndFans .btn-wrapper{
+    font-size: 16px;
+    text-align:left;
+    width:100%;
+    float:left;
+}
+
+
+.concernAndFans .btn {
+    color: black;
+    text-decoration: none;
+    cursor:pointer;
+    float:left;
+}
+
+.concernAndFans .btn div {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.concernAndFans .search{
+	float:right;
+	padding: 5px 60px;
+}
+
+.concernAndFans .search a{
+	display: block;
+    float: right;
+    padding-top: 5px;
+    padding-left: 2px;
+}
+
+
+.concernAndFans .search input{
+	font-size: 12px;
+    line-height: 1.5;
+    padding-left: 20px;
+}
+
+.concernAndFans .search .search-icon{
+
+}
+
+
+.follow-modal-body-wrapper{
+	display: inline-block;
+	width:100%;
+
+}
+
+.follow-modal-body-wrapper .scrollable-wrapper{
+	overflow-x: hidden;
+    overflow-y: auto;
+    width: 99%;
+    padding-left:10px;
+    height: 500px;
+}
+
+.follow-modal-user-box-wrapper{
+	display: inline-block;
+}
+
+.scrollable-wrapper{
+	display: inline-block;
+	text-align:left;
+}
+
+.scrollable-wrapper .box{
+	font-size: 13px;
+    width: 300px;
+    height: 75px;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height:1.5em;
+    border:none;
+}
+
+.scrollable-wrapper .removed .mask{
+	width: 300px;
+    height: 75px;
+    position: absolute;
+    top: 0px;
+    left: -70px;
+    opacity: 0.7;
+    background-color: #aaa;
+    cursor: no-drop;
+}
+
+.scrollable-wrapper .box .remove{
+	height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    left: 120px;
+    display:none
+}
+
+
+.ableRemove .box:hover .remove{
+	display:block;
+}
+
+.scrollable-wrapper .removed:hover .remove{
+	display:none;
+}
+
+.scrollable-wrapper .box .remove .removeButton{
+	height: 18px;
+    width: 18px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    color: #fff;
+    background: url(//nos.netease.com/edu-image/660A06735B9ED949F9835C65C3732285.png?imageView&quality=100) no-repeat;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-position: 3px;
+    background-size: 13px;
+   	cursor:pointer;
+}
+
+.scrollable-wrapper .box{
+	color: inherit;
+    text-decoration: none;
+    font-family: "Microsoft YaHei", \5fae\8f6f\96c5\9ed1, "Arial","Hiragino Sans GB", "Helvetica", "sans-serif";
+}
+
+.personal-info{
+	width: 200px;
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    position:relative;
+}
+
+.personal-info .nickname {
+    font-size: 16px;
+}
+
+.personal-info .info {
+    color: #666666;
+}
+
+.personal-info .info span{
+   font-size: 13px;
+}
+
+.remodal{
+	padding:5px;
+	max-width:700px;
+}
+
+
+.remodal-close{
+	left: inherit;
+    right: 0;
+}
+
+
+.showConcern a.concern-list div {
+    border-bottom: 3px #55B929 solid;
+}
+
+.showFans a.fans-list div {
+    border-bottom: 3px #55B929 solid;
+}
+
+.showConcernOrgs a.concernOrgs-list div {
+    border-bottom: 3px #55B929 solid;
+}
+/***************always leave style below to the end*****************/
+
+.grey{
+	color:#cccccc
+}
+
+.notShow{
+	display:none;
+}
+
+.show{
+	display:block;
+}

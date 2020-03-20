@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elearning.dao.pub.DynamicLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.elearning.pojo.pub.DynamicLogin" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dynamicKey" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operatorId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="validPeriod" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="BOOLEAN" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dynamicKey, operatorId, createTime, validPeriod, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dynamiclogin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findByDynamicKey" resultType="com.elearning.pojo.pub.DynamicLogin" parameterType="java.lang.Long">
+    SELECT
+    <include refid="Base_Column_List" />
+    from dynamiclogin
+    where dynamicKey = #{dynamicKey,jdbcType=BIGINT}
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dynamiclogin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.elearning.pojo.pub.DynamicLogin" >
+    insert into dynamiclogin (id, dynamicKey, operatorId, 
+      createTime, validPeriod, type
+      )
+    values (#{id,jdbcType=INTEGER}, #{dynamicKey,jdbcType=BIGINT}, #{operatorId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{validPeriod,jdbcType=INTEGER}, #{type,jdbcType=BOOLEAN}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.elearning.pojo.pub.DynamicLogin" >
+    insert into dynamiclogin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dynamicKey != null" >
+        dynamicKey,
+      </if>
+      <if test="operatorId != null" >
+        operatorId,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="validPeriod != null" >
+        validPeriod,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dynamicKey != null" >
+        #{dynamicKey,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validPeriod != null" >
+        #{validPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.elearning.pojo.pub.DynamicLogin" >
+    update dynamiclogin
+    <set >
+      <if test="dynamicKey != null" >
+        dynamicKey = #{dynamicKey,jdbcType=BIGINT},
+      </if>
+      <if test="operatorId != null" >
+        operatorId = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validPeriod != null" >
+        validPeriod = #{validPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.elearning.pojo.pub.DynamicLogin" >
+    update dynamiclogin
+    set dynamicKey = #{dynamicKey,jdbcType=BIGINT},
+      operatorId = #{operatorId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      validPeriod = #{validPeriod,jdbcType=INTEGER},
+      type = #{type,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
